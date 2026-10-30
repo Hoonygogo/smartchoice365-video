@@ -42,7 +42,7 @@ jobs:
           name: sarah-korean-draft-6
           path: approved-source
       - name: Render 1080p large type and equal 240p comparison
-        run: python scripts/render_readability.py
+        run: python scripts/render_readability.py --style graph
       - name: Keep a short-lived downloadable draft
         uses: actions/upload-artifact@v4
         with:

@@ -61,7 +61,10 @@ def stamp(s):
     h,m,sec=s.replace(',','.').split(':');return int(h)*3600+int(m)*60+float(sec)
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--source',default='approved-source');p.add_argument('--output',default='output');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--source',default='approved-source');p.add_argument('--output',default='output');p.add_argument('--style',choices=['cards','graph'],default='cards');args=p.parse_args()
+    if args.style=='graph':
+        from draw_graph_hd import draw as draw_frame
+    else:draw_frame=draw
     source=Path(args.source);out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
     original=json.loads((source/'manifest.json').read_text());data=json.loads((source/'script.json').read_text())
     expected='dcc5e67cc8d450b5ae8a0e2f42147023b4a6a678c4e8cad4807a9ec342ff8229'
@@ -76,11 +79,16 @@ def main():
             idx=max(i for i,c in enumerate(original['chapters']) if c['start_seconds']<=start+.002)
             frames=round(end*24)-last_frame;last_frame+=frames
             k=counts.get(idx,0);counts[idx]=k+1
-            image=tmp/f'{n}.png';clip=tmp/f'{n}.mp4'
-            draw(data['scenes'][idx],idx+1,len(data['scenes']),caption,k,image)
-            if n==0:Image.open(image).save(out/'poster.jpg',quality=95)
-            subprocess.run(['ffmpeg','-y','-loglevel','error','-loop','1','-framerate','24','-i',str(image),'-frames:v',str(frames),'-an','-c:v','libx264','-preset','veryfast','-crf','18','-profile:v','high','-level','4.1','-pix_fmt','yuv420p',str(clip)],check=True)
-            clips.append(clip);print(f'1080p sentence {n+1}/{len(segments)}',flush=True)
+            beat_count=math.ceil(frames/24/3) if args.style=='graph' else 1
+            for beat in range(beat_count):
+                beat_frames=frames//beat_count+(beat<frames%beat_count)
+                image=tmp/f'{n}-{beat}.png';clip=tmp/f'{n}-{beat}.mp4'
+                draw_frame(data['scenes'][idx],idx+1,len(data['scenes']),caption,k+beat,image)
+                if n==0 and beat==0:Image.open(image).save(out/'poster.jpg',quality=95)
+                subprocess.run(['ffmpeg','-y','-loglevel','error','-loop','1','-framerate','24','-i',str(image),'-frames:v',str(beat_frames),'-an','-c:v','libx264','-preset','veryfast','-crf','18','-profile:v','high','-level','4.1','-pix_fmt','yuv420p',str(clip)],check=True)
+                clips.append(clip)
+            counts[idx]=k+beat_count
+            print(f'1080p sentence {n+1}/{len(segments)}',flush=True)
         concat=tmp/'concat.txt';concat.write_text(''.join(f"file '{c.as_posix()}'\n" for c in clips))
         subprocess.run(['ffmpeg','-y','-loglevel','error','-f','concat','-safe','0','-i',str(concat),'-i',str(source/'voice.wav'),'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','128k','-movflags','+faststart',str(out/'draft.mp4')],check=True)
     # Both low-resolution samples use the same codec and settings. This simulates, not reproduces, YouTube encoding.
@@ -88,11 +96,12 @@ def main():
         subprocess.run(['ffmpeg','-y','-loglevel','error','-i',str(video),'-vf','scale=-2:240:flags=lanczos','-c:v','libx264','-crf','26','-preset','veryfast','-c:a','aac','-b:a','96k','-movflags','+faststart',str(out/f'{name}.mp4')],check=True)
     for name,video in [('old-240',out/'old-240.mp4'),('new-240',out/'new-240.mp4')]:
         subprocess.run(['ffmpeg','-y','-loglevel','error','-ss','16','-i',str(video),'-frames:v','1',str(out/f'{name}.png')],check=True)
-    m={**original,'id':'heattech-readability-ko-v3','title':original['title']+' | 가독성 실험','width':W,'height':H,'created_at':datetime.now(timezone.utc).isoformat(),'sha256':hashlib.sha256((out/'draft.mp4').read_bytes()).hexdigest(),'audio_reused_from':original['sha256'],'status':'awaiting_approval','published':False,'platform_posts':{},'experiment':'Native 1080p, one key card per screen; equal-encoding 240p comparison'}
+    m={**original,'id':('heattech-graph-hd-ko-v4' if args.style=='graph' else 'heattech-readability-ko-v3'),'title':original['title']+' | 가독성 실험','width':W,'height':H,'created_at':datetime.now(timezone.utc).isoformat(),'sha256':hashlib.sha256((out/'draft.mp4').read_bytes()).hexdigest(),'audio_reused_from':original['sha256'],'status':'awaiting_approval','published':False,'platform_posts':{},'visual_beats':len(clips),'experiment':('Native 1080p original graphs with larger labels' if args.style=='graph' else 'Native 1080p large cards')}
     (out/'manifest.json').write_text(json.dumps(m,ensure_ascii=False,indent=2))
     shutil.copy(source/'voice.wav',out/'voice.wav');shutil.copy(source/'captions.srt',out/'captions.srt')
     data['id']=m['id'];data['title']=m['title'];(out/'script.json').write_text(json.dumps(data,ensure_ascii=False,indent=2))
+    intro='기존 그래프와 연출 이미지를 유지하고 숫자·항목명을 키웠습니다. 강조 테두리가 설명 중인 비교 항목을 따라 바뀝니다.' if args.style=='graph' else '한 화면에 핵심 카드 하나를 크게 보여줍니다.'
     title=html.escape(m['title']);guide=html.escape(data['guide_url'],quote=True)
-    (out/'index.html').write_text(f'''<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>body{{font-family:system-ui;margin:24px auto;max-width:1200px;padding:0 16px;background:#f6f3eb;color:#15283d}}video,img{{width:100%;background:#15283d}}.grid{{display:grid;grid-template-columns:1fr 1fr;gap:20px}}@media(max-width:750px){{.grid{{grid-template-columns:1fr}}}}button,a{{display:inline-block;margin:10px 10px 10px 0;padding:12px;background:#15283d;color:white;border:0;border-radius:8px}}p{{line-height:1.7}}</style><h1>글자 크기와 화질 비교 실험</h1><p>목소리·대본·길이는 기존과 동일합니다. 새 영상은 1920×1080에서 직접 그렸고, 한 화면에 핵심 카드 하나를 크게 보여줍니다. SNS 미발행 · 확인 대기.</p><h2>새 1080p 원본</h2><video controls playsinline preload="metadata" src="draft.mp4" poster="poster.jpg"></video><a href="draft.mp4" download>1080p 영상 다운로드</a><a href="{guide}">구매가이드</a><h2>둘 다 240p로 낮추면?</h2><p>동일한 인코딩 설정으로 줄인 자체 실험입니다. 유튜브 실제 240p 화질이나 자동 선택을 보장하지 않습니다. 두 영상은 같은 내레이션 시점입니다.</p><button onclick="let v=document.querySelectorAll('.grid video');v.forEach(x=>{{x.currentTime=13;x.play()}})">13초부터 같이 비교 재생</button><div class="grid"><section><h3>기존 720p → 240p</h3><video controls playsinline preload="metadata" muted src="old-240.mp4"></video><img src="old-240.png" alt="기존 240p 16초 화면"></section><section><h3>큰 글자 1080p → 240p</h3><video controls playsinline preload="metadata" src="new-240.mp4"></video><img src="new-240.png" alt="개선 240p 16초 화면"></section></div><p>한 화면에 보여주는 정보량은 줄고, 비교 항목은 순서대로 나타납니다. 상세 제조사 출처: {html.escape(' / '.join(data['sources']))}</p><p>직접 착용 시험을 하지 않은 자료 기반 판단입니다. 연결된 가이드에는 제휴 광고가 포함되어 있습니다.</p></html>''')
+    (out/'index.html').write_text(f'''<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>body{{font-family:system-ui;margin:24px auto;max-width:1200px;padding:0 16px;background:#f6f3eb;color:#15283d}}video,img{{width:100%;background:#15283d}}.grid{{display:grid;grid-template-columns:1fr 1fr;gap:20px}}@media(max-width:750px){{.grid{{grid-template-columns:1fr}}}}button,a{{display:inline-block;margin:10px 10px 10px 0;padding:12px;background:#15283d;color:white;border:0;border-radius:8px}}p{{line-height:1.7}}</style><h1>글자 크기와 화질 비교 실험</h1><p>목소리·대본·길이는 기존과 동일합니다. 새 영상은 1920×1080에서 직접 그렸고, {intro} SNS 미발행 · 확인 대기.</p><h2>새 1080p 원본</h2><video controls playsinline preload="metadata" src="draft.mp4" poster="poster.jpg"></video><a href="draft.mp4" download>1080p 영상 다운로드</a><a href="{guide}">구매가이드</a><h2>둘 다 240p로 낮추면?</h2><p>동일한 인코딩 설정으로 줄인 자체 실험입니다. 유튜브 실제 240p 화질이나 자동 선택을 보장하지 않습니다. 두 영상은 같은 내레이션 시점입니다.</p><button onclick="let v=document.querySelectorAll('.grid video');v.forEach(x=>{{x.currentTime=13;x.play()}})">13초부터 같이 비교 재생</button><div class="grid"><section><h3>기존 720p → 240p</h3><video controls playsinline preload="metadata" muted src="old-240.mp4"></video><img src="old-240.png" alt="기존 240p 16초 화면"></section><section><h3>개선 1080p → 240p</h3><video controls playsinline preload="metadata" src="new-240.mp4"></video><img src="new-240.png" alt="개선 240p 16초 화면"></section></div><p>기존 화면과 비교하며 숫자·항목명 및 자막 가독성을 확인해 주세요. 상세 제조사 출처: {html.escape(' / '.join(data['sources']))}</p><p>직접 착용 시험을 하지 않은 자료 기반 판단입니다. 연결된 가이드에는 제휴 광고가 포함되어 있습니다.</p></html>''')
     print(json.dumps(m,ensure_ascii=False))
 if __name__=='__main__':main()
