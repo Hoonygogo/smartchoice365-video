@@ -2,7 +2,7 @@
 
 ## Default Korean general-video production — confirmed 2026-10-31
 
-Reference: approved synchronized graph version `heattech-graph-sync-ko-v5`, https://www.youtube.com/watch?v=FMdhtInQdPE . These defaults supersede earlier readability/card experiments. They are a production standard, not standing permission to publish new videos.
+Current approved published version: `heattech-full-photo-ko-v8`, https://www.youtube.com/watch?v=0vDxn8aXoGU . Graph/highlight defaults originated with `heattech-graph-sync-ko-v5`; the v8 greeting, approved logo and complete-photo rules below also apply. These defaults supersede earlier readability/card experiments. They are a production standard, not standing permission to publish new videos.
 
 - Render natively at 1920×1080, landscape H.264/AAC with faststart. Preserve useful editorial graphs, comparison tables, relevant imagery, and the established navy/cream/gold style. Do not replace every comparison with a single large text card.
 - Enlarge key labels, figures, and captions; remove small secondary clutter. Inspect reduced-resolution readability. A higher-resolution source does not force viewers' playback quality.
