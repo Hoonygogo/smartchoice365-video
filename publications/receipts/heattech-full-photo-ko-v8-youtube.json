@@ -2,10 +2,16 @@
   "id": "heattech-full-photo-ko-v8",
   "sha256": "57bef2c4131e84ff9f40b1275b03f34243af9494d995bedd1cd3d9a52419c437",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "approval": "좋아 맘에들어 교체해",
   "run_id": "41095329255",
   "platform": "youtube",
   "video_id": "0vDxn8aXoGU",
-  "url": "https://www.youtube.com/watch?v=0vDxn8aXoGU"
+  "url": "https://www.youtube.com/watch?v=0vDxn8aXoGU",
+  "privacy": "public",
+  "upload_status": "processed",
+  "processing_status": "succeeded",
+  "metadata_verified": true,
+  "description_first_line": "👉 자세한 비교표·선택 가이드: https://smartchoice365-web.pages.dev/guides/2026-heattech-regular-extra-ultra-warm-guide.html?utm_source=youtube&utm_medium=video&utm_campaign=heattech_full_photo_ko_v8",
+  "source_run_id": 41093955784
 }
