@@ -1,0 +1,37 @@
+name: Publish Approved YouTube Video
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'publications/requests/heattech-analysis-ko-v2.json'
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download exact approved draft
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41053610462
+          name: sarah-korean-draft-6
+          path: approved-artifact
+      - name: Publish and verify approved video
+        env:
+          PUBLICATION_REQUEST: publications/requests/heattech-analysis-ko-v2.json
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python scripts/publish_youtube.py

@@ -1,0 +1,30 @@
+{
+  "id": "heattech-analysis-ko-v2",
+  "sha256": "dcc5e67cc8d450b5ae8a0e2f42147023b4a6a678c4e8cad4807a9ec342ff8229",
+  "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
+  "approval": "우리 만든거 업로드해바",
+  "privacy": "public",
+  "source_run_id": 41053610462,
+  "metadata": {
+    "snippet": {
+      "title": "히트텍, 실내에서는 울트라웜까지 필요할까? | 빠른 구매 비교",
+      "description": "히트텍, 실내에서는 울트라웜까지 필요할까? | 빠른 구매 비교\n\n히트텍의 보온 수치·소재·관리·사용환경을 나눠 비교합니다.\n단순한 보온력 순위보다 누구에게 어떤 선택이 맞는지 설명합니다.\n\n자세한 비교표와 상황별 선택 도구: https://smartchoice365-web.pages.dev/guides/2026-heattech-regular-extra-ultra-warm-guide.html?utm_source=youtube&utm_medium=video&utm_campaign=heattech_analysis_ko_v2\n\n유니클로 한국 공식 라인업·상품 설명을 2026-10-30에 확인한 자료 기반 비교입니다. 직접 착용·보온 시험을 진행하지 않았습니다. 추천은 Smart Choice 365의 편집 판단이며 개인 체감은 다를 수 있습니다. 생활 장면 이미지는 AI로 연출했습니다. 연결된 구매가이드에는 제휴 광고가 포함되어 있습니다.\n\n구간 안내\n0:00 실내에 오래 있다면 일반부터 비교하세요\n0:13 권장 기온이 겹친다는 점부터\n0:28 1.5배·2.25배 ≠ 체감 온도\n0:41 코튼 100%? 어느 부분일까?\n0:56 건조기 쓰는 집이라면?\n1:09 통근 40분, 실내 8시간이라면\n1:26 야외 대기가 길다면 판단도 달라져요\n1:39 구입비 ÷ 입는 횟수\n1:56 가장 높은 등급보다, 내 생활에 맞게\n\n공식 자료 확인: 2026-10-30\nhttps://www.uniqlo.com/kr/ko/men/heattech?tagFabric=heattech\nhttps://www.uniqlo.com/kr/ko/products/E479467-000/00\nhttps://www.uniqlo.com/kr/ko/products/E450705-000/00",
+      "categoryId": "26",
+      "defaultLanguage": "ko",
+      "defaultAudioLanguage": "ko",
+      "tags": [
+        "히트텍",
+        "유니클로",
+        "구매가이드",
+        "Smart Choice 365"
+      ]
+    },
+    "status": {
+      "privacyStatus": "public",
+      "selfDeclaredMadeForKids": false,
+      "containsSyntheticMedia": true,
+      "embeddable": true,
+      "license": "youtube"
+    }
+  }
+}
