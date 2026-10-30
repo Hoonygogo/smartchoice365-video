@@ -1,5 +1,6 @@
 """Branded editorial layouts; lifestyle image is explicitly illustrative."""
 from pathlib import Path
+from photo_layout import place_full_photo
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 
@@ -36,10 +37,7 @@ def draw_editorial(scene, index, total, path, font):
         if mode in ('office','commute','cold'):
             j=('office','commute','cold').index(mode)
             w=image.width//3; image=image.crop((j*w,0,(j+1)*w,image.height))
-        photo=ImageOps.fit(image,(624,445),method=Image.Resampling.LANCZOS,centering=(.5,.38))
-        im.paste(photo,(48,385)); d=ImageDraw.Draw(im)
-        d.rectangle((48,798,672,830),fill=navy)
-        put('이해를 돕기 위한 연출 이미지',(64,802),17,'white')
+        place_full_photo(im,image,(48,385,624,445),font,label_size=17,label_height=32)
     block(scene['body'],861,28,gap=10)
     d.rounded_rectangle((42,1005,678,1196),20,fill=navy)
     end=block(scene['narration'],1030,25,width=600,color='white',gap=10)

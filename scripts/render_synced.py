@@ -20,7 +20,7 @@ from draw_intro import draw_intro
 FPS=24
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--request',default='requests/heattech-brand-logo-ko-v7.json');p.add_argument('--output',default='output');p.add_argument('--model-dir',default='.models/supertonic-3');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--request',default='requests/heattech-full-photo-ko-v8.json');p.add_argument('--output',default='output');p.add_argument('--model-dir',default='.models/supertonic-3');args=p.parse_args()
     data=validate_request(json.loads(Path(args.request).read_text()))
     for scene in data['scenes']:
         if ' '.join(c['text'] for c in scene['cues'])!=scene['narration']:raise ValueError('Speech cues changed the approved script')
@@ -58,6 +58,6 @@ def main():
     (out/'manifest.json').write_text(json.dumps(m,ensure_ascii=False,indent=2));(out/'script.json').write_text(json.dumps(data,ensure_ascii=False,indent=2));(out/'cue_timings.json').write_text(json.dumps(cues,ensure_ascii=False,indent=2));(out/'captions.srt').write_text('\n'.join(srt))
     digest=m['sha256'][:12];title=html.escape(m['title']);guide=html.escape(data['guide_url'],quote=True)
     links=''.join(f'<li><a href="{html.escape(url,quote=True)}">{html.escape(url)}</a></li>' for url in data['sources'])
-    (out/'index.html').write_text(f'''<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>body{{font-family:system-ui;max-width:1100px;margin:30px auto;padding:0 18px;background:#f5f3ee;color:#13243a}}video{{width:100%;background:#13243a}}p{{line-height:1.7}}a{{overflow-wrap:anywhere}}.button{{display:inline-block;background:#13243a;color:white;padding:12px;margin:12px 12px 12px 0;border-radius:8px}}</style><h1>새 브랜드 로고를 적용한 히트텍 비교</h1><p>1080p · Sarah 한국어 음성 · 새 버전 확인 대기 · SNS 미발행</p><video controls playsinline preload="metadata" src="draft.mp4?v={digest}" poster="poster.jpg?v={digest}"></video><a class="button" href="draft.mp4?v={digest}" download>영상 다운로드</a><a class="button" href="{guide}">구매가이드</a><p>로고와 인사, 화질 설정 그림, 구독 안내를 추가했습니다. 본문은 설명에 맞춰 비교 항목을 강조합니다.</p><h2>제작 및 자료 안내</h2><p>{html.escape(data['disclosure'])}</p><ul>{links}</ul></html>''')
+    (out/'index.html').write_text(f'''<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>body{{font-family:system-ui;max-width:1100px;margin:30px auto;padding:0 18px;background:#f5f3ee;color:#13243a}}video{{width:100%;background:#13243a}}p{{line-height:1.7}}a{{overflow-wrap:anywhere}}.button{{display:inline-block;background:#13243a;color:white;padding:12px;margin:12px 12px 12px 0;border-radius:8px}}</style><h1>모델 사진 잘림을 고친 히트텍 비교</h1><p>1080p · Sarah 한국어 음성 · 새 버전 확인 대기 · SNS 미발행</p><video controls playsinline preload="metadata" src="draft.mp4?v={digest}" poster="poster.jpg?v={digest}"></video><a class="button" href="draft.mp4?v={digest}" download>영상 다운로드</a><a class="button" href="{guide}">구매가이드</a><p>로고와 인사, 화질 설정 그림, 구독 안내를 추가했습니다. 본문은 설명에 맞춰 비교 항목을 강조합니다.</p><h2>제작 및 자료 안내</h2><p>{html.escape(data['disclosure'])}</p><ul>{links}</ul></html>''')
     print(json.dumps(m,ensure_ascii=False))
 if __name__=='__main__':main()

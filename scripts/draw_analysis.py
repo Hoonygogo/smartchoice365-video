@@ -1,5 +1,6 @@
 """Evidence-led landscape editorial frames. Numerical graphics are deterministic."""
 from pathlib import Path
+from photo_layout import place_full_photo
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 W,H=1280,720
@@ -27,10 +28,7 @@ def draw_analysis(scene,index,total,caption,path,font,active=None):
         if mode in ('office','outside'):
             j=0 if mode=='office' else 2
             p=p.crop((j*p.width//3,0,(j+1)*p.width//3,p.height))
-        p=ImageOps.fit(p,(w,h),method=Image.Resampling.LANCZOS,centering=(.5,.4))
-        im.paste(p,(x,y))
-        d.rectangle((x,y+h-30,x+w,y+h),fill=NAVY)
-        text('이해를 돕기 위한 연출 이미지',x+12,y+h-27,15,'white')
+        place_full_photo(im,p,(x,y,w,h),font,label_size=15,label_height=30)
     d.rectangle((0,0,W,65),fill=NAVY)
     text('SMART CHOICE 365',42,18,24,'white')
     text(f'BUYING GUIDE   {index:02}/{total:02}',966,20,19,'#ead1a0')

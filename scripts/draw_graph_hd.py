@@ -2,6 +2,7 @@
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from render_readability import font_path
+from photo_layout import place_full_photo
 
 W,H=1920,1080
 NAVY='#13243a'; GOLD='#d9a84e'; INK='#1e314a'; MUTED='#58677b'; BG='#f5f3ee'
@@ -29,16 +30,14 @@ def draw(scene,index,total,caption,active,path):
         p=Image.open(Path(__file__).resolve().parents[1]/'assets/heattech-lifestyle.jpg')
         if mode!='all':
             j=0 if mode=='office' else 2;p=p.crop((j*p.width//3,0,(j+1)*p.width//3,p.height))
-        p=ImageOps.fit(p,(w,h),method=Image.Resampling.LANCZOS,centering=(.5,.4));im.paste(p,(x,y))
-        d.rectangle((x,y+h-54,x+w,y+h),fill=NAVY)
-        text('이해를 돕기 위한 연출 이미지',x+12,y+h-48,28,'white')
+        place_full_photo(im,p,(x,y,w,h),font_path())
     d.rectangle((0,0,W,96),fill=NAVY)
     text('SMART CHOICE 365',64,20,42,'white');text(f'BUYING GUIDE  {index:02}/{total:02}',1395,25,32,'#ead1a0')
     text(scene['eyebrow'],72,118,34,'#8b6426')
     block(scene['heading'],72,174,72,lines=2)
     mode=scene['visual'];note=''
     if mode=='hero':
-        photo('all',1040,365,800,350)
+        photo('all',1040,310,800,440)
         for j,s in enumerate(('생활환경','소재와 관리','입는 횟수')):
             text(s,88,365+j*110,66)
         focus_items([(70,355+j*110,975,455+j*110) for j in range(3)])
@@ -75,14 +74,14 @@ def draw(scene,index,total,caption,active,path):
             text('세탁기  가능',x+32,480,62);text('건조기  사용 불가',x+32,590,62,'#8c472c')
         focus_items([(72+j*900,355,942+j*900,703) for j in range(2)]);note='확인한 두 타이즈 기준 · 다른 모델은 개별 세탁표 확인'
     elif mode=='office':
-        photo('office',1300,355,548,365)
+        photo('office',1300,315,548,435)
         text('가상 하루 패턴',80,355,42,MUTED)
         d.rounded_rectangle((80,445,160,535),12,fill=GOLD);d.rounded_rectangle((160,445,1220,535),12,fill=NAVY)
         text('통근 40분',80,560,56);text('난방 실내 8시간',650,560,56)
         text('일반부터 비교',80,660,68)
         focus_items([(72,435,625,635),(630,435,1235,635),(72,650,1235,750)]);note='실내 8시간 + 통근 40분의 가상 예시 · 개인 체감 고려'
     elif mode=='outside':
-        photo('outside',1300,355,548,365)
+        photo('outside',1300,315,548,435)
         for j,s in enumerate(('야외 체류 시간','방풍 외투','활동량과 땀')):text(f'{j+1:02}  {s}',80,365+j*116,62)
         focus_items([(66,355+j*116,1235,460+j*116) for j in range(3)]);note='울트라웜 검토 + 전체 옷 조합 · 보온·안전 한계 보장 아님'
     elif mode=='cost':
