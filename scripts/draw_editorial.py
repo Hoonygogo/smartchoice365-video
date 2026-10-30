@@ -39,7 +39,7 @@ def draw_editorial(scene, index, total, path, font):
         photo=ImageOps.fit(image,(624,445),method=Image.Resampling.LANCZOS,centering=(.5,.38))
         im.paste(photo,(48,385)); d=ImageDraw.Draw(im)
         d.rectangle((48,798,672,830),fill=navy)
-        put('AI 생활 장면 예시 · 실제 제품 사진 아님',(64,802),17,'white')
+        put('이해를 돕는 AI 연출 이미지',(64,802),17,'white')
     block(scene['body'],861,28,gap=10)
     d.rounded_rectangle((42,1005,678,1196),20,fill=navy)
     end=block(scene['narration'],1030,25,width=600,color='white',gap=10)
