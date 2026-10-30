@@ -60,7 +60,7 @@ def main():
     identity = request['id']
     if not re.fullmatch(r'[a-z0-9-]+', identity):
         raise RuntimeError('Invalid publication ID.')
-    if request.get('approval') != '우리 만든거 업로드해바' or request.get('privacy') != 'public':
+    if request.get('approval') not in ('우리 만든거 업로드해바','훨신 나아진거같아 전에 유튜브에올린거 지우고 이걸로 올려바') or request.get('privacy') != 'public':
         raise RuntimeError('Explicit approval and visibility are required.')
     if request['channel_id'] != CHANNEL:
         raise RuntimeError('Publication target mismatch.')
@@ -131,6 +131,24 @@ def main():
                 receipt['status'] = 'published_verified'
                 receipt_write(path, receipt)
                 print(json.dumps(receipt, ensure_ascii=False), flush=True)
+                old_id = request.get('delete_old_video_id')
+                if old_id:
+                    if old_id != 'A59XedFBLxs' or old_id == video_id:
+                        raise RuntimeError('Unexpected old video deletion target.')
+                    previous = request_json('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + old_id, token=token).get('items', [])
+                    if not previous:
+                        receipt['old_video_cleanup'] = {'video_id':old_id,'status':'already_absent'}
+                    elif previous[0]['snippet']['channelId'] != CHANNEL:
+                        raise RuntimeError('Old video channel mismatch; deletion blocked.')
+                    else:
+                        try:
+                            api('https://www.googleapis.com/youtube/v3/videos?id=' + old_id, 'DELETE', token=token)
+                            remaining = request_json('https://www.googleapis.com/youtube/v3/videos?part=id&id=' + old_id, token=token).get('items', [])
+                            receipt['old_video_cleanup'] = {'video_id':old_id,'status':'deleted_verified' if not remaining else 'deletion_not_verified'}
+                        except RuntimeError as exc:
+                            receipt['old_video_cleanup'] = {'video_id':old_id,'status':'blocked','reason':str(exc)}
+                    receipt_write(path, receipt)
+                    print(json.dumps({'old_video_cleanup':receipt['old_video_cleanup']}),flush=True)
                 summary = os.environ.get('GITHUB_STEP_SUMMARY')
                 if summary:
                     with open(summary, 'a') as out:
