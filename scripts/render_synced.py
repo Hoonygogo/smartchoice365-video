@@ -15,11 +15,12 @@ from PIL import Image
 from supertonic import TTS
 from render import validate_request,timestamp,MODEL_REVISION
 from draw_graph_hd import draw
+from draw_intro import draw_intro
 
 FPS=24
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--request',default='requests/heattech-graph-sync-ko-v5.json');p.add_argument('--output',default='output');p.add_argument('--model-dir',default='.models/supertonic-3');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--request',default='requests/heattech-branded-intro-ko-v6.json');p.add_argument('--output',default='output');p.add_argument('--model-dir',default='.models/supertonic-3');args=p.parse_args()
     data=validate_request(json.loads(Path(args.request).read_text()))
     for scene in data['scenes']:
         if ' '.join(c['text'] for c in scene['cues'])!=scene['narration']:raise ValueError('Speech cues changed the approved script')
@@ -39,11 +40,13 @@ def main():
                 frames=math.ceil((len(raw)/rate+gap)*FPS);samples=round(frames/FPS*rate)
                 sounds.append(np.pad(raw,(0,samples-len(raw))))
                 start=frame/FPS;frame+=frames;end=frame/FPS
-                item={'scene':i+1,'mode':scene['visual'],'text':cue['text'],'targets':cue['targets'],'start_seconds':start,'end_seconds':end,'speech_seconds':len(raw)/rate}
+                caption=cue.get('caption',cue['text'])
+                item={'scene':i+1,'mode':scene['visual'],'text':cue['text'],'targets':cue['targets'],'start_seconds':start,'end_seconds':end,'speech_seconds':len(raw)/rate,'caption':caption}
                 cues.append(item);n=len(cues)
-                srt.append(f'{n}\n{timestamp(start)} --> {timestamp(end)}\n{cue["text"]}\n')
+                srt.append(f'{n}\n{timestamp(start)} --> {timestamp(end)}\n{caption}\n')
                 image=tmp/f'{n}.png';clip=tmp/f'{n}.mp4'
-                draw(scene,i+1,len(data['scenes']),cue['text'],cue['targets'],image)
+                renderer=draw_intro if scene['visual'].endswith('_intro') else draw
+                renderer(scene,i+1,len(data['scenes']),caption,cue['targets'],image)
                 if n==1:Image.open(image).save(out/'poster.jpg',quality=95)
                 subprocess.run(['ffmpeg','-y','-loglevel','error','-loop','1','-framerate',str(FPS),'-i',str(image),'-frames:v',str(frames),'-an','-c:v','libx264','-preset','veryfast','-crf','18','-profile:v','high','-level','4.1','-pix_fmt','yuv420p',str(clip)],check=True)
                 clips.append(clip)
@@ -55,6 +58,6 @@ def main():
     (out/'manifest.json').write_text(json.dumps(m,ensure_ascii=False,indent=2));(out/'script.json').write_text(json.dumps(data,ensure_ascii=False,indent=2));(out/'cue_timings.json').write_text(json.dumps(cues,ensure_ascii=False,indent=2));(out/'captions.srt').write_text('\n'.join(srt))
     digest=m['sha256'][:12];title=html.escape(m['title']);guide=html.escape(data['guide_url'],quote=True)
     links=''.join(f'<li><a href="{html.escape(url,quote=True)}">{html.escape(url)}</a></li>' for url in data['sources'])
-    (out/'index.html').write_text(f'''<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>body{{font-family:system-ui;max-width:1100px;margin:30px auto;padding:0 18px;background:#f5f3ee;color:#13243a}}video{{width:100%;background:#13243a}}p{{line-height:1.7}}a{{overflow-wrap:anywhere}}.button{{display:inline-block;background:#13243a;color:white;padding:12px;margin:12px 12px 12px 0;border-radius:8px}}</style><h1>설명과 강조 상자를 맞춘 그래프 영상</h1><p>1080p · Sarah 한국어 음성 · 새 버전 확인 대기 · SNS 미발행</p><video controls playsinline preload="metadata" src="draft.mp4?v={digest}" poster="poster.jpg?v={digest}"></video><a class="button" href="draft.mp4?v={digest}" download>영상 다운로드</a><a class="button" href="{guide}">구매가이드</a><p>항목을 말할 때 해당 부분을 강조하고, 함께 비교할 때는 동시에 강조합니다. 특정 항목을 설명하지 않는 문장에서는 상자를 숨깁니다.</p><h2>제작 및 자료 안내</h2><p>{html.escape(data['disclosure'])}</p><ul>{links}</ul></html>''')
+    (out/'index.html').write_text(f'''<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>body{{font-family:system-ui;max-width:1100px;margin:30px auto;padding:0 18px;background:#f5f3ee;color:#13243a}}video{{width:100%;background:#13243a}}p{{line-height:1.7}}a{{overflow-wrap:anywhere}}.button{{display:inline-block;background:#13243a;color:white;padding:12px;margin:12px 12px 12px 0;border-radius:8px}}</style><h1>인사·화질 안내를 더한 히트텍 비교</h1><p>1080p · Sarah 한국어 음성 · 새 버전 확인 대기 · SNS 미발행</p><video controls playsinline preload="metadata" src="draft.mp4?v={digest}" poster="poster.jpg?v={digest}"></video><a class="button" href="draft.mp4?v={digest}" download>영상 다운로드</a><a class="button" href="{guide}">구매가이드</a><p>로고와 인사, 화질 설정 그림, 구독 안내를 추가했습니다. 본문은 설명에 맞춰 비교 항목을 강조합니다.</p><h2>제작 및 자료 안내</h2><p>{html.escape(data['disclosure'])}</p><ul>{links}</ul></html>''')
     print(json.dumps(m,ensure_ascii=False))
 if __name__=='__main__':main()
