@@ -10,5 +10,10 @@
   "url": "https://www.youtube.com/watch?v=FMdhtInQdPE",
   "privacy": "public",
   "upload_status": "processed",
-  "processing_status": "succeeded"
+  "processing_status": "succeeded",
+  "old_video_cleanup": {
+    "video_id": "A59XedFBLxs",
+    "status": "blocked",
+    "reason": "API DELETE failed: HTTP 403. No automatic duplicate upload attempted."
+  }
 }
