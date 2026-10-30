@@ -36,7 +36,7 @@ jobs:
       - name: Download pinned public model
         run: python scripts/download_model.py
       - name: Render Sarah approval draft
-        run: python scripts/render.py --request requests/heattech-ko-v1.json
+        run: python scripts/render_analysis.py --request requests/heattech-analysis-ko.json
       - name: Keep a short-lived downloadable draft
         uses: actions/upload-artifact@v4
         with:
