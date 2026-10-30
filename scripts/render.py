@@ -80,6 +80,9 @@ def text_block(draw, text, y, size, color, *, width=600, gap=14, max_y=1200):
 
 
 def draw_scene(scene, index, total, path):
+    if scene.get("visual"):
+        from draw_editorial import draw_editorial
+        return draw_editorial(scene, index, total, path, font_path())
     im = Image.new("RGB", (WIDTH, HEIGHT), "#f5f3ec")
     d = ImageDraw.Draw(im)
     d.rounded_rectangle((48, 58, 672, 112), radius=27, fill="#143f3a")
@@ -109,6 +112,8 @@ def write_preview(out, data, manifest):
     title = html.escape(data["title"])
     guide = html.escape(data["guide_url"], quote=True)
     script = "".join(f"<p>{html.escape(s['narration'])}</p>" for s in data["scenes"])
+    disclosure = html.escape(data.get("disclosure", ""))
+    sources = "".join('<li><a href="' + html.escape(u, quote=True) + '">' + html.escape(u) + '</a></li>' for u in data.get("sources", []))
     content = f'''<!doctype html><html lang="ko"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title>
 <style>body{{margin:0;background:#f5f3ec;color:#143f3a;font:16px/1.65 system-ui,sans-serif}}main{{max-width:700px;margin:32px auto;padding:20px}}video{{display:block;width:100%;max-height:75vh;background:#111;border-radius:18px}}a{{color:#143f3a}}.pill{{display:inline-block;padding:5px 12px;border-radius:24px;background:#dce9da}}.links{{display:flex;gap:20px;flex-wrap:wrap}}small{{overflow-wrap:anywhere}}</style>
@@ -118,7 +123,7 @@ def write_preview(out, data, manifest):
 <p class="links"><a href="draft.mp4" download>MP4 다운로드</a><a href="voice.wav" download>음성만 듣기</a><a href="{guide}" target="_blank" rel="noopener">구매가이드 열기</a></p>
 <p>발행하려면 이 버전을 확인한 뒤 대화에서 <strong>“{html.escape(data['id'])} 버전 {manifest['sha256'][:12]} 발행해”</strong>라고 알려주세요. 이 페이지에는 자동 발행 버튼이 없습니다.</p>
 <small>버전: {manifest['sha256'][:12]} · 생성: {manifest['created_at']} · 초안은 공개 링크로 접근할 수 있습니다.</small>
-<details><summary>내레이션 대본</summary>{script}</details></main></html>'''
+<p>{disclosure}</p><details><summary>내레이션 대본</summary>{script}</details><h2>확인한 자료</h2><ul>{sources}</ul></main></html>'''
     (out / "index.html").write_text(content, encoding="utf-8")
 
 
@@ -176,7 +181,8 @@ def render(request, output, model_dir, smoke=False):
                 "title": data["title"], "guide_url": data["guide_url"], "voice": "Sarah", "voice_style": "F1",
                 "model_revision": MODEL_REVISION, "created_at": datetime.now(timezone.utc).isoformat(),
                 "sha256": hashlib.sha256(video.read_bytes()).hexdigest(), "duration_seconds": elapsed,
-                "smoke_test_only": smoke, "platform_posts": {}}
+                "smoke_test_only": smoke, "platform_posts": {},
+                "sources": data.get("sources", []), "disclosure": data.get("disclosure", "")}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "script.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     write_preview(out, data, manifest)
