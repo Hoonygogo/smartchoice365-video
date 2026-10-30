@@ -23,7 +23,10 @@ def run(args):
     from supertonic import TTS
     engine=TTS(model='supertonic-3',model_dir=args.model_dir,auto_download=False,intra_op_num_threads=2,inter_op_num_threads=1)
     style=engine.get_voice_style(voice_name='F1');rate=engine.sample_rate
-    sounds=[];srt=[];chapters=[];elapsed=0.;counter=0
+    speed=float(data.get('speech_speed',1.0))
+    if not .8<=speed<=1.3: raise ValueError('Speech speed outside review range')
+    brisk=data.get('pace')=='brisk'
+    sounds=[];srt=[];chapters=[];elapsed=0.;counter=0;video_counter=0;visual_beats=0
     with tempfile.TemporaryDirectory() as td:
         tmp=Path(td);clips=[]
         for i,scene in enumerate(data['scenes'],1):
@@ -31,23 +34,29 @@ def run(args):
             sentences=[s.strip() for s in re.split(r'(?<=[.!?])\s+',scene['narration']) if s.strip()]
             for j,sentence in enumerate(sentences):
                 counter+=1
-                audio,_=engine.synthesize(sentence,voice_style=style,total_steps=8,speed=1.0,lang='ko')
+                audio,_=engine.synthesize(sentence,voice_style=style,total_steps=8,speed=speed,lang='ko')
                 audio=np.asarray(audio).reshape(-1)
                 if not len(audio) or not np.isfinite(audio).all(): raise ValueError('Invalid synthesized audio')
-                gap=.32 if j==len(sentences)-1 else .15
+                gap=(.18 if j==len(sentences)-1 else .08) if brisk else (.32 if j==len(sentences)-1 else .15)
                 frames=math.ceil((len(audio)/rate+gap)*FPS)
                 samples=round(frames/FPS*rate)
                 padded=np.pad(audio,(0,samples-len(audio)))
                 duration=frames/FPS;sounds.append(padded)
                 srt.append(f'{counter}\n{timestamp(elapsed)} --> {timestamp(elapsed+duration)}\n{sentence}\n')
-                image=tmp/f'{counter:03}.png';clip=tmp/f'{counter:03}.mp4'
-                draw_analysis(scene,i,len(data['scenes']),sentence,image,font_path())
-                if counter==1: Image.open(image).save(out/'poster.jpg',quality=92)
-                vf='fade=t=in:st=0:d=0.18' if j==0 else 'null'
-                subprocess.run(['ffmpeg','-y','-loglevel','error','-loop','1','-framerate',str(FPS),'-i',str(image),'-vf',vf,
-                                '-frames:v',str(frames),'-an','-c:v','libx264','-preset','veryfast','-crf','21',
-                                '-profile:v','baseline','-level','4.0','-pix_fmt','yuv420p',str(clip)],check=True)
-                clips.append(clip);elapsed+=duration
+                beat_count=math.ceil(duration/3.0) if brisk else 1
+                frame_parts=[frames//beat_count+(1 if k<frames%beat_count else 0) for k in range(beat_count)]
+                for k,beat_frames in enumerate(frame_parts):
+                    video_counter+=1
+                    image=tmp/f'{video_counter:03}.png';clip=tmp/f'{video_counter:03}.mp4'
+                    draw_analysis(scene,i,len(data['scenes']),sentence,image,font_path(),active=visual_beats if brisk else None)
+                    visual_beats+=1
+                    if video_counter==1: Image.open(image).save(out/'poster.jpg',quality=92)
+                    vf='fade=t=in:st=0:d=0.10' if j==0 and k==0 else 'null'
+                    subprocess.run(['ffmpeg','-y','-loglevel','error','-loop','1','-framerate',str(FPS),'-i',str(image),'-vf',vf,
+                                    '-frames:v',str(beat_frames),'-an','-c:v','libx264','-preset','veryfast','-crf','21',
+                                    '-profile:v','baseline','-level','4.0','-pix_fmt','yuv420p',str(clip)],check=True)
+                    clips.append(clip)
+                elapsed+=duration
                 print(f'Scene {i}/{len(data["scenes"])} sentence {j+1}/{len(sentences)} rendered',flush=True)
         sf.write(out/'voice.wav',np.concatenate(sounds),rate)
         concat=tmp/'concat.txt';concat.write_text(''.join(f"file '{c.as_posix()}'\n" for c in clips))
@@ -61,7 +70,7 @@ def run(args):
               'voice':'Sarah','voice_style':'F1','model_revision':MODEL_REVISION,'format':'landscape','width':1280,'height':720,
               'guide_url':data['guide_url'],'created_at':datetime.now(timezone.utc).isoformat(),
               'sha256':hashlib.sha256(video.read_bytes()).hexdigest(),'duration_seconds':elapsed,'smoke_test_only':False,
-              'sources':data['sources'],'disclosure':data['disclosure'],'chapters':chapters,'caption_segments':counter}
+              'sources':data['sources'],'disclosure':data['disclosure'],'chapters':chapters,'caption_segments':counter,'speech_speed':speed,'visual_beats':visual_beats,'pace':data.get('pace','standard')}
     (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
     (out/'script.json').write_text(json.dumps(data,ensure_ascii=False,indent=2))
     (out/'captions.srt').write_text('\n'.join(srt))

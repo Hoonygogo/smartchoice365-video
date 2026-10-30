@@ -6,7 +6,7 @@ W,H=1280,720
 NAVY='#13243a'; GOLD='#d9a84e'; INK='#1e314a'; MUTED='#58677b'; BG='#f5f3ee'
 
 
-def draw_analysis(scene,index,total,caption,path,font):
+def draw_analysis(scene,index,total,caption,path,font,active=None):
     im=Image.new('RGB',(W,H),BG);d=ImageDraw.Draw(im)
     def f(size): return ImageFont.truetype(font,size)
     def text(s,x,y,size=26,color=INK): d.text((x,y),s,font=f(size),fill=color)
@@ -111,6 +111,24 @@ def draw_analysis(scene,index,total,caption,path,font):
             x=48+(j%2)*602;y=275+(j//2)*137;card(x,y,580,118)
             text(a,x+23,y+15,30);text(b,x+23,y+64,25,MUTED)
     else: raise ValueError(f'Unknown scene layout {mode}')
+    # Editorial focus follows a short visual beat, while chart geometry and captions stay fixed.
+    if active is not None:
+        boxes={
+            'hero':[(44,289+k*53,670,343+k*53) for k in range(3)],
+            'temperature':[(44,277+k*74,1235,345+k*74) for k in range(3)],
+            'warmth':[(44,268+k*85,1228,335+k*85) for k in range(3)],
+            'cotton':[(48,276,608,536),(632,276,1232,536)],
+            'laundry':[(48,285,620,511),(648,285,1220,511)],
+            'office':[(50,328,117,395),(112,328,803,395)],
+            'outside':[(48,275+k*73,815,337+k*73) for k in range(3)],
+            'activity':[(48+k*400,286,424+k*400,506) for k in range(3)],
+            'cost':[(48,285,620,530),(648,285,1220,530)],
+            'decision':[(48,275+k*90,1232,352+k*90) for k in range(3)],
+            'checklist':[(48+(k%2)*602,275+(k//2)*137,628+(k%2)*602,393+(k//2)*137) for k in range(4)],
+            'closing':[(44,289+k*53,670,343+k*53) for k in range(3)]
+        }[mode]
+        box=boxes[active%len(boxes)]
+        d.rounded_rectangle(box,12,outline=GOLD,width=5)
     # Caption is one synthesized sentence, not a wall of the complete scene narration.
     d.rectangle((0,597,W,H),fill=NAVY)
     block(caption,48,610,25,width=1184,color='white',gap=8,limit=677)
