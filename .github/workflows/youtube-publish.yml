@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'publications/requests/heattech-graph-sync-ko-v5.json'
+      - 'publications/requests/heattech-full-photo-ko-v8.json'
 permissions:
   contents: write
   actions: read
@@ -24,14 +24,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           github-token: ${{ github.token }}
-          run-id: 41080875923
-          name: sarah-korean-draft-12
+          run-id: 41093955784
+          name: sarah-korean-draft-16
           path: approved-artifact
       - name: Publish and verify approved video
         env:
-          PUBLICATION_REQUEST: publications/requests/heattech-graph-sync-ko-v5.json
+          PUBLICATION_REQUEST: publications/requests/heattech-full-photo-ko-v8.json
           GH_TOKEN: ${{ github.token }}
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
-        run: python scripts/publish_youtube.py
+        run: python maintenance/publish_youtube_v8.py
