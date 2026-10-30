@@ -1,0 +1,38 @@
+name: Ninja Australian English full voiced preview
+on:
+  push:
+    paths:
+      - 'ninja-english/render_ninja.py'
+      - '.github/workflows/ninja-english-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install video and voice dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
+          python -m pip install --upgrade pip
+          python -m pip install Pillow numpy soundfile 'kokoro>=0.9.4' torch
+      - name: Build English full-video preview using Kokoro af_heart
+        run: python ninja-english/render_ninja.py
+      - name: Verify actual media tracks and generated images
+        run: |
+          ffprobe -v error -show_entries stream=codec_type,codec_name -of compact ninja-english/out/ninja_af141_af400_en_review.mp4 | tee /tmp/streams.txt
+          grep -q 'codec_type=audio' /tmp/streams.txt
+          grep -q 'codec_type=video' /tmp/streams.txt
+          test -s ninja-english/out/ninja_af141_af400_en_review.mp4
+      - name: Upload review MP4 and production manifest (never publish to YouTube)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ninja-af141-af400-english-voiced-preview
+          path: |
+            ninja-english/out/ninja_af141_af400_en_review.mp4
+            ninja-english/out/manifest.json
+            ninja-english/out/description.txt
+          retention-days: 3
