@@ -1,0 +1,77 @@
+name: Build Sarah Korean Draft
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'requests/**'
+      - 'scripts/**'
+      - 'requirements.txt'
+      - '.github/workflows/draft.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: video-draft
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install video and Korean font dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fonts-noto-cjk
+          python -m pip install -r requirements.txt
+      - name: Download pinned public model
+        run: python scripts/download_model.py
+      - name: Render Sarah approval draft
+        run: python scripts/render.py
+      - name: Keep a short-lived downloadable draft
+        uses: actions/upload-artifact@v4
+        with:
+          name: sarah-korean-draft-${{ github.run_number }}
+          path: output/
+          retention-days: 3
+          if-no-files-found: error
+      - name: Prepare mobile preview
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output/
+          retention-days: 1
+      - name: Draft summary
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          m=json.loads(Path('output/manifest.json').read_text())
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('## Sarah 한국어 초안\n\nSNS 미발행 · 사용자 컨펌 대기\n\n')
+              f.write(f"버전: `{m['sha256'][:12]}`\n\n")
+              f.write('미리보기: https://hoonygogo.github.io/smartchoice365-video/\n\n')
+              f.write('처음 한 번 Settings → Pages → Source: GitHub Actions 설정이 필요합니다.\n')
+          PY
+  preview:
+    needs: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish approval preview only
+        id: deployment
+        uses: actions/deploy-pages@v4
+

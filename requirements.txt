@@ -1,0 +1,7 @@
+supertonic==1.2.2
+numpy==1.26.4
+onnxruntime==1.23.2
+soundfile==0.13.1
+huggingface-hub==0.36.0
+Pillow==11.3.0
+
