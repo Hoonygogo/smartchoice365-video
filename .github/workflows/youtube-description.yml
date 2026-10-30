@@ -1,0 +1,29 @@
+name: Put Guide Link First
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'maintenance/youtube_description_top.py'
+      - '.github/workflows/youtube-description.yml'
+permissions:
+  contents: write
+concurrency:
+  group: youtube-metadata
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Update and verify description top line
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/youtube_description_top.py

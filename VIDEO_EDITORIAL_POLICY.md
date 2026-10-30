@@ -29,3 +29,11 @@ The aim is useful, original comparisons, not a guarantee of YPP acceptance.
 Sources checked 2026-10-30:
 https://support.google.com/youtube/answer/1311392?hl=en
 https://support.google.com/youtube/answer/14328491?hl=en
+
+## Guide-link placement — default publication rule, 2026-10-31
+
+- Put the exact related website guide URL on the FIRST description line with a short, accurate benefit-led CTA, such as “👉 자세한 비교표·선택 가이드: URL”. Do not put a greeting, introduction, blank line, hashtags, chapters, or a source list above it.
+- Follow with one short sentence describing the actual value in the linked article; keep the rest of the useful description, sources, chapters and disclosures below. Preserve platform-specific tracking.
+- Use engaging language grounded in what the guide actually contains; do not invent discounts, exclusivity, test results or exaggerated promises.
+- Aim to expose the link in the collapsed description before More. Check desktop/mobile presentation when possible; wrapping, truncation and link clickability depend on YouTube and viewer conditions, so do not guarantee identical visibility across all devices or claim a click test from API metadata alone.
+- Verify the saved first line through the live video API after publishing or updating metadata. This rule concerns the description; a pinned comment is an additional separately supported placement.
