@@ -19,7 +19,12 @@ def draw(scene,index,total,caption,active,path):
         if len(result)>lines:raise ValueError('Text overflow: '+s)
         for n,line in enumerate(result):text(line,x,y+n*(size+12),size,color)
     def card(x,y,w,h,fill='#e5e9ed'):d.rounded_rectangle((x,y,x+w,y+h),24,fill=fill)
-    def focus(box):d.rounded_rectangle(box,20,outline=GOLD,width=7)
+    targets=([active] if isinstance(active,int) else list(active or []))
+    def focus_items(boxes):
+        for target in targets:
+            if isinstance(active,int):target=target%len(boxes)
+            if not 0<=target<len(boxes):raise ValueError('Invalid highlight target')
+            d.rounded_rectangle(boxes[target],20,outline=GOLD,width=7)
     def photo(mode,x,y,w,h):
         p=Image.open(Path(__file__).resolve().parents[1]/'assets/heattech-lifestyle.jpg')
         if mode!='all':
@@ -36,7 +41,7 @@ def draw(scene,index,total,caption,active,path):
         photo('all',1040,365,800,350)
         for j,s in enumerate(('생활환경','소재와 관리','입는 횟수')):
             text(s,88,365+j*110,66)
-        focus((70,355+(active%3)*110,975,455+(active%3)*110))
+        focus_items([(70,355+j*110,975,455+j*110) for j in range(3)])
         note='공식 자료를 바탕으로 한 Smart Choice 365의 구매 판단'
     elif mode=='temperature':
         left,right=650,1770
@@ -48,14 +53,14 @@ def draw(scene,index,total,caption,active,path):
             a=left+(lo+20)/40*(right-left);b=left+(hi+20)/40*(right-left)
             d.rounded_rectangle((a,y+8,b,y+90),16,fill=color)
             text(f'{lo} ~ {hi}°C',a+18,y+16,52,'white')
-        focus((66,346+(active%3)*118,1854,450+(active%3)*118))
+        focus_items([(66,346+j*118,1854,450+j*118) for j in range(3)])
         note='브랜드 참고 구간 · 개인 체감·최저 안전기온 보장 아님'
     elif mode=='warmth':
         for j,(name,v) in enumerate([('일반 소재',1),('코튼 엑스트라웜',1.5),('울트라웜',2.25)]):
             y=350+j*118;text(name,80,y+12,52)
             d.rounded_rectangle((650,y,650+v*420,y+82),16,fill=NAVY if j!=1 else '#92712e')
             text(f'{v:g}×',675+v*420,y+8,60)
-        focus((66,342+(active%3)*118,1854,442+(active%3)*118))
+        focus_items([(66,342+j*118,1854,442+j*118) for j in range(3)])
         note='기본 소재 대비 제조사 CLO 시험 · 체감 온도 배수 아님'
     elif mode=='cotton':
         card(72,355,850,348);card(948,355,900,348,NAVY)
@@ -63,23 +68,23 @@ def draw(scene,index,total,caption,active,path):
         text('옷 전체 혼용률과 구분',108,605,42)
         text('확인한 BLACK 타이즈 몸판',980,390,40,'#e7d4aa');text('면 64%',980,475,80,'white')
         text('아크릴 28% + 폴리우레탄 8%',980,605,41,'white')
-        focus([(72,355,922,703),(948,355,1848,703)][active%2]);note='모든 모델이 같은 혼용률은 아닙니다. 모델·색상별 확인'
+        focus_items([(72,355,922,703),(948,355,1848,703)]);note='모든 모델이 같은 혼용률은 아닙니다. 모델·색상별 확인'
     elif mode=='laundry':
         for j,name in enumerate(('코튼 엑스트라웜 타이즈','울트라웜 타이즈')):
             x=72+j*900;card(x,355,870,348);text(name,x+32,385,45)
             text('세탁기  가능',x+32,480,62);text('건조기  사용 불가',x+32,590,62,'#8c472c')
-        focus((72+(active%2)*900,355,942+(active%2)*900,703));note='확인한 두 타이즈 기준 · 다른 모델은 개별 세탁표 확인'
+        focus_items([(72+j*900,355,942+j*900,703) for j in range(2)]);note='확인한 두 타이즈 기준 · 다른 모델은 개별 세탁표 확인'
     elif mode=='office':
         photo('office',1300,355,548,365)
         text('가상 하루 패턴',80,355,42,MUTED)
         d.rounded_rectangle((80,445,160,535),12,fill=GOLD);d.rounded_rectangle((160,445,1220,535),12,fill=NAVY)
         text('통근 40분',80,560,56);text('난방 실내 8시간',650,560,56)
         text('일반부터 비교',80,660,68)
-        focus((72,650,1235,750));note='실내 8시간 + 통근 40분의 가상 예시 · 개인 체감 고려'
+        focus_items([(72,435,625,635),(630,435,1235,635),(72,650,1235,750)]);note='실내 8시간 + 통근 40분의 가상 예시 · 개인 체감 고려'
     elif mode=='outside':
         photo('outside',1300,355,548,365)
         for j,s in enumerate(('야외 체류 시간','방풍 외투','활동량과 땀')):text(f'{j+1:02}  {s}',80,365+j*116,62)
-        focus((66,355+(active%3)*116,1235,460+(active%3)*116));note='울트라웜 검토 + 전체 옷 조합 · 보온·안전 한계 보장 아님'
+        focus_items([(66,355+j*116,1235,460+j*116) for j in range(3)]);note='울트라웜 검토 + 전체 옷 조합 · 보온·안전 한계 보장 아님'
     elif mode=='cost':
         for j,(price,n,v) in enumerate([('20,000원','40회','500원'),('30,000원','5회','6,000원')]):
             x=72+j*900;color='white' if j==0 else INK;card(x,355,870,350,NAVY if j==0 else '#e3e8ed')
@@ -90,7 +95,7 @@ def draw(scene,index,total,caption,active,path):
         for j,(name,env) in enumerate([('일반','난방 실내 중심'),('코튼 엑스트라웜','쌀쌀한 실내외 이동'),('울트라웜','추운 야외 체류')]):
             y=350+j*122;card(72,y,1776,106,NAVY if j==1 else '#e3e8ed')
             text(name,108,y+18,54,'#e7c986' if j==1 else INK);text(env,850,y+18,54,'white' if j==1 else INK)
-        focus((72,350+(active%3)*122,1848,456+(active%3)*122));note='자료 기반 편집 추천 · 개인 체감·활동량·외투에 따라 조정'
+        focus_items([(72,350+j*122,1848,456+j*122) for j in range(3)]);note='자료 기반 편집 추천 · 개인 체감·활동량·외투에 따라 조정'
     else:raise ValueError('Unsupported scene '+mode)
     text(note,76,764,38,MUTED)
     d.rectangle((0,830,W,H),fill=NAVY)

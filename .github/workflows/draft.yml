@@ -34,15 +34,10 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg fonts-noto-cjk
           python -m pip install -r requirements.txt
-      - name: Retrieve original audio and approved reference
-        uses: actions/download-artifact@v4
-        with:
-          github-token: ${{ github.token }}
-          run-id: 41053610462
-          name: sarah-korean-draft-6
-          path: approved-source
-      - name: Render 1080p large type and equal 240p comparison
-        run: python scripts/render_readability.py --style graph
+      - name: Download pinned public speech model
+        run: python scripts/download_model.py
+      - name: Render narration-synchronized highlights
+        run: python scripts/render_synced.py
       - name: Keep a short-lived downloadable draft
         uses: actions/upload-artifact@v4
         with:
