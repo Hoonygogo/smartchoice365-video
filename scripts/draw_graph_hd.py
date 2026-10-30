@@ -90,7 +90,7 @@ def draw(scene,index,total,caption,active,path):
             x=72+j*900;color='white' if j==0 else INK;card(x,355,870,350,NAVY if j==0 else '#e3e8ed')
             text(f'{price} ÷ {n}',x+30,390,61,color);text(f'1회당 {v}',x+30,500,76,'#e8c783' if j==0 else INK)
             text('설명용 가상 가격',x+30,625,42,color)
-        focus((72+(active%2)*900,355,942+(active%2)*900,705));note='현재 히트텍 판매가격 아님 · 세탁·관리비 제외'
+        focus_items([(72+j*900,355,942+j*900,705) for j in range(2)]);note='현재 히트텍 판매가격 아님 · 세탁·관리비 제외'
     elif mode=='decision':
         for j,(name,env) in enumerate([('일반','난방 실내 중심'),('코튼 엑스트라웜','쌀쌀한 실내외 이동'),('울트라웜','추운 야외 체류')]):
             y=350+j*122;card(72,y,1776,106,NAVY if j==1 else '#e3e8ed')
