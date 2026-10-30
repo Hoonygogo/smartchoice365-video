@@ -13,5 +13,9 @@
   "processing_status": "succeeded",
   "metadata_verified": true,
   "description_first_line": "👉 자세한 비교표·선택 가이드: https://smartchoice365-web.pages.dev/guides/2026-heattech-regular-extra-ultra-warm-guide.html?utm_source=youtube&utm_medium=video&utm_campaign=heattech_full_photo_ko_v8",
-  "source_run_id": 41093955784
+  "source_run_id": 41093955784,
+  "old_video_cleanup": {
+    "video_id": "FMdhtInQdPE",
+    "status": "deleted_verified"
+  }
 }
