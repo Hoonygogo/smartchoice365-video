@@ -25,15 +25,18 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
           python -m pip install Pillow numpy soundfile 'kokoro>=0.9.4' torch
-      - name: Acquire eight free-license photographic candidates BEFORE composing scenes
-        run: python ninja-english/prepare_photo_candidates.py
-      - name: Save candidate photos and licensing evidence for review even if quality gate blocks
-        uses: actions/upload-artifact@v4
-        with:
-          name: ninja-eight-photo-candidates-${{ github.run_id }}
-          path: ninja-english/photo-candidates/
-          retention-days: 7
-          if-no-files-found: error
+      - name: Require original AI-created scene pack (no stock-photo substitute)
+        run: |
+          python - <<'PY'
+          import json,pathlib,sys
+          m=pathlib.Path('ninja-english/assets/approved_visual_manifest.json')
+          if not m.is_file():
+              sys.exit('BLOCKED: Eight independently AI-generated picture-led scene files are required before rendering. GitHub Actions has no configured AI image generator; no stock-photo or drawing fallback.')
+          p=json.loads(m.read_text())
+          items=p.get('assets',[])
+          n=sum(x.get('generation_method')=='individual_ai_generated' and x.get('is_photo_led') is True for x in items)
+          if n<8:sys.exit(f'BLOCKED: {n}/8 AI-generated photo-led scenes found. Do not use free-photo/geometry substitute.')
+          PY
       - name: Require 12 reviewed scenes and safely retry reparable visual defects
         run: |
           python scripts/repair_and_validate_scenes.py ninja-english/assets/approved_visual_manifest.json
