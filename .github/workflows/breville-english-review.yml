@@ -1,77 +1,26 @@
-name: 'Breville English - six photos, six graphics, Kokoro focus sync'
+name: Breville compatibility - common English guide review
 on:
   workflow_dispatch:
     inputs:
-      handoff_manifest_base64:
-        description: 'Base64-encoded approved six-photo manifest (temporary asset IDs and SHA256); never paste auth token here'
+      request_file:
+        description: 'Reviewed guide JSON for the common English renderer'
+        required: true
+        type: string
+      asset_source_run_id:
+        description: 'Run containing reviewed individual scene source artifact'
+        required: true
+        type: string
+      asset_artifact_name:
+        description: 'Reviewed scene artifact name'
         required: true
         type: string
 permissions:
   contents: read
+  actions: read
 jobs:
-  mobile-review:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 55
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Receive SHA-verified ephemeral AI images (no Git commits)
-        env:
-          IMAGE_HANDOFF_TOKEN: ${{ secrets.IMAGE_HANDOFF_TOKEN }}
-          IMAGE_HANDOFF_BASE_URL: https://sc365-video-handoff.hoon-sunghunjo.workers.dev
-          MANIFEST_B64: ${{ inputs.handoff_manifest_base64 }}
-        run: |
-          mkdir -p breville-english/assets
-          python - <<'PY'
-          import os,base64,pathlib
-          raw=base64.b64decode(os.environ['MANIFEST_B64'],validate=True)
-          if len(raw)>25000:raise SystemExit('Oversized manifest')
-          pathlib.Path('/tmp/handoff-manifest.json').write_bytes(raw)
-          PY
-          python scripts/receive_temp_photos.py --manifest /tmp/handoff-manifest.json --out breville-english/assets
-      - name: Check approved photo handoff (never use unverified storyboard)
-        run: |
-          test -s assets/smartchoice365-brand-logo-v1.png
-          test -s breville-english/assets/approved_visual_manifest.json
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path('breville-english/assets/approved_visual_manifest.json')
-          m=json.loads(p.read_text())
-          assert len(m.get('photos',[]))==6, 'Must have 6 approved individual photo originals'
-          assert all(x.get('storyboard_collage') is False and x.get('independent_generation') is True and x.get('visually_checked') is True for x in m['photos'])
-          PY
-      - name: Install locked Kokoro and video tools
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
-          python -m pip install Pillow numpy soundfile 'kokoro==0.9.4' torch
-      - name: Render via existing approved voice (no fallback)
-        run: python breville-english/render_review.py
-      - name: Verify final movie and all synchronized focus cues
-        run: |
-          ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -qx '1920,1080'
-          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,channels -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -q '^aac,2$'
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          root=Path('breville-english/out')
-          m=json.loads((root/'manifest.json').read_text())
-          v=json.loads((root/'voice_receipts.json').read_text())
-          assert m['photos']==6 and m['python_graphics']==6 and m['scenes']==12
-          assert len(m['cues'])==len(v['voice_files']) and len(m['cues'])>=12
-          assert len({x['scene'] for x in m['cues']})==12
-          assert all(x['duration_seconds']>0.6 and x['target'] for x in m['cues'])
-          assert all(x['voice']=='af_heart' and x['speed']==0.96 and x['rms']>=0.008 for x in v['voice_files'])
-          PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: breville-english-verified-mobile-review
-          path: |
-            breville-english/out/breville_bambino_plus_english_review.mp4
-            breville-english/out/manifest.json
-            breville-english/out/voice_receipts.json
-          retention-days: 2
-          if-no-files-found: error
+  preview:
+    uses: ./.github/workflows/english-guide-review.yml
+    with:
+      request_file: ${{ inputs.request_file }}
+      asset_source_run_id: ${{ inputs.asset_source_run_id }}
+      asset_artifact_name: ${{ inputs.asset_artifact_name }}
