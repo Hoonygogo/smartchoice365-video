@@ -1,13 +1,5 @@
 name: Ninja v3 automatic next stages — verified imagery to preview
 on:
-  push:
-    paths:
-      - '.github/workflows/ninja-v3-auto-continue.yml'
-      - 'ninja-english/create_scene_art.py'
-      - 'ninja-english/render_ninja.py'
-  workflow_run:
-    workflows: ["Ninja English v3 image-first storyboard"]
-    types: [completed]
   workflow_dispatch:
 permissions:
   contents: read
