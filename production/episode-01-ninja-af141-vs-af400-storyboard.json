@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "ninja-af141-af400-animated-pilot",
+  "status": "storyboard_ready_not_rendered",
+  "language": "en-AU",
+  "format": "9:16",
+  "target_duration_seconds": 40,
+  "article": {
+    "title": "Ninja AF141 vs AF400 in Australia: Do You Actually Need Two Air-Fryer Drawers?",
+    "url": "https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html"
+  },
+  "cost_policy": "A$0 only. No paid subscription, credits or GPU rentals.",
+  "publish_policy": "Approval required before public posting.",
+  "visual_style": "Original, high-quality stylized 3D cartoon family comedy, expressive character acting, real motion, steady camera continuity. No static slides.",
+  "characters": {
+    "hooni": "Original cartoon human, teal hoodie, round face, expressive brows, energetic messy chef.",
+    "pip": "Original small hovering kitchen robot, ivory and teal, single amber indicator, dry comedic delivery."
+  },
+  "scenes": [
+    {
+      "seconds": "0-6",
+      "action": "Hooni races into a sunny Australian kitchen, tummy rumbling, holding giant bag of frozen fries. Tracking camera.",
+      "dialogue": [
+        {
+          "who": "Hooni",
+          "text": "I'm starving! Fries. NOW!"
+        }
+      ]
+    },
+    {
+      "seconds": "6-13",
+      "action": "Hooni stares at two air fryers. One has a single drawer, the other has two drawers. He tries to cram all his fries in a single drawer; slapstick bounce.",
+      "dialogue": [
+        {
+          "who": "Hooni",
+          "text": "Wait... why does this one have TWO drawers?"
+        }
+      ]
+    },
+    {
+      "seconds": "13-22",
+      "action": "Pip floats in, projects a charming animation of cooking fries plus nuggets at the same time, then shows just one food cooking.",
+      "dialogue": [
+        {
+          "who": "Pip",
+          "text": "Two drawers are handy for two foods. But do you actually need them?"
+        }
+      ]
+    },
+    {
+      "seconds": "22-31",
+      "action": "Hooni tries to juggle nuggets and fries. Pip rescues a runaway nugget with a tiny grabber; they exchange goofy suspicious looks.",
+      "dialogue": [
+        {
+          "who": "Hooni",
+          "text": "I just want dinner, not a maths exam!"
+        },
+        {
+          "who": "Pip",
+          "text": "Then count your usual meals!"
+        }
+      ]
+    },
+    {
+      "seconds": "31-36",
+      "action": "Pip gives the camera a deadpan look; Hooni comically steals a fry.",
+      "dialogue": [
+        {
+          "who": "Pip",
+          "text": "Subscribe for our next kitchen disaster!"
+        },
+        {
+          "who": "Hooni",
+          "text": "It's called cooking!"
+        }
+      ]
+    },
+    {
+      "seconds": "36-40",
+      "action": "Brief high-quality brand end card; one curiosity question over hero shot with both characters.",
+      "dialogue": [
+        {
+          "who": "Narrator",
+          "text": "One drawer or two? See the AF141 versus AF400 guide at Smart Choice 365."
+        }
+      ],
+      "on_screen_text": "One drawer or two? Full comparison in description."
+    }
+  ],
+  "render_gates": [
+    "Use only generated video motion clips for animated scenes; no still-image pan as animation substitute.",
+    "Confirm rights for all source footage, sounds and models.",
+    "Verify real rendered MP4, audio, lip-sync and character consistency.",
+    "Use exact article link above in the YouTube description; Shorts in-video overlays are not assumed clickable.",
+    "Do not auto-publish without approval."
+  ]
+}
