@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 import soundfile as sf
 from PIL import Image,ImageDraw,ImageFont,ImageOps
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.approved_voice import kokoro_english_pipeline,render_english_clause,approved_voice
 
 ROOT=Path(__file__).resolve().parents[1]
