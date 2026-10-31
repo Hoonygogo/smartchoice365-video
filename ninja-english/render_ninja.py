@@ -102,13 +102,28 @@ def targets_for(kind,spoken):
   if 'af400' in q or '9.5' in q:return ['dual']
  if 'two' in q or 'dual' in q:return ['dual']
  return ['single','dual']
-def focus_boxes(d,targets):
- coords={'single':(100,340,930,830),'dual':(990,340,1820,830),
-         'test':(110,365,1795,790),'price':(110,360,1800,810)}
+def focus_boxes(d,kind,targets):
+ # The artwork is a 1600 x 430 image, letterboxed and scaled to fit.
+ # Its inner comparison cards are at source x=75..765 and 820..1525,
+ # y=150..345. Highlight the ACTUAL cards rather than old fixed panels.
+ if kind not in ('PRODUCTS','TRAP','TWO-ZONE','SMALL-HOUSEHOLD','FAMILY','QUESTION','VERDICT'):
+  return
+ # paste_contain uses thumbnail within (140,370,1780,775), inset by 36.
+ # 1600x430 becomes 1604x431 and is centered inside the rectangle.
+ scale=min((1640-36)/1600,(405-36)/430)
+ ox=140+(1640-1600*scale)/2
+ oy=370+(405-430*scale)/2
+ source={'single':(75,150,765,345),'dual':(820,150,1525,345)}
  for k in targets:
-  x0,y0,x1,y1=coords[k]
-  d.rounded_rectangle((x0+4,y0+4,x1-4,y1-4),radius=32,outline=GOLD,width=14)
-  d.rounded_rectangle((x0+18,y0+18,x1-18,y1-18),radius=25,outline='#FFF5D2',width=3)
+  if k not in source:continue
+  a,b,c,e=source[k]
+  # Frame OUTSIDE the printed graphic's dark card by a small margin.
+  x0,y0,x1,y1=(int(ox+(a-9)*scale),int(oy+(b-11)*scale),
+               int(ox+(c+9)*scale),int(oy+(e+11)*scale))
+  # Prevent crossing the title, explanatory labels or subtitle zone.
+  if not(120<=x0<x1<=1800 and 360<=y0<y1<=810):
+   raise ValueError(f'Highlight outside actual artwork area: {k} {(x0,y0,x1,y1)}')
+  d.rounded_rectangle((x0,y0,x1,y1),radius=18,outline=GOLD,width=6)
 segments=[];meta=[];cue_index=0
 for i,(kind,speech,headline) in enumerate(scene):
  for clause in clauses_for(kind,speech):
@@ -138,7 +153,7 @@ for i,(kind,speech,headline) in enumerate(scene):
    picture=Image.open(ROOT/'ninja-english'/'assets'/required[i]['file']).convert('RGBA')
    paste_contain(im,picture,(125,370,1795,810))
   targets=targets_for(kind,clause)
-  focus_boxes(ImageDraw.Draw(im),targets)
+  focus_boxes(ImageDraw.Draw(im),kind,targets)
   # Clause-accurate captions placed below the active illustration.
   dd=ImageDraw.Draw(im)
   dd.rounded_rectangle((120,903,1800,1023),radius=24,fill='#081629')
