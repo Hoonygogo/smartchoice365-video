@@ -1,0 +1,37 @@
+name: Cloudflare free AI image - single scene test
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  image-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stop safely if free AI credentials have not been configured
+        env:
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+          CF_PAID_CONFIRM: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+        run: |
+          if [ -z "$CF_ACCOUNT" ] || [ -z "$CF_TOKEN" ]; then
+            echo "::error::Cloudflare AI account ID and scoped API token are missing. No API call was made."
+            exit 1
+          fi
+          if [ "$CF_PAID_CONFIRM" != "true" ]; then
+            echo "::error::Confirm the account is Workers Free and set repository variable CLOUDFLARE_WORKERS_FREE_CONFIRMED=true. No API call was made."
+            exit 1
+          fi
+      - name: Generate exactly ONE AI image (no retries, no paid fallback)
+        env:
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+        run: |
+          python scripts/cloudflare_free_image_test.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare-flux-single-image-test
+          path: out/cloudflare-ai/scene_01.*
+          retention-days: 1
+          if-no-files-found: error
