@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generate 8 standalone AI lifestyle-photo candidate scenes via an explicit HF inference token.
-Fail closed on missing credentials or exhausted free credits. Never assert visual approval.
+Fail closed on missing credentials or unconfirmed no-billing settings. Never assert visual approval.
 """
 import os, json, hashlib, random, time, sys
 from pathlib import Path
@@ -25,6 +25,8 @@ SUFFIX=("Generate ONE original standalone photorealistic 16:9 scene. A single co
 def main():
     if os.getenv('ALLOW_PAID_IMAGE_API') not in (None,'','false','0'):
         raise RuntimeError('Paid API mode is forbidden in this A$0 workflow')
+    if os.getenv('HF_NO_PAID_BILLING_CONFIRMED') != 'true':
+        raise RuntimeError('A$0 guard: verify Hugging Face pay-as-you-go billing is disabled, then set HF_NO_PAID_BILLING_CONFIRMED=true.')
     token=os.getenv('HF_TOKEN','').strip()
     if not token:
         raise RuntimeError('AI_GENERATION_NOT_CONNECTED: Configure HF_TOKEN with a fine-grained Inference Providers token; no charges are initiated.')
