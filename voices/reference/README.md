@@ -8,3 +8,5 @@ This directory is **permanent**. Its approved reference audio files are never te
 - New reference voices require human approval and a distinct filename/version. Do not replace or delete a baseline without explicit approval.
 - The sample is a regression/reference audio clip, not the entire synthesis model. New narration still uses the locked Kokoro engine and `af_heart`.
 - Periodically check that the committed file exists and matches the stored checksum. Git history retains old versions but is not a substitute for an independent backup.
+
+- `korean_sarah_f1_110.wav`: permanent reference extracted from the verified audible Korean Supertonic 3 Sarah/F1 1.1-speed draft. The Korean draft workflow creates it if missing, NEVER overwrites it; temporary output retention never applies. Its creation must be verified separately before claiming the file exists.
