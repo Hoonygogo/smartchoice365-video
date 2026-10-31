@@ -1,0 +1,35 @@
+name: Air fryer TRUE mascot animation - Cloudflare to Hugging Face Wan 2.2
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  animate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+      CLOUDFLARE_WORKERS_FREE_CONFIRMED: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install minimal dependencies for public ZeroGPU space
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          python -m pip install 'requests>=2.31,<3'
+      - name: Generate original AI character on Cloudflare and animate via Hugging Face
+        run: python scripts/airfryer_hf_true_motion.py
+      - name: Confirm MP4 contains video
+        run: |
+          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 out/airfryer-motion/airfryer_true_motion.mp4 | grep -q .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: airfryer-huggingface-true-motion-test
+          path: out/airfryer-motion/
+          retention-days: 1
+          if-no-files-found: warn
