@@ -13,11 +13,22 @@ import requests
 SPACE = "https://cbensimon-wan2-2-fp8da-aoti-preview2.hf.space"
 NEGATIVE = ("色调艳丽, 过曝, 静态, 细节模糊不清, 字幕, 风格, 作品, 画作, 画面, 静止, 整体发灰, "
             "最差质量, 低质量, JPEG压缩残留, 丑陋的, 残缺的, 多余的手指, 畸形的, 三条腿")
-PROMPT = ("Animate the EXACT same adorable 3D Ninja air fryer in the input photo. "
-          "Preserve large brown eyes, white gloves, black appliance body, Ninja wordmark, "
-          "basket, handle and sunlit kitchen. The character blinks and gently waves "
-          "both original arms; golden fries spin and fall back into the basket. "
-          "Locked camera, no extra limbs, no face changes, no redesign, no text.")
+PROMPT = (
+    "Use the supplied reference image as the exact first frame. "
+    "A single adorable anthropomorphic black Ninja air fryer celebrates in the same "
+    "warm sunlit kitchen. Preserve its identical rounded black appliance silhouette, "
+    "front basket, metallic handle, white Ninja logo, two white-gloved hands, "
+    "large warm brown eyes, smiling mouth and original proportions throughout. "
+    "First the character gives one clear natural blink, then gently and playfully "
+    "waves BOTH original arms without adding or changing any limbs. "
+    "Three or four crispy golden fries pop upward from the open basket, "
+    "rotate slightly while airborne and fall back toward the basket with plausible gravity. "
+    "Keep the appliance body almost stationary and the camera locked off. "
+    "Smooth consistent cinematic 3D animation, same lighting and background, "
+    "subtle expressive facial motion. No melting, stretching, morphing, object duplication, "
+    "extra fingers, new characters, logo changes, subtitle overlays or scene cuts."
+)
+
 
 def main():
     p=argparse.ArgumentParser()
