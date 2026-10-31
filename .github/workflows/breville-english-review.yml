@@ -1,0 +1,50 @@
+name: Breville English first-pass correct voice and photo review
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'breville-english/**'
+      - '.github/workflows/breville-english-review.yml'
+permissions:
+  contents: read
+jobs:
+  mobile-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate independently produced scene images and approved logo before voice/render
+        run: |
+          test -s assets/smartchoice365-brand-logo-v1.png
+          test -s breville-english/assets/approved_visual_manifest.json || {
+            echo 'BLOCKED: original AI photo scene pack not yet transferred from ChatGPT to this GitHub repo.'
+            exit 2
+          }
+      - name: Install exact established English voice engine and video renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
+          python -m pip install Pillow numpy soundfile 'kokoro>=0.9.4' torch
+      - name: Render correct original logo and Kokoro English narration from first pass
+        run: python breville-english/render_review.py
+      - name: Verify final video and audible voice report
+        run: |
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -qx '1920,1080'
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,channels -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -q '^aac,2$'
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('breville-english/out/manifest.json').read_text())
+          assert len(m['cues'])==12 and m['photo_led']>=8
+          assert all(c['rms']>=0.008 for c in m['cues'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: breville-english-photo-voice-mobile-review
+          path: breville-english/out/
+          retention-days: 7
+          if-no-files-found: error
