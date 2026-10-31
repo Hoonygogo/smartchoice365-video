@@ -63,6 +63,8 @@ jobs:
               assert p.is_relative_to(root.resolve()) and p.is_file() and a.get('usage_approved') is True
           print('All product/comparison visuals passed preflight')
           PY
+      - name: Check English renderer syntax before expensive dependencies
+        run: python -m py_compile ninja-english/render_ninja.py
       - name: Install voice and video renderer
         run: |
           sudo apt-get update -qq
