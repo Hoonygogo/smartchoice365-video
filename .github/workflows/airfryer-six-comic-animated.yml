@@ -1,0 +1,44 @@
+name: Smart Choice 365 - SIX original comic animations with Kokoro
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/airfryer_six_comic_animations.py
+      - .github/workflows/airfryer-six-comic-animated.yml
+permissions:
+  contents: read
+jobs:
+  six-real-scenes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 115
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+      CLOUDFLARE_WORKERS_FREE_CONFIRMED: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install tools and locked Kokoro af_heart engine
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          python -m pip install 'kokoro==0.9.4' soundfile numpy torch requests
+      - name: Render SIX separate actual character animations
+        run: python scripts/airfryer_six_comic_animations.py
+      - name: Validate full MP4
+        run: |
+          test -s out/airfryer-six-animated/SmartChoice365_Six_Comic_Animated_Kokoro.mp4
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 out/airfryer-six-animated/SmartChoice365_Six_Comic_Animated_Kokoro.mp4 | grep -q aac
+      - name: Upload preview only - no YouTube publication
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SmartChoice365-Six-Original-Comic-Animations
+          path: |
+            out/airfryer-six-animated/SmartChoice365_Six_Comic_Animated_Kokoro.mp4
+            out/airfryer-six-animated/scene_*_motion.mp4
+          retention-days: 2
+          if-no-files-found: warn
