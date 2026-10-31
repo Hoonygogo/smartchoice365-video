@@ -25,6 +25,9 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
           python -m pip install Pillow numpy soundfile 'kokoro>=0.9.4' torch
+      - name: Require 12 reviewed scenes and safely retry reparable visual defects
+        run: |
+          python scripts/repair_and_validate_scenes.py ninja-english/assets/approved_visual_manifest.json
       - name: Render 12 independent 1920x1080 scenes with English voice
         run: python ninja-english/render_owner_publish.py
       - name: Verify actual audio video tracks and dimensions
