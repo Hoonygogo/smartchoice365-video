@@ -51,5 +51,5 @@ jobs:
             breville-english/out/voice_receipts.json
             breville-english/out/voice_*.wav
             config/approved_voices.json
-          retention-days: 7
+          retention-days: 2
           if-no-files-found: error
