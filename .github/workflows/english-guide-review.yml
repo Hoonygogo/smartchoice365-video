@@ -1,0 +1,89 @@
+name: English guide review - Korean visual standard and locked Kokoro
+on:
+  workflow_dispatch:
+    inputs:
+      request_file:
+        description: 'Reviewed English guide JSON path'
+        default: aircon-english/request.json
+        required: true
+        type: string
+      asset_source_run_id:
+        description: 'Run in this repository holding reviewed individual scene assets'
+        required: true
+        type: string
+      asset_artifact_name:
+        description: 'Artifact containing 1.png..8.png and visual_manifest.json'
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      request_file:
+        required: true
+        type: string
+      asset_source_run_id:
+        required: true
+        type: string
+      asset_artifact_name:
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Receive reviewed scene artifact from this repository
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.asset_source_run_id }}
+          name: ${{ inputs.asset_artifact_name }}
+          path: reviewed-scene-artifact
+      - name: Place only verified scene sources in the requested asset directory
+        env:
+          REQUEST_FILE: ${{ inputs.request_file }}
+        run: |
+          python - <<'PY'
+          import json,os,shutil
+          from pathlib import Path
+          root=Path.cwd().resolve();p=(root/os.environ['REQUEST_FILE']).resolve()
+          assert p.is_relative_to(root) and p.suffix=='.json'
+          req=json.loads(p.read_text());dest=(root/req['asset_dir']).resolve()
+          assert dest.is_relative_to(root) and req['language']=='en'
+          dest.mkdir(parents=True,exist_ok=True)
+          src=root/'reviewed-scene-artifact'
+          assert (src/'visual_manifest.json').is_file()
+          manifest=json.loads((src/'visual_manifest.json').read_text())
+          for item in manifest['assets']:
+              name=Path(item['file']);assert name.name==str(name)
+              shutil.copyfile(src/name,dest/name)
+          shutil.copyfile(src/'visual_manifest.json',dest/'visual_manifest.json')
+          with open(os.environ['GITHUB_ENV'],'a') as f:f.write('GUIDE_OUTPUT='+req['output_dir']+'\n')
+          PY
+      - name: Install validated free CPU voice and rendering dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
+          python -m pip install -r english-guide/requirements.txt
+      - name: Validate all layouts, then render exact voice and speech-timed focus
+        env:
+          REQUEST_FILE: ${{ inputs.request_file }}
+        run: python english-guide/render_english_guide.py --request "$REQUEST_FILE"
+      - name: Retain review copy only - no YouTube publication
+        uses: actions/upload-artifact@v4
+        with:
+          name: english-guide-review-${{ github.run_id }}
+          path: |
+            ${{ env.GUIDE_OUTPUT }}/*.mp4
+            ${{ env.GUIDE_OUTPUT }}/*.json
+            ${{ env.GUIDE_OUTPUT }}/*.txt
+            ${{ env.GUIDE_OUTPUT }}/*.srt
+            ${{ env.GUIDE_OUTPUT }}/index.html
+            ${{ env.GUIDE_OUTPUT }}/scene_*.png
+          retention-days: 3
