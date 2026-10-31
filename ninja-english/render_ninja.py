@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Ninja Australia editorial video — voiced, exact audio-segment timing, review only."""
-import io,json,os,re,subprocess,urllib.request
+import io,json,os,re,subprocess,urllib.request,sys
 from pathlib import Path
 import numpy as np
 import soundfile as sf
 from PIL import Image,ImageDraw,ImageFont
 from kokoro import KPipeline
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'ninja-english'/'out';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
+from video_visual_core import place_full,focus_on_regions,validate_original_scene
+OUT=ROOT/'ninja-english'/'out';OUT.mkdir(parents=True,exist_ok=True)
 W,H=1920,1080
 NAVY='#10203C';GOLD='#F3C65F';CREAM='#F8F4EA';BLUE='#A9D4E8'
 GUIDE='https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html?utm_source=youtube&utm_medium=video&utm_campaign=ninja_af141_af400_english'
@@ -41,10 +43,9 @@ def photo(url):
   return Image.open(io.BytesIO(b)).convert('RGBA')
  except Exception as e:print('Image source unavailable',url,str(e));return None
 def paste_contain(canvas,im,rect):
- if im is None:return False
- x0,y0,x1,y1=rect;im=im.copy();im.thumbnail((x1-x0-36,y1-y0-36),Image.Resampling.LANCZOS)
- canvas.paste(im,(x0+(x1-x0-im.width)//2,y0+(y1-y0-im.height)//2),im if im.mode=='RGBA' else None)
- return True
+ if im is None:raise ValueError('Missing image for storyboard scene')
+ return place_full(canvas,im,rect)
+
 scene=[
 ('HELLO','Hi, welcome to Smart Choice three sixty five. Today, we are comparing two Ninja air fryers in Australia: the AF141 and the AF400.','NINJA AF141  versus  AF400'),
 ('QUALITY','If the video looks blurry, select 1080p in your video quality settings. Subscribe for practical comparisons that help you buy smarter.','Clear comparisons. Smarter decisions.'),
@@ -70,6 +71,7 @@ required=pack.get('assets',[])
 if len(required)<len(scene):
  raise RuntimeError('IMAGE_FIRST_BLOCK: each narration scene needs a verified visual asset')
 for item in required:
+ validate_original_scene(item)
  p=(ROOT/'ninja-english'/'assets'/item.get('file','')).resolve()
  root=(ROOT/'ninja-english'/'assets').resolve()
  if not p.is_relative_to(root) or not p.is_file() or item.get('usage_approved') is not True:
@@ -102,28 +104,11 @@ def targets_for(kind,spoken):
   if 'af400' in q or '9.5' in q:return ['dual']
  if 'two' in q or 'dual' in q:return ['dual']
  return ['single','dual']
-def focus_boxes(d,kind,targets):
- # The artwork is a 1600 x 430 image, letterboxed and scaled to fit.
- # Its inner comparison cards are at source x=75..765 and 820..1525,
- # y=150..345. Highlight the ACTUAL cards rather than old fixed panels.
- if kind not in ('PRODUCTS','TRAP','TWO-ZONE','SMALL-HOUSEHOLD','FAMILY','QUESTION','VERDICT'):
-  return
- # paste_contain uses thumbnail within (140,370,1780,775), inset by 36.
- # 1600x430 becomes 1604x431 and is centered inside the rectangle.
- scale=min((1640-36)/1600,(405-36)/430)
- ox=140+(1640-1600*scale)/2
- oy=370+(405-430*scale)/2
- source={'single':(75,150,765,345),'dual':(820,150,1525,345)}
- for k in targets:
-  if k not in source:continue
-  a,b,c,e=source[k]
-  # Frame OUTSIDE the printed graphic's dark card by a small margin.
-  x0,y0,x1,y1=(int(ox+(a-9)*scale),int(oy+(b-11)*scale),
-               int(ox+(c+9)*scale),int(oy+(e+11)*scale))
-  # Prevent crossing the title, explanatory labels or subtitle zone.
-  if not(120<=x0<x1<=1800 and 360<=y0<y1<=810):
-   raise ValueError(f'Highlight outside actual artwork area: {k} {(x0,y0,x1,y1)}')
-  d.rounded_rectangle((x0,y0,x1,y1),radius=18,outline=GOLD,width=6)
+def focus_boxes(image,kind,targets,visual_regions):
+ # Exact cue targets come from visual manifest, never hard-coded panel geometry.
+ mapped={k:tuple(v) for k,v in visual_regions.items()}
+ focus_on_regions(image,mapped,targets)
+
 segments=[];meta=[];cue_index=0
 for i,(kind,speech,headline) in enumerate(scene):
  for clause in clauses_for(kind,speech):
@@ -153,7 +138,7 @@ for i,(kind,speech,headline) in enumerate(scene):
    picture=Image.open(ROOT/'ninja-english'/'assets'/required[i]['file']).convert('RGBA')
    paste_contain(im,picture,(125,370,1795,810))
   targets=targets_for(kind,clause)
-  focus_boxes(ImageDraw.Draw(im),kind,targets)
+  focus_boxes(im,kind,targets,required[i].get('highlight_regions',{}))
   # Clause-accurate captions placed below the active illustration.
   dd=ImageDraw.Draw(im)
   dd.rounded_rectangle((120,903,1800,1023),radius=24,fill='#081629')
