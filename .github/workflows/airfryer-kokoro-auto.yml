@@ -1,0 +1,52 @@
+name: Air fryer English - six Cloudflare AI scenes and approved Kokoro voice
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/airfryer_kokoro_auto.py
+      - .github/workflows/airfryer-kokoro-auto.yml
+permissions:
+  contents: read
+jobs:
+  build-video:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+      CLOUDFLARE_WORKERS_FREE_CONFIRMED: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail closed if free AI is not configured
+        run: |
+          test "$CLOUDFLARE_WORKERS_FREE_CONFIRMED" = true
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          test -n "$CLOUDFLARE_AI_TOKEN"
+      - name: Install approved Kokoro voice and ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          python -m pip install 'kokoro==0.9.4' numpy soundfile torch pillow
+      - name: Render 6 scenes with locked Kokoro af_heart voice
+        run: python scripts/airfryer_kokoro_auto.py
+      - name: Validate output MP4 and voice receipts
+        run: |
+          test -s out/airfryer-kokoro/SmartChoice365_AirFryer_Kokoro_English.mp4
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 out/airfryer-kokoro/SmartChoice365_AirFryer_Kokoro_English.mp4 | grep -qx '1920,1080'
+          python - <<'PY'
+          import json
+          m=json.load(open('out/airfryer-kokoro/receipts.json'))
+          assert m['approved_voice']=='af_heart' and m['speed']==0.96 and len(m['clips'])==6
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SmartChoice365-AirFryer-Kokoro-English-MP4
+          path: |
+            out/airfryer-kokoro/SmartChoice365_AirFryer_Kokoro_English.mp4
+            out/airfryer-kokoro/receipts.json
+          retention-days: 3
+          if-no-files-found: error
