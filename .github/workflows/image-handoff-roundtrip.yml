@@ -1,0 +1,56 @@
+name: Cloudflare Temporary Image Handoff Roundtrip
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  roundtrip:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      HANDOFF_TOKEN: ${{ secrets.IMAGE_HANDOFF_TOKEN }}
+      HANDOFF_BASE_URL: https://sc365-video-handoff.hoon-sunghunjo.workers.dev
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Cloudflare temporary binary upload download and deletion
+        run: |
+          python - <<'PY'
+          import os,urllib.request,urllib.error,hashlib,uuid,json,struct,zlib,time
+          base=os.environ['HANDOFF_BASE_URL'].rstrip('/')
+          token=os.environ.get('HANDOFF_TOKEN','')
+          assert len(token)>=16, 'IMAGE_HANDOFF_TOKEN secret is missing or too short'
+          def chunk(t,b):
+              return struct.pack('!I',len(b))+t+b+struct.pack('!I',zlib.crc32(t+b)&0xffffffff)
+          # Valid standalone 320x180 PNG (~several KB); no production images or Git commits.
+          w,h=320,180
+          raw=b''.join(b'\\x00'+bytes(((x*7+y)%256,(x*3+y*2)%256,(y*5)%256) for x in range(w)) for y in range(h))
+          img=b'\\x89PNG\\r\\n\\x1a\\n'+chunk(b'IHDR',struct.pack('!2I5B',w,h,8,2,0,0,0))+chunk(b'IDAT',zlib.compress(raw,6))+chunk(b'IEND',b'')
+          digest=hashlib.sha256(img).hexdigest()
+          key=uuid.uuid4().hex
+          url=base+'/assets/'+key
+          headers={'Authorization':'Bearer '+token,'Content-Type':'image/png'}
+          def request(method,data=None):
+              req=urllib.request.Request(url,data=data,headers=headers,method=method)
+              with urllib.request.urlopen(req,timeout=30) as res:return res.status,res.read(),dict(res.headers)
+          try:
+              status,body,_=request('PUT',img)
+              result=json.loads(body)
+              assert status==201 and result['sha256']==digest and result['size']==len(img)
+              # KV is eventually consistent: retries accommodate propagation.
+              for attempt in range(12):
+                  try:
+                      status,download,metadata=request('GET')
+                      if status==200:break
+                  except urllib.error.HTTPError as e:
+                      if e.code!=404:raise
+                  time.sleep(2)
+              else:raise RuntimeError('KV photo not readable after upload')
+              assert download==img and hashlib.sha256(download).hexdigest()==digest
+              assert metadata.get('X-Content-Sha256',metadata.get('x-content-sha256'))==digest
+              status,body,_=request('DELETE')
+              assert status==200 and json.loads(body)['deleted'] is True
+              print(json.dumps({'status':'PASS','bytes':len(img),'sha256':digest,'temp_only':True,'deleted':True}))
+          finally:
+              try:request('DELETE')
+              except Exception:pass
+          PY
