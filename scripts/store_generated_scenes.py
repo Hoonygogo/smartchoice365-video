@@ -24,6 +24,9 @@ def api(method,path,token,payload=None):
     except urllib.error.HTTPError as e:
       raise RuntimeError(f'GitHub API {method} {path}: HTTP {e.code}: {e.read(350).decode()}')
 def main():
+    # Hard stop before any GitHub API call: generated assets must never be
+    # committed to Git history, even if they pass quality checks.
+    raise SystemExit('UPLOAD BLOCKED: do not commit AI photos or scene renders to Git history. Validate six individual photo originals first, then use ephemeral transfer only.')
     p=argparse.ArgumentParser()
     p.add_argument('--topic',required=True)
     p.add_argument('--input',required=True,type=Path)
