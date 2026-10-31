@@ -1,11 +1,19 @@
 name: Wan 2.2 Ninja AI video - free manual experiment
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/wan22_image_to_video.py'
+      - '.github/workflows/wan22-free-ninja.yml'
   workflow_dispatch:
     inputs:
       image_url:
         description: 'Optional HTTPS URL of exact original Ninja image. Leave blank for assets/ninja_original.png'
         required: false
         type: string
+concurrency:
+  group: wan22-ninja-ai-test
+  cancel-in-progress: false
 permissions:
   contents: read
 jobs:
