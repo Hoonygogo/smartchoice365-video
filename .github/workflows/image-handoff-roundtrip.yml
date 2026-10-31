@@ -31,7 +31,14 @@ jobs:
           headers={'Authorization':'Bearer '+token,'Content-Type':'image/png'}
           def request(method,data=None):
               req=urllib.request.Request(url,data=data,headers=headers,method=method)
-              with urllib.request.urlopen(req,timeout=30) as res:return res.status,res.read(),dict(res.headers)
+              try:
+                  with urllib.request.urlopen(req,timeout=30) as res:return res.status,res.read(),dict(res.headers)
+              except urllib.error.HTTPError as e:
+                  print('HTTP_DIAGNOSTIC',method,'status',e.code,'server',e.headers.get('server'),'content_type',e.headers.get('content-type'),'cf_ray_present',bool(e.headers.get('cf-ray')))
+                  payload=e.read(600).decode('utf-8','replace')
+                  if e.headers.get('content-type','').startswith('application/json'):
+                      print('WORKER_ERROR',payload[:400])
+                  raise
           try:
               status,body,_=request('PUT',img)
               result=json.loads(body)
