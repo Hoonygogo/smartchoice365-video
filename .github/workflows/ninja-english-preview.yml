@@ -1,9 +1,5 @@
 name: Ninja Australian English full voiced preview
 on:
-  push:
-    paths:
-      - 'ninja-english/render_ninja.py'
-      - '.github/workflows/ninja-english-preview.yml'
   workflow_dispatch:
 permissions:
   contents: read
