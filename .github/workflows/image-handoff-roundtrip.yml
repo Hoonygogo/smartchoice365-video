@@ -23,8 +23,8 @@ jobs:
               return struct.pack('!I',len(b))+t+b+struct.pack('!I',zlib.crc32(t+b)&0xffffffff)
           # Valid standalone 320x180 PNG (~several KB); no production images or Git commits.
           w,h=320,180
-          raw=b''.join(b'\\x00'+bytes(((x*7+y)%256,(x*3+y*2)%256,(y*5)%256) for x in range(w)) for y in range(h))
-          img=b'\\x89PNG\\r\\n\\x1a\\n'+chunk(b'IHDR',struct.pack('!2I5B',w,h,8,2,0,0,0))+chunk(b'IDAT',zlib.compress(raw,6))+chunk(b'IEND',b'')
+          raw=b''.join(bytes([0])+bytes(v for x in range(w) for v in (((x*7+y)%256,(x*3+y*2)%256,(y*5)%256))) for y in range(h))
+          img=bytes([137,80,78,71,13,10,26,10])+chunk(b'IHDR',struct.pack('!2I5B',w,h,8,2,0,0,0))+chunk(b'IDAT',zlib.compress(raw,6))+chunk(b'IEND',b'')
           digest=hashlib.sha256(img).hexdigest()
           key=uuid.uuid4().hex
           url=base+'/assets/'+key
