@@ -1,0 +1,126 @@
+{
+  "approved_media_sha256": "d6af283480d1ddf6572c868684e7b9344ef1304a98261f359ba1a005059c9ec5",
+  "user_approval": "좋아 잘햇어 댓글정보 홈피광고하는거 까먹지말고 유튜브에올려",
+  "independent_photographic_scenes": [
+    {
+      "scene_image": "1.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "26eee32209c5c5170cb4fe2f29fcc3b126acc9ccdde3705518d1b07e9ec99f0c",
+      "source": "individual ChatGPT image generation for this padding guide",
+      "contact_sheet": false,
+      "essential_subjects_preserved": true,
+      "visual_inspection": "Reviewed independently in full scene contact preview; no baked-in labels; used as complete source with contain"
+    },
+    {
+      "scene_image": "2.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "487d00e55b19b28232b3fe7a8911d81ea0a36756107da8fa1eb96b3d84defe8c",
+      "source": "individual ChatGPT image generation for this padding guide",
+      "contact_sheet": false,
+      "essential_subjects_preserved": true,
+      "visual_inspection": "Reviewed independently in full scene contact preview; no baked-in labels; used as complete source with contain"
+    },
+    {
+      "scene_image": "3.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "def1772b49f5a10048097afb44ed2eb62e44387c4c3549f4119feddb5406fa04",
+      "source": "individual ChatGPT image generation for this padding guide",
+      "contact_sheet": false,
+      "essential_subjects_preserved": true,
+      "visual_inspection": "Reviewed independently in full scene contact preview; no baked-in labels; used as complete source with contain"
+    },
+    {
+      "scene_image": "4.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8224bc7c82fa678ae5c069e3913bb42d2484b3495ed1bfbbf299de16c177042d",
+      "source": "individual ChatGPT image generation for this padding guide",
+      "contact_sheet": false,
+      "essential_subjects_preserved": true,
+      "visual_inspection": "Reviewed independently in full scene contact preview; no baked-in labels; used as complete source with contain"
+    },
+    {
+      "scene_image": "5.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ce2672dc59c940af8c10732c53cd263640730caba39cd0d998b6eff412732d70",
+      "source": "individual ChatGPT image generation for this padding guide",
+      "contact_sheet": false,
+      "essential_subjects_preserved": true,
+      "visual_inspection": "Reviewed independently in full scene contact preview; no baked-in labels; used as complete source with contain"
+    },
+    {
+      "scene_image": "6.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e23d83f57c743c52017c5af102c1381fd2359722600704b4d98497b93d4d9fb1",
+      "source": "individual ChatGPT image generation for this padding guide",
+      "contact_sheet": false,
+      "essential_subjects_preserved": true,
+      "visual_inspection": "Reviewed independently in full scene contact preview; no baked-in labels; used as complete source with contain"
+    },
+    {
+      "scene_image": "7.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e97f62b7c03db335d91fa4c6c0251ee481dac67041f5b066d6b5e6f9014eafba",
+      "source": "individual ChatGPT image generation for this padding guide",
+      "contact_sheet": false,
+      "essential_subjects_preserved": true,
+      "visual_inspection": "Reviewed independently in full scene contact preview; no baked-in labels; used as complete source with contain"
+    },
+    {
+      "scene_image": "8.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "d1c7c5a48a27c26df38d56339c2cf763fb36f22fcd659a3f4b891cbd644eb2ae",
+      "source": "individual ChatGPT image generation for this padding guide",
+      "contact_sheet": false,
+      "essential_subjects_preserved": true,
+      "visual_inspection": "Reviewed independently in full scene contact preview; no baked-in labels; used as complete source with contain"
+    }
+  ],
+  "visual_review": {
+    "storyboard": "all 12 composed frames reviewed; independently generated complete photo sources",
+    "encoded_frames_seconds": [
+      1,
+      16,
+      30,
+      60,
+      130,
+      220
+    ],
+    "opening_mid_end_reviewed": true,
+    "uncropped_photo_contain": true,
+    "disclosure_outside_photo": true,
+    "captions_word_wrapped": true
+  },
+  "media_audit": {
+    "width": 1920,
+    "height": 1080,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "duration": 227.625,
+    "decoded_audio_rms": 0.0535,
+    "timing_method": "actual generated per-clause audio duration with explicit targets"
+  }
+}
