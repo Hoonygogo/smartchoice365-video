@@ -1,0 +1,112 @@
+{
+  "id": "aircon-running-costs-en-v1",
+  "title": "Buying an Air Conditioner in Australia: The Real Cost Explained",
+  "status": "awaiting_user_approval",
+  "published": false,
+  "sha256": "471b8660640764f200fee5136d1ef418a4ab6cc3b535d2fd6d49a8615c9a489f",
+  "duration": 221.45833333333334,
+  "width": 1920,
+  "height": 1080,
+  "voice": {
+    "engine": "kokoro",
+    "model": "KPipeline",
+    "lang_code": "a",
+    "voice": "af_heart",
+    "speed": 0.96,
+    "sample_rate": 24000,
+    "source": "english-guide/render_english_guide.py (shared scripts/approved_voice.py)"
+  },
+  "decoded_audio_rms": 0.04891747981199587,
+  "caption_segments": 34,
+  "photo_led_scenes": 8,
+  "guide_url": "https://smartchoice365-web.pages.dev/guides/2026-air-conditioner-energy-label-running-costs-australia.html?utm_source=youtube&utm_medium=video&utm_campaign=aircon_running_costs_en_v1",
+  "sources": [
+    "https://www.energyrating.gov.au/consumer-information/understand-zoned-energy-rating-label",
+    "https://www.yourhome.gov.au/energy/heating-and-cooling",
+    "https://www.energy.gov.au/households/energy-rating"
+  ],
+  "chapters": [
+    {
+      "start": 0,
+      "title": "Air conditioning: compare the real cost"
+    },
+    {
+      "start": 8.708333333333334,
+      "title": "Make the comparison easier to see"
+    },
+    {
+      "start": 20.333333333333332,
+      "title": "The cheapest box is not the full story"
+    },
+    {
+      "start": 32.5,
+      "title": "1. Start with your room"
+    },
+    {
+      "start": 50.166666666666664,
+      "title": "2. Read the right numbers"
+    },
+    {
+      "start": 69.5,
+      "title": "3. Turn annual energy into dollars"
+    },
+    {
+      "start": 92,
+      "title": "4. Is the higher upfront cost worth it?"
+    },
+    {
+      "start": 121.29166666666667,
+      "title": "5. Portable does not mean anywhere"
+    },
+    {
+      "start": 137.5,
+      "title": "Think beyond the lower sticker price"
+    },
+    {
+      "start": 157.5,
+      "title": "6. Compare complete installed quotes"
+    },
+    {
+      "start": 178.625,
+      "title": "Use your bill, not a headline tariff"
+    },
+    {
+      "start": 200.16666666666666,
+      "title": "Our verdict: buy for the whole cost"
+    }
+  ],
+  "visual_review": "All 12 source compositions and encoded opening, charts, portable scene, quote and verdict frames inspected; no cropped essential subjects or overflow.",
+  "encoded_frame_inspection_seconds": [
+    1,
+    14,
+    43,
+    84,
+    108,
+    127,
+    163,
+    208
+  ],
+  "renderer": "english-guide/render_english_guide.py",
+  "validation": {
+    "cue_count": 34,
+    "continuous_audio_timing": true,
+    "source_scene_count": 12,
+    "independent_photo_scenes": 8,
+    "decoded_audio_rms": 0.04891747981199587,
+    "encoded_frames_reviewed_seconds": [
+      1,
+      14,
+      43,
+      84,
+      108,
+      127,
+      163,
+      208
+    ],
+    "source_photos_and_all_storyboards_reviewed": true,
+    "caption_and_focus_target_checks": true,
+    "arithmetic_checks": true,
+    "reusable_workflow_syntax_checked": true,
+    "workflow_execution": "Local render verified; remote review workflow not executed in this request"
+  }
+}
