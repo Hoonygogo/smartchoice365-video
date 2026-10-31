@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 import soundfile as sf
 from PIL import Image,ImageDraw,ImageFont,ImageOps
-from kokoro import KPipeline
+from scripts.approved_voice import kokoro_english_pipeline,render_english_clause,approved_voice
 
 ROOT=Path(__file__).resolve().parents[1]
 ASSETS=ROOT/'breville-english'/'assets'
@@ -53,17 +53,16 @@ def main():
     if photos<8:raise RuntimeError(f'Only {photos}/8 generated photo scenes.')
     logo_path=ROOT/'assets'/'smartchoice365-brand-logo-v1.png'
     logo=Image.open(logo_path).convert('RGBA')
-    pipeline=KPipeline(lang_code='a')
+    pipeline=kokoro_english_pipeline()
+    voice_receipts=[]
     parts=[];cues=[]
     for i,(title,narration) in enumerate(TOPICS):
-        wave=[segment for _,_,segment in pipeline(narration,voice='af_heart',speed=0.96)]
-        if not wave:raise RuntimeError(f'No Kokoro voice output for scene {i+1}')
-        audio=np.concatenate([np.asarray(s,dtype=np.float32) for s in wave])
-        rms=float(np.sqrt(np.mean(audio**2)))
-        if len(audio)<24000 or rms<0.008 or float(np.max(np.abs(audio)))<0.03:
-            raise RuntimeError(f'INAUDIBLE Kokoro output for scene {i+1}')
-        audio=np.concatenate([audio,np.zeros(3600,dtype=np.float32)])
-        wav=OUT/f'voice_{i:02d}.wav';sf.write(wav,audio,24000)
+        wav=OUT/f'voice_{i:02d}.wav'
+        receipt=render_english_clause(pipeline,narration,wav)
+        receipt['scene']=i+1
+        voice_receipts.append(receipt)
+        audio,sr=sf.read(wav,dtype='float32')
+        rms=receipt['rms']
         source=ImageOps.exif_transpose(Image.open(ASSETS/assets[i]['file'])).convert('RGB')
         canvas=Image.new('RGB',(W,H),'#13243a')
         # Contain only, never crop any original image.
@@ -89,7 +88,7 @@ def main():
         d.text((70,1034),'Illustrative image for reference   •   Independent desk research, not hands-on testing',
                font=font(21),fill='#CCD7E1')
         frame=OUT/f'frame_{i:02d}.png';canvas.save(frame)
-        dur=len(audio)/24000
+        dur=len(audio)/sr + 0.2
         part=OUT/f'part_{i:02d}.mp4'
         subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-loop','1','-framerate','24','-i',str(frame),
                         '-i',str(wav),'-t',str(dur),'-c:v','libx264','-preset','veryfast','-crf','22',
@@ -105,6 +104,7 @@ def main():
         raise RuntimeError('No AAC audio in final video')
     if not any(x.get('codec_type')=='video' and x.get('width')==W and x.get('height')==H for x in streams):
         raise RuntimeError('Not full HD')
+    (OUT/'voice_receipts.json').write_text(json.dumps({'voice_config_sha256':hashlib.sha256((ROOT/'config/approved_voices.json').read_bytes()).hexdigest(),'voice_files':voice_receipts},indent=2))
     (OUT/'manifest.json').write_text(json.dumps({'sha256':hashlib.sha256(final.read_bytes()).hexdigest(),
        'scenes':12,'photo_led':photos,'voice':'kokoro af_heart 0.96','logo':'official original uncropped',
        'status':'MOBILE_REVIEW_ONLY','cues':cues},indent=2))
