@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """Safe cleanup for Smart Choice 365 videos.
 
-Default is dry-run. --apply removes ONLY expendable generated intermediates
-from a video workspace after an approved final MP4 + recorded SHA exist.
-Never removes source image masters, voice references, brand, models, or previews.
+Default is dry-run. --apply removes expendable intermediates AND unshared
+AI-generated scene originals listed in cleanup_approval.json, but ONLY after
+user approval and verification of a retained final MP4 SHA256.
+Never removes brand marks, protected voice samples, or unlisted source images.
 """
 import argparse,hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 PROTECTED=('assets/','voices/reference/','config/','videos/','requests/','editorial/')
 ALLOWED_DIRS=('tmp','temp','cache','intermediate','frames','renders','working')
+IMAGE_SUFFIXES={'.png','.jpg','.jpeg','.webp'}
 ALLOWED_SUFFIXES={'.png','.jpg','.jpeg','.webp','.wav','.pcm','.tmp','.part'}
 def cleanup(workspace,apply=False):
     ws=workspace.resolve()
@@ -35,13 +37,13 @@ def cleanup(workspace,apply=False):
             if item.is_symlink():raise ValueError('Symlink in cleanup folder; refusing cleanup')
             if item.is_file() and item.suffix.lower() in ALLOWED_SUFFIXES:
                 candidates.append(item)
-    bytes_total=sum(p.stat().st_size for p in candidates)
+    # Raw AI originals are opt-in per file and must be inside THIS approved workspace.\n    # Do not infer that every image in the global GitHub archive is disposable.\n    for name in data.get('disposable_ai_originals',[]):\n        item=(ws/name).resolve()\n        if not item.is_relative_to(ws) or item.suffix.lower() not in IMAGE_SUFFIXES:\n            raise ValueError('Unsafe AI original path: '+str(name))\n        if item.is_symlink():raise ValueError('Symlink AI image: refusing cleanup')\n        if item.is_file():\n            expected=data.get('disposable_image_sha256',{}).get(name)\n            if not expected or hashlib.sha256(item.read_bytes()).hexdigest()!=expected:\n                raise ValueError('Missing or incorrect original-image SHA: '+name)\n            if item not in candidates:candidates.append(item)\n    bytes_total=sum(p.stat().st_size for p in candidates)
     print(json.dumps({'mode':'DELETE' if apply else 'PREVIEW_ONLY','files':len(candidates),
                       'bytes':bytes_total,'workspace':rel,
                       'examples':[str(p.relative_to(ROOT)) for p in candidates[:25]]},ensure_ascii=False))
     if apply:
         for item in candidates:item.unlink()
-        print('Deleted only eligible intermediary files. Original photos and voice references protected.')
+        print('Deleted only eligible intermediary files. Only explicitly listed AI originals deleted; logo and voice references protected.')
 if __name__=='__main__':
     p=argparse.ArgumentParser()
     p.add_argument('workspace',type=Path,help='output/<video> or workspaces/<video>')
