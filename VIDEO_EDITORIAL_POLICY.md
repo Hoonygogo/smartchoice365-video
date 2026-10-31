@@ -88,3 +88,15 @@ Mandatory acceptance criteria before calling ANY future English general video co
 8. Deliver a complete voiced preview for USER review first. Only after the user explicitly approves that exact version/hash can it be uploaded publicly or replace/delete existing video. Report honestly if any item is blocked.
 
 Apply this same quality gate to all future English general videos; Shorts may vary aspect/length/hook, but audible selected voice, relevant images, captions, truthful claims and actual media QA still apply.
+
+## Mandatory English image-first storyboard gate — 2026-10-31
+
+User correction: the Ninja English preview did NOT match approved Korean HEATTECH v8 because product photos were missing and the renderer proceeded with broken image slots. English production must explicitly reuse Korean production's image-first method: research and write the complete editorial script; break it into narrated scenes/clauses; PLAN and CREATE/SOURCE every high-quality visual matched to each narration segment BEFORE generating a video; review composition, completeness and rights; only then create English Kokoro af_heart narration and assemble video with captions and clause-specific graphic highlights.
+
+HARD FAIL GATES (not warnings or placeholders):
+- A manifest must enumerate EACH required scene image with scene/cue identifier, purpose, content, source or generation provenance, rights status, expected subject and file checksum. All required images must exist, be readable, have suitable resolution and correct subject, and have explicit appropriate usage rights. No undocumented or unlicensed product-photo scraping.
+- Actual AF141 and AF400 pictures must be accurate for the verified Australian SKUs. For missing manufacturer/approved product images, STOP production; do not silently use silhouettes, blank cards, generic illustrations or 'PRODUCT PHOTO UNAVAILABLE'. Only proceed with an accurate, conspicuously labelled illustration when editorially appropriate and user-approved, not as a substitute for requested actual photos.
+- Inspect frames for whole-subject contain layout, no cuts/cropping, no overlay or subtitles obscuring the subject, correct aspect ratio and visual contrast. Distinct scene images should serve the corresponding narration; generic repeated cards are not sufficient.
+- The first deliverable for a new topic is a complete image/storyboard pack. The video render is a separate downstream step that MUST be blocked until the image pack passes checks. Missing imagery is a production failure, not a completed preview.
+- Maintain Korean v8 quality parity, brand logo, Kokoro af_heart 0.96, full HD 16:9, clause-timed captions/highlights, Australia-specific factual comparisons, exact guide deep link first in description, mobile streaming preview, and explicit user approval before YouTube publishing.
+- The prior Ninja English MP4 remains a REJECTED draft. It must not be presented as quality-approved or auto-published. Any new build must carry a new version identifier and verified image-asset manifest.
