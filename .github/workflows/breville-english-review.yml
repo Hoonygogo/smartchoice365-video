@@ -1,10 +1,9 @@
-name: 'Breville English - verified images to Kokoro mobile review'
+name: 'Breville English - six photos, six graphics, Kokoro focus sync'
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - 'videos/breville-english/**'
       - 'breville-english/render_review.py'
       - '.github/workflows/breville-english-review.yml'
 permissions:
@@ -18,38 +17,47 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Restore committed Breville image pack (one ZIP or individual assets)
+      - name: Check approved photo handoff (never use unverified storyboard)
         run: |
           test -s assets/smartchoice365-brand-logo-v1.png
-          mkdir -p breville-english/assets
-          if [ -f videos/breville-english/asset_pack.zip ]; then
-            python scripts/import_breville_zip.py videos/breville-english/asset_pack.zip breville-english/assets
-          else
-            test -s videos/breville-english/approved_visual_manifest.json
-            test -d videos/breville-english/images
-            cp videos/breville-english/approved_visual_manifest.json breville-english/assets/
-            cp videos/breville-english/images/scene_* breville-english/assets/
-          fi
-      - name: Install established natural English TTS and renderer
+          test -s breville-english/assets/approved_visual_manifest.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('breville-english/assets/approved_visual_manifest.json')
+          m=json.loads(p.read_text())
+          assert len(m.get('photos',[]))==6, 'Must have 6 approved individual photo originals'
+          assert all(x.get('storyboard_collage') is False and x.get('independent_generation') is True and x.get('visually_checked') is True for x in m['photos'])
+          PY
+      - name: Install locked Kokoro and video tools
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
           python -m pip install Pillow numpy soundfile 'kokoro==0.9.4' torch
-      - name: Render full quality English mobile review
+      - name: Render via existing approved voice (no fallback)
         run: python breville-english/render_review.py
-      - name: Verify output
+      - name: Verify final movie and all synchronized focus cues
         run: |
           ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -qx '1920,1080'
           ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,channels -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -q '^aac,2$'
-          python -c "import json; from pathlib import Path; m=json.loads(Path('breville-english/out/manifest.json').read_text()); v=json.loads(Path('breville-english/out/voice_receipts.json').read_text()); assert len(m['cues'])==12 and m['photo_led']>=8 and len(v['voice_files'])==12; assert all(c['rms']>=0.008 and c['voice']=='af_heart' and c['speed']==0.96 for c in v['voice_files'])"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('breville-english/out')
+          m=json.loads((root/'manifest.json').read_text())
+          v=json.loads((root/'voice_receipts.json').read_text())
+          assert m['photos']==6 and m['python_graphics']==6 and m['scenes']==12
+          assert len(m['cues'])==len(v['voice_files']) and len(m['cues'])>=12
+          assert len({x['scene'] for x in m['cues']})==12
+          assert all(x['duration_seconds']>0.6 and x['target'] for x in m['cues'])
+          assert all(x['voice']=='af_heart' and x['speed']==0.96 and x['rms']>=0.008 for x in v['voice_files'])
+          PY
       - uses: actions/upload-artifact@v4
         with:
-          name: breville-english-photo-kokoro-mobile-review
+          name: breville-english-verified-mobile-review
           path: |
             breville-english/out/breville_bambino_plus_english_review.mp4
             breville-english/out/manifest.json
             breville-english/out/voice_receipts.json
-            breville-english/out/voice_*.wav
-            config/approved_voices.json
           retention-days: 2
           if-no-files-found: error
