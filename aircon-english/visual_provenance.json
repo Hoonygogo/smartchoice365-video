@@ -1,0 +1,110 @@
+{
+  "assets": [
+    {
+      "file": "1.png",
+      "sha256": "f765ac822940f46265a45bc41fc8f6ab68d9c9ba1e495e0fd8f5ae89e7893a4b",
+      "width": 1672,
+      "height": 941,
+      "source_kind": "single_full_frame_illustration",
+      "generation_method": "individual_chatgpt_imagegen",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "visual_review_passed": true,
+      "usage_approved": true,
+      "inspection": "Reviewed independent source in source overview and all composed 1080p frames. Faces, hands and relevant appliance preserved; complete source is contained, not cropped. Labels added natively, not generated in source."
+    },
+    {
+      "file": "2.png",
+      "sha256": "1dd9ad04d9d84d7fb44c84f34dd867aff3da0c9e45cc1280aa1129607ec1f29f",
+      "width": 1672,
+      "height": 941,
+      "source_kind": "single_full_frame_illustration",
+      "generation_method": "individual_chatgpt_imagegen",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "visual_review_passed": true,
+      "usage_approved": true,
+      "inspection": "Reviewed independent source in source overview and all composed 1080p frames. Faces, hands and relevant appliance preserved; complete source is contained, not cropped. Labels added natively, not generated in source."
+    },
+    {
+      "file": "3.png",
+      "sha256": "1bb56e4e2d591f452b7909336962faf0c99cdbca8f868f3f88489b8492765b2b",
+      "width": 1672,
+      "height": 941,
+      "source_kind": "single_full_frame_illustration",
+      "generation_method": "individual_chatgpt_imagegen",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "visual_review_passed": true,
+      "usage_approved": true,
+      "inspection": "Reviewed independent source in source overview and all composed 1080p frames. Faces, hands and relevant appliance preserved; complete source is contained, not cropped. Labels added natively, not generated in source."
+    },
+    {
+      "file": "4.png",
+      "sha256": "2e91f767362f541ca17bbe75b3df1eb003c992837802f8cec59b1689f5591633",
+      "width": 1672,
+      "height": 941,
+      "source_kind": "single_full_frame_illustration",
+      "generation_method": "individual_chatgpt_imagegen",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "visual_review_passed": true,
+      "usage_approved": true,
+      "inspection": "Reviewed independent source in source overview and all composed 1080p frames. Faces, hands and relevant appliance preserved; complete source is contained, not cropped. Labels added natively, not generated in source."
+    },
+    {
+      "file": "5.png",
+      "sha256": "729d2082b73668aecb8c8155b810ac2006feebfddbdbca39ab65288bd64b930f",
+      "width": 1672,
+      "height": 941,
+      "source_kind": "single_full_frame_illustration",
+      "generation_method": "individual_chatgpt_imagegen",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "visual_review_passed": true,
+      "usage_approved": true,
+      "inspection": "Reviewed independent source in source overview and all composed 1080p frames. Faces, hands and relevant appliance preserved; complete source is contained, not cropped. Labels added natively, not generated in source."
+    },
+    {
+      "file": "6.png",
+      "sha256": "dc892f4fe965abdc06cb2eef1e053d7ba07021e78335a5280d381b09341a083a",
+      "width": 1672,
+      "height": 941,
+      "source_kind": "single_full_frame_illustration",
+      "generation_method": "individual_chatgpt_imagegen",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "visual_review_passed": true,
+      "usage_approved": true,
+      "inspection": "Reviewed independent source in source overview and all composed 1080p frames. Faces, hands and relevant appliance preserved; complete source is contained, not cropped. Labels added natively, not generated in source."
+    },
+    {
+      "file": "7.png",
+      "sha256": "63aa5ed13548cb86f5a37d4c83ff97004c85bc25ab431cb456249f46806ca7e1",
+      "width": 1672,
+      "height": 941,
+      "source_kind": "single_full_frame_illustration",
+      "generation_method": "individual_chatgpt_imagegen",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "visual_review_passed": true,
+      "usage_approved": true,
+      "inspection": "Reviewed independent source in source overview and all composed 1080p frames. Faces, hands and relevant appliance preserved; complete source is contained, not cropped. Labels added natively, not generated in source."
+    },
+    {
+      "file": "8.png",
+      "sha256": "3adcfb712921f4beacf8c27f1d1496a8bfa179845d86b615907a2fa5db53e594",
+      "width": 1672,
+      "height": 941,
+      "source_kind": "single_full_frame_illustration",
+      "generation_method": "individual_chatgpt_imagegen",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "visual_review_passed": true,
+      "usage_approved": true,
+      "inspection": "Reviewed independent source in source overview and all composed 1080p frames. Faces, hands and relevant appliance preserved; complete source is contained, not cropped. Labels added natively, not generated in source."
+    }
+  ],
+  "composed_storyboard_reviewed": true,
+  "review_method": "All 12 composed storyboard frames visually inspected before narration/rendering; portable hose/window panel also inspected full-size."
+}
