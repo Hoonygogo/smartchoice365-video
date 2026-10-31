@@ -25,6 +25,15 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
           python -m pip install Pillow numpy soundfile 'kokoro>=0.9.4' torch
+      - name: Acquire eight free-license photographic candidates BEFORE composing scenes
+        run: python ninja-english/prepare_photo_candidates.py
+      - name: Save candidate photos and licensing evidence for review even if quality gate blocks
+        uses: actions/upload-artifact@v4
+        with:
+          name: ninja-eight-photo-candidates-${{ github.run_id }}
+          path: ninja-english/photo-candidates/
+          retention-days: 7
+          if-no-files-found: error
       - name: Require 12 reviewed scenes and safely retry reparable visual defects
         run: |
           python scripts/repair_and_validate_scenes.py ninja-english/assets/approved_visual_manifest.json
