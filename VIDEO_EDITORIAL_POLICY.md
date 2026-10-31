@@ -125,3 +125,11 @@ The PRIMARY editorial source for English/Australian videos is Smart Choice 365's
 - Automatically handle recoverable stage failures and missing prerequisites where legitimately possible. If missing real product photographs or image rights cannot be resolved, declare the production blocked rather than fabricate an asset, substitute a wrong model or announce a finished video.
 - Do not report isolated storyboard/intro completion as 'video done'. Communicate completion only with a verified live preview URL, media streams, imagery QA and associated product guide. A run marked success solely for intro art is partial progress, not the deliverable.
 - Native GitHub workflow jobs do not continue indefinitely or independently repair missing source assets. A workflow trigger is not proof that the end-to-end video exists.
+
+## Korean and English default: speech-synchronised focus box (2026-10-31)
+- This is mandatory for BOTH Korean and English production, and ON by default: the on-screen focus outline/highlight box marks exactly the product, figure, chart item or comparison region currently discussed by the narrator.
+- The highlight changes focus only when the spoken clause's editorial target changes. Use clause/audio timings; never rotate focus on a blind timer, randomly cycle cards, or leave a highlight over unrelated content.
+- A spoken claim about AF141 focuses the AF141 region; an AF400 claim focuses AF400; side-by-side statements may focus both. For graphs, the box attaches to the exact value/element being described. Intro, subscribe, logo and generic sentences should hide the box unless a genuine target exists.
+- Keep the complete product and brand imagery uncropped. Focus outlines must not obscure product imagery, subtitles, or meaningful content. Use smooth, restrained movement where available; prioritize accurate timing over cosmetic motion.
+- Quality gate: export a cue manifest containing narration, duration and target(s). Reject missing/mismatched targets and text-only, static-card videos. Require mobile preview and user approval before any public video publication.
+- The Korean reference implementation is scripts/render_synced.py with cue.targets and audio-derived per-cue timestamps. English render_ninja.py must use the same cue-target discipline, not scene-wide static emphasis.
