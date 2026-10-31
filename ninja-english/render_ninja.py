@@ -82,7 +82,7 @@ pipeline=KPipeline(lang_code='a')
 # Korean v8 parity: each spoken clause selects an editorially meaningful visual target.
 # Never cycle boxes with a timer or animate unrelated elements.
 def clauses_for(kind,speech):
- parts=re.split(r'(?<=[.!?])\\s+',speech.strip())
+ parts=re.split(r'(?<=[.!?])\s+',speech.strip())
  return [p for p in parts if p.strip()]
 def targets_for(kind,spoken):
  q=spoken.lower()
