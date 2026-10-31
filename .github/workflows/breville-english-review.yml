@@ -17,6 +17,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Restore user-approved AI scene pack if uploaded to the repository
+        run: |
+          if [ -f 'breville-english/Breville_English_12_Scenes_GitHub_Asset_Pack.zip' ]; then
+            python - <<'PY'
+          import zipfile,pathlib
+          archive=pathlib.Path('breville-english/Breville_English_12_Scenes_GitHub_Asset_Pack.zip')
+          base=pathlib.Path('.').resolve()
+          with zipfile.ZipFile(archive) as z:
+              for name in z.namelist():
+                  dest=(base/name).resolve()
+                  if not dest.is_relative_to(base):raise RuntimeError('Unsafe zip path')
+              z.extractall(base)
+          print('Imported individually authored AI scenes')
+          PY
+          fi
       - name: Validate independently produced scene images and approved logo before voice/render
         run: |
           test -s assets/smartchoice365-brand-logo-v1.png
