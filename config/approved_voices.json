@@ -7,7 +7,7 @@
     "voice": "af_heart",
     "speed": 0.96,
     "sample_rate": 24000,
-    "source": "ninja-english/render_ninja.py"
+    "source": "english-guide/render_english_guide.py (shared scripts/approved_voice.py)"
   },
   "korean": {
     "engine": "supertonic-3",
