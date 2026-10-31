@@ -35,6 +35,7 @@ def main():
     p.add_argument("--image", default="assets/ninja_original.png")
     p.add_argument("--image-url", default="")
     p.add_argument("--out", default="out/wan22/ninja_generated.mp4")
+    p.add_argument("--prompt", default=PROMPT)
     args=p.parse_args()
     sess=requests.Session()
     token=os.environ.get("HF_TOKEN","").strip()
@@ -63,7 +64,7 @@ def main():
     source={"path":file_path,"url":SPACE+"/gradio_api/file="+file_path,
             "orig_name":filename,"size":None,"mime_type":None,
             "meta":{"_type":"gradio.FileData"}}
-    data=[source,None,PROMPT,6,NEGATIVE,3.5,1,1,42,True,6,
+    data=[source,None,args.prompt,6,NEGATIVE,3.5,1,1,42,True,6,
           "UniPCMultistep",3.0,16,False,True]
     r=sess.post(SPACE+"/gradio_api/call/generate_video",json={"data":data},timeout=120)
     r.raise_for_status()
