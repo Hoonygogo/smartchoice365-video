@@ -25,11 +25,16 @@ jobs:
           assert len(token)>=16, 'IMAGE_HANDOFF_TOKEN secret is missing or too short'
           def chunk(t,b):
               return struct.pack('!I',len(b))+t+b+struct.pack('!I',zlib.crc32(t+b)&0xffffffff)
-          # Valid standalone 320x180 PNG (~several KB); no production images or Git commits.
-          w,h=320,180
-          raw=b''.join(bytes([0])+bytes(v for x in range(w) for v in (((x*7+y)%256,(x*3+y*2)%256,(y*5)%256))) for y in range(h))
-          img=bytes([137,80,78,71,13,10,26,10])+chunk(b'IHDR',struct.pack('!2I5B',w,h,8,2,0,0,0))+chunk(b'IDAT',zlib.compress(raw,6))+chunk(b'IEND',b'')
+          # Valid standalone 1920x1080 photographic-size PNG with ~2 MB of data.
+          # Random-like RGB bytes exercise a real binary payload, not a tiny compressed placeholder.
+          w,h=1920,1080
+          import random
+          rng=random.Random(365)
+          pixels=rng.randbytes(w*h*3)
+          raw=b''.join(bytes([0])+pixels[y*w*3:(y+1)*w*3] for y in range(h))
+          img=bytes([137,80,78,71,13,10,26,10])+chunk(b'IHDR',struct.pack('!2I5B',w,h,8,2,0,0,0))+chunk(b'IDAT',zlib.compress(raw,1))+chunk(b'IEND',b'')
           digest=hashlib.sha256(img).hexdigest()
+          assert len(img)>2_000_000, 'Test image payload is smaller than a real AI photo'
           key=uuid.uuid4().hex
           url=base+'/assets/'+key
           headers={'Authorization':'Bearer '+token,'Content-Type':'image/png','User-Agent':'SmartChoice365-Video-Handoff/1.0 (+GitHub-Actions)'}
