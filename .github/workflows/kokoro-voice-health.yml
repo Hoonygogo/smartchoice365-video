@@ -8,7 +8,7 @@ on:
       - 'scripts/approved_voice.py'
       - '.github/workflows/kokoro-voice-health.yml'
 permissions:
-  contents: read
+  contents: write
 jobs:
   smoke-test:
     runs-on: ubuntu-24.04
@@ -42,3 +42,23 @@ jobs:
           path: voice-test/
           retention-days: 7
           if-no-files-found: error
+
+      - name: Permanently archive verified voice sample in the repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import base64,json,os,subprocess
+          from pathlib import Path
+          target='voices/reference/english_af_heart_096.wav'
+          # Do not overwrite an existing reference sample without explicit review.
+          found=subprocess.run(['gh','api',f'repos/{os.environ["GITHUB_REPOSITORY"]}/contents/{target}'],capture_output=True)
+          if found.returncode==0:
+              print('Reference voice already exists; preserving original sample')
+          else:
+              data={'message':'Save audible Kokoro af_heart baseline reference voice [skip ci]',
+                    'content':base64.b64encode(Path('voice-test/af_heart_smoke.wav').read_bytes()).decode()}
+              subprocess.run(['gh','api','--method','PUT',f'repos/{os.environ["GITHUB_REPOSITORY"]}/contents/{target}',
+                '--input','-'],input=json.dumps(data).encode(),check=True)
+              print('Reference voice archived:',target)
+          PY
