@@ -1,5 +1,10 @@
 name: Ninja Shorts Kokoro fast-cut preview
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/render_ninja_shorts_kokoro.py'
+      - '.github/workflows/ninja-shorts-kokoro.yml'
   workflow_dispatch:
 permissions:
   contents: read
