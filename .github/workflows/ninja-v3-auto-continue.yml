@@ -58,6 +58,8 @@ jobs:
               sys.exit(2)
           m=json.loads(manifest.read_text())
           assert len(m.get('assets',[]))>=12, '12 product/comparison scenes required'
+          assert m.get('type') != 'schematic illustrations', 'QUALITY BLOCK: text-only schematic frames are forbidden; provide picture-led approved storyboard before rendering'
+          assert sum(bool(a.get('picture_led')) and a.get('visual_category') in ('real_product','accurate_product_illustration','lifestyle','cooking') for a in m['assets']) >= 6, 'QUALITY BLOCK: at least six genuine picture-led scenes required; do not use text cards as substitutes'
           for a in m['assets']:
               p=(root/a['file']).resolve()
               assert p.is_relative_to(root.resolve()) and p.is_file() and a.get('usage_approved') is True
