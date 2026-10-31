@@ -1,0 +1,58 @@
+{
+  "id": "padding-ko-v1",
+  "sha256": "d6af283480d1ddf6572c868684e7b9344ef1304a98261f359ba1a005059c9ec5",
+  "approval": "publish",
+  "approval_text": "좋아 잘햇어 댓글정보 홈피광고하는거 까먹지말고 유튜브에올려",
+  "privacy": "public",
+  "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
+  "quality_verified": true,
+  "visual_evidence_sha256": "a89c40944dcf1c54ba7243e76c77fa19cace1e6f4c403e1e507d5b32fcd59756",
+  "source_run_id": 0,
+  "metadata": {
+    "snippet": {
+      "title": "패딩, 비싸면 더 따뜻할까? 사기 전에 확인할 5가지",
+      "description": "👉 패딩 충전재·사이즈·세탁 체크리스트: https://smartchoice365-web.pages.dev/guides/2026-lightweight-puffer-jackets.html?utm_source=youtube&utm_medium=video&utm_campaign=padding_ko_v1\n유니클로·탑텐·스파오 등 경량패딩을 고를 때 확인할 항목과 관련 상품을 홈페이지에서 살펴보세요.\n\n패딩, 비싸면 무조건 더 따뜻할까요?\n필파워·충전량·길이·겉감·생활패턴을 나눠 보고, 내 생활에 맞는 선택 기준을 정리합니다.\n\nSmart Choice 365의 편집 판단을 포함한 구매가이드입니다. 특정 브랜드 간 성능 순위나 직접 착용·보온시험이 아닙니다. 생활·제품 장면은 AI로 연출한 이미지이며 특정 제조사의 공식 상품 사진이 아닙니다. 가격과 착용당 비용은 설명용 가상 예시로 실제 판매가가 아닙니다. 세탁·방수 사양은 해당 모델의 공식 안내를 확인하세요.\n\n[광고] 연결된 홈페이지에는 제휴 광고가 포함되어 있으며, 링크를 통한 구매 시 일정액의 수수료를 제공받을 수 있습니다. 구매 전 최종 가격과 판매 조건을 확인하세요.\n\n구간 안내\n0:00 패딩, 비싸면 더 따뜻할까요?\n0:13 화면이 흐리게 보이나요?\n0:25 가격표보다, 입는 환경부터\n0:41 ① 필파워는 보온 점수가 아닙니다\n0:59 ② 충전량과 혼용률은 다른 정보\n1:20 ③ 숏패딩과 롱패딩, 길이의 선택\n1:41 ④ 바람과 물, 겉감도 확인하세요\n2:02 ⑤ 출퇴근용은, 하루 전체로 판단\n2:22 야외에 오래 있다면, 확인 순서도 달라집니다\n2:40 세탁표와 관리비까지 보세요\n3:00 비싼 옷보다, 자주 입는 옷의 가치\n3:24 스마트초이스의 선택 기준\n\n공식 참고 자료\nhttps://www.patagonia.com/stories/guides/product/down-fill-power-explained/story-166881.html\nhttps://www.norrona.com/gb/en/knowledge/why-down\nhttps://www.patagonia.com/stories/guides/product/natural-down-vs-synthetic-down-insulation-warmth-comes-standard/story-175856.html\n\n#패딩 #패딩구매가이드 #필파워 #겨울옷 #스마트초이스365",
+      "categoryId": "26",
+      "defaultLanguage": "ko",
+      "defaultAudioLanguage": "ko",
+      "tags": [
+        "패딩",
+        "패딩 구매가이드",
+        "필파워",
+        "충전량",
+        "롱패딩",
+        "숏패딩",
+        "겨울옷",
+        "Smart Choice 365"
+      ]
+    },
+    "status": {
+      "privacyStatus": "public",
+      "selfDeclaredMadeForKids": false,
+      "containsSyntheticMedia": true,
+      "embeddable": true,
+      "license": "youtube"
+    }
+  },
+  "comment_text": "🧥 패딩 구매 전, 충전재·사이즈·세탁 체크리스트를 확인하세요!\n👉 https://smartchoice365-web.pages.dev/guides/2026-lightweight-puffer-jackets.html?utm_source=youtube&utm_medium=comment&utm_campaign=padding_ko_v1\n경량패딩 비교 기준과 관련 상품은 스마트초이스365 홈페이지에서 확인할 수 있어요.\n여러분은 출퇴근용과 야외활동용 중 어떤 패딩이 필요하신가요?\n\n[광고] 연결된 홈페이지에는 제휴 광고가 포함되어 있으며, 구매 시 일정액의 수수료를 제공받을 수 있습니다.",
+  "media_blob_shas": [
+    "ee9e3ea52a96bfbd3edc6449b170e3d3bd09e53d",
+    "45fa7c650b713415777e8dcdd2a90c9dab4c6736",
+    "559406ec6be5b2f00848220d4ff9fb5510d9e1e7",
+    "e1e2660cbb62eb053bcb8364fa8b3917bd4b9dff",
+    "d823c0d2bc58340e83b99d2e67250bcb8b21e1b9",
+    "70f3d720c341970d1572feebeffe72fc717ed6da",
+    "ead47b3dd3618facc281d6f3ff8dbecc82276b56",
+    "30feffdf55a2b5a17d036a76a05c8a7879147596",
+    "194a19132ce46c088640e450686f22ba39f8e567",
+    "c0c2f76bedfd7a29cad37a66f1f89bb6bfff395f",
+    "dc63c1432bb03d1cd4037abf03a454fc872c2dbf",
+    "7f307c5e0a347125ce3c70d2bf178f229260da06",
+    "c29ba71942d520e025b69fe0d312739fadc86b65",
+    "0613d502c4022f43d6f6fda6837be177785e0050",
+    "8cfad4abd8dce287d5927efd272e0f369e5ae3a6",
+    "b16a8689ff3ab3212f3d5112f06c719a0ab55a95",
+    "c6ec16a0a91f5cead16f60e5b9eb602d93ed2fcc"
+  ],
+  "thumbnail_blob_sha": "be16fc3f38833bcd4d08970fc67b3a13d694203f"
+}
