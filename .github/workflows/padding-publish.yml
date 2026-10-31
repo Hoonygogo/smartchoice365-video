@@ -1,0 +1,93 @@
+name: Publish approved Korean padding video
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/padding-publish.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve exact approved media without committing binary files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import base64, hashlib, json, os, urllib.request
+          from pathlib import Path
+          root=Path('approved-artifact');root.mkdir()
+          reqpath=Path('publications/requests/padding-ko-v1.json');req=json.loads(reqpath.read_text())
+          assert req['approval']=='publish' and req['privacy']=='public'
+          assert req['sha256']=='d6af283480d1ddf6572c868684e7b9344ef1304a98261f359ba1a005059c9ec5'
+          def blob(sha):
+              url='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/git/blobs/'+sha
+              request=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+              with urllib.request.urlopen(request,timeout=45) as response:data=json.load(response)
+              raw=base64.b64decode(data['content']);gitsha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+              assert gitsha==sha
+              return raw
+          media=b''.join(blob(sha) for sha in req['media_blob_shas'])
+          assert hashlib.sha256(media).hexdigest()==req['sha256']
+          (root/'draft.mp4').write_bytes(media)
+          (root/'thumbnail.jpg').write_bytes(blob(req['thumbnail_blob_sha']))
+          evidence=Path('publications/evidence/padding-ko-v1.json').read_bytes()
+          assert hashlib.sha256(evidence).hexdigest()==req['visual_evidence_sha256']
+          audit=json.loads(evidence);assert len(audit['independent_photographic_scenes'])==8
+          assert audit['visual_review']['opening_mid_end_reviewed'] is True
+          run_id=int(os.environ['GITHUB_RUN_ID']);req['source_run_id']=run_id
+          reqpath.write_text(json.dumps(req,ensure_ascii=False,indent=2))
+          manifest={'id':req['id'],'sha256':req['sha256'],'quality_verified':True,'photo_led_scene_count':8,'source_run_id':run_id,'visual_evidence_sha256':req['visual_evidence_sha256']}
+          (root/'manifest.json').write_text(json.dumps(manifest,indent=2))
+          (root/'publication_request.json').write_text(json.dumps(req,ensure_ascii=False,indent=2))
+          (root/'visual_evidence.json').write_bytes(evidence)
+          print('Exact approved MP4 hash and reviewed visual evidence verified.')
+          PY
+      - name: Validate encoded video and decoded audible speech
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          python - <<'PY'
+          import array,json,math,subprocess,sys
+          p='approved-artifact/draft.mp4'
+          m=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',p]))
+          v=next(s for s in m['streams'] if s['codec_type']=='video');a=next(s for s in m['streams'] if s['codec_type']=='audio')
+          assert (v['width'],v['height'],v['codec_name'],a['codec_name'])==(1920,1080,'h264','aac')
+          assert abs(float(m['format']['duration'])-227.625)<.2
+          raw=subprocess.check_output(['ffmpeg','-v','error','-i',p,'-vn','-ac','1','-ar','24000','-f','f32le','-'])
+          x=array.array('f');x.frombytes(raw)
+          if sys.byteorder!='little':x.byteswap()
+          rms=math.sqrt(sum(t*t for t in x)/len(x));assert rms>.008
+          print('PASS 1080p H.264/AAC, duration and decoded audible PCM:',round(rms,4))
+          PY
+      - name: Retain exact approved artifact briefly
+        uses: actions/upload-artifact@v4
+        with:
+          name: padding-approved-${{ github.run_id }}
+          path: approved-artifact/
+          retention-days: 3
+      - name: Publish approved video and verify public processing
+        env:
+          PUBLICATION_REQUEST: publications/requests/padding-ko-v1.json
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_youtube_generic.py
+      - name: Add website comment and thumbnail and verify saved text
+        env:
+          PUBLICATION_REQUEST: publications/requests/padding-ko-v1.json
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/padding_after_publish.py
