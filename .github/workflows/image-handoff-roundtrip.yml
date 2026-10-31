@@ -32,7 +32,7 @@ jobs:
           digest=hashlib.sha256(img).hexdigest()
           key=uuid.uuid4().hex
           url=base+'/assets/'+key
-          headers={'Authorization':'Bearer '+token,'Content-Type':'image/png'}
+          headers={'Authorization':'Bearer '+token,'Content-Type':'image/png','User-Agent':'SmartChoice365-Video-Handoff/1.0 (+GitHub-Actions)'}
           def request(method,data=None):
               req=urllib.request.Request(url,data=data,headers=headers,method=method)
               try:
