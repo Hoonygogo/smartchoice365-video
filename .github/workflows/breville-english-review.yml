@@ -1,4 +1,4 @@
-name: Breville English: verified images -> Kokoro mobile review
+name: 'Breville English - verified images to Kokoro mobile review'
 on:
   workflow_dispatch:
   push:
