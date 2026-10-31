@@ -1,0 +1,44 @@
+name: 'Kokoro af_heart voice health check'
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'config/approved_voices.json'
+      - 'scripts/approved_voice.py'
+      - '.github/workflows/kokoro-voice-health.yml'
+permissions:
+  contents: read
+jobs:
+  smoke-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install locked production English TTS
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'kokoro==0.9.4' numpy soundfile torch
+      - name: Render English voice and decode the real WAV to verify sound
+        run: |
+          mkdir -p voice-test
+          python - <<'PY'
+          import json
+          from scripts.approved_voice import approved_voice,kokoro_english_pipeline,render_english_clause
+          config=approved_voice('english')
+          assert config['voice']=='af_heart' and config['speed']==0.96
+          receipt=render_english_clause(kokoro_english_pipeline(),
+            'Hello and welcome to Smart Choice 365. This is a voice quality test.',
+            'voice-test/af_heart_smoke.wav')
+          print(json.dumps(receipt,indent=2))
+          open('voice-test/receipt.json','w').write(json.dumps(receipt,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kokoro-af-heart-verified-voice-test
+          path: voice-test/
+          retention-days: 7
+          if-no-files-found: error
