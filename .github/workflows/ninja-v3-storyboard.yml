@@ -1,0 +1,40 @@
+name: Ninja English v3 image-first storyboard
+on:
+  push:
+    paths:
+      - 'ninja-english/prepare_intro_art.py'
+      - '.github/workflows/ninja-v3-storyboard.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install image renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-dejavu-core
+          python -m pip install Pillow
+      - name: Render branded introduction, visual 1080p settings help, subscribe artwork
+        run: python ninja-english/prepare_intro_art.py
+      - name: Verify each generated graphic and storyboard
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image
+          root=Path('ninja-english/storyboard')
+          m=json.loads((root/'manifest.json').read_text())
+          assert len(m['assets'])==3
+          assert m['status']=='INTRO_IMAGES_READY_PRODUCT_STORYBOARD_PENDING'
+          for a in m['assets']:
+              with Image.open(root/a['file']) as img:assert img.size==(1920,1080)
+          print('INTRO COMPLETE. PRODUCT IMAGES/VIDEO NOT COMPLETE.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ninja-en-v3-branded-intro-art
+          path: ninja-english/storyboard/
+          retention-days: 3
