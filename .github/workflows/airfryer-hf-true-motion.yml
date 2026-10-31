@@ -1,6 +1,11 @@
 name: Air fryer TRUE mascot animation - Cloudflare to Hugging Face Wan 2.2
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/airfryer_hf_true_motion.py
+      - .github/workflows/airfryer-hf-true-motion.yml
 permissions:
   contents: read
 jobs:
