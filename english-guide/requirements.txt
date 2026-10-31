@@ -1,0 +1,10 @@
+# Free CPU synthesis; selected voice is enforced by config/approved_voices.json.
+kokoro==0.9.4
+misaki[en]==0.9.4
+numpy==1.26.4
+soundfile==0.13.1
+Pillow==11.3.0
+socksio==1.0.0
+torch==2.15.0
+transformers==5.22.1
+huggingface-hub==2.4.0
