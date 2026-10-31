@@ -1,0 +1,75 @@
+name: Publish combined Korean and Ninja English mobile previews
+on:
+  push:
+    paths:
+      - '.github/workflows/combined-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+  pages: write
+  id-token: write
+concurrency:
+  group: combined-mobile-preview
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download already built and approved Korean v8 preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p site
+          gh run download 41093955784 --repo ${{ github.repository }} --name sarah-korean-draft-16 --dir site
+          test -s site/index.html
+          test -s site/draft.mp4
+      - name: Download voiced Ninja English review
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p site/ninja-en
+          gh run download 41098996092 --repo ${{ github.repository }} --name ninja-af141-af400-english-voiced-preview --dir site/ninja-en
+          test -s site/ninja-en/ninja_af141_af400_en_review.mp4
+          test -s site/ninja-en/manifest.json
+          python - <<'PY'
+          import json,os
+          m=json.load(open('site/ninja-en/manifest.json'))
+          assert m['status']=='AWAITING_USER_APPROVAL'
+          assert m['voice']=='kokoro af_heart 0.96'
+          assert len(m['parts'])>=10
+          PY
+      - name: Create mobile Safari / Chrome video preview
+        run: |
+          cat > site/ninja-en/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+          <title>Ninja AF141 vs AF400 | Smart Choice 365 Review Preview</title>
+          <style>
+          :root{color-scheme:light}*{box-sizing:border-box}
+          body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;margin:0;background:#f5f3ed;color:#142340}
+          main{max-width:940px;margin:auto;padding:18px}
+          h1{font-size:clamp(26px,5vw,39px);line-height:1.2;margin:18px 0 8px}
+          p{line-height:1.65}video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#101d36;border-radius:12px}
+          a{color:#164a78;overflow-wrap:anywhere} .pill{display:inline-block;border-radius:50px;background:#e7dfca;padding:6px 14px;font-size:13px;font-weight:700}
+          .btn{display:inline-block;background:#152846;color:white;padding:13px 18px;border-radius:9px;text-decoration:none;font-weight:650;margin:7px 8px 7px 0}
+          .notice{border-left:4px solid #be9c50;padding:10px 14px;background:#fff9e8;border-radius:5px}
+          </style></head><body><main>
+          <span class="pill">ENGLISH · MOBILE REVIEW PREVIEW · NOT PUBLISHED</span>
+          <h1>Ninja AF141 vs AF400: Do You Need Two Drawers?</h1>
+          <p>English female narration: Kokoro af_heart · 1080p · For review before YouTube upload</p>
+          <video controls playsinline preload="metadata" src="./ninja_af141_af400_en_review.mp4"></video>
+          <p><a class="btn" href="./ninja_af141_af400_en_review.mp4" download>Download MP4</a><a class="btn" href="https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html?utm_source=video_preview&utm_medium=video&utm_campaign=ninja_af141_af400_english">Related buying guide</a></p>
+          <p class="notice"><strong>Quality review required.</strong> This is an audio-included draft, not a user-approved final video. Product imagery, graphical overlays, captions and picture composition must be checked before publication. No YouTube publication has been authorised.</p>
+          </main></body></html>
+          HTML
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Publish both previews without changing YouTube
+        id: deploy
+        uses: actions/deploy-pages@v4
