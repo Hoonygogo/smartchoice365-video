@@ -59,7 +59,26 @@ scene=[
 ('VERDICT','Our verdict: choose the AF141 for simpler, compact everyday cooking. Choose the AF400 if you regularly cook a main and a hot side at once.','CHOOSE FOR YOUR ACTUAL ROUTINE'),
 ('LINK','For the full Australian comparison, specifications, and buying checklist, open the Ninja AF141 versus AF400 article linked first in the description.','FULL PRODUCT COMPARISON IN DESCRIPTION')]
 urls=['https://ninjakitchen.com.au/products/ninja-air-fryer-4-7l-pro','https://ninjakitchen.com.au/products/ninja-foodi-max-xxxl-dual-zone-air-fryer']
+# Image-first hard gate: do not render a video if a required licensed photo is missing.
+# Remote manufacturer images must NOT be assumed to have editorial reuse permission.
+# Provide a verified local visual pack and an explicit rights/scene manifest first.
+visual_pack=ROOT/'ninja-english'/'assets'/'approved_visual_manifest.json'
+if not visual_pack.exists():
+ raise RuntimeError('IMAGE_FIRST_BLOCK: approved visual storyboard and rights manifest missing. Do not render silent/blank product cards.')
+pack=json.loads(visual_pack.read_text(encoding='utf-8'))
+required=pack.get('assets',[])
+if len(required)<len(scene):
+ raise RuntimeError('IMAGE_FIRST_BLOCK: each narration scene needs a verified visual asset')
+for item in required:
+ p=(ROOT/'ninja-english'/'assets'/item.get('file','')).resolve()
+ root=(ROOT/'ninja-english'/'assets').resolve()
+ if not p.is_relative_to(root) or not p.is_file() or item.get('usage_approved') is not True:
+  raise RuntimeError('IMAGE_FIRST_BLOCK: missing or unapproved scene image: '+repr(item))
+ with Image.open(p) as test:
+  test.verify()
 imgs=[photo(u) for u in urls]
+if any(im is None for im in imgs):
+ raise RuntimeError('IMAGE_FIRST_BLOCK: real Ninja product images missing; no placeholders permitted')
 logo=Image.open(ROOT/'assets'/'smartchoice365-brand-logo-v1.png').convert('RGBA')
 pipeline=KPipeline(lang_code='a')
 segments=[];meta=[]
