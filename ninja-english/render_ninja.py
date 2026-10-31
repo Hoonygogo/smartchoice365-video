@@ -140,7 +140,7 @@ for i,(kind,speech,headline) in enumerate(scene):
   txt(d,'AUSTRALIAN BUYING GUIDE',(1450,72),25,BLUE,True,maxwidth=400)
   txt(d,headline,(95,235),68,GOLD,True,maxwidth=1740)
   if kind in ('PRODUCTS','TRAP','TWO-ZONE','SMALL-HOUSEHOLD','FAMILY','QUESTION','VERDICT'):
-   box(d,(100,340,930,830));box(d,(990,340,1820,830))
+   # No unrelated oversized panels behind the actual visual: focus boxes align to illustration.
    picture=Image.open(ROOT/'ninja-english'/'assets'/required[i]['file']).convert('RGBA')
    paste_contain(im,picture,(140,370,1780,775))
    d=ImageDraw.Draw(im)
