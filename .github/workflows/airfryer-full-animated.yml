@@ -1,0 +1,37 @@
+name: Full air fryer video - real HF animated mascot + verified Kokoro voice
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/airfryer_combine_true_motion.py
+      - .github/workflows/airfryer-full-animated.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  full-animated:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Download successful Kokoro original and actual Hugging Face animation
+        run: |
+          mkdir -p input/kokoro input/motion
+          gh run download 41210357184 --repo "$GITHUB_REPOSITORY" -n SmartChoice365-AirFryer-Kokoro-English-MP4 -D input/kokoro
+          gh run download 41210893329 --repo "$GITHUB_REPOSITORY" -n airfryer-huggingface-true-motion-test -D input/motion
+          test -s input/kokoro/SmartChoice365_AirFryer_Kokoro_English.mp4
+          test -s input/motion/airfryer_true_motion.mp4
+      - name: Render full video with moving AI mascot throughout
+        run: python scripts/airfryer_combine_true_motion.py
+      - name: Publish MP4 artifact for user review only
+        uses: actions/upload-artifact@v4
+        with:
+          name: SmartChoice365-Full-Animated-AirFryer-Kokoro-English
+          path: out/SmartChoice365_AirFryer_Full_Animated_Kokoro.mp4
+          retention-days: 3
+          if-no-files-found: error
