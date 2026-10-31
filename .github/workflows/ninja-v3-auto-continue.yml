@@ -1,92 +1,26 @@
-name: Ninja v3 automatic next stages — verified imagery to preview
+name: Legacy storyboard compatibility - common English guide review
 on:
   workflow_dispatch:
+    inputs:
+      request_file:
+        description: 'Reviewed guide JSON for the common English renderer'
+        required: true
+        type: string
+      asset_source_run_id:
+        description: 'Run containing reviewed individual scene source artifact'
+        required: true
+        type: string
+      asset_artifact_name:
+        description: 'Reviewed scene artifact name'
+        required: true
+        type: string
 permissions:
   contents: read
   actions: read
-  pages: write
-  id-token: write
-concurrency:
-  group: ninja-v3-continuation
-  cancel-in-progress: false
 jobs:
-  continue:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 45
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Recover completed v3 introduction images
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_run" ]; then
-            RUN="${{ github.event.workflow_run.id }}"
-          else
-            RUN="41150650750"
-          fi
-          mkdir -p ninja-english/storyboard
-          gh run download "$RUN" --repo "${{ github.repository }}" --name ninja-en-v3-branded-intro-art --dir ninja-english/storyboard
-          test -s ninja-english/storyboard/intro_brand.png
-          test -s ninja-english/storyboard/intro_quality.png
-          test -s ninja-english/storyboard/intro_subscribe.png
-      - name: Install Pillow and automatically generate required complete scene imagery
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq fonts-dejavu-core
-          python -m pip install Pillow
-          python ninja-english/create_scene_art.py
-      - name: Verify entire image-first storyboard before video rendering
-        run: |
-          python - <<'PY'
-          import json, pathlib, sys
-          root=pathlib.Path('ninja-english/assets')
-          manifest=root/'approved_visual_manifest.json'
-          if not manifest.exists():
-              print('BLOCKED: 12 scene-level approved product visuals and usage records absent; cannot mislabel an old draft as v3.')
-              sys.exit(2)
-          m=json.loads(manifest.read_text())
-          assert len(m.get('assets',[]))>=12, '12 product/comparison scenes required'
-          assert m.get('type') != 'schematic illustrations', 'QUALITY BLOCK: text-only schematic frames are forbidden; provide picture-led approved storyboard before rendering'
-          assert sum(bool(a.get('picture_led')) and a.get('visual_category') in ('real_product','accurate_product_illustration','lifestyle','cooking') for a in m['assets']) >= 6, 'QUALITY BLOCK: at least six genuine picture-led scenes required; do not use text cards as substitutes'
-          for a in m['assets']:
-              p=(root/a['file']).resolve()
-              assert p.is_relative_to(root.resolve()) and p.is_file() and a.get('usage_approved') is True
-          print('All product/comparison visuals passed preflight')
-          PY
-      - name: Check English renderer syntax before expensive dependencies
-        run: python -m py_compile ninja-english/render_ninja.py
-      - name: Install voice and video renderer
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
-          python -m pip install Pillow numpy soundfile 'kokoro>=0.9.4' torch
-      - name: Render narration-synchronised English video
-        run: python ninja-english/render_ninja.py
-      - name: Verify audio and video
-        run: |
-          ffprobe -v error -show_entries stream=codec_type -of csv=p=0 ninja-english/out/ninja_af141_af400_en_review.mp4 | sort -u > /tmp/streams
-          grep -qx audio /tmp/streams
-          grep -qx video /tmp/streams
-      - name: Assemble and deploy mobile streaming preview only
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p site/ninja-en-v3
-          # Keep existing Korean preview in this same Pages deployment.
-          gh run download 41093955784 --repo "${{ github.repository }}" --name sarah-korean-draft-16 --dir site
-          test -s site/draft.mp4
-          cp ninja-english/out/ninja_af141_af400_en_review.mp4 site/ninja-en-v3/draft.mp4
-          cat > site/ninja-en-v3/index.html <<'HTML'
-          <!doctype html><html lang="en-AU"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Smart Choice 365 | Ninja v3 approval preview</title>
-          <style>body{margin:0;padding:20px;background:#f8f4ed;color:#142642;font:16px system-ui}main{max-width:960px;margin:auto}video{width:100%;border-radius:12px;background:#142642}a{color:#205180}</style>
-          <main><h1>Ninja AF141 vs AF400 — v3</h1><p>Mobile preview · Not published to YouTube · Approval required</p><video controls playsinline preload="metadata" src="draft.mp4"></video><p><a href="https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html">Read the related buying guide</a></p></main></html>
-          HTML
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-      - id: deploy
-        uses: actions/deploy-pages@v4
+  preview:
+    uses: ./.github/workflows/english-guide-review.yml
+    with:
+      request_file: ${{ inputs.request_file }}
+      asset_source_run_id: ${{ inputs.asset_source_run_id }}
+      asset_artifact_name: ${{ inputs.asset_artifact_name }}
