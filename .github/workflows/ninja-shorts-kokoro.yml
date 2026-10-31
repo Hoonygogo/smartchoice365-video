@@ -1,0 +1,49 @@
+name: Ninja Shorts Kokoro fast-cut preview
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover AI animation clips from two successful Wan runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out/ninja-ai-sources
+          gh run download 41196035944 --repo "${{ github.repository }}" --name wan22-ninja-ai-generated-test --dir /tmp/ninja-v1
+          cp /tmp/ninja-v1/ninja_generated.mp4 out/ninja-ai-sources/v1.mp4
+          RUNS=$(gh api "repos/${{ github.repository }}/actions/workflows/wan22-free-ninja.yml/runs?per_page=15" --jq '.workflow_runs[] | select(.conclusion=="success" and .id!=41196035944) | .id')
+          for RUN in $RUNS; do
+            if gh run download "$RUN" --repo "${{ github.repository }}" --name wan22-ninja-ai-generated-test --dir /tmp/ninja-v2; then
+              cp /tmp/ninja-v2/ninja_generated.mp4 out/ninja-ai-sources/v2.mp4
+              break
+            fi
+          done
+          test -s out/ninja-ai-sources/v1.mp4
+          test -s out/ninja-ai-sources/v2.mp4
+      - name: Install Kokoro voice and FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg espeak-ng fonts-dejavu-core
+          python -m pip install 'kokoro>=0.9.4' numpy soundfile Pillow
+      - name: Preflight Python
+        run: python -m py_compile experiments/render_ninja_shorts_kokoro.py
+      - name: Render varied Shorts with Kokoro af_heart
+        run: python experiments/render_ninja_shorts_kokoro.py
+      - name: Verify both audio and video tracks
+        run: |
+          ffprobe -v error -show_entries stream=codec_type -of csv=p=0 out/ninja-shorts-kokoro/ninja_shorts_kokoro_v2.mp4 | sort -u > /tmp/tracks
+          grep -qx audio /tmp/tracks
+          grep -qx video /tmp/tracks
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ninja-shorts-kokoro-v2-review
+          path: |
+            out/ninja-shorts-kokoro/ninja_shorts_kokoro_v2.mp4
+            out/ninja-shorts-kokoro/manifest.json
+          retention-days: 3
