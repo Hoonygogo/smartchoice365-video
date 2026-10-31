@@ -1,0 +1,69 @@
+name: Publish verified Smart Choice 365 video (Korean or English)
+on:
+  workflow_dispatch:
+    inputs:
+      request_file:
+        description: 'Approved request path under publications/requests/'
+        required: true
+        type: string
+      source_run_id:
+        description: 'GitHub Actions run containing the exact approved final artifact'
+        required: true
+        type: string
+      artifact_name:
+        description: 'Artifact name containing draft.mp4 and manifest.json'
+        required: true
+        type: string
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify request and source before accessing YouTube
+        env:
+          REQUEST_FILE: ${{ inputs.request_file }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+          ARTIFACT_NAME: ${{ inputs.artifact_name }}
+        run: |
+          python - <<'PY'
+          import json,os,pathlib,re
+          p=pathlib.PurePosixPath(os.environ['REQUEST_FILE'])
+          assert p.parts[:2]==('publications','requests') and p.suffix=='.json' and '..' not in p.parts
+          req=json.loads(pathlib.Path(str(p)).read_text())
+          assert req['approval']=='publish' and req['privacy']=='public'
+          assert req['source_run_id']==int(os.environ['SOURCE_RUN_ID'])
+          assert req['channel_id']=='UC4DzAW-Hbd45bIECwGV7-uA'
+          assert re.fullmatch(r'[a-z0-9-]+',req['id'])
+          assert re.fullmatch(r'[A-Za-z0-9_.-]+',os.environ['ARTIFACT_NAME'])
+          assert req['quality_verified'] is True
+          PY
+      - name: Download exact approved media artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download "${{ inputs.source_run_id }}" --repo "${{ github.repository }}" --name "${{ inputs.artifact_name }}" --dir approved-artifact
+          test -s approved-artifact/draft.mp4
+          test -s approved-artifact/manifest.json
+      - name: Verify final image-rich video is actually Full HD and voiced
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 approved-artifact/draft.mp4 | grep -qx '1920,1080'
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_type -of csv=p=0 approved-artifact/draft.mp4 | grep -qx audio
+      - name: Upload, check YouTube ownership and record verified publication
+        env:
+          PUBLICATION_REQUEST: ${{ inputs.request_file }}
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_youtube_generic.py
