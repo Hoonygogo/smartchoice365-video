@@ -111,3 +111,10 @@ The PRIMARY editorial source for English/Australian videos is Smart Choice 365's
 5. Where a corresponding LIVE Blogger post exists, it may additionally link to the product-specific website buying guide and/or video as appropriate, but never substitute a nonlive Blogger draft for the website deep-link; verify both article URLs before claiming cross-linking.
 6. Continue the mandatory image-first storyboard → licensed, complete and verified scene visuals → Kokoro af_heart speech → 1080p narration-synchronised rendering → mobile-streaming approval preview → user approval → optional public upload flow.
 7. If no eligible existing auto-published English article exists, flag that rather than silently switching to a random topic. No new public blog posts, affiliate insertions, YouTube uploads or external modifications are authorised solely by this topic-selection policy.
+
+## English branded opening visual parity — 2026-10-31
+- The English general video MUST use the same APPROVED original brand logo asset as Korean HEATTECH v8; no new substitute logos, inaccurate generated branding or text-only cards.
+- Start with a professionally illustrated, narration-synchronised greeting and title. Then show a LARGE, attractive, clear visual tutorial for playback quality: gear/settings icon → Quality → 1080p, showing Advanced only where device UI requires it. Only claim 1080p when offered. Use original instructional illustrations, not illegible little screenshots.
+- Follow with a short, tasteful subscribe request before presenting a useful buying verdict and comparison. Keep introductory sequence concise, with well-designed visuals like Korean v8; no boring text-only frames.
+- Check fully composed visual frames for readable icons, captions, model photos and approved brand mark; English narration uses existing Kokoro af_heart 0.96.
+- Treat these as hard QA criteria before mobile web-preview deployment, alongside the mandatory complete image-first storyboard. Do not claim an older build or a workflow configuration change has added visuals to an already-rendered MP4.
