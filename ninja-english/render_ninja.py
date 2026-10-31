@@ -79,43 +79,81 @@ for item in required:
 imgs=[] # All storyboard illustrations are originals and labelled as diagrams
 logo=Image.open(ROOT/'assets'/'smartchoice365-brand-logo-v1.png').convert('RGBA')
 pipeline=KPipeline(lang_code='a')
-segments=[];meta=[]
+# Korean v8 parity: each spoken clause selects an editorially meaningful visual target.
+# Never cycle boxes with a timer or animate unrelated elements.
+def clauses_for(kind,speech):
+ parts=re.split(r'(?<=[.!?])\\s+',speech.strip())
+ return [p for p in parts if p.strip()]
+def targets_for(kind,spoken):
+ q=spoken.lower()
+ if kind in ('HELLO','QUALITY','LINK'):return []
+ if kind=='COST':return ['test']
+ if kind=='PRICE':return ['price']
+ if kind=='TRAP':return ['dual']
+ if kind=='TWO-ZONE':return ['dual']
+ if kind=='SMALL-HOUSEHOLD':return ['single']
+ if kind=='FAMILY':return ['dual']
+ if kind=='VERDICT':
+  if 'af141' in q and 'af400' not in q:return ['single']
+  if 'af400' in q and 'af141' not in q:return ['dual']
+  return ['single','dual']
+ if kind=='PRODUCTS':
+  if 'af141' in q or '4.7' in q:return ['single']
+  if 'af400' in q or '9.5' in q:return ['dual']
+ if 'two' in q or 'dual' in q:return ['dual']
+ return ['single','dual']
+def focus_boxes(d,targets):
+ coords={'single':(100,340,930,830),'dual':(990,340,1820,830),
+         'test':(110,365,1795,790),'price':(110,360,1800,810)}
+ for k in targets:
+  x0,y0,x1,y1=coords[k]
+  d.rounded_rectangle((x0+4,y0+4,x1-4,y1-4),radius=32,outline=GOLD,width=14)
+  d.rounded_rectangle((x0+18,y0+18,x1-18,y1-18),radius=25,outline='#FFF5D2',width=3)
+segments=[];meta=[];cue_index=0
 for i,(kind,speech,headline) in enumerate(scene):
- pieces=[audio for _,_,audio in pipeline(speech,voice='af_heart',speed=0.96)]
- if not pieces:raise RuntimeError('Kokoro produced no speech for '+str(i))
- a=np.concatenate(pieces);a=np.concatenate([a,np.zeros(int(24000*.25),dtype=np.float32)])
- wav=OUT/f'voice_{i:02}.wav';sf.write(wav,a,24000)
- dur=len(a)/24000
- im=Image.new('RGB',(W,H),NAVY);d=ImageDraw.Draw(im)
- d.rectangle((0,0,W,17),fill=GOLD);d.rectangle((0,1040,W,1080),fill='#081629')
- logo2=logo.copy();logo2.thumbnail((490,145),Image.Resampling.LANCZOS)
- im.paste(logo2,(90,55),logo2)
- d=ImageDraw.Draw(im)
- txt(d,'AUSTRALIAN BUYING GUIDE',(1450,72),25,BLUE,True,maxwidth=400)
- txt(d,headline,(95,235),68,GOLD,True,maxwidth=1740)
- if kind in ('PRODUCTS','TRAP','TWO-ZONE','SMALL-HOUSEHOLD','FAMILY','QUESTION','VERDICT'):
-  box(d,(100,340,930,830));box(d,(990,340,1820,830))
-  picture=Image.open(ROOT/'ninja-english'/'assets'/required[i]['file']).convert('RGBA')
-  paste_contain(im,picture,(140,370,1780,775))
+ for clause in clauses_for(kind,speech):
+  pieces=[audio for _,_,audio in pipeline(clause,voice='af_heart',speed=0.96)]
+  if not pieces:raise RuntimeError('Kokoro produced no speech for '+str(i))
+  a=np.concatenate(pieces);a=np.concatenate([a,np.zeros(int(24000*.15),dtype=np.float32)])
+  wav=OUT/f'voice_{cue_index:03}.wav';sf.write(wav,a,24000)
+  dur=len(a)/24000
+  im=Image.new('RGB',(W,H),NAVY);d=ImageDraw.Draw(im)
+  d.rectangle((0,0,W,17),fill=GOLD);d.rectangle((0,1040,W,1080),fill='#081629')
+  logo2=logo.copy();logo2.thumbnail((490,145),Image.Resampling.LANCZOS)
+  im.paste(logo2,(90,55),logo2)
   d=ImageDraw.Draw(im)
-  txt(d,'ILLUSTRATED COMPARISON — NOT PRODUCT PHOTOGRAPHY',(230,835),27,BLUE,False,maxwidth=1450)
- elif kind=='COST':
-  for j,(label,value) in enumerate([('0 OR 1','AF141 MAY BE ENOUGH'),('2 OR 3','COMPARE THE EXTRA COST'),('4 OR 5','AF400 MAY PAY OFF IN CONVENIENCE')]):
-   x=110+j*575;box(d,(x,365,x+530,790))
-   txt(d,label,(x+60,455),80,GOLD,True,maxwidth=400);wrap(d,value,x+45,600,35)
- else:
-  picture=Image.open(ROOT/'ninja-english'/'assets'/required[i]['file']).convert('RGBA')
-  paste_contain(im,picture,(125,370,1795,810))
- txt(d,'SMART CHOICE 365  •  INDEPENDENT BUYING ANALYSIS',(90,1050),19,'#A4B7D1')
- txt(d,f'{i+1:02} / {len(scene):02}',(1740,1050),18,GOLD,True)
- png=OUT/f'scene_{i:02}.png';im.save(png)
- mp4=OUT/f'part_{i:02}.mp4'
- subprocess.run(['ffmpeg','-v','error','-y','-loop','1','-framerate','24','-i',str(png),'-i',str(wav),'-t',str(dur),'-c:v','libx264','-preset','veryfast','-crf','23','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-movflags','+faststart',str(mp4)],check=True)
- segments.append(mp4);meta.append({'scene':i,'kind':kind,'duration':dur,'narration':speech})
+  txt(d,'AUSTRALIAN BUYING GUIDE',(1450,72),25,BLUE,True,maxwidth=400)
+  txt(d,headline,(95,235),68,GOLD,True,maxwidth=1740)
+  if kind in ('PRODUCTS','TRAP','TWO-ZONE','SMALL-HOUSEHOLD','FAMILY','QUESTION','VERDICT'):
+   box(d,(100,340,930,830));box(d,(990,340,1820,830))
+   picture=Image.open(ROOT/'ninja-english'/'assets'/required[i]['file']).convert('RGBA')
+   paste_contain(im,picture,(140,370,1780,775))
+   d=ImageDraw.Draw(im)
+   txt(d,'ILLUSTRATED COMPARISON — NOT PRODUCT PHOTOGRAPHY',(230,835),27,BLUE,False,maxwidth=1450)
+  elif kind=='COST':
+   for j,(label,value) in enumerate([('0 OR 1','AF141 MAY BE ENOUGH'),('2 OR 3','COMPARE THE EXTRA COST'),('4 OR 5','AF400 MAY PAY OFF IN CONVENIENCE')]):
+    x=110+j*575;box(d,(x,365,x+530,790))
+    txt(d,label,(x+60,455),80,GOLD,True,maxwidth=400);wrap(d,value,x+45,600,35)
+  else:
+   picture=Image.open(ROOT/'ninja-english'/'assets'/required[i]['file']).convert('RGBA')
+   paste_contain(im,picture,(125,370,1795,810))
+  targets=targets_for(kind,clause)
+  focus_boxes(ImageDraw.Draw(im),targets)
+  # Clause-accurate captions placed below the active illustration.
+  dd=ImageDraw.Draw(im)
+  dd.rounded_rectangle((120,903,1800,1023),radius=24,fill='#081629')
+  wrap(dd,clause,158,926,36,CREAM,maxw=1580,gap=8)
+  txt(dd,'SMART CHOICE 365  •  INDEPENDENT BUYING ANALYSIS',(90,1050),19,'#A4B7D1')
+  txt(dd,f'{i+1:02} / {len(scene):02}',(1740,1050),18,GOLD,True)
+  png=OUT/f'cue_{cue_index:03}.png';im.save(png)
+  mp4=OUT/f'part_{cue_index:03}.mp4'
+  subprocess.run(['ffmpeg','-v','error','-y','-loop','1','-framerate','24','-i',str(png),'-i',str(wav),'-t',str(dur),'-c:v','libx264','-preset','veryfast','-crf','23','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-movflags','+faststart',str(mp4)],check=True)
+  segments.append(mp4);meta.append({'scene':i,'kind':kind,'cue':cue_index,'duration':dur,'narration':clause,'targets':targets})
+  cue_index+=1
 idx=OUT/'concat.txt';idx.write_text(''.join("file '"+f.name+"'\n" for f in segments))
 out=OUT/'ninja_af141_af400_en_review.mp4'
 subprocess.run(['ffmpeg','-v','error','-y','-f','concat','-safe','0','-i',str(idx),'-c','copy','-movflags','+faststart',str(out)],check=True)
 subprocess.run(['ffprobe','-v','error','-show_entries','stream=codec_type,codec_name','-of','json',str(out)],check=True)
-(OUT/'description.txt').write_text('👉 Full Ninja AF141 vs AF400 buying guide: '+GUIDE+'\n\nAustralian specifications, use cases, and independent buying analysis. Manufacturer information, not hands-on testing. Observed prices may change.\n\nProduct images: Ninja Kitchen Australia (manufacturer imagery, editorial comparison). Affiliate links may appear in the linked guide.\n')
-(OUT/'manifest.json').write_text(json.dumps({'status':'AWAITING_USER_APPROVAL','voice':'kokoro af_heart 0.96','images_verified':len(required),'image_type':'original diagram, not manufacturer photograph','parts':meta,'guide':GUIDE},indent=2))
+(OUT/'description.txt').write_text('👉 Full Ninja AF141 vs AF400 buying guide: '+GUIDE+'\n\nAustralian specifications, use cases, and independent buying analysis. Manufacturer information, not hands-on testing. Observed prices may change.\n\nVisuals are original illustrated comparisons, not manufacturer's literal product photos. Affiliate links may appear in the linked guide.\n')
+(OUT/'manifest.json').write_text(json.dumps({'status':'AWAITING_USER_APPROVAL','voice':'kokoro af_heart 0.96','images_verified':len(required),'image_type':'original diagram, not manufacturer photograph','highlight_timing':'spoken-clause-synced editorial targets; no cyclic motion','caption_timing':'per narrated clause','parts':meta,'guide':GUIDE},indent=2))
 print('COMPLETED',out)
