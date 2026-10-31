@@ -1,11 +1,6 @@
 name: 'Breville English - six photos, six graphics, Kokoro focus sync'
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'breville-english/render_review.py'
-      - '.github/workflows/breville-english-review.yml'
 permissions:
   contents: read
 jobs:
