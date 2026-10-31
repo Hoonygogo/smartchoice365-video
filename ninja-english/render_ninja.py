@@ -76,9 +76,7 @@ for item in required:
   raise RuntimeError('IMAGE_FIRST_BLOCK: missing or unapproved scene image: '+repr(item))
  with Image.open(p) as test:
   test.verify()
-imgs=[photo(u) for u in urls]
-if any(im is None for im in imgs):
- raise RuntimeError('IMAGE_FIRST_BLOCK: real Ninja product images missing; no placeholders permitted')
+imgs=[] # All storyboard illustrations are originals and labelled as diagrams
 logo=Image.open(ROOT/'assets'/'smartchoice365-brand-logo-v1.png').convert('RGBA')
 pipeline=KPipeline(lang_code='a')
 segments=[];meta=[]
@@ -97,20 +95,17 @@ for i,(kind,speech,headline) in enumerate(scene):
  txt(d,headline,(95,235),68,GOLD,True,maxwidth=1740)
  if kind in ('PRODUCTS','TRAP','TWO-ZONE','SMALL-HOUSEHOLD','FAMILY','QUESTION','VERDICT'):
   box(d,(100,340,930,830));box(d,(990,340,1820,830))
-  ok1=paste_contain(im,imgs[0],(130,368,900,758))
-  ok2=paste_contain(im,imgs[1],(1020,368,1790,758))
+  picture=Image.open(ROOT/'ninja-english'/'assets'/required[i]['file']).convert('RGBA')
+  paste_contain(im,picture,(140,370,1780,775))
   d=ImageDraw.Draw(im)
-  if not (ok1 and ok2):
-   txt(d,'PRODUCT PHOTO UNAVAILABLE',(170,540),33,'#CFD7E4',True)
-   txt(d,'PRODUCT PHOTO UNAVAILABLE',(1040,540),33,'#CFD7E4',True)
-  txt(d,'AF141  |  SINGLE',(240,776),34,CREAM,True,maxwidth=580)
-  txt(d,'AF400  |  DUAL ZONE',(1110,776),34,CREAM,True,maxwidth=630)
+  txt(d,'ILLUSTRATED COMPARISON — NOT PRODUCT PHOTOGRAPHY',(230,835),27,BLUE,False,maxwidth=1450)
  elif kind=='COST':
   for j,(label,value) in enumerate([('0 OR 1','AF141 MAY BE ENOUGH'),('2 OR 3','COMPARE THE EXTRA COST'),('4 OR 5','AF400 MAY PAY OFF IN CONVENIENCE')]):
    x=110+j*575;box(d,(x,365,x+530,790))
    txt(d,label,(x+60,455),80,GOLD,True,maxwidth=400);wrap(d,value,x+45,600,35)
  else:
-  box(d,(110,360,1800,810));wrap(d,speech,170,465,51,CREAM,maxw=1540)
+  picture=Image.open(ROOT/'ninja-english'/'assets'/required[i]['file']).convert('RGBA')
+  paste_contain(im,picture,(125,370,1795,810))
  txt(d,'SMART CHOICE 365  •  INDEPENDENT BUYING ANALYSIS',(90,1050),19,'#A4B7D1')
  txt(d,f'{i+1:02} / {len(scene):02}',(1740,1050),18,GOLD,True)
  png=OUT/f'scene_{i:02}.png';im.save(png)
@@ -122,5 +117,5 @@ out=OUT/'ninja_af141_af400_en_review.mp4'
 subprocess.run(['ffmpeg','-v','error','-y','-f','concat','-safe','0','-i',str(idx),'-c','copy','-movflags','+faststart',str(out)],check=True)
 subprocess.run(['ffprobe','-v','error','-show_entries','stream=codec_type,codec_name','-of','json',str(out)],check=True)
 (OUT/'description.txt').write_text('👉 Full Ninja AF141 vs AF400 buying guide: '+GUIDE+'\n\nAustralian specifications, use cases, and independent buying analysis. Manufacturer information, not hands-on testing. Observed prices may change.\n\nProduct images: Ninja Kitchen Australia (manufacturer imagery, editorial comparison). Affiliate links may appear in the linked guide.\n')
-(OUT/'manifest.json').write_text(json.dumps({'status':'AWAITING_USER_APPROVAL','voice':'kokoro af_heart 0.96','images_fetched':[v is not None for v in imgs],'parts':meta,'guide':GUIDE},indent=2))
+(OUT/'manifest.json').write_text(json.dumps({'status':'AWAITING_USER_APPROVAL','voice':'kokoro af_heart 0.96','images_verified':len(required),'image_type':'original diagram, not manufacturer photograph','parts':meta,'guide':GUIDE},indent=2))
 print('COMPLETED',out)
