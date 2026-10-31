@@ -43,3 +43,17 @@ python scripts/render.py
 - 제작 시점의 사실·가격·소재 사용권 및 제휴 고지를 확인하며 직접 사용하지 않은 제품에 대한 체험을 꾸미지 않습니다.
 
 로그·공개 파일에 계정 키를 넣지 않습니다. 향후 SNS 자격 증명은 GitHub Secrets에만 저장합니다.
+
+## Current English production path — 2026-11-01
+New English general videos MUST use `english-guide/render_english_guide.py` and `english-guide/guide_video_layout.py`. The Ninja and Breville ordinary preview entry points/workflows now delegate to this common pipeline. Historical one-off owner-approved publishing implementations remain historical; do not use their permissive or old-layout settings for a new video.
+
+- Same approved Korean Heattech/Padding visual standard: 1920×1080, 24fps, H.264/AAC, faststart, navy/cream/gold, exact original logo, illustrated quality guide, short greeting and subscribe invitation.
+- Twelve distinct scenes, at least eight independently generated photograph-style scenes, entire-source contain placement, disclosure outside images, no contact-sheet crops.
+- English voice remains Kokoro `af_heart`, `lang_code=a`, speed `0.96`, 24000Hz; Australian wording does not imply an Australian synthesised accent.
+- All cue layouts checked before speech, real non-silent narration checked before assembly, clause-audio timings determine captions and explicit focus targets. Code blocks missing/invalid images, wrong source hashes, overflow, unknown targets and inaudible voice.
+- Free local/CPU production; no paid API, animation service or replacement system voice.
+- Local example: `python english-guide/render_english_guide.py --request aircon-english/request.json --storyboard-only`, then visually inspect all sources/compositions and retain truthful review metadata; run without `--storyboard-only` to build the MP4.
+- Install `english-guide/requirements.txt` plus ffmpeg/DejaVu fonts. The dependency set was locally exercised with Kokoro speech and the air-conditioning preview.
+- Image generation is performed in ChatGPT. Source-image bytes are NOT committed to Git history. Supply the reviewed scene assets and matching `visual_manifest.json` locally or through a trusted Actions artifact. The common manual review workflow requires that artifact's exact run/name; it does not magically generate/transfer images.
+- Output includes MP4, captions, voice WAV/receipts, cue timings, scene/frame evidence, manifest and a mobile-friendly HTML player. Inspect actual encoded opening, mid-video chart and final frames before presenting completion.
+- All new results remain awaiting user approval and are not automatically posted to YouTube. Upload only the exact approved hash, then verify processing/public status and guide-first description. Never claim a comment is pinned solely because the API created it.
