@@ -1,0 +1,361 @@
+{
+  "id": "aircon-running-costs-en-v1",
+  "title": "Buying an Air Conditioner in Australia: The Real Cost Explained",
+  "language": "en",
+  "guide_url": "https://smartchoice365-web.pages.dev/guides/2026-air-conditioner-energy-label-running-costs-australia.html?utm_source=youtube&utm_medium=video&utm_campaign=aircon_running_costs_en_v1",
+  "asset_dir": "aircon-english/assets",
+  "output_dir": "aircon-english/out",
+  "output_name": "SmartChoice365_AirConditioner_English_v1.mp4",
+  "sources": [
+    "https://www.energyrating.gov.au/consumer-information/understand-zoned-energy-rating-label",
+    "https://www.yourhome.gov.au/energy/heating-and-cooling",
+    "https://www.energy.gov.au/households/energy-rating"
+  ],
+  "scenes": [
+    {
+      "heading": "Air conditioning: compare the real cost",
+      "visual": "brand_intro",
+      "photo": null,
+      "rows": [],
+      "cues": [
+        {
+          "text": "Hi, welcome to Smart Choice three sixty five. Today, we are looking at the real cost of buying an air conditioner in Australia.",
+          "targets": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "heading": "Make the comparison easier to see",
+      "visual": "quality_intro",
+      "photo": null,
+      "rows": [
+        "Settings",
+        "Quality / Advanced",
+        "1080p"
+      ],
+      "cues": [
+        {
+          "text": "If the video looks blurry, choose ten eighty p in your quality settings. Menus can vary by device.",
+          "targets": [
+            "row0",
+            "row1",
+            "row2"
+          ]
+        },
+        {
+          "text": "Subscribe for practical comparisons that help you buy smarter.",
+          "targets": []
+        }
+      ],
+      "note": "Illustrated settings guide; not a clickable control"
+    },
+    {
+      "heading": "The cheapest box is not the full story",
+      "visual": "photo",
+      "photo": 1,
+      "rows": [
+        "Fit the room first",
+        "Compare your climate zone",
+        "Add installation + running costs"
+      ],
+      "cues": [
+        {
+          "text": "Our starting point: compare the right-sized system, your climate zone, and the complete installed cost.",
+          "targets": [
+            "row0",
+            "row1",
+            "row2"
+          ]
+        },
+        {
+          "text": "A lower purchase price does not tell you which option will cost less over time.",
+          "targets": []
+        }
+      ],
+      "note": "Smart Choice 365 editorial approach · No hands-on product testing"
+    },
+    {
+      "heading": "1. Start with your room",
+      "visual": "photo",
+      "photo": 2,
+      "rows": [
+        "Ask for a room assessment",
+        "Consider the building",
+        "Compare suitable capacities"
+      ],
+      "cues": [
+        {
+          "text": "Ask an installer to assess the actual space before choosing a size.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "Windows, sun exposure and the building matter. A quick floor-area rule is only a starting point.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Compare systems suitable for that room, rather than assuming a bigger unit is the better buy.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "note": "YourHome guidance + our buying checklist · Generic illustrative scene"
+    },
+    {
+      "heading": "2. Read the right numbers",
+      "visual": "photo",
+      "photo": 3,
+      "rows": [
+        "Cooling kW: output capacity",
+        "Annual cooling kWh: energy",
+        "Use the same climate zone"
+      ],
+      "cues": [
+        {
+          "text": "Cooling capacity in kilowatts describes output. It is not a promise of constant electricity consumption.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "For a running-cost comparison, look at annual cooling energy in kilowatt hours.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Use the same hot, average or cold climate zone, and keep cooling separate from heating.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "note": "Australian Energy Rating guidance · No fabricated product label shown"
+    },
+    {
+      "heading": "3. Turn annual energy into dollars",
+      "visual": "energy_chart",
+      "photo": null,
+      "rows": [
+        "Option A",
+        "Option B",
+        "Difference"
+      ],
+      "cues": [
+        {
+          "text": "Here is a teaching example, not two real products or a current electricity offer.",
+          "targets": []
+        },
+        {
+          "text": "At an assumed thirty cents per kilowatt hour, nine hundred kilowatt hours costs two hundred and seventy dollars a year.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "Six hundred kilowatt hours costs one hundred and eighty dollars.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "The difference is ninety dollars a year, under those assumptions.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "note": "Hypothetical annual cooling figures · A$0.30/kWh assumed · Supply charges excluded"
+    },
+    {
+      "heading": "4. Is the higher upfront cost worth it?",
+      "visual": "payback_chart",
+      "photo": null,
+      "rows": [
+        "A$0.30/kWh",
+        "A$0.40/kWh",
+        "Simple payback"
+      ],
+      "cues": [
+        {
+          "text": "Suppose the more efficient option costs four hundred and fifty dollars more, fully installed.",
+          "targets": []
+        },
+        {
+          "text": "At ninety dollars annual savings, simple payback is five years.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "At forty cents per kilowatt hour, the same energy difference saves one hundred and twenty dollars a year. Payback becomes three point seven five years.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "These are illustrative calculations, not guaranteed savings. They exclude finance, repairs and maintenance differences.",
+          "targets": []
+        }
+      ],
+      "note": "Invented comparison · Unchanged usage and rates assumed · Not actual product prices"
+    },
+    {
+      "heading": "5. Portable does not mean anywhere",
+      "visual": "photo",
+      "photo": 4,
+      "rows": [
+        "Plan the exhaust route",
+        "Check the window kit",
+        "Consider noise and space"
+      ],
+      "cues": [
+        {
+          "text": "A portable air conditioner can help when a fixed installation is impractical.",
+          "targets": []
+        },
+        {
+          "text": "But check where the exhaust hose goes and whether the window kit fits before buying.",
+          "targets": [
+            "row0",
+            "row1"
+          ]
+        },
+        {
+          "text": "Check the exact model's noise and room guidance as well as its purchase price.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "note": "Illustrative installation only · Follow the exact appliance instructions"
+    },
+    {
+      "heading": "Think beyond the lower sticker price",
+      "visual": "photo",
+      "photo": 5,
+      "rows": [
+        "Portable AC ≠ evaporative cooler",
+        "Compare energy use",
+        "Temporary or frequent cooling?"
+      ],
+      "cues": [
+        {
+          "text": "A refrigerated portable air conditioner and an evaporative cooler are different purchases.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "YourHome notes that portable air conditioners are less efficient than fixed split systems.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "For frequent long-term cooling, our advice is to compare a complete fixed-system quote before choosing on price alone.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "note": "YourHome guidance + Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "6. Compare complete installed quotes",
+      "visual": "photo",
+      "photo": 6,
+      "rows": [
+        "Exact indoor + outdoor models",
+        "Pipework, electrical, drainage",
+        "Warranty, service and exclusions"
+      ],
+      "cues": [
+        {
+          "text": "Ask for the exact indoor and outdoor model identifiers on the quote.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "Check what pipework, electrical work, drainage and old-unit removal are included.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Then check written warranty and service terms, access requirements and exclusions. Supply-only and fully installed prices are different comparisons.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "note": "Our purchase checklist · Qualified installation and model-specific instructions"
+    },
+    {
+      "heading": "Use your bill, not a headline tariff",
+      "visual": "photo",
+      "photo": 7,
+      "rows": [
+        "Your actual electricity rate",
+        "When you normally use cooling",
+        "Label figures are estimates"
+      ],
+      "cues": [
+        {
+          "text": "Use the usage rate on your own electricity bill. With time-of-use pricing, consider when cooling normally runs.",
+          "targets": [
+            "row0",
+            "row1"
+          ]
+        },
+        {
+          "text": "Label figures use standardised assumptions. Your weather, settings and home can change the actual bill.",
+          "targets": [
+            "row2"
+          ]
+        },
+        {
+          "text": "Keep fixed daily supply charges separate from the extra electricity used by the appliance.",
+          "targets": []
+        }
+      ],
+      "note": "Energy.gov.au + Energy Rating methodology · Blank papers are illustrative"
+    },
+    {
+      "heading": "Our verdict: buy for the whole cost",
+      "visual": "photo",
+      "photo": 8,
+      "rows": [
+        "Right room fit",
+        "Same-zone energy comparison",
+        "Full guide in the description"
+      ],
+      "cues": [
+        {
+          "text": "Our verdict: get the room fit right, compare the same climate-zone energy figures, then add installation and running costs.",
+          "targets": [
+            "row0",
+            "row1"
+          ]
+        },
+        {
+          "text": "For the worked examples and full buying checklist, open the article linked first in the description.",
+          "targets": [
+            "row2"
+          ]
+        },
+        {
+          "text": "Thanks for watching Smart Choice three sixty five. Subscribe for more practical buying guides.",
+          "targets": []
+        }
+      ],
+      "note": "smartchoice365-web.pages.dev · Independent buying analysis"
+    }
+  ]
+}
