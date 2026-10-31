@@ -5,7 +5,7 @@ url="https://api.cloudflare.com/client/v4/accounts/"+os.environ["CF_ACCOUNT"]+"/
 prompt=("One original standalone high quality 3D stylized animated film still of a friendly tiny air fryer mascot, "
 "expressive eyes and small waving arms, a bright modern Australian kitchen, soft cinematic lighting, "
 "entire mascot visible, horizontal composition, no words, no brand labels, no collage, no multiple panels.")
-req=urllib.request.Request(url,data=json.dumps({"prompt":prompt,"steps":4,"seed":365}).encode(),headers={
+req=urllib.request.Request(url,data=json.dumps({"prompt":prompt,"steps":4}).encode(),headers={
 "Authorization":"Bearer "+os.environ["CF_TOKEN"],"Content-Type":"application/json",
 "User-Agent":"SmartChoice365-AI-Test/1.0"},method="POST")
 try:
