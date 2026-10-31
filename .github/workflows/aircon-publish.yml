@@ -9,7 +9,7 @@ permissions:
   actions: read
 concurrency:
   group: youtube-publication
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   publish:
     runs-on: ubuntu-24.04
@@ -55,7 +55,7 @@ jobs:
           PY
       - name: Validate encoded video and decoded audible speech
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          if ! command -v ffmpeg >/dev/null 2>&1; then timeout 120 sudo apt-get update -qq && timeout 120 sudo apt-get install -y -qq ffmpeg; fi
           python - <<'PY'
           import array,json,math,subprocess,sys
           p='approved-artifact/draft.mp4'
