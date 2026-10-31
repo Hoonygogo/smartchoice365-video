@@ -12,7 +12,7 @@ on:
       - '.github/workflows/draft.yml'
 
 permissions:
-  contents: read
+  contents: write
   actions: read
 
 concurrency:
@@ -40,6 +40,35 @@ jobs:
         run: python scripts/download_model.py
       - name: Render narration-synchronized highlights
         run: python scripts/render_synced.py
+      - name: Permanently archive approved Korean Sarah voice reference
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          target='voices/reference/korean_sarah_f1_110.wav'
+          repo=os.environ['GITHUB_REPOSITORY']
+          existing=subprocess.run(['gh','api',f'repos/{repo}/contents/{target}'],capture_output=True)
+          if existing.returncode==0:
+              print('Permanent Korean voice reference already exists; preserving it.')
+          else:
+              manifest=json.loads(Path('output/manifest.json').read_text())
+              candidates=list(Path('output').glob('*.mp4'))
+              if not candidates: raise RuntimeError('Korean preview MP4 missing; cannot save voice reference')
+              sample=Path('output/korean_sarah_reference.wav')
+              subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-i',str(candidates[0]),
+                              '-vn','-t','6','-ac','1','-ar','24000',str(sample)],check=True)
+              import soundfile as sf,numpy as np,base64
+              audio,sr=sf.read(sample)
+              if len(audio)<sr or float(np.sqrt(np.mean(audio**2)))<0.008:
+                  raise RuntimeError('Sarah reference has no verified audible audio')
+              payload={'message':'Preserve Korean Sarah F1 approved voice reference [skip ci]',
+                       'content':base64.b64encode(sample.read_bytes()).decode()}
+              subprocess.run(['gh','api','--method','PUT',f'repos/{repo}/contents/{target}',
+                              '--input','-'],input=json.dumps(payload).encode(),check=True)
+              print('Permanent Korean Sarah reference saved:',target)
+          PY
       - name: Keep a short-lived downloadable draft
         uses: actions/upload-artifact@v4
         with:
