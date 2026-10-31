@@ -8,6 +8,7 @@ on:
       - .github/workflows/airfryer-six-comic-animated.yml
 permissions:
   contents: read
+  actions: read
 jobs:
   six-real-scenes:
     runs-on: ubuntu-24.04
@@ -26,8 +27,38 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           python -m pip install 'kokoro==0.9.4' soundfile numpy torch requests
+      - name: Restore successful scene files from earlier runs
+        uses: actions/cache/restore@v4
+        with:
+          path: out/airfryer-six-animated/
+          key: sc365-six-scenes-v2-${{ github.run_id }}
+          restore-keys: |
+            sc365-six-scenes-v2-
+      - name: Preserve previously verified scenes 1 and 2 from first run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out/airfryer-six-animated
+          if [ ! -s out/airfryer-six-animated/scene_01_motion.mp4 ] || [ ! -s out/airfryer-six-animated/scene_02_motion.mp4 ]; then
+            mkdir -p /tmp/sc365-initial
+            gh run download 41211828579 --repo "$GITHUB_REPOSITORY" -n SmartChoice365-Six-Original-Comic-Animations -D /tmp/sc365-initial
+            for n in 01 02; do
+              if [ ! -s "out/airfryer-six-animated/scene_${n}_motion.mp4" ]; then
+                cp "/tmp/sc365-initial/scene_${n}_motion.mp4" "out/airfryer-six-animated/"
+              fi
+            done
+          fi
+          for n in 01 02; do
+            ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "out/airfryer-six-animated/scene_${n}_motion.mp4" | grep -q .
+          done
       - name: Render SIX separate actual character animations
         run: python scripts/airfryer_six_comic_animations.py
+      - name: Save successful scenes even when later scenes fail
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: out/airfryer-six-animated/
+          key: sc365-six-scenes-v2-${{ github.run_id }}
       - name: Validate full MP4
         run: |
           test -s out/airfryer-six-animated/SmartChoice365_Six_Comic_Animated_Kokoro.mp4
@@ -40,5 +71,7 @@ jobs:
           path: |
             out/airfryer-six-animated/SmartChoice365_Six_Comic_Animated_Kokoro.mp4
             out/airfryer-six-animated/scene_*_motion.mp4
+            out/airfryer-six-animated/scene_*.jpg
+            out/airfryer-six-animated/scene_*_voice.wav
           retention-days: 2
           if-no-files-found: warn
