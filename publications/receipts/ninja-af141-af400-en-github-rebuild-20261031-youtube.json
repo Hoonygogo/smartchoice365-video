@@ -2,10 +2,16 @@
   "id": "ninja-af141-af400-en-github-rebuild-20261031",
   "sha256": "5db78b66718f101156382c48e0ea2d2abf05b86b6fa97fea15a4ec335b61f232",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "approval": "publish",
   "run_id": "41175476912",
   "platform": "youtube",
   "video_id": "UJ-azoT4vso",
-  "url": "https://www.youtube.com/watch?v=UJ-azoT4vso"
+  "url": "https://www.youtube.com/watch?v=UJ-azoT4vso",
+  "privacy": "public",
+  "upload_status": "processed",
+  "processing_status": "succeeded",
+  "metadata_verified": true,
+  "description_first_line": "👉 Full AF141 vs AF400 buying guide: https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html?utm_source=youtube&utm_medium=video&utm_campaign=ninja_af141_af400_english",
+  "source_run_id": 41175476912
 }
