@@ -16,3 +16,11 @@
 - Once user approves and safely retains the final MP4, cleanup disposables and expired artifacts. Keep code, official logo, production rules, and protected voice references.
 - A regular Git deletion does **not** remove old blobs from historical commits or necessarily reclaim repository storage. Do not rewrite Git history without separate explicit authorization and backup.
 - The legacy `scripts/store_generated_scenes.py` Git-history uploader is not an approved storage strategy for new production assets.
+
+## Always-on focus tracking (mandatory)
+- **Default: use a focus box/outline/spotlight as much as visually meaningful, in BOTH AI-photo and Python-graphic scenes.** Do not limit this feature to the six charts.
+- **Voice-following is mandatory, not optional:** focus must track the exact item or concept being spoken at the corresponding actual audio timestamp. Build cues from final synthesized narration and validate with playback; do not use arbitrary equal-duration animation.
+- At every narration transition, smoothly move/resize the highlight to the newly discussed object, number, graph bar, comparison item or recommendation. Hold through the spoken clause and transition naturally.
+- For whole-scene narration, deliberately use a whole-subject emphasis or a relevant focus region, never an arbitrary/distracting rectangle. If a target cannot be verified in an AI illustration, avoid a misleading precise annotation.
+- Ensure the box never hides numbers, subtitles, product details, or branded elements. Use contrast, a clear border and mild glow without clutter.
+- The video should fail visual QA if highlights lag narration, jump incorrectly, refer to nonexistent features, or are omitted from scenes where a meaningful target exists.
