@@ -40,8 +40,10 @@ jobs:
               except urllib.error.HTTPError as e:
                   print('HTTP_DIAGNOSTIC',method,'status',e.code,'server',e.headers.get('server'),'content_type',e.headers.get('content-type'),'cf_ray_present',bool(e.headers.get('cf-ray')))
                   payload=e.read(600).decode('utf-8','replace')
-                  if e.headers.get('content-type','').startswith('application/json'):
-                      print('WORKER_ERROR',payload[:400])
+                  # Response body may contain Cloudflare diagnostic text; never print auth headers/tokens.
+                  import re
+                  safe=re.sub(r'(?i)(token|secret|authorization)[^\\n]{0,120}', '[redacted]', payload)
+                  print('HTTP_ERROR_BODY',repr(safe[:450]))
                   raise
           try:
               status,body,_=request('PUT',img)
