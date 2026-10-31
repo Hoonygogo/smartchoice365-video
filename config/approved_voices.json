@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "english": {
+    "engine": "kokoro",
+    "model": "KPipeline",
+    "lang_code": "a",
+    "voice": "af_heart",
+    "speed": 0.96,
+    "sample_rate": 24000,
+    "source": "ninja-english/render_ninja.py"
+  },
+  "korean": {
+    "engine": "supertonic-3",
+    "voice": "Sarah/F1",
+    "language": "ko",
+    "speed": 1.1,
+    "steps": 8,
+    "source": "VIDEO_EDITORIAL_POLICY.md"
+  },
+  "rules": {
+    "fallback_voice_allowed": false,
+    "require_voice_identity_match": true,
+    "min_rms": 0.008,
+    "min_peak": 0.03,
+    "archive_generated_audio": true,
+    "upload_only_after_mobile_approval": true
+  }
+}
