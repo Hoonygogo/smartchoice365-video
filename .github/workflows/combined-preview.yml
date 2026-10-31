@@ -4,6 +4,9 @@ on:
     paths:
       - '.github/workflows/combined-preview.yml'
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Ninja Australian English full voiced preview"]
+    types: [completed]
 permissions:
   contents: read
   actions: read
@@ -14,6 +17,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     environment:
       name: github-pages
@@ -33,7 +37,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p site/ninja-en
-          gh run download 41098996092 --repo ${{ github.repository }} --name ninja-af141-af400-english-voiced-preview --dir site/ninja-en
+          EN_RUN="41098996092"
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then EN_RUN="${{ github.event.workflow_run.id }}"; fi
+          gh run download "$EN_RUN" --repo ${{ github.repository }} --name ninja-af141-af400-english-voiced-preview --dir site/ninja-en
           test -s site/ninja-en/ninja_af141_af400_en_review.mp4
           test -s site/ninja-en/manifest.json
           python - <<'PY'
