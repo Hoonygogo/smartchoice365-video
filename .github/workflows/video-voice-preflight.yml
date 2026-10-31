@@ -1,0 +1,39 @@
+name: Video Production Voice Preflight
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/video-voice-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  kokoro-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install approved voice engine
+        run: python -m pip install 'kokoro==0.9.4' numpy soundfile torch
+      - name: Verify new English speech with locked voice and saved reference
+        run: |
+          test -s voices/reference/english_af_heart_096.wav
+          python - <<'PY'
+          from pathlib import Path
+          from scripts.approved_voice import approved_voice, kokoro_english_pipeline, render_english_clause
+          c=approved_voice('english')
+          assert (c['engine'],c['voice'],c['speed']) == ('kokoro','af_heart',0.96)
+          receipt=render_english_clause(kokoro_english_pipeline(),
+              'Smart Choice 365. Robot vacuum versus cordless stick vacuum. Which one is right for your home?',
+              '/tmp/robot-vacuum-preflight.wav')
+          assert receipt['rms']>=0.008 and receipt['peak']>=0.03
+          assert Path('/tmp/robot-vacuum-preflight.wav').stat().st_size>10000
+          print('KOKORO_PREFLIGHT_OK',receipt)
+          PY
+      - name: Check image transfer is actually configured
+        run: |
+          echo 'Image handoff must be separately verified before generating AI photos.'
+          echo 'No image assets are written to Git history by this workflow.'
