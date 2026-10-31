@@ -1,34 +1,26 @@
-name: Ninja Australian English full voiced preview
+name: Ninja compatibility - common English guide review
 on:
   workflow_dispatch:
+    inputs:
+      request_file:
+        description: 'Reviewed guide JSON for the common English renderer'
+        required: true
+        type: string
+      asset_source_run_id:
+        description: 'Run containing reviewed individual scene source artifact'
+        required: true
+        type: string
+      asset_artifact_name:
+        description: 'Reviewed scene artifact name'
+        required: true
+        type: string
 permissions:
   contents: read
+  actions: read
 jobs:
   preview:
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install video and voice dependencies
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
-          python -m pip install --upgrade pip
-          python -m pip install Pillow numpy soundfile 'kokoro>=0.9.4' torch
-      - name: Build English full-video preview using Kokoro af_heart
-        run: python ninja-english/render_ninja.py
-      - name: Verify actual media tracks and generated images
-        run: |
-          ffprobe -v error -show_entries stream=codec_type,codec_name -of compact ninja-english/out/ninja_af141_af400_en_review.mp4 | tee /tmp/streams.txt
-          grep -q 'codec_type=audio' /tmp/streams.txt
-          grep -q 'codec_type=video' /tmp/streams.txt
-          test -s ninja-english/out/ninja_af141_af400_en_review.mp4
-      - name: Upload review MP4 and production manifest (never publish to YouTube)
-        uses: actions/upload-artifact@v4
-        with:
-          name: ninja-af141-af400-english-voiced-preview
-          path: |
-            ninja-english/out/ninja_af141_af400_en_review.mp4
-            ninja-english/out/manifest.json
-            ninja-english/out/description.txt
-          retention-days: 3
+    uses: ./.github/workflows/english-guide-review.yml
+    with:
+      request_file: ${{ inputs.request_file }}
+      asset_source_run_id: ${{ inputs.asset_source_run_id }}
+      asset_artifact_name: ${{ inputs.asset_artifact_name }}
