@@ -154,6 +154,6 @@ idx=OUT/'concat.txt';idx.write_text(''.join("file '"+f.name+"'\n" for f in segme
 out=OUT/'ninja_af141_af400_en_review.mp4'
 subprocess.run(['ffmpeg','-v','error','-y','-f','concat','-safe','0','-i',str(idx),'-c','copy','-movflags','+faststart',str(out)],check=True)
 subprocess.run(['ffprobe','-v','error','-show_entries','stream=codec_type,codec_name','-of','json',str(out)],check=True)
-(OUT/'description.txt').write_text('👉 Full Ninja AF141 vs AF400 buying guide: '+GUIDE+'\n\nAustralian specifications, use cases, and independent buying analysis. Manufacturer information, not hands-on testing. Observed prices may change.\n\nVisuals are original illustrated comparisons, not manufacturer's literal product photos. Affiliate links may appear in the linked guide.\n')
+(OUT/'description.txt').write_text('👉 Full Ninja AF141 vs AF400 buying guide: '+GUIDE+'\n\nAustralian specifications, use cases, and independent buying analysis. Manufacturer information, not hands-on testing. Observed prices may change.\n\nVisuals are original illustrated comparisons, not manufacturer literal product photos. Affiliate links may appear in the linked guide.\n')
 (OUT/'manifest.json').write_text(json.dumps({'status':'AWAITING_USER_APPROVAL','voice':'kokoro af_heart 0.96','images_verified':len(required),'image_type':'original diagram, not manufacturer photograph','highlight_timing':'spoken-clause-synced editorial targets; no cyclic motion','caption_timing':'per narrated clause','parts':meta,'guide':GUIDE},indent=2))
 print('COMPLETED',out)
