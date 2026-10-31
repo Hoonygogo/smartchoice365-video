@@ -1,10 +1,11 @@
-name: Breville English first-pass correct voice and photo review
+name: Breville English: verified images -> Kokoro mobile review
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - 'breville-english/**'
+      - 'videos/breville-english/**'
+      - 'breville-english/render_review.py'
       - '.github/workflows/breville-english-review.yml'
 permissions:
   contents: read
@@ -17,49 +18,33 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Restore user-approved AI scene pack if uploaded to the repository
-        run: |
-          if [ -f 'breville-english/Breville_English_12_Scenes_GitHub_Asset_Pack.zip' ]; then
-            python - <<'PY'
-          import zipfile,pathlib
-          archive=pathlib.Path('breville-english/Breville_English_12_Scenes_GitHub_Asset_Pack.zip')
-          base=pathlib.Path('.').resolve()
-          with zipfile.ZipFile(archive) as z:
-              for name in z.namelist():
-                  dest=(base/name).resolve()
-                  if not dest.is_relative_to(base):raise RuntimeError('Unsafe zip path')
-              z.extractall(base)
-          print('Imported individually authored AI scenes')
-          PY
-          fi
-      - name: Validate independently produced scene images and approved logo before voice/render
+      - name: Verify committed original logo and scene archive
         run: |
           test -s assets/smartchoice365-brand-logo-v1.png
-          test -s breville-english/assets/approved_visual_manifest.json || {
-            echo 'BLOCKED: original AI photo scene pack not yet transferred from ChatGPT to this GitHub repo.'
-            exit 2
-          }
-      - name: Install exact established English voice engine and video renderer
+          test -s videos/breville-english/approved_visual_manifest.json
+          test -d videos/breville-english/images
+      - name: Stage the exact committed scene files for the renderer
+        run: |
+          mkdir -p breville-english/assets
+          cp videos/breville-english/approved_visual_manifest.json breville-english/assets/approved_visual_manifest.json
+          cp videos/breville-english/images/scene_* breville-english/assets/
+      - name: Install established natural English TTS and renderer
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
           python -m pip install Pillow numpy soundfile 'kokoro>=0.9.4' torch
-      - name: Render correct original logo and Kokoro English narration from first pass
+      - name: Render full quality English mobile review
         run: python breville-english/render_review.py
-      - name: Verify final video and audible voice report
+      - name: Verify output
         run: |
           ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -qx '1920,1080'
           ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,channels -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -q '^aac,2$'
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          m=json.loads(Path('breville-english/out/manifest.json').read_text())
-          assert len(m['cues'])==12 and m['photo_led']>=8
-          assert all(c['rms']>=0.008 for c in m['cues'])
-          PY
+          python -c "import json; from pathlib import Path; m=json.loads(Path('breville-english/out/manifest.json').read_text()); assert len(m['cues'])==12 and m['photo_led']>=8; assert all(c['rms']>=0.008 for c in m['cues'])"
       - uses: actions/upload-artifact@v4
         with:
-          name: breville-english-photo-voice-mobile-review
-          path: breville-english/out/
+          name: breville-english-photo-kokoro-mobile-review
+          path: |
+            breville-english/out/breville_bambino_plus_english_review.mp4
+            breville-english/out/manifest.json
           retention-days: 7
           if-no-files-found: error
