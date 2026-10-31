@@ -1,0 +1,54 @@
+{
+  "id": "aircon-running-costs-en-v1",
+  "sha256": "471b8660640764f200fee5136d1ef418a4ab6cc3b535d2fd6d49a8615c9a489f",
+  "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
+  "approval": "publish",
+  "approval_text": "좋아 유튜브에올려",
+  "privacy": "public",
+  "quality_verified": true,
+  "visual_evidence_sha256": "f93f2c3bb472c808f52a65041ebe5a9e89bc2dca612763d90d6e6b42f2638595",
+  "source_run_id": 0,
+  "media_blob_shas": [
+    "50aa26223028e5b69b8d2ccee2199259c5c69d34",
+    "1d8aa323db7bd5730848e95b51175ab36dcbab4a",
+    "c0a3279e6bf94a81f2a4d1048ebe9395171a9bfc",
+    "bb1005375b4bf0c6a4cbddea53dd6faffa62434b",
+    "a517fb40faaf17f824e67a8706b916c0ce236bdf",
+    "7b57345d5b6454f41ea191ec5022e6d97a6b05d8",
+    "c043bb922a644c631858f487c0107a6fd05a7bc4",
+    "9523df1e30db87a2392e772bc49bd6cdc5043659",
+    "06dea3492d533432ff2e3479254db4e7732117fa",
+    "be03507de4a718f8c90d75ef09fa60a9d1cc077e",
+    "b5a8cd2f7d9cf7cb52e8516b181a9a8bf8340002",
+    "020ef085298af75fe423655754b35833904be99c",
+    "d9c2e77eda6d93a3dde812c87663ddcc3e0cf7d9",
+    "ff32d90532a54172b7fe325ed9fda4dce4c996f4",
+    "c568bda328dd47bafa1b361e5edbb87dfe9a0d8f"
+  ],
+  "thumbnail_blob_sha": "5757db6569cb85a2af5af160969db821c0f68df7",
+  "metadata": {
+    "snippet": {
+      "title": "Buying an Air Conditioner in Australia: The Real Cost Explained",
+      "description": "👉 Full air-conditioner buying checklist and worked examples: https://smartchoice365-web.pages.dev/guides/2026-air-conditioner-energy-label-running-costs-australia.html?utm_source=youtube&utm_medium=video&utm_campaign=aircon_running_costs_en_v1\nCompare climate-zone energy labels, electricity-cost examples and complete installed quotes before buying.\n\nBuying an air conditioner in Australia? Look beyond the price of the unit. This guide explains cooling capacity versus electricity use, annual kWh, hypothetical payback calculations, portable-unit checks and installation quote exclusions.\n\nChapters\n0:00 Air conditioning: compare the real cost\n0:08 Make the comparison easier to see\n0:20 The cheapest box is not the full story\n0:32 1. Start with your room\n0:50 2. Read the right numbers\n1:09 3. Turn annual energy into dollars\n1:32 4. Is the higher upfront cost worth it?\n2:01 5. Portable does not mean anywhere\n2:17 Think beyond the lower sticker price\n2:37 6. Compare complete installed quotes\n2:58 Use your bill, not a headline tariff\n3:20 Our verdict: buy for the whole cost\n\nMethod and disclosure\nOfficial-source desk research and Smart Choice 365 editorial judgement; no hands-on product tests. AI-created lifestyle and appliance scenes are generic illustrations, not official photographs of specific models. All numerical cost and payback examples are hypothetical, not current retail prices or electricity offers. Actual use, tariffs, building conditions and installation costs vary. Follow the exact model's instructions and use qualified installation.\n\nAdvertisement | The linked website guide contains affiliate links. Smart Choice 365 may earn a commission from qualifying purchases.\n\nOfficial reference sources\nhttps://www.energyrating.gov.au/consumer-information/understand-zoned-energy-rating-label\nhttps://www.yourhome.gov.au/energy/heating-and-cooling\nhttps://www.energy.gov.au/households/energy-rating\n\n#AirConditioner #Australia #EnergyBills #BuyingGuide #SmartChoice365",
+      "categoryId": "26",
+      "defaultLanguage": "en",
+      "defaultAudioLanguage": "en",
+      "tags": [
+        "air conditioner Australia",
+        "air conditioning running costs",
+        "energy rating label",
+        "portable air conditioner",
+        "split system",
+        "Smart Choice 365"
+      ]
+    },
+    "status": {
+      "privacyStatus": "public",
+      "selfDeclaredMadeForKids": false,
+      "containsSyntheticMedia": true,
+      "embeddable": true,
+      "license": "youtube"
+    }
+  },
+  "comment_text": "Before buying an air conditioner, compare the whole cost—not just the box price.\n👉 Full Australian buying guide: https://smartchoice365-web.pages.dev/guides/2026-air-conditioner-energy-label-running-costs-australia.html?utm_source=youtube&utm_medium=comment&utm_campaign=aircon_running_costs_en_v1\nSee the climate-zone label checklist, worked electricity-cost examples and installation quote checks on Smart Choice 365.\n\nAdvertisement | The linked guide contains affiliate links; we may earn a commission from qualifying purchases."
+}
