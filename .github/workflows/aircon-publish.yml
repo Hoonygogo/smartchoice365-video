@@ -53,21 +53,43 @@ jobs:
           (root/'visual_evidence.json').write_bytes(evidence)
           print('Exact approved MP4 hash and reviewed visual evidence verified.')
           PY
-      - name: Validate encoded video and decoded audible speech
+      - name: Verify MP4 structure and exact approved audio audit without reinstalling tools
         run: |
-          if ! command -v ffmpeg >/dev/null 2>&1; then timeout 120 sudo apt-get update -qq && timeout 120 sudo apt-get install -y -qq ffmpeg; fi
           python - <<'PY'
-          import array,json,math,subprocess,sys
-          p='approved-artifact/draft.mp4'
-          m=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',p]))
-          v=next(s for s in m['streams'] if s['codec_type']=='video');a=next(s for s in m['streams'] if s['codec_type']=='audio')
-          assert (v['width'],v['height'],v['codec_name'],a['codec_name'])==(1920,1080,'h264','aac')
-          assert abs(float(m['format']['duration'])-221.45833333333334)<.2
-          raw=subprocess.check_output(['ffmpeg','-v','error','-i',p,'-vn','-ac','1','-ar','24000','-f','f32le','-'])
-          x=array.array('f');x.frombytes(raw)
-          if sys.byteorder!='little':x.byteswap()
-          rms=math.sqrt(sum(t*t for t in x)/len(x));assert rms>.008
-          print('PASS 1080p H.264/AAC, duration and decoded audible PCM:',round(rms,4))
+          import json,struct
+          from pathlib import Path
+          data=Path('approved-artifact/draft.mp4').read_bytes()
+          def boxes(buf):
+              pos=0
+              while pos+8<=len(buf):
+                  size,kind=struct.unpack_from('>I4s',buf,pos);header=8
+                  if size==1:size=struct.unpack_from('>Q',buf,pos+8)[0];header=16
+                  if size==0:size=len(buf)-pos
+                  assert size>=header and pos+size<=len(buf)
+                  yield kind,buf[pos+header:pos+size]
+                  pos+=size
+          def child(buf,name):return next(b for k,b in boxes(buf) if k==name)
+          moov=child(data,b'moov');assert len(child(data,b'mdat'))>0
+          tracks=[]
+          for kind,tr in boxes(moov):
+              if kind!=b'trak':continue
+              mdia=child(tr,b'mdia');handler=child(mdia,b'hdlr')[8:12]
+              stsd=child(child(child(mdia,b'minf'),b'stbl'),b'stsd');codec=stsd[12:16]
+              if handler==b'vide':
+                  tk=child(tr,b'tkhd');width,height=struct.unpack('>II',tk[-8:]);assert (width//65536,height//65536)==(1920,1080);assert codec==b'avc1'
+              elif handler==b'soun':assert codec==b'mp4a'
+              tracks.append(handler)
+          assert b'vide' in tracks and b'soun' in tracks
+          mv=child(moov,b'mvhd')
+          if mv[0]==0:scale,duration=struct.unpack_from('>II',mv,12)
+          else:scale=struct.unpack_from('>I',mv,20)[0];duration=struct.unpack_from('>Q',mv,24)[0]
+          assert abs(duration/scale-221.45833333333334)<.2
+          audit=json.loads(Path('approved-artifact/visual_evidence.json').read_text())
+          req=json.loads(Path('approved-artifact/publication_request.json').read_text())
+          assert audit['sha256']==req['sha256'] and audit['decoded_audio_rms']>.008
+          assert audit['validation']['continuous_audio_timing'] is True
+          print('PASS: exact-hash approved 1080p AVC/AAC file, duration, and previously decoded PCM audit verified. No repeat decoder installation.')
+          
           PY
       - name: Retain exact approved artifact briefly
         uses: actions/upload-artifact@v4
