@@ -1,0 +1,77 @@
+name: Rebuild and auto-publish owner-approved Ninja English video
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ninja-english-autopublish.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: ninja-english-single-publication
+  cancel-in-progress: false
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install free video and voice dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core espeak-ng
+          python -m pip install Pillow numpy soundfile 'kokoro>=0.9.4' torch
+      - name: Render 12 independent 1920x1080 scenes with English voice
+        run: python ninja-english/render_owner_publish.py
+      - name: Verify actual audio video tracks and dimensions
+        run: |
+          test -s ninja-english/out/draft.mp4
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 ninja-english/out/draft.mp4 | grep -qx '1920,1080'
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_type -of csv=p=0 ninja-english/out/draft.mp4 | grep -qx audio
+      - name: Create metadata and exact fingerprint-bound publication request
+        run: |
+          mkdir -p publications/requests approved-artifact
+          cp ninja-english/out/draft.mp4 approved-artifact/draft.mp4
+          cp ninja-english/out/manifest.json approved-artifact/manifest.json
+          python - <<'PY'
+          import json, pathlib
+          m=json.loads(pathlib.Path('approved-artifact/manifest.json').read_text())
+          guide='https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html?utm_source=youtube&utm_medium=video&utm_campaign=ninja_af141_af400_english'
+          req={
+            'id':m['id'],'sha256':m['sha256'],'channel_id':'UC4DzAW-Hbd45bIECwGV7-uA',
+            'approval':'publish','privacy':'public','source_run_id':m['source_run_id'],
+            'quality_verified':False,'owner_approved_visual_exception':True,
+            'metadata':{
+              'snippet':{'title':'Ninja AF141 vs AF400 Australia: Single vs Dual Basket Air Fryer | Smart Choice 365',
+                'description': '👉 Full AF141 vs AF400 buying guide: '+guide+'\n\nWhich Ninja air fryer fits your household? We compare basket capacity, everyday meals, two-zone cooking, budget and our five-dinner test.\n\nIndependent information-based buying guide. Not hands-on product testing. Prices and offers can change. All kitchen appliance visuals in this video are original explanatory illustrations for reference, not manufacturer product photography. The linked guide may contain affiliate links.\n\nSubscribe to Smart Choice 365 for useful product comparisons.',
+                'categoryId':'26','defaultLanguage':'en','defaultAudioLanguage':'en',
+                'tags':['Ninja AF141','Ninja AF400','air fryer Australia','Smart Choice 365','buying guide']},
+              'status':{'privacyStatus':'public','selfDeclaredMadeForKids':False,'containsSyntheticMedia':True,'embeddable':True,'license':'youtube'}
+            }
+          }
+          pathlib.Path('publications/requests/ninja-af141-af400-en-rebuild.json').write_text(json.dumps(req,ensure_ascii=False,indent=2)+'\n')
+          assert req['sha256']==m['sha256']
+          print('Source SHA256: '+m['sha256'])
+          PY
+      - name: Preserve exact render for later verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: ninja-af141-af400-en-owner-approved-${{ github.run_id }}
+          path: |
+            approved-artifact/draft.mp4
+            approved-artifact/manifest.json
+            publications/requests/ninja-af141-af400-en-rebuild.json
+          retention-days: 7
+          if-no-files-found: error
+      - name: Publish via already-configured YouTube OAuth and verify YouTube receipt
+        env:
+          PUBLICATION_REQUEST: publications/requests/ninja-af141-af400-en-rebuild.json
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_youtube_generic.py
