@@ -39,12 +39,15 @@ jobs:
         run: |
           ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -qx '1920,1080'
           ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,channels -of csv=p=0 breville-english/out/breville_bambino_plus_english_review.mp4 | grep -q '^aac,2$'
-          python -c "import json; from pathlib import Path; m=json.loads(Path('breville-english/out/manifest.json').read_text()); assert len(m['cues'])==12 and m['photo_led']>=8; assert all(c['rms']>=0.008 for c in m['cues'])"
+          python -c "import json; from pathlib import Path; m=json.loads(Path('breville-english/out/manifest.json').read_text()); v=json.loads(Path('breville-english/out/voice_receipts.json').read_text()); assert len(m['cues'])==12 and m['photo_led']>=8 and len(v['voice_files'])==12; assert all(c['rms']>=0.008 and c['voice']=='af_heart' and c['speed']==0.96 for c in v['voice_files'])"
       - uses: actions/upload-artifact@v4
         with:
           name: breville-english-photo-kokoro-mobile-review
           path: |
             breville-english/out/breville_bambino_plus_english_review.mp4
             breville-english/out/manifest.json
+            breville-english/out/voice_receipts.json
+            breville-english/out/voice_*.wav
+            config/approved_voices.json
           retention-days: 7
           if-no-files-found: error
