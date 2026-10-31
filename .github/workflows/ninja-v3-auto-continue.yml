@@ -1,5 +1,8 @@
 name: Ninja v3 automatic next stages — verified imagery to preview
 on:
+  push:
+    paths:
+      - '.github/workflows/ninja-v3-auto-continue.yml'
   workflow_run:
     workflows: ["Ninja English v3 image-first storyboard"]
     types: [completed]
@@ -67,14 +70,15 @@ jobs:
       - name: Assemble and deploy mobile streaming preview only
         run: |
           mkdir -p site/ninja-en-v3
+          # Keep existing Korean preview in this same Pages deployment.
+          gh run download 41093955784 --repo "${{ github.repository }}" --name sarah-korean-draft-16 --dir site
+          test -s site/draft.mp4
           cp ninja-english/out/ninja_af141_af400_en_review.mp4 site/ninja-en-v3/draft.mp4
           cat > site/ninja-en-v3/index.html <<'HTML'
           <!doctype html><html lang="en-AU"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Smart Choice 365 | Ninja v3 approval preview</title>
           <style>body{margin:0;padding:20px;background:#f8f4ed;color:#142642;font:16px system-ui}main{max-width:960px;margin:auto}video{width:100%;border-radius:12px;background:#142642}a{color:#205180}</style>
           <main><h1>Ninja AF141 vs AF400 — v3</h1><p>Mobile preview · Not published to YouTube · Approval required</p><video controls playsinline preload="metadata" src="draft.mp4"></video><p><a href="https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html">Read the related buying guide</a></p></main></html>
           HTML
-          mkdir -p site/korean
-          echo 'English v3 only; original Korean page remains on its prior deployment until combined preview merge.' > site/korean/README.txt
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
