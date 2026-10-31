@@ -1,6 +1,10 @@
 name: Cloudflare Temporary Image Handoff Roundtrip
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/image-handoff-roundtrip.yml'
 permissions:
   contents: read
 jobs:
