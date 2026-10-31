@@ -1,0 +1,39 @@
+name: Wan 2.2 Ninja AI video - free manual experiment
+on:
+  workflow_dispatch:
+    inputs:
+      image_url:
+        description: 'Optional HTTPS URL of exact original Ninja image. Leave blank for assets/ninja_original.png'
+        required: false
+        type: string
+permissions:
+  contents: read
+jobs:
+  generate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install lightweight dependencies
+        run: python -m pip install 'requests>=2.31,<3'
+      - name: Check source picture and API client
+        run: python -m py_compile experiments/wan22_image_to_video.py
+      - name: Generate real AI animation from unchanged Ninja image
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          IMAGE_URL: ${{ inputs.image_url }}
+        run: |
+          if [ -n "$IMAGE_URL" ]; then
+            python experiments/wan22_image_to_video.py --image-url "$IMAGE_URL"
+          else
+            python experiments/wan22_image_to_video.py
+          fi
+      - name: Verify MP4
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 out/wan22/ninja_generated.mp4 | grep -q .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wan22-ninja-ai-generated-test
+          path: out/wan22/ninja_generated.mp4
+          retention-days: 1
