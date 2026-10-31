@@ -2,10 +2,16 @@
   "id": "padding-ko-v1",
   "sha256": "d6af283480d1ddf6572c868684e7b9344ef1304a98261f359ba1a005059c9ec5",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "approval": "publish",
   "run_id": "41220606633",
   "platform": "youtube",
   "video_id": "GVuSmxxPOaY",
-  "url": "https://www.youtube.com/watch?v=GVuSmxxPOaY"
+  "url": "https://www.youtube.com/watch?v=GVuSmxxPOaY",
+  "privacy": "public",
+  "upload_status": "processed",
+  "processing_status": "succeeded",
+  "metadata_verified": true,
+  "description_first_line": "👉 패딩 충전재·사이즈·세탁 체크리스트: https://smartchoice365-web.pages.dev/guides/2026-lightweight-puffer-jackets.html?utm_source=youtube&utm_medium=video&utm_campaign=padding_ko_v1",
+  "source_run_id": 41220606633
 }
