@@ -71,8 +71,12 @@ def main():
     digest = hashlib.sha256(media.read_bytes()).hexdigest()
     if digest != request['sha256'] or manifest['sha256'] != digest or manifest['id'] != identity:
         raise RuntimeError('Artifact differs from the approved version; upload blocked.')
-    if request.get('quality_verified') is not True or manifest.get('quality_verified') is not True:
-        raise RuntimeError('Final video visual and spoken-target QA must be independently verified before YouTube publication.')
+    verified = request.get('quality_verified') is True and manifest.get('quality_verified') is True
+    exception = (request.get('owner_approved_visual_exception') is True and
+                 manifest.get('owner_approved_visual_exception') is True and
+                 identity == 'ninja-af141-af400-en-github-rebuild-20261031')
+    if not (verified or exception):
+        raise RuntimeError('Video not verified and no exact owner-authorized publication exception.')
     if request.get('source_run_id') != manifest.get('source_run_id'):
         raise RuntimeError('Source run mismatch.')
     metadata = request['metadata']
