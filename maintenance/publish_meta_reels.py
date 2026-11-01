@@ -131,10 +131,10 @@ def token_for(platform):
     """Return (token, needs_page_token_exchange) without exposing either secret."""
     page_token = os.environ.get("META_PAGE_ACCESS_TOKEN", "").strip()
     system_token = os.environ.get("META_SYSTEM_USER_ACCESS_TOKEN", "").strip()
-    if page_token:
-        return page_token, False
     if system_token:
         return system_token, True
+    if page_token:
+        return page_token, False
     fail("Missing META_SYSTEM_USER_ACCESS_TOKEN or META_PAGE_ACCESS_TOKEN GitHub Actions secret.")
 
 def preflight_identity(req, token, *, system_user_token=False):
