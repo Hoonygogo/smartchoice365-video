@@ -247,3 +247,10 @@ User instruction: EVERY video must promote the Smart Choice 365 website, includi
 - English first-line description/comment: “👉 Need more help choosing? Explore Smart Choice 365 buying guides: https://smartchoice365-web.pages.dev/”
 - Keep distinct the separate rule for written articles promoting the YouTube channel; this rule is the reverse direction, video → website.
 - Current buying-trial pilot has no required same-topic article. Use the homepage CTA in its pending description/comment. Adding this rule or metadata draft does not itself modify the already-rendered MP4 or approve YouTube publication; any MP4 revision still requires a new browser-playable review page/version and user approval.
+
+
+## English no-related-article CTA — user explicitly reconfirmed 2026-11-01
+The same mandatory video → website promotion rule applies to ALL English videos, including topics with no corresponding English article, entertainment/pilots, Shorts and future revisions. Never omit the website promotion because no matching guide exists. Use the exact related English guide when one actually exists; otherwise use https://smartchoice365-web.pages.dev/ with a general buying-guide invitation and appropriate YouTube/video UTM tracking.
+- Closing spoken invitation and legible screen text: “Need a little more help deciding what to buy? Explore more buying guides at Smart Choice 365. You'll find the website link in the description.” Use the description instruction for general videos; adapt Shorts to a verified clickable placement rather than assuming Shorts descriptions/comments are clickable.
+- First description line and comment draft: “👉 Not sure what to buy next? Explore more Smart Choice 365 buying guides: [verified website URL]”.
+- Keep the invitation engaging and accurate. Never imply that a same-topic detailed article, deal, savings guarantee or tested result exists when it does not. Preserve Kokoro af_heart/0.96 and existing English production quality, mobile HTTPS preview, explicit version approval and publication rules. A rule update does not claim that previously rendered or published videos were modified.
