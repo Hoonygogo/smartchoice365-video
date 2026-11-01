@@ -128,13 +128,17 @@ def validate_request():
     return req
 
 def token_for(platform):
-    key = "META_PAGE_ACCESS_TOKEN"
-    value = os.environ.get(key, "").strip()
-    if not value:
-        fail("Missing META_PAGE_ACCESS_TOKEN GitHub Actions secret.")
-    return value
+    """Return (token, needs_page_token_exchange) without exposing either secret."""
+    page_token = os.environ.get("META_PAGE_ACCESS_TOKEN", "").strip()
+    system_token = os.environ.get("META_SYSTEM_USER_ACCESS_TOKEN", "").strip()
+    if page_token:
+        return page_token, False
+    if system_token:
+        return system_token, True
+    fail("Missing META_SYSTEM_USER_ACCESS_TOKEN or META_PAGE_ACCESS_TOKEN GitHub Actions secret.")
 
-def preflight_identity(req, token):
+def preflight_identity(req, token, *, system_user_token=False):
+    """Verify the approved Page and IG identity; derive Page token if needed."""
     page = os.environ.get("META_FACEBOOK_PAGE_ID", "").strip()
     ig = os.environ.get("META_INSTAGRAM_ACCOUNT_ID", "").strip()
     if not page.isdigit():
@@ -142,14 +146,29 @@ def preflight_identity(req, token):
     if "instagram" in req["platforms"] and not ig.isdigit():
         fail("Missing META_INSTAGRAM_ACCOUNT_ID (professional Instagram account).")
     fields = "id,name" + (",instagram_business_account" if "instagram" in req["platforms"] else "")
+    if system_user_token:
+        fields += ",access_token"
     info = json_request(
         API+"/"+page+"?"+urllib.parse.urlencode({"fields":fields}),
         headers={"Authorization":"Bearer "+token})
     if str(info.get("id")) != page:
-        fail("Page token does not identify the approved Facebook Page.")
+        fail("Token does not identify the approved Facebook Page.")
     if "instagram" in req["platforms"] and str((info.get("instagram_business_account") or {}).get("id","")) != ig:
         fail("Instagram professional account is not linked to the approved Facebook Page.")
-    return page, ig
+    page_token = token
+    if system_user_token:
+        page_token = info.get("access_token", "")
+        if not isinstance(page_token, str) or not page_token:
+            fail("Meta did not return a Page access token for the system user. Verify Page Content assignment, permissions and business access. Do not publish.")
+        # Double-check the derived token, without printing or persisting it.
+        verify = json_request(
+            API+"/"+page+"?"+urllib.parse.urlencode({"fields":fields.replace(",access_token","")}),
+            headers={"Authorization":"Bearer "+page_token})
+        if str(verify.get("id")) != page:
+            fail("Derived Page access token failed identity verification.")
+        if "instagram" in req["platforms"] and str((verify.get("instagram_business_account") or {}).get("id","")) != ig:
+            fail("Derived Page access token does not resolve the intended Instagram account.")
+    return page, ig, page_token
 
 def request_record(req, platform, digest, *, url, size):
     path = f"publications/meta-receipts/{req['id']}-{platform}.json"
@@ -286,15 +305,15 @@ def main():
         return
     if req.get("approval") != "publish":
         fail("Publishing not owner-approved: request is prepare-only.")
-    token=token_for("facebook")
-    page_id, ig_account=preflight_identity(req,token)
+    token, system_user_token=token_for("facebook")
+    page_id, ig_account, page_token=preflight_identity(req,token,system_user_token=system_user_token)
     media_digest=req["sha256"]
     for platform in req["platforms"]:
         receipt_path,record=request_record(req,platform,media_digest,url=url,size=stats["size"])
         if platform=="instagram":
-            instagram(req,token,ig_account,url,receipt_path,record)
+            instagram(req,page_token,ig_account,url,receipt_path,record)
         else:
-            facebook(req,token,page_id,url,receipt_path,record)
+            facebook(req,page_token,page_id,url,receipt_path,record)
 
 if __name__=="__main__":
     try:
