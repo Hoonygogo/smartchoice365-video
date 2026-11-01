@@ -1,0 +1,110 @@
+{
+  "assets": [
+    {
+      "file": "1.png",
+      "sha256": "1ce60ba276a5dbbdf4990285b66894e89638f28c55df4c3f7b672219c76992a6",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-c65b7837-16d7-453e-b77b-4a1677a030c1.png",
+      "prompt": "A Korean Australian couple in their late 30s, man navy t-shirt and woman cream cardigan, living room, a generic round robot vacuum paused in front of a single sock and a loose phone charging cable on dry timber floor, couple standing fully visible looking amused as man picks up sock. Wide humorous but believable domestic moment.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "2.png",
+      "sha256": "ed4198157a3572ad397c61eb9ef5e0f28132dc2f56180045021580741d2857be",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-644ba053-6a9f-41a2-be52-845b4f561483.png",
+      "prompt": "Same character type Korean Australian couple late30s man navy shirt woman cream cardigan, man enthusiastically presents a small generic round robot vacuum on the living room timber floor, woman responds with skeptical friendly expression. Fully visible heads and hands, relaxed realistic home, no courtroom costumes.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "3.png",
+      "sha256": "da911823e4c2f711bdc427ba7f29a2900c81aaf98a00e8a0bdc67c7f8cb6f9e7",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-e62e48ed-b888-4c04-b0a9-a8717343103e.png",
+      "prompt": "Low wide view of a generic round robot vacuum stopped before a clearly visible sock, toy blocks and loose disconnected charging cord on timber living room floor, woman cream cardigan kneeling at a safe distance collecting the clutter. Illustrate preparatory tidying, not a malfunction claim.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "4.png",
+      "sha256": "9adcaab7356174ead47dd142bf05a9d0e50e793c117fd97436c09e79db555199",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-022c216a-7363-4a10-abde-2cc150c8549b.png",
+      "prompt": "Bright Australian-style living room with a golden retriever resting on a dog bed, a small visible tuft of pet hair on timber floor near a generic robot vacuum; Korean Australian couple late30s sitting on sofa in background smiling. Dog relaxed away from machine. Illustrate regular hair pickup routine, no spotless performance claim.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "5.png",
+      "sha256": "1c6988e1c51951b367fcee4355db77b07f0046187a23fef7b84d684be5a2f8ba",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-3898f99c-f681-405a-a64d-452ae1d23d7a.png",
+      "prompt": "Wide view of a two-storey home staircase with a generic round robot vacuum parked safely on level lower ground several metres from stairs, Korean Australian man navy shirt carrying a conventional stick vacuum toward staircase while woman cream cardigan gestures to the stairs. Entire heads hands and vacuum visible. No suggestion robot is climbing or falling.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "6.png",
+      "sha256": "413417775e59d66ea5577b0d979ec5621fb979ce2e6ab9d79598e493d4d2f96a",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-46a85c28-8c6e-45f1-921c-783dca19fdb8.png",
+      "prompt": "Korean Australian woman cream cardigan using a small cordless handheld vacuum along sofa edge and skirting board, generic robot vacuum parked separately in open floor background. Wide living room shot, whole head and both hands in frame, practical complementary cleaning rather than spotless demonstration.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "7.png",
+      "sha256": "337b534c53e96d58e152caf75dd41a7dcffcf16126d12b570c8a362700b31b2f",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-18ba7606-18c8-4cc1-a0d0-761b0d3cc607.png",
+      "prompt": "Korean Australian man navy shirt seated at dry dining table, carefully removing tangled hair from a detached robot vacuum roller brush with fingers, generic robot vacuum powered off beside it and removable dustbin on table, woman cream cardigan playfully raises eyebrow. Entire heads hands brush and dustbin in frame, no tools near powered electronics.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "8.png",
+      "sha256": "a4d4714390b976e529b1f543ff48658b974740f3b311b439a3bfa2db1ef29cb7",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-9d25aed9-11a0-4f75-9b73-c37a40bc8d70.png",
+      "prompt": "Korean Australian couple late30s man navy shirt woman cream cardigan relaxing on sofa with cups of tea, tidy open timber floor with a generic round robot vacuum nearby, comfortable normal Australian-style home. Wide complete scene, relaxed verdict mood, no perfect-cleaning claim.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    }
+  ],
+  "composed_storyboard_reviewed": true,
+  "review_notes": "All twelve storyboard frames and all clause layouts checked; corrected sources 3 and 7 use same full-source contain layout. Native typography and authentic approved logo kept separate."
+}
