@@ -6,11 +6,14 @@
   "approval": "publish",
   "approval_note": "Owner explicitly approved replacing prior Short with 11.83-second recut",
   "run_id": "41280351813",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "replaces_short_id": "JgKqCXIvbKI",
   "full_video_id": "2R5Nyt42hRs",
   "related_video_status": "requires_youtube_studio_manual_selection",
   "related_video_instruction": "In Studio choose Related video: Ninja AF141 vs AF400 V4 (2R5Nyt42hRs)",
   "video_id": "8OX29Fx2axc",
-  "url": "https://www.youtube.com/shorts/8OX29Fx2axc"
+  "url": "https://www.youtube.com/shorts/8OX29Fx2axc",
+  "metadata_verified": true,
+  "privacy": "public",
+  "processing_status": "succeeded"
 }
