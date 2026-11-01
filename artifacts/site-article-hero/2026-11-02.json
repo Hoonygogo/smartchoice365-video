@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-02",
+  "channel": "en-au",
+  "topicId": "2026-vented-vs-heat-pump-dryer-australia-space-loads",
+  "status": "fallback",
+  "reason": "workers_free_not_confirmed",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": null,
+  "sha256": null,
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-01T23:09:14.207910+00:00"
+}
