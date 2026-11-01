@@ -1,0 +1,1107 @@
+{
+  "duration": 225.917,
+  "size_bytes": 7984696,
+  "sha256": "a21da373e62f8d17fc43cc96fe23189e03f77d68e306f59a460d8ccfcd91e459",
+  "codec": "h264",
+  "audio": "aac",
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "cue_count": 36,
+  "min_decoded_cue_rms": 0.04331761598587036,
+  "faststart": true,
+  "voice": "Kokoro af_heart",
+  "speed": 0.96,
+  "picture_led_scenes": 8,
+  "status": "awaiting_owner_browser_review",
+  "youtube_published": false,
+  "validation": {
+    "source_scene_count": 12,
+    "independent_photo_scenes": 8,
+    "source_photos_and_all_storyboards_reviewed": true,
+    "continuous_audio_timing": true,
+    "encoded_frames_reviewed": [
+      0,
+      1,
+      4,
+      8,
+      10,
+      11
+    ]
+  },
+  "source_assets": [
+    {
+      "file": "1.png",
+      "sha256": "1ce60ba276a5dbbdf4990285b66894e89638f28c55df4c3f7b672219c76992a6",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-c65b7837-16d7-453e-b77b-4a1677a030c1.png",
+      "prompt": "A Korean Australian couple in their late 30s, man navy t-shirt and woman cream cardigan, living room, a generic round robot vacuum paused in front of a single sock and a loose phone charging cable on dry timber floor, couple standing fully visible looking amused as man picks up sock. Wide humorous but believable domestic moment.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "2.png",
+      "sha256": "ed4198157a3572ad397c61eb9ef5e0f28132dc2f56180045021580741d2857be",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-644ba053-6a9f-41a2-be52-845b4f561483.png",
+      "prompt": "Same character type Korean Australian couple late30s man navy shirt woman cream cardigan, man enthusiastically presents a small generic round robot vacuum on the living room timber floor, woman responds with skeptical friendly expression. Fully visible heads and hands, relaxed realistic home, no courtroom costumes.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "3.png",
+      "sha256": "da911823e4c2f711bdc427ba7f29a2900c81aaf98a00e8a0bdc67c7f8cb6f9e7",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-e62e48ed-b888-4c04-b0a9-a8717343103e.png",
+      "prompt": "Low wide view of a generic round robot vacuum stopped before a clearly visible sock, toy blocks and loose disconnected charging cord on timber living room floor, woman cream cardigan kneeling at a safe distance collecting the clutter. Illustrate preparatory tidying, not a malfunction claim.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "4.png",
+      "sha256": "9adcaab7356174ead47dd142bf05a9d0e50e793c117fd97436c09e79db555199",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-022c216a-7363-4a10-abde-2cc150c8549b.png",
+      "prompt": "Bright Australian-style living room with a golden retriever resting on a dog bed, a small visible tuft of pet hair on timber floor near a generic robot vacuum; Korean Australian couple late30s sitting on sofa in background smiling. Dog relaxed away from machine. Illustrate regular hair pickup routine, no spotless performance claim.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "5.png",
+      "sha256": "1c6988e1c51951b367fcee4355db77b07f0046187a23fef7b84d684be5a2f8ba",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-3898f99c-f681-405a-a64d-452ae1d23d7a.png",
+      "prompt": "Wide view of a two-storey home staircase with a generic round robot vacuum parked safely on level lower ground several metres from stairs, Korean Australian man navy shirt carrying a conventional stick vacuum toward staircase while woman cream cardigan gestures to the stairs. Entire heads hands and vacuum visible. No suggestion robot is climbing or falling.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "6.png",
+      "sha256": "413417775e59d66ea5577b0d979ec5621fb979ce2e6ab9d79598e493d4d2f96a",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-46a85c28-8c6e-45f1-921c-783dca19fdb8.png",
+      "prompt": "Korean Australian woman cream cardigan using a small cordless handheld vacuum along sofa edge and skirting board, generic robot vacuum parked separately in open floor background. Wide living room shot, whole head and both hands in frame, practical complementary cleaning rather than spotless demonstration.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "7.png",
+      "sha256": "337b534c53e96d58e152caf75dd41a7dcffcf16126d12b570c8a362700b31b2f",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-18ba7606-18c8-4cc1-a0d0-761b0d3cc607.png",
+      "prompt": "Korean Australian man navy shirt seated at dry dining table, carefully removing tangled hair from a detached robot vacuum roller brush with fingers, generic robot vacuum powered off beside it and removable dustbin on table, woman cream cardigan playfully raises eyebrow. Entire heads hands brush and dustbin in frame, no tools near powered electronics.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    },
+    {
+      "file": "8.png",
+      "sha256": "a4d4714390b976e529b1f543ff48658b974740f3b311b439a3bfa2db1ef29cb7",
+      "source_kind": "single_full_frame_illustration",
+      "generation": "ChatGPT built-in image generation",
+      "source_filename": "exec-9d25aed9-11a0-4f75-9b73-c37a40bc8d70.png",
+      "prompt": "Korean Australian couple late30s man navy shirt woman cream cardigan relaxing on sofa with cups of tea, tidy open timber floor with a generic round robot vacuum nearby, comfortable normal Australian-style home. Wide complete scene, relaxed verdict mood, no perfect-cleaning claim.",
+      "contact_sheet": false,
+      "baked_in_storyboard_labels": false,
+      "usage_approved": true,
+      "visual_review_passed": true,
+      "review_notes": "Actual source raster inspected for coherent composition, full head/hands/product margins and absent text. Sources 3 and 7 regenerated to repair original edge cropping. Generic illustrative products; no exact-SKU claim."
+    }
+  ],
+  "frame_evidence": [
+    {
+      "scene": 0,
+      "cue": 0,
+      "frame_sha256": "0579d9a8a549de1e449e4fa0579ab04070d1f8ac1231dff0e65e6913b9916d3f",
+      "regions": {},
+      "targets": []
+    },
+    {
+      "scene": 1,
+      "cue": 0,
+      "frame_sha256": "0466001248f262320df79e12b2d84aa6e6908bcce916c7457e31860e6d73df73",
+      "regions": {
+        "row0": [
+          80,
+          330,
+          590,
+          690
+        ],
+        "row1": [
+          700,
+          330,
+          1210,
+          690
+        ],
+        "row2": [
+          1320,
+          330,
+          1830,
+          690
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 1,
+      "cue": 1,
+      "frame_sha256": "43d02127fd25b94337cd037bea9864e3ae1c5f6dcaf538ce959efaf3903f2cb0",
+      "regions": {
+        "row0": [
+          80,
+          330,
+          590,
+          690
+        ],
+        "row1": [
+          700,
+          330,
+          1210,
+          690
+        ],
+        "row2": [
+          1320,
+          330,
+          1830,
+          690
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 1,
+      "cue": 2,
+      "frame_sha256": "56e500b4835a25bdaeb8cbe3b612a02e8b228152d9509990e1738be8626de70e",
+      "regions": {
+        "row0": [
+          80,
+          330,
+          590,
+          690
+        ],
+        "row1": [
+          700,
+          330,
+          1210,
+          690
+        ],
+        "row2": [
+          1320,
+          330,
+          1830,
+          690
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    },
+    {
+      "scene": 1,
+      "cue": 3,
+      "frame_sha256": "fb110871a712f7b7b51491efc523dd1b3c9b44a51257366c2c9f675ac60dcc7b",
+      "regions": {
+        "row0": [
+          80,
+          330,
+          590,
+          690
+        ],
+        "row1": [
+          700,
+          330,
+          1210,
+          690
+        ],
+        "row2": [
+          1320,
+          330,
+          1830,
+          690
+        ]
+      },
+      "targets": []
+    },
+    {
+      "scene": 2,
+      "cue": 0,
+      "frame_sha256": "5fb512e17eca92ce7e9e077db5d409d6297bfc2f4195646b1c144b8292c56f8c",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 2,
+      "cue": 1,
+      "frame_sha256": "08f2c96a51ce4cb85edfcf0a2dd2a40790f805e1dbf5f72ab77d4e02b3898110",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 2,
+      "cue": 2,
+      "frame_sha256": "c40d93a7a55de76e01755ceb937e3c965f7b863788d84b201b986c7249280ad6",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    },
+    {
+      "scene": 3,
+      "cue": 0,
+      "frame_sha256": "bcb45219db92dd8153ea31081ece46771018bf99121183638a6e6fce0998fa62",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 3,
+      "cue": 1,
+      "frame_sha256": "96a29981e70146a4ba3428b36fbf89e670e44cd7af37bd48815e9fef847cada2",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 3,
+      "cue": 2,
+      "frame_sha256": "0d52bc5d0132b5940fff1f3f196dc53a40b1c86cbbef0604c8e381f655272218",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    },
+    {
+      "scene": 4,
+      "cue": 0,
+      "frame_sha256": "ca9e20fa88bc7a9893bac22cecd9e0e96bedbf826bac515b97696deb10293fa3",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 4,
+      "cue": 1,
+      "frame_sha256": "12618b7a758062b1091a9a95e9de39bd9afb999e737d89083aac87bb3df6194a",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 4,
+      "cue": 2,
+      "frame_sha256": "b8d04a67cb36db3b8ddefa9dd54688e3026391876560bd89eecefd551f61f050",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    },
+    {
+      "scene": 5,
+      "cue": 0,
+      "frame_sha256": "2edaefbab26cfeb7b8be75b31751c81a4ce449f25a688ebfb6d8969f65b7bee8",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 5,
+      "cue": 1,
+      "frame_sha256": "fc08c75e29f6d8d099ea89a3db60609dbbe52eaab92d030d58d0b01644098d73",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 5,
+      "cue": 2,
+      "frame_sha256": "16d8c03533cbe0a81e3733fc76b8a4d8fbcff24168047578dee2d8c492eef1cb",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    },
+    {
+      "scene": 6,
+      "cue": 0,
+      "frame_sha256": "f492254792b167064f54948014e3e9334e1feab7e511199c4f6332fe1d7f7784",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 6,
+      "cue": 1,
+      "frame_sha256": "fc41d085be60d458d72ca69c6400c01c2b41a7ee817e987132c1571c64bf1938",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    },
+    {
+      "scene": 6,
+      "cue": 2,
+      "frame_sha256": "33640e1d8250b166f69bdbd8b39fa84a1cc7f552e758dede43ea403265299b45",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 7,
+      "cue": 0,
+      "frame_sha256": "ae4ac563e53c2262b14c06f30d920db45aa4529b0f9bf199585409e53049aa19",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 7,
+      "cue": 1,
+      "frame_sha256": "9910797427912ba4c11146920686820dbe355c014f7ec83ddf467b1b808d1fbd",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 7,
+      "cue": 2,
+      "frame_sha256": "9bac3ffd289f8a0f4aade1812c06f89815c46e421506d9ecd2b6a5f5993f2077",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    },
+    {
+      "scene": 8,
+      "cue": 0,
+      "frame_sha256": "707846734860188a75101b82419f9ea3fc53f0ea7da0d347dbdcf4164509a7b5",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 8,
+      "cue": 1,
+      "frame_sha256": "5f4a07715c8e6fd74bb1864094951c8e28d905e27adc10f590f337af25cbeda4",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 8,
+      "cue": 2,
+      "frame_sha256": "df290035fc95fdf5301261ca846929b27d9f9961ea0210c89b117cc9c9bb6bd3",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    },
+    {
+      "scene": 9,
+      "cue": 0,
+      "frame_sha256": "4f615e68989344306d841e46114250fce39b328e8edc0181b3c909e1c26bf3d5",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 9,
+      "cue": 1,
+      "frame_sha256": "69898bddd59e992dceebda2f79f918d62131248e8ccd9c8e790ea3b883837fe7",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 9,
+      "cue": 2,
+      "frame_sha256": "0c8d511f53b91309f2dc6d21064c8593152df232c7eb95f2907390455b8ab04d",
+      "regions": {
+        "row0": [
+          1170,
+          268,
+          1850,
+          403
+        ],
+        "row1": [
+          1170,
+          425,
+          1850,
+          560
+        ],
+        "row2": [
+          1170,
+          582,
+          1850,
+          717
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    },
+    {
+      "scene": 10,
+      "cue": 0,
+      "frame_sha256": "eca8185a953a9c73aa8eadb9a9ee96fce78b8d552414138d1a57affe9f710a44",
+      "regions": {
+        "row0": [
+          70,
+          680,
+          1840,
+          750
+        ],
+        "row1": [
+          70,
+          752,
+          1840,
+          820
+        ]
+      },
+      "targets": []
+    },
+    {
+      "scene": 10,
+      "cue": 1,
+      "frame_sha256": "e196fcc6ad353473a371ea14e511340a9f6f0e18ec058ccf482629520e13b749",
+      "regions": {
+        "row0": [
+          70,
+          680,
+          1840,
+          750
+        ],
+        "row1": [
+          70,
+          752,
+          1840,
+          820
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 10,
+      "cue": 2,
+      "frame_sha256": "57df33ace1ea4395a6e58a48a0b5ec3ff5d41896fd198e50045031b88c70e7f3",
+      "regions": {
+        "row0": [
+          70,
+          680,
+          1840,
+          750
+        ],
+        "row1": [
+          70,
+          752,
+          1840,
+          820
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 11,
+      "cue": 0,
+      "frame_sha256": "69186a13b3ebf371600140b57ca3117c8f574e4523a8ce25d8d569d5b3febebd",
+      "regions": {
+        "row0": [
+          90,
+          280,
+          1830,
+          380
+        ],
+        "row1": [
+          90,
+          430,
+          1830,
+          530
+        ],
+        "row2": [
+          90,
+          580,
+          1830,
+          680
+        ]
+      },
+      "targets": [
+        "row0"
+      ]
+    },
+    {
+      "scene": 11,
+      "cue": 1,
+      "frame_sha256": "800597289fedffe266ba5e29ce553a62c9a4f9e105fcd816b73d48d4281f606f",
+      "regions": {
+        "row0": [
+          90,
+          280,
+          1830,
+          380
+        ],
+        "row1": [
+          90,
+          430,
+          1830,
+          530
+        ],
+        "row2": [
+          90,
+          580,
+          1830,
+          680
+        ]
+      },
+      "targets": [
+        "row1"
+      ]
+    },
+    {
+      "scene": 11,
+      "cue": 2,
+      "frame_sha256": "bd5dfe0568c762ffdb3ce7a747fdb82bfbd87a11ac371219a8b78a8fcc9e1bca",
+      "regions": {
+        "row0": [
+          90,
+          280,
+          1830,
+          380
+        ],
+        "row1": [
+          90,
+          430,
+          1830,
+          530
+        ],
+        "row2": [
+          90,
+          580,
+          1830,
+          680
+        ]
+      },
+      "targets": []
+    },
+    {
+      "scene": 11,
+      "cue": 3,
+      "frame_sha256": "2656951088425bf3b89cd78b3cc6bbff29d3b62d77a62c448a4c01657e647a14",
+      "regions": {
+        "row0": [
+          90,
+          280,
+          1830,
+          380
+        ],
+        "row1": [
+          90,
+          430,
+          1830,
+          530
+        ],
+        "row2": [
+          90,
+          580,
+          1830,
+          680
+        ]
+      },
+      "targets": [
+        "row2"
+      ]
+    }
+  ],
+  "decoded_audio_rms": 0.04954180406005471,
+  "approval_text": "이데로올려",
+  "preview_url": "https://smartchoice365-web.pages.dev/reviews/robot-court-a21da373/"
+}
