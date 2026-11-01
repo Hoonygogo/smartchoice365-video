@@ -1,0 +1,85 @@
+name: Smart Choice 365 — Instagram and Facebook Reels (free API)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'publications/meta-requests/*.json'
+  workflow_dispatch:
+    inputs:
+      request_file:
+        description: 'Approved request JSON path under publications/meta-requests/'
+        type: string
+        required: true
+  workflow_call:
+    inputs:
+      request_file:
+        description: 'Approved request JSON path under publications/meta-requests/'
+        type: string
+        required: true
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: smartchoice365-meta-reels
+  cancel-in-progress: false
+jobs:
+  distribute:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Locate owner-approved Meta distribution requests
+        env:
+          CALL_FILE: ${{ inputs.request_file }}
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          python - <<'PY'
+          import os,subprocess,pathlib
+          f=os.environ.get('CALL_FILE','').strip()
+          if f:
+            files=[f]
+          elif os.environ['EVENT_NAME']=='push':
+            before=os.environ.get('BEFORE','')
+            if before=='0'*40:raise SystemExit('No previous SHA; dispatch with explicit request file')
+            files=subprocess.check_output(['git','diff','--name-only',before,'HEAD','--','publications/meta-requests'],text=True).splitlines()
+            files=[p for p in files if p.startswith('publications/meta-requests/') and p.endswith('.json')]
+          else:
+            raise SystemExit('Missing explicit Meta distribution request')
+          for item in files:
+            path=pathlib.Path(item)
+            if path.parts[:2]!=('publications','meta-requests') or '..' in path.parts or path.suffix!='.json' or not path.is_file():
+              raise SystemExit('Invalid request file: '+item)
+          if not files:raise SystemExit('No Meta publication request modified by this event')
+          pathlib.Path('/tmp/meta_requests').write_text('\n'.join(files)+'\n')
+          print('Prepared',len(files),'Meta request(s); approval flag and secrets gated in publisher.')
+          PY
+      - name: Check ffprobe available without paid installs
+        run: |
+          if ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          ffprobe -version | head -1
+      - name: Validate footage and optionally publish the approved Reel(s)
+        env:
+          META_PUBLISH_ENABLED: ${{ vars.META_PUBLISH_ENABLED }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ vars.META_INSTAGRAM_ACCOUNT_ID }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          while IFS= read -r request; do
+            [ -n "$request" ] || continue
+            META_REQUEST_FILE="$request" python maintenance/publish_meta_reels.py
+          done < /tmp/meta_requests
+      - name: Publication status guidance
+        if: always()
+        run: |
+          echo 'Meta cross-posting writes separate verified per-platform receipts to publications/meta-receipts/.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No secrets are stored in code, published to logs, or copied to public GitHub files.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Reels captions are not guaranteed clickable; direct visitors to the profile website link.' >> "$GITHUB_STEP_SUMMARY"
