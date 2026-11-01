@@ -21,7 +21,7 @@ jobs:
         run: |
           if [ -z "$CF_ACCOUNT" ] || [ -z "$CF_TOKEN" ]; then echo "::error::Missing scoped Cloudflare AI credentials"; exit 1; fi
           if [ "$CF_FREE" != "true" ]; then echo "::error::Workers Free not confirmed; no AI call made"; exit 1; fi
-      - name: Create precisely one FLUX.1 Schnell ice maker illustration
+      - name: Create revised real-world scene with one FLUX.1 Schnell free call
         env:
           CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CF_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
@@ -31,7 +31,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add experiments/ice-maker-ai/hero-2026-11-01.b64 experiments/ice-maker-ai/hero-2026-11-01.json
+          git add experiments/ice-maker-ai/hero-v2-2026-11-01.b64 experiments/ice-maker-ai/hero-v2-2026-11-01.json
           git commit -m "Experiment: Cloudflare Workers AI generated ice maker editorial candidate"
           git pull --rebase origin main
           git push origin HEAD:main
