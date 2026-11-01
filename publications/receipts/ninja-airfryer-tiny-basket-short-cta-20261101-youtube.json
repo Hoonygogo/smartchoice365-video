@@ -3,12 +3,15 @@
   "sha256": "57a0721fc4381bb5f60071fa9c3a529d963d08ff9d3c7629e3e679001ee1c0ce",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "platform": "youtube",
   "run_id": "41278803062",
   "full_video_id": "2R5Nyt42hRs",
   "related_video_status": "requires_youtube_studio_manual_selection",
   "related_video_instruction": "YouTube Studio > Content > Shorts > Short > Related video > Ninja AF141 vs AF400 (2R5Nyt42hRs) > Save",
   "video_id": "JgKqCXIvbKI",
-  "url": "https://www.youtube.com/shorts/JgKqCXIvbKI"
+  "url": "https://www.youtube.com/shorts/JgKqCXIvbKI",
+  "processing_status": "succeeded",
+  "privacy": "public",
+  "metadata_verified": true
 }
