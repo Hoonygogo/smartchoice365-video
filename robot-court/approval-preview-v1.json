@@ -14,8 +14,8 @@
   "voice": "Kokoro af_heart",
   "speed": 0.96,
   "picture_led_scenes": 8,
-  "status": "awaiting_owner_browser_review",
-  "youtube_published": false,
+  "status": "published_verified",
+  "youtube_published": true,
   "preview_url": "https://smartchoice365-web.pages.dev/reviews/robot-court-a21da373/",
   "media_url": "https://smartchoice365-web.pages.dev/reviews/robot-court-a21da373/video.mp4",
   "library_file_id": "libfile_9d896a32fd188191a0612d3e61b5a70b",
@@ -45,5 +45,8 @@
     "notes": "Actual encoded opening, quality steps, corrected photographic scenes, jury diagram and homepage CTA inspected. Full source contain and approved original logo retained."
   },
   "comment_draft": "Would a robot vacuum survive your floor? Tell us below! 👉 Need more help choosing? Explore Smart Choice 365 buying guides: https://smartchoice365-web.pages.dev/?utm_source=youtube&utm_medium=comment&utm_campaign=robot_buying_court_en_v1",
-  "approval_received": false
+  "approval_received": true,
+  "approval_text": "이데로올려",
+  "youtube_url": "https://www.youtube.com/watch?v=FC4FvuBPS8w",
+  "publication_receipt": "publications/receipts/robot-buying-court-en-v1-youtube.json"
 }
