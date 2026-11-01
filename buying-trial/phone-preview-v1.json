@@ -1,0 +1,24 @@
+{
+  "url": "https://smartchoice365-web.pages.dev/reviews/airfryer-143d641d/",
+  "media_url": "https://smartchoice365-web.pages.dev/reviews/airfryer-143d641d/video.mp4",
+  "sha256": "143d641d41707dc74034a98977f3175ca4f865c3aa31412e3c6cbd9f1ca74b61",
+  "website_commit": "2bb9fc334280d291114421f6120d92a71ab994d0",
+  "verification": {
+    "html_title": "영상 확인 | 스마트초이스 365",
+    "media_http_status": 200,
+    "media_mime": "video/mp4",
+    "bytes": 8153852,
+    "served_sha_matches": true,
+    "browser": "Chrome cloud browser",
+    "duration": 208.583333,
+    "currentTime": 8.528039,
+    "paused": false,
+    "readyState": 4,
+    "videoWidth": 1920,
+    "videoHeight": 1080,
+    "physical_phone_test": false,
+    "range_request_returned": 200
+  },
+  "status": "awaiting_owner_approval",
+  "youtube_published": false
+}
