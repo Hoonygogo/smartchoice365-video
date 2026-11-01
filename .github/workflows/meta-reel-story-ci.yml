@@ -1,0 +1,25 @@
+name: Smart Choice 365 — Reel to Story safe CI
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'maintenance/publish_meta_story_from_reel.py'
+      - 'maintenance/test_meta_story_from_reel.py'
+      - '.github/workflows/meta-reels-publish.yml'
+      - '.github/workflows/meta-reel-story-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-validation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile and run isolated Reel-to-Story tests without secrets or API calls
+        run: |
+          python -m py_compile maintenance/publish_meta_reels.py maintenance/publish_meta_stories.py maintenance/publish_meta_story_from_reel.py
+          python maintenance/test_meta_story_from_reel.py
