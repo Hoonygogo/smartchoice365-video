@@ -1,0 +1,19 @@
+{
+  "duration": 208.583333,
+  "size_bytes": 8153852,
+  "sha256": "143d641d41707dc74034a98977f3175ca4f865c3aa31412e3c6cbd9f1ca74b61",
+  "codec": "h264",
+  "audio": "aac",
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "cue_count": 38,
+  "min_decoded_cue_rms": 0.043065477162599564,
+  "faststart": true,
+  "status": "awaiting_owner_mobile_review",
+  "library_file_id": "libfile_7ee0fe3d17d881918dc13717ddf724fe",
+  "library_file_name": "SmartChoice365_BuyingTrial_AirFryer_Korean_v1.mp4",
+  "preview_url": "https://chatgpt.com/library?file_id=libfile_7ee0fe3d17d881918dc13717ddf724fe&account_id=personal",
+  "youtube_published": false
+}
