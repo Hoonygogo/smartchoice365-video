@@ -234,3 +234,16 @@ User instruction: apply the Korean general-video quality/settings to English, re
 9. 지속성: 확인 링크와 실제 영상은 검토가 끝나기 전에 자동 청소하거나 삭제하지 않는다. 만료/고장 시 동일 해시의 파일을 복원하고 검증된 링크를 다시 준다. 유료 서비스 도입 없이 기존 무료 운영 원칙을 지킨다.
 
 한국어 음성 Sarah와 영어 Kokoro, 승인 로고, 이미지·자막·발화별 강조 등 기존 제작 품질 규칙은 함께 적용한다. 이번 지시는 제작·확인 규칙의 확정이며 아직 승인하지 않은 영상을 유튜브에 올리라는 지시가 아니다.
+
+
+## Homepage promotion even without a related article — 2026-11-01
+User instruction: EVERY video must promote the Smart Choice 365 website, including entertainment/buying-trial videos with no corresponding article. This explicitly overrides any interpretation that the guide-first rule forbids a homepage CTA when no related guide exists.
+- If an exact genuinely related published guide exists, use that deep URL as before. If none exists, link the official homepage https://smartchoice365-web.pages.dev/ with a general buying-decision invitation. Do not omit the website, invent a related article or describe the homepage as a detailed guide to this exact video.
+- New Korean/English general videos and Shorts: include a short natural spoken website invitation and matching legible on-screen brand/address toward the closing; do not bury the only CTA in tiny text. For supported surfaces point to the description/comment link. Embedded MP4 text is not clickable; do not claim it is. Adapt Shorts instructions to actual clickable placements.
+- FIRST line of YouTube description contains the useful CTA plus working URL, with platform/video-specific UTM when supported. Add a natural comment with the link too; pin only if actually supported and verified. Keep the CTA concise and appealing, without unsupported discounts, false urgency, guaranteed savings or a misleading promise about the destination.
+- Korean general homepage CTA: “구매 전, 더 비교해 보고 싶으신가요? 스마트초이스365에서 다양한 구매 가이드를 확인해 보세요. 홈페이지는 설명란 링크로 바로 가실 수 있습니다.”
+- Korean first-line description/comment: “👉 구매 결정에 더 많은 도움이 필요하신가요? 스마트초이스365 구매 가이드 둘러보기: https://smartchoice365-web.pages.dev/”
+- English general homepage CTA: “Want more help deciding what to buy? Explore more buying guides at Smart Choice 365. You'll find the website link in the description.”
+- English first-line description/comment: “👉 Need more help choosing? Explore Smart Choice 365 buying guides: https://smartchoice365-web.pages.dev/”
+- Keep distinct the separate rule for written articles promoting the YouTube channel; this rule is the reverse direction, video → website.
+- Current buying-trial pilot has no required same-topic article. Use the homepage CTA in its pending description/comment. Adding this rule or metadata draft does not itself modify the already-rendered MP4 or approve YouTube publication; any MP4 revision still requires a new browser-playable review page/version and user approval.
