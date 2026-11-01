@@ -1,5 +1,6 @@
 """Reusable, approval-only English guide renderer matching the approved Korean layout."""
 import argparse,hashlib,html,json,math,os,subprocess,sys
+from urllib.parse import urlparse
 from pathlib import Path
 import numpy as np,soundfile as sf
 from PIL import Image,ImageDraw
@@ -14,7 +15,9 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def stamp(t):return f'{int(t//3600):02}:{int(t//60)%60:02}:{int(t)%60:02},{round(t%1*1000):03}'
 def validate(req,review_required=True):
  assert req['language']=='en' and len(req['scenes'])==12
- assert req['guide_url'].startswith('https://smartchoice365-web.pages.dev/guides/')
+ link=urlparse(req['guide_url']);assert link.scheme=='https' and link.netloc=='smartchoice365-web.pages.dev'
+ if req.get('link_kind','guide')=='homepage':assert link.path in ('','/')
+ else:assert link.path.startswith('/guides/')
  photos=[s['photo'] for s in req['scenes'] if s['visual']=='photo'];assert len(photos)>=8 and len(set(photos))==len(photos)
  manifest=ROOT/req['asset_dir']/'visual_manifest.json'
  assets=json.loads(manifest.read_text())['assets'] if manifest.exists() else []
@@ -60,15 +63,15 @@ def main():
   subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-loop','1','-framerate',str(FPS),'-i',str(image),'-frames:v',str(t['frames']),'-an','-c:v','libx264','-threads','2','-preset','veryfast','-crf','20','-pix_fmt','yuv420p',str(clip)],check=True);clips.append(clip)
   frame_evidence.append({'scene':si,'cue':t['cue'],'frame_sha256':sha(image),'regions':regions,'targets':t['targets']});print('FRAME',n,flush=True)
  (out/'concat.txt').write_text(''.join(f"file '{c}'\n" for c in clips));final=out/req['output_name']
- subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-f','concat','-safe','0','-i',str(out/'concat.txt'),'-i',str(out/'voice.wav'),'-c:v','copy','-c:a','aac','-b:a','128k','-movflags','+faststart',str(final)],check=True)
- probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(final)]));v=next(s for s in probe['streams'] if s['codec_type']=='video');a=next(s for s in probe['streams'] if s['codec_type']=='audio');assert (v['width'],v['height'],v['codec_name'],a['codec_name'])==(1920,1080,'h264','aac');assert abs(float(probe['format']['duration'])-frame/FPS)<.2
+ subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-xerror','-f','concat','-safe','0','-i',str(out/'concat.txt'),'-i',str(out/'voice.wav'),'-c:v','copy','-c:a','aac','-b:a','128k','-movflags','+faststart',str(final)],check=True)
+ probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(final)]));v=next(s for s in probe['streams'] if s['codec_type']=='video');a=next(s for s in probe['streams'] if s['codec_type']=='audio');assert (v['width'],v['height'],v['codec_name'],a['codec_name'])==(1920,1080,'h264','aac');assert abs(float(probe['format']['duration'])-frame/FPS)<.2;assert int(v['nb_frames'])==frame and abs(float(v['duration'])-frame/FPS)<.1
  subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-i',str(final),'-vn','-ac','1','-ar','24000',str(out/'decoded_audio.wav')],check=True);decoded,sr=sf.read(out/'decoded_audio.wav');rms=float(np.sqrt(np.mean(decoded**2)));assert rms>.008
  (out/'captions.srt').write_text('\n\n'.join(f'{n+1}\n{stamp(t["start"])} --> {stamp(t["end"])}\n{t["narration"]}' for n,t in enumerate(timings)))
  (out/'frame_evidence.json').write_text(json.dumps(frame_evidence,indent=2));(out/'script.json').write_text(json.dumps(req,indent=2));chapters=[]
  for si,s in enumerate(req['scenes']):
   start=next(t['start'] for t in timings if t['scene']==si);chapters.append({'start':start,'title':s['heading']})
  m={'id':req['id'],'title':req['title'],'status':'awaiting_user_approval','published':False,'sha256':sha(final),'duration':frame/FPS,'width':1920,'height':1080,'voice':voice,'decoded_audio_rms':rms,'caption_segments':len(timings),'photo_led_scenes':8,'guide_url':req['guide_url'],'sources':req['sources'],'chapters':chapters,'visual_review':'Source images and all composed storyboard frames inspected; encoded frame inspection still required before delivery'}
- (out/'manifest.json').write_text(json.dumps(m,indent=2));desc='Full buying checklist and worked examples: '+req['guide_url']+'\n\nOfficial-source research and Smart Choice 365 editorial analysis; not hands-on testing. Generic AI-created illustrative scenes are not official manufacturer photographs. All cost examples are hypothetical, not real products, retail prices or electricity offers. The linked guide contains affiliate advertising.\n\n'+'\n'.join(req['sources']);(out/'description.txt').write_text(desc)
- title=html.escape(req['title']);filename=html.escape(req['output_name']);guide=html.escape(req['guide_url'],quote=True);(out/'index.html').write_text(f'<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>body{{max-width:1100px;margin:25px auto;padding:15px;font-family:system-ui;background:#f5f3ee;color:#13243a}}video{{width:100%}}</style><h1>{title}</h1><p>1080p · Kokoro af_heart · Review copy, not published</p><video controls playsinline preload="metadata" src="{filename}"></video><p><a href="{filename}" download>Download MP4</a> · <a href="{guide}">Full buying guide</a></p></html>')
+ (out/'manifest.json').write_text(json.dumps(m,indent=2));desc=req.get('link_cta','Full buying checklist and worked examples:')+' '+req['guide_url']+'\n\n'+req.get('description_disclosure','Official-source research and Smart Choice 365 editorial analysis; not hands-on testing. AI-created illustrative scenes are not manufacturer photographs. Website pages may contain affiliate advertising.')+'\n\nSources:\n'+'\n'.join(req['sources']);(out/'description.txt').write_text(desc)
+ link_label='More buying guides' if req.get('link_kind')=='homepage' else 'Full buying guide';title=html.escape(req['title']);filename=html.escape(req['output_name']);guide=html.escape(req['guide_url'],quote=True);(out/'index.html').write_text(f'<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>body{{max-width:1100px;margin:25px auto;padding:15px;font-family:system-ui;background:#f5f3ee;color:#13243a}}video{{width:100%}}</style><h1>{title}</h1><p>1080p · Kokoro af_heart · Review copy, not published</p><video controls playsinline preload="metadata" src="{filename}"></video><p><a href="{filename}" download>Download MP4</a> · <a href="{guide}">{link_label}</a></p></html>')
  print(json.dumps(m),flush=True)
 if __name__=='__main__':main()
