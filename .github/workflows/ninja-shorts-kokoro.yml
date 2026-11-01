@@ -1,18 +1,22 @@
-name: Ninja Shorts Kokoro fast-cut preview
+name: Ninja Shorts Kokoro — render, quality check and optional auto-publish
 on:
   push:
     branches: [main]
     paths:
       - 'experiments/render_ninja_shorts_kokoro.py'
       - '.github/workflows/ninja-shorts-kokoro.yml'
+      - 'publications/auto-shorts-requests/ninja-shorts-kokoro-v2.json'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
 jobs:
   render:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - name: Recover AI animation clips from two successful Wan runs
@@ -52,3 +56,20 @@ jobs:
             out/ninja-shorts-kokoro/ninja_shorts_kokoro_v2.mp4
             out/ninja-shorts-kokoro/manifest.json
           retention-days: 3
+
+      - name: Upload to YouTube automatically only if an approved request exists
+        if: ${{ hashFiles('publications/auto-shorts-requests/ninja-shorts-kokoro-v2.json') != '' }}
+        env:
+          SHORTS_REQUEST_FILE: publications/auto-shorts-requests/ninja-shorts-kokoro-v2.json
+          SHORTS_VIDEO_FILE: out/ninja-shorts-kokoro/ninja_shorts_kokoro_v2.mp4
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python maintenance/publish_shorts_from_render.py
+      - name: Explain Studio-only clickable related-video setting
+        if: ${{ hashFiles('publications/auto-shorts-requests/ninja-shorts-kokoro-v2.json') != '' }}
+        run: |
+          echo 'YouTube Short upload is automated. The clickable Related video field must still be selected in YouTube Studio.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'See publications/SHORTS_RELATED_VIDEO_POLICY.md for steps.' >> "$GITHUB_STEP_SUMMARY"
