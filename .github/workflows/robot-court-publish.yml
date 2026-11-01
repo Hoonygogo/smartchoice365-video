@@ -30,10 +30,11 @@ jobs:
           reqpath=Path('publications/requests/robot-buying-court-en-v1.json');req=json.loads(reqpath.read_text())
           assert req['approval']=='publish' and req['privacy']=='public'
           assert req['sha256']=='a21da373e62f8d17fc43cc96fe23189e03f77d68e306f59a460d8ccfcd91e459'
-          assert req['media_url']=='https://smartchoice365-web.pages.dev/reviews/robot-court-a21da373/video.mp4'
-          with urllib.request.urlopen(req['media_url'],timeout=90) as response:
-              assert response.headers.get_content_type()=='video/mp4'
-              media=response.read()
+          media_sha=req['media_blob_sha']
+          url='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/git/blobs/'+media_sha
+          request=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(request,timeout=90) as response:data=json.load(response)
+          media=base64.b64decode(data['content'])
           assert hashlib.sha256(media).hexdigest()==req['sha256']
           (root/'draft.mp4').write_bytes(media)
           sha=req['thumbnail_blob_sha']
