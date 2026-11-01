@@ -1,2 +1,4 @@
 Smart Choice 365 owner-provisioned Meta system-user credential read-only verification.
 No publishing or external data modification authorized by this request.
+
+Second read-only verification: Page token exchange and matched linked Instagram target.
