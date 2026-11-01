@@ -4,10 +4,13 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "platform": "youtube",
   "approval": "publish",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "41314613304",
   "related_guide": "https://smartchoice365-web.pages.dev/guides/2026-humidifier-ultrasonic-steam-evaporative-korea.html",
   "related_video_status": "no_matching_long_video_confirmed",
   "video_id": "xjv3M57w6XI",
-  "url": "https://www.youtube.com/shorts/xjv3M57w6XI"
+  "url": "https://www.youtube.com/shorts/xjv3M57w6XI",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
