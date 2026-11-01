@@ -18,19 +18,19 @@ from publish_youtube_generic import api, receipt_read, receipt_write, CHANNEL
 from check_youtube import request_json
 
 ROOT = Path(__file__).resolve().parents[1]
-MEDIA = ROOT / "uploads/SmartChoice365_Humidifier_TwoClip_Short.mp4"
-SHA = "4f3c6bd5b691975e1579c86604ca86a08adcdf68f16dc65c657fc1f9e18a27c3"
-SIZE = 4292974
+MEDIA = ROOT / "uploads/SmartChoice365_Humidifier_TwoClip_Short_v2.mp4"
+SHA = "06d18349ff31f07a072b28cfffdf0bad107d90d588a0d1aade0276fd2f523cf7"
+SIZE = 3184884
 ID = "humidifier-two-clip-ko-short-20261101"
 RECEIPT = "publications/receipts/" + ID + "-youtube.json"
 GUIDE = "https://smartchoice365-web.pages.dev/guides/2026-humidifier-ultrasonic-steam-evaporative-korea.html"
 METADATA = {
     "snippet": {
-        "title": "가습기 켰다가 방이 안개 천지?! 😂 | 가습기 제대로 고르는 법 #Shorts",
+        "title": "건조하고 냄새나서 가습기 켰더니… 😂💨 #Shorts",
         "description": (
             GUIDE + "\n\n"
-            "건조해서 가습기를 켰는데… 방이 안개 천지?! 😱\n"
-            "가습기를 무조건 많이 틀기보다 실내 습도를 확인하고 조절하세요.\n\n"
+            "건조하고 냄새나서 가습기를 켰는데… 방이 안개 천지?! 😱\n"
+            "가습기는 냄새 제거기가 아니에요. 실내 습도를 확인하고 가습량을 조절하세요.\n\n"
             "초음파식·가열식·자연기화식, 관리와 전기요금까지 자세히 비교한 글은 위 링크에서 확인하세요.\n"
             "Smart Choice 365: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n\n"
             "영상은 이해를 돕기 위한 만화 연출입니다. 링크된 구매 가이드에는 명시된 제휴상품 링크가 포함될 수 있습니다.\n"
