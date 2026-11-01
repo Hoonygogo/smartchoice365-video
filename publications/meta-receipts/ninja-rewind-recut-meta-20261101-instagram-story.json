@@ -1,0 +1,15 @@
+{
+  "id": "ninja-rewind-recut-meta-20261101",
+  "platform": "instagram_story",
+  "sha256": "57e53c20fba073bd16ee36e06aa0720602d23aa71e86252056c92bd46cef8a3b",
+  "media_path": "uploads/SmartChoice365_Ninja_Rewind_AnimationOnly_Preview.mp4",
+  "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/7acf7494f24a5c25f477311dbe1a33689a1c2491/uploads/SmartChoice365_Ninja_Rewind_AnimationOnly_Preview.mp4",
+  "video_size": 9249009,
+  "status": "published_verified",
+  "account_id": "17841475811391464",
+  "run_id": "41295064060",
+  "container_id": "17887426374527047",
+  "media_id": "18018751613745234",
+  "permalink": "https://www.instagram.com/stories/smartchoice365official/18018751613745234/",
+  "note": "Reconciled from verified existing 2026-11-01 Ninja Story. Prevents automatic Reel-to-Story workflow reposting an already published video; no additional Meta POST was made."
+}
