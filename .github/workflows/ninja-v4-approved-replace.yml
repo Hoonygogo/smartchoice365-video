@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'uploads/SmartChoice365_Ninja_English_V4_Precise_StableFocus.mp4'
+      - '.github/workflows/ninja-v4-approved-replace.yml'
   workflow_dispatch:
 permissions:
   contents: write
@@ -17,16 +18,48 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Check exact owner-approved video fingerprint and media tracks
+      - name: Check exact owner-approved video fingerprint and MP4 tracks (no ffprobe required)
         run: |
-          file='uploads/SmartChoice365_Ninja_English_V4_Precise_StableFocus.mp4'
-          test -s "$file"
-          actual="$(sha256sum "$file" | awk '{print $1}')"
+          python - <<'PY'
+          import hashlib, struct
+          from pathlib import Path
+          p=Path('uploads/SmartChoice365_Ninja_English_V4_Precise_StableFocus.mp4')
+          raw=p.read_bytes()
+          digest=hashlib.sha256(raw).hexdigest()
           expected='b0d49b9b59c7cfded99259501fbc744e85c83de319d21fa213dba0e81e4c4e51'
-          test "$actual" = "$expected" || { echo 'Blocked: wrong V4 file'; exit 1; }
-          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$file")" = '1920,1080'
-          test "$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 "$file")" = 'aac'
-          echo 'Verified approved V4 hash and AVC/AAC streams.'
+          assert digest==expected, 'BLOCKED: wrong V4 file checksum'
+          assert len(raw)==5507006, 'BLOCKED: wrong V4 file length'
+          def boxes(buf):
+              pos=0
+              while pos+8<=len(buf):
+                  size,kind=struct.unpack_from('>I4s',buf,pos)
+                  header=8
+                  if size==1:
+                      size=struct.unpack_from('>Q',buf,pos+8)[0]
+                      header=16
+                  if size==0: size=len(buf)-pos
+                  assert size>=header and pos+size<=len(buf), 'Invalid MP4 box'
+                  yield kind,buf[pos+header:pos+size]
+                  pos+=size
+          def child(buf,name): return next(v for k,v in boxes(buf) if k==name)
+          moov=child(raw,b'moov')
+          assert len(child(raw,b'mdat'))>100000, 'Missing video data'
+          codecs={}
+          for kind,tr in boxes(moov):
+              if kind!=b'trak':continue
+              mdia=child(tr,b'mdia')
+              handler=child(mdia,b'hdlr')[8:12]
+              stsd=child(child(child(mdia,b'minf'),b'stbl'),b'stsd')
+              codec=stsd[12:16]
+              if handler==b'vide':
+                  width,height=struct.unpack('>II',child(tr,b'tkhd')[-8:])
+                  assert (width//65536,height//65536)==(1920,1080), 'Not 1080p'
+                  assert codec==b'avc1', 'Video is not H264'
+              if handler==b'soun': assert codec==b'mp4a', 'Audio is not AAC'
+              codecs[handler]=codec
+          assert codecs.get(b'vide')==b'avc1' and codecs.get(b'soun')==b'mp4a'
+          print('PASS exact V4 SHA-256; original 1080p H264 video and AAC audio, no installation needed')
+          PY
       - name: Upload V4, check public processing, then delete old Ninja video
         env:
           GH_TOKEN: ${{ github.token }}
