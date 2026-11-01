@@ -3,8 +3,6 @@ on:
   push:
     branches: [main]
     paths:
-      - 'experiments/render_ninja_shorts_kokoro.py'
-      - '.github/workflows/ninja-shorts-kokoro.yml'
       - 'publications/auto-shorts-requests/ninja-shorts-kokoro-v2.json'
   workflow_dispatch:
 permissions:
