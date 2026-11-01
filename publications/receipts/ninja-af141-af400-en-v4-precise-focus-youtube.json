@@ -2,10 +2,12 @@
   "id": "ninja-af141-af400-en-v4-precise-focus",
   "sha256": "b0d49b9b59c7cfded99259501fbc744e85c83de319d21fa213dba0e81e4c4e51",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
-  "status": "upload_initiated",
+  "status": "uploaded_processing",
   "approval": "publish",
   "approval_note": "Owner explicitly approved V4 publication and old Ninja removal",
   "platform": "youtube",
   "run_id": "41278190856",
-  "replaces_video_id": "UJ-azoT4vso"
+  "replaces_video_id": "UJ-azoT4vso",
+  "video_id": "2R5Nyt42hRs",
+  "url": "https://www.youtube.com/watch?v=2R5Nyt42hRs"
 }
