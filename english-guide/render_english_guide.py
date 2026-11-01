@@ -59,8 +59,20 @@ def main():
  sf.write(out/'voice.wav',np.concatenate(audio),24000);(out/'voice_receipts.json').write_text(json.dumps(receipts,indent=2));(out/'cue_timings.json').write_text(json.dumps(timings,indent=2))
  clips=[];frame_evidence=[]
  for n,t in enumerate(timings):
-  si=t['scene'];cue=req['scenes'][si]['cues'][t['cue']];image=out/f'frame_{n:02}.png';regions=layout.draw(si,cue,image);clip=out/f'clip_{n:02}.mp4'
-  subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-loop','1','-framerate',str(FPS),'-i',str(image),'-frames:v',str(t['frames']),'-an','-c:v','libx264','-threads','2','-preset','veryfast','-crf','20','-pix_fmt','yuv420p',str(clip)],check=True);clips.append(clip)
+  si=t['scene'];cue=req['scenes'][si]['cues'][t['cue']];image=out/f'frame_{n:02}.png';old_image_sha=sha(image) if image.exists() else None;regions=layout.draw(si,cue,image);clip=out/f'clip_{n:02}.mp4'
+  def valid_clip():
+   if not clip.exists():return False
+   q=subprocess.run(['ffprobe','-v','error','-show_entries','stream=nb_frames','-of','json',str(clip)],capture_output=True,text=True)
+   try:return q.returncode==0 and int(json.loads(q.stdout)['streams'][0]['nb_frames'])==t['frames']
+   except (ValueError,KeyError,IndexError,json.JSONDecodeError):return False
+  valid=old_image_sha==sha(image) and valid_clip()
+  if not valid:
+   for attempt in range(3):
+    subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-xerror','-loop','1','-framerate',str(FPS),'-i',str(image),'-frames:v',str(t['frames']),'-an','-c:v','libx264','-threads','2','-preset','veryfast','-crf','20','-pix_fmt','yuv420p',str(clip)],check=True)
+    with clip.open('rb') as media:os.fsync(media.fileno())
+    if valid_clip():valid=True;break
+   assert valid,('Invalid encoded clip after three attempts',n)
+  clips.append(clip)
   frame_evidence.append({'scene':si,'cue':t['cue'],'frame_sha256':sha(image),'regions':regions,'targets':t['targets']});print('FRAME',n,flush=True)
  (out/'concat.txt').write_text(''.join(f"file '{c}'\n" for c in clips));final=out/req['output_name']
  subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-xerror','-f','concat','-safe','0','-i',str(out/'concat.txt'),'-i',str(out/'voice.wav'),'-c:v','copy','-c:a','aac','-b:a','128k','-movflags','+faststart',str(final)],check=True)
