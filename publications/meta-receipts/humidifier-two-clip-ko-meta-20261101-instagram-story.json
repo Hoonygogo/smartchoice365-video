@@ -5,8 +5,9 @@
   "media_path": "uploads/SmartChoice365_Humidifier_TwoClip_Short_v2.mp4",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/3586acb7ce216e0e6fe70242d479d7bb7a6a3003/uploads/SmartChoice365_Humidifier_TwoClip_Short_v2.mp4",
   "video_size": 3184884,
-  "status": "media_publish_initiated",
+  "status": "published_unverified",
   "account_id": "17841475811391464",
   "run_id": "41314613304",
-  "container_id": "17887484238527047"
+  "container_id": "17887484238527047",
+  "media_id": "18097907351112337"
 }
