@@ -78,10 +78,14 @@ jobs:
           while IFS= read -r request; do
             [ -n "$request" ] || continue
             META_REQUEST_FILE="$request" python maintenance/publish_meta_reels.py
+            # Same approved video -> Instagram Story, only after the Reel is verified.
+            # This uses the existing credential, publishing gate, and duplicate receipts.
+            META_REQUEST_FILE="$request" python maintenance/publish_meta_story_from_reel.py
           done < /tmp/meta_requests
       - name: Publication status guidance
         if: always()
         run: |
           echo 'Meta cross-posting writes separate verified per-platform receipts to publications/meta-receipts/.' >> "$GITHUB_STEP_SUMMARY"
           echo 'No secrets are stored in code, published to logs, or copied to public GitHub files.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Reels captions are not guaranteed clickable; direct visitors to the profile website link.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Verified Instagram Reels auto-share their approved MP4 to Instagram Story (unless share_to_instagram_story=false).' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Native Story shares do not support clickable Meta API link stickers; profile link is recommended.' >> "$GITHUB_STEP_SUMMARY"
