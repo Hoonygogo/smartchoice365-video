@@ -1,0 +1,74 @@
+name: Replace existing Ninja Short with approved 12-second rewind recut
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'uploads/SmartChoice365_Ninja_Rewind_AnimationOnly_Preview.mp4'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  publish_replacement:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exact approved 12-second video, portrait 720x1280 and audio
+        run: |
+          python - <<'PY'
+          import hashlib,struct
+          from pathlib import Path
+          path=Path('uploads/SmartChoice365_Ninja_Rewind_AnimationOnly_Preview.mp4')
+          assert path.is_file(), 'Approved recut missing; do not upload or delete anything'
+          raw=path.read_bytes()
+          assert len(raw)==9249009
+          assert hashlib.sha256(raw).hexdigest()=='57e53c20fba073bd16ee36e06aa0720602d23aa71e86252056c92bd46cef8a3b'
+          def boxes(data):
+              i=0
+              while i+8<=len(data):
+                  size,kind=struct.unpack_from('>I4s',data,i)
+                  header=8
+                  if size==1:
+                      size=struct.unpack_from('>Q',data,i+8)[0]
+                      header=16
+                  if size==0:size=len(data)-i
+                  assert size>=header and i+size<=len(data),'Malformed MP4'
+                  yield kind,data[i+header:i+size]
+                  i+=size
+          def child(data,name):return next(value for kind,value in boxes(data) if kind==name)
+          moov=child(raw,b'moov')
+          assert len(child(raw,b'mdat'))>100000
+          handles=set()
+          for kind,track in boxes(moov):
+              if kind!=b'trak':continue
+              mdia=child(track,b'mdia')
+              hand=child(mdia,b'hdlr')[8:12]
+              stsd=child(child(child(mdia,b'minf'),b'stbl'),b'stsd')
+              codec=stsd[12:16]
+              if hand==b'vide':
+                  width,height=struct.unpack('>II',child(track,b'tkhd')[-8:])
+                  assert (width//65536,height//65536)==(720,1280),'Not portrait 720x1280'
+                  assert codec==b'avc1','Not H264'
+              elif hand==b'soun':
+                  assert codec==b'mp4a','Not AAC'
+              handles.add(hand)
+          assert b'vide' in handles and b'soun' in handles
+          print('PASS exact approved 11.83s 720x1280 H264/AAC recut')
+          PY
+      - name: Publish and verify new Short, then delete previous Short
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_ninja_rewind_recut.py
+      - name: Record Studio-only clickable Related video follow-up
+        if: success()
+        run: |
+          echo 'Replacement public and old Short verified deleted.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Required in YouTube Studio: Content > Shorts > new rewind Short > Related video > Ninja AF141 vs AF400 (2R5Nyt42hRs) > Save.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The Shorts Related video field cannot be set via the official YouTube API.' >> "$GITHUB_STEP_SUMMARY"
