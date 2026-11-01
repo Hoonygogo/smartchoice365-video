@@ -1,0 +1,14 @@
+{
+  "id": "ninja-rewind-animation-only-short-20261101",
+  "sha256": "57e53c20fba073bd16ee36e06aa0720602d23aa71e86252056c92bd46cef8a3b",
+  "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
+  "platform": "youtube",
+  "approval": "publish",
+  "approval_note": "Owner explicitly approved replacing prior Short with 11.83-second recut",
+  "run_id": "41280351813",
+  "status": "upload_initiated",
+  "replaces_short_id": "JgKqCXIvbKI",
+  "full_video_id": "2R5Nyt42hRs",
+  "related_video_status": "requires_youtube_studio_manual_selection",
+  "related_video_instruction": "In Studio choose Related video: Ninja AF141 vs AF400 V4 (2R5Nyt42hRs)"
+}
