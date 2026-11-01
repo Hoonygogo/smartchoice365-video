@@ -4,7 +4,7 @@
   "sha256": "06d18349ff31f07a072b28cfffdf0bad107d90d588a0d1aade0276fd2f523cf7",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/3586acb7ce216e0e6fe70242d479d7bb7a6a3003/uploads/SmartChoice365_Humidifier_TwoClip_Short_v2.mp4",
   "video_size": 3184884,
-  "status": "container_processing",
+  "status": "media_publish_initiated",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "run_id": "41314613304",
