@@ -68,10 +68,10 @@ jobs:
             'media_path': 'uploads/SmartChoice365_Humidifier_TwoClip_Short_v2.mp4',
             'sha256': '06d18349ff31f07a072b28cfffdf0bad107d90d588a0d1aade0276fd2f523cf7',
             'full_video_id': video_id,
-            'facebook_title': '가습기 켰다가 방이 안개 천지?! | Smart Choice 365',
+            'facebook_title': '건조하고 냄새나서 가습기 켰더니… | Smart Choice 365',
             'captions': {
-              'instagram': '건조하고 냄새나서 켰는데… 방이 안개 천지?! 😱💨\n가습기는 냄새 제거기가 아니에요.\n습도계로 확인하고 알맞게 조절해요!\n\n🔎 가습기 종류별 비교: '+guide+'\n🎬 유튜브 쇼츠: '+youtube+'\n\n이 영상은 이해를 돕기 위한 만화 연출입니다. 가이드에는 광고·제휴 링크가 포함될 수 있습니다.\n\n#가습기 #습도관리 #초음파가습기 #가열식가습기 #SmartChoice365 #릴스',
-              'facebook': '건조하고 냄새나서 가습기를 켰더니 방이 안개 천지?! 😂\n실내 습도를 확인하고 가습량을 조절하세요.\n\n📖 가습기 3종 비교·관리 방법: '+guide+'\n▶ 유튜브 쇼츠: '+youtube+'\n\n영상은 이해를 돕기 위한 만화 연출입니다. 링크된 구매 가이드에는 광고·제휴 링크가 포함될 수 있습니다.\n\n#가습기 #습도관리 #SmartChoice365'
+              'instagram': '건조하고 냄새나서 켰는데… 방이 안개 천지?! 😱💨\n가습기는 냄새 제거기가 아니에요.\n습도계로 확인하고 알맞게 조절해요!\n\n🔎 가습기 종류별 비교: '+guide+'\n🎬 유튜브 쇼츠: '+youtube+'\n🔗 링크는 프로필에서도 확인하세요.\n\n이 영상은 이해를 돕기 위한 만화 연출입니다. [광고] 상세 가이드에는 제휴상품 링크가 포함될 수 있으며 구매 시 일정액의 수수료를 제공받을 수 있습니다.\n\n#가습기 #습도관리 #초음파가습기 #가열식가습기 #SmartChoice365 #릴스',
+              'facebook': '건조하고 냄새나서 가습기를 켰더니 방이 안개 천지?! 😂\n실내 습도를 확인하고 가습량을 조절하세요.\n\n📖 가습기 3종 비교·관리 방법: '+guide+'\n▶ 유튜브 쇼츠: '+youtube+'\n\n영상은 이해를 돕기 위한 만화 연출입니다. [광고] 연결된 구매 가이드에는 제휴상품 링크가 포함될 수 있으며 구매 시 일정액의 수수료를 제공받을 수 있습니다.\n\n#가습기 #습도관리 #SmartChoice365'
             },
             'notes': 'Owner explicitly approved this exact SHA-256 MP4 for YouTube Shorts, Facebook Reels, Instagram Reels and Instagram Story. The published YouTube Short is linked in Meta captions; no matching full-length humidifier video was verified. IG Story link sticker requires manual Instagram app.'
           }
