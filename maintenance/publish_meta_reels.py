@@ -108,8 +108,8 @@ def validate_request():
     identity = req.get("id")
     if not isinstance(identity, str) or not re.fullmatch(r"[a-z0-9-]{5,96}", identity):
         fail("Invalid media publication ID.")
-    if req.get("approval") != "publish" or req.get("channel_id") != CHANNEL:
-        fail("Explicit approval and correct Smart Choice 365 channel are required.")
+    if req.get("approval") not in ("prepare", "publish") or req.get("channel_id") != CHANNEL:
+        fail("Approval must be prepare/publish and destination must match Smart Choice 365.")
     target = req.get("platforms")
     if not isinstance(target, list) or not target or len(target) != len(set(target)) or not set(target) <= EXPECTED_PLATFORMS:
         fail("Specify Instagram/Facebook destination platforms explicitly.")
@@ -284,6 +284,8 @@ def main():
                           "platforms":req["platforms"],"media":stats,
                           "note":"META_PUBLISH_ENABLED not true. Nothing posted."},ensure_ascii=False))
         return
+    if req.get("approval") != "publish":
+        fail("Publishing not owner-approved: request is prepare-only.")
     token=token_for("facebook")
     page_id, ig_account=preflight_identity(req,token)
     media_digest=req["sha256"]
