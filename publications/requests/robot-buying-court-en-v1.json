@@ -1,0 +1,39 @@
+{
+  "id": "robot-buying-court-en-v1",
+  "sha256": "a21da373e62f8d17fc43cc96fe23189e03f77d68e306f59a460d8ccfcd91e459",
+  "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
+  "approval": "publish",
+  "approval_text": "이데로올려",
+  "privacy": "public",
+  "quality_verified": true,
+  "source_run_id": 0,
+  "media_url": "https://smartchoice365-web.pages.dev/reviews/robot-court-a21da373/video.mp4",
+  "visual_evidence_sha256": "a1ebc540ed8d148637a744ad334daca60dd66e70c846d75f0acfcc3854c84ef9",
+  "metadata": {
+    "snippet": {
+      "title": "Do You Really Need a Robot Vacuum? | The Buying Court",
+      "description": "Need more help choosing? Explore Smart Choice 365 buying guides: https://smartchoice365-web.pages.dev/?utm_source=youtube&utm_medium=video&utm_campaign=robot_buying_court_en_v1\n\nFictional buying-court dialogue and household examples. Independent AI-created illustrative scenes are not manufacturer photographs or hands-on tests. No specific model performance, price or saving is promised. The three-question checklist is editorial judgement, not a scientific score. Website pages may contain clearly disclosed affiliate advertising.\n\nSources:\nhttps://www.eufy.com/au/story/robovac/avoid-stuck-robot-vacuum\nhttps://www.shopirobot.com.au/media/wysiwyg/Combo_j9_Owners_Guide.pdf\nhttps://answers.irobot.com/en-CA/knowledge/80000\n\nChapters\n0:00 The Buying Court\n0:22 Exhibit A: the sock\n0:40 The buyer takes the stand\n1:00 Objection: the floor is occupied\n1:23 Witness for the defence: pet hair\n1:42 The staircase files an objection\n2:04 Exhibit B: the bits it cannot reach\n2:22 Self-emptying does not mean no care\n2:43 Judge the routine, not the gadget\n2:59 The jury gets three questions\n3:18 Verdict: a helper, with conditions\n\n#RobotVacuum #BuyingGuide #SmartChoice365",
+      "categoryId": "26",
+      "defaultLanguage": "en",
+      "defaultAudioLanguage": "en",
+      "tags": [
+        "robot vacuum",
+        "robot vacuum buying guide",
+        "Buying Court",
+        "robot vacuum pet hair",
+        "Smart Choice 365",
+        "Australia"
+      ]
+    },
+    "status": {
+      "privacyStatus": "public",
+      "selfDeclaredMadeForKids": false,
+      "containsSyntheticMedia": true,
+      "embeddable": true,
+      "license": "youtube"
+    }
+  },
+  "comment_text": "Would a robot vacuum survive your floor? Tell us below!\n👉 Need more help choosing? Explore Smart Choice 365 buying guides: https://smartchoice365-web.pages.dev/?utm_source=youtube&utm_medium=comment&utm_campaign=robot_buying_court_en_v1\n\nWebsite pages may contain clearly disclosed affiliate advertising.",
+  "thumbnail_sha256": "bce68ebf3e79bd93670011c080c81dcf41b38a4e0293c341e76bc3d4d9235c32",
+  "thumbnail_blob_sha": "26074af8df80caa1dc14dcdb85a08bfc6d30176c"
+}
