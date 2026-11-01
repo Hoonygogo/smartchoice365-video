@@ -25,10 +25,10 @@ class Layout:
     text(row,x,y+j*(n+11),n,c,b)
    return y+len(rows)*(n+11)
   def logo(rect):place_full(im,Image.open(ROOT/'assets/smartchoice365-brand-logo-v1.png'),rect)
-  d.rectangle((0,0,W,92),fill=NAVY);text('SMART CHOICE 365',64,19,39,'white');text('AUSTRALIAN BUYING GUIDE',1260,28,29,'#ead1a0')
+  d.rectangle((0,0,W,92),fill=NAVY);text('SMART CHOICE 365',64,19,39,'white');text(self.request.get('series_label','AUSTRALIAN BUYING GUIDE'),1260,28,29,'#ead1a0')
   mode=s['visual']
   if mode=='brand_intro':
-   logo((185,135,1735,525));wrap('Air conditioning:',240,585,65,1450,b=True);wrap('compare the real cost',240,670,62,1450,b=True);text('smartchoice365-web.pages.dev',490,791,38,MUTED)
+   logo((185,135,1735,525));brand=self.request.get('brand_lines',['Air conditioning:','compare the real cost']);wrap(brand[0],240,585,65,1450,b=True);wrap(brand[1],240,670,62,1450,b=True);text('smartchoice365-web.pages.dev',490,791,38,MUTED)
   elif mode=='quality_intro':
    text('Make the comparison easier to see',80,145,66,b=True)
    for j,label in enumerate(s['rows']):
@@ -50,6 +50,19 @@ class Layout:
     for j,row in enumerate(s['rows']):
      y=278+j*157;regions[f'row{j}']=(1170,y-10,1850,y+125);text(f'0{j+1}',1190,y,31,'#8b6426');wrap(row,1190,y+43,40,630,lines=2)
     if index==len(self.request['scenes'])-1:logo((1530,750,1840,815))
+   elif mode in ('jury_check','verdict'):
+    if mode=='jury_check':
+     text('Before you buy, ask your household:',85,245,43)
+     for j,row in enumerate(s['rows']):
+      x=80+j*620;d.rounded_rectangle((x,345,x+510,625),24,fill=NAVY);text(f'0{j+1}',x+35,375,38,GOLD,True);wrap(row,x+35,465,43,440,'white',lines=2,b=True)
+     text('Yes: compare models and full costs',90,690,44)
+     text('Not yet: fix the routine before spending',90,763,42)
+     regions['row0']=(70,680,1840,750);regions['row1']=(70,752,1840,820)
+    else:
+     for j,row in enumerate(s['rows']):
+      y=270+j*150;d.rounded_rectangle((80,y,1840,y+120),20,fill='#e2e7ec');regions[f'row{j}']=(90,y+10,1830,y+110);text(f'0{j+1}',120,y+30,43,'#8b6426',True);wrap(row,260,y+32,43,1500,lines=1,b=True)
+     text('smartchoice365-web.pages.dev',85,760,41)
+     logo((1400,745,1840,815))
    elif mode=='energy_chart':
     text('Annual cooling energy × your electricity rate',80,244,43)
     for j,(label,energy,cost) in enumerate([('Option A',900,270),('Option B',600,180)]):
