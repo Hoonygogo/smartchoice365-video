@@ -5,7 +5,7 @@
   "media_path": "uploads/SmartChoice365_Ninja_Rewind_AnimationOnly_Preview.mp4",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/7acf7494f24a5c25f477311dbe1a33689a1c2491/uploads/SmartChoice365_Ninja_Rewind_AnimationOnly_Preview.mp4",
   "video_size": 9249009,
-  "status": "ready",
+  "status": "container_creation_initiated",
   "account_id": "17841475811391464",
   "run_id": "41295064060"
 }
