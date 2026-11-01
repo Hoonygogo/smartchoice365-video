@@ -1,0 +1,39 @@
+name: Publish exact approved Ninja V4 and remove previous Ninja video
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'uploads/SmartChoice365_Ninja_English_V4_Precise_StableFocus.mp4'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  publish_v4:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check exact owner-approved video fingerprint and media tracks
+        run: |
+          file='uploads/SmartChoice365_Ninja_English_V4_Precise_StableFocus.mp4'
+          test -s "$file"
+          actual="$(sha256sum "$file" | awk '{print $1}')"
+          expected='b0d49b9b59c7cfded99259501fbc744e85c83de319d21fa213dba0e81e4c4e51'
+          test "$actual" = "$expected" || { echo 'Blocked: wrong V4 file'; exit 1; }
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$file")" = '1920,1080'
+          test "$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 "$file")" = 'aac'
+          echo 'Verified approved V4 hash and AVC/AAC streams.'
+      - name: Upload V4, check public processing, then delete old Ninja video
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_ninja_v4_replace.py
+      - name: Record public link and old-video deletion receipt
+        if: success()
+        run: echo 'Success. Read publications/receipts/ninja-af141-af400-en-v4-precise-focus-youtube.json on main for verified URL and deletion status.' >> "$GITHUB_STEP_SUMMARY"
