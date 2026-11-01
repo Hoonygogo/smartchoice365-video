@@ -72,5 +72,18 @@ def selftest():
         data=json.loads(META.read_text())
         assert data["status"]=="fallback" and data["imagePath"] is None
         print("NO_COST_FALLBACK_TEST_OK")
+        # Simulate Cloudflare Free quota exhaustion (HTTP 429) WITHOUT real requests.
+        META.unlink()
+        os.environ["CLOUDFLARE_WORKERS_FREE_CONFIRMED"]="true"
+        os.environ["CLOUDFLARE_ACCOUNT_ID"]="TEST_ACCOUNT"
+        os.environ["CLOUDFLARE_AI_TOKEN"]="TEST_TOKEN"
+        from unittest.mock import patch
+        simulated=urllib.error.HTTPError("https://example.invalid",429,"quota exhausted",None,None)
+        with patch("urllib.request.urlopen",side_effect=simulated):
+            run()
+        outcome=json.loads(META.read_text())
+        assert outcome["status"]=="fallback" and outcome["reason"]=="free_limit_or_rate_limit"
+        assert outcome["paidFallback"] is False and outcome["imagePath"] is None
+        print("QUOTA_EXHAUSTED_FALLBACK_SELF_TEST_PASS")
 if __name__=="__main__":
     selftest() if "--self-test" in sys.argv else run()
