@@ -1,0 +1,185 @@
+{
+  "project": "Smart Choice 365",
+  "id": "ninja-af141-af400-en-v2-image-first",
+  "state": "draft_image_gate_blocked",
+  "is_youtube_published": false,
+  "will_replace_existing": false,
+  "created_on": "2026-11-01",
+  "strategy": "High-quality English general-video remake with the original selected Kokoro voice, not a slide deck",
+  "old_public_video": "https://www.youtube.com/watch?v=UJ-azoT4vso",
+  "target_duration": "Approximately 2–3 minutes; actual duration follows Kokoro clause audio",
+  "language": "en-AU vocabulary",
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "video": "H.264 faststart",
+    "audio": "AAC",
+    "voice": "Kokoro af_heart",
+    "speed": 0.96,
+    "sample_rate": 24000
+  },
+  "guide_url": "https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html?utm_source=youtube&utm_medium=video&utm_campaign=ninja_af141_af400_en_v2",
+  "research": [
+    {
+      "model": "Ninja AF141ANZ",
+      "verified": "4.7L; 1 basket; Air Fry, Roast, Reheat, Dehydrate; confirmed in Australian retailer listings",
+      "source": "https://www.jbhifi.com.au/products/ninja-af141-4-7l-air-fryer-pro"
+    },
+    {
+      "model": "Ninja AF400ANZ",
+      "verified": "9.5L total; 2 independently controlled 4.75L drawers; 6 cooking modes",
+      "source": "https://sharkninja.com.au/products/ninja-foodi-max-xxxl-dual-zone-air-fryer-af400"
+    }
+  ],
+  "scenes": [
+    {
+      "scene": 1,
+      "title": "Brand hook",
+      "visual": "brand_intro",
+      "asset_requirement": "Approved logo, unclipped; warm Australian kitchen photograph in background; never substitute AI brand logo",
+      "narration": "Welcome to Smart Choice three sixty five. Today, one drawer versus two: Ninja AF141 or AF400? Let's find the better fit for your kitchen.",
+      "spoken_focus": "none",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 2,
+      "title": "Quality and subscribe",
+      "visual": "quality_intro",
+      "asset_requirement": "Large accurate original 1080p settings tutorial, settings-to-quality-to-1080p with legible icons",
+      "narration": "If the picture looks soft, check your video settings and select ten eighty p where available. Subscribe for more practical buying guides.",
+      "spoken_focus": "1080p settings",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 3,
+      "title": "First look",
+      "visual": "photo",
+      "asset_requirement": "Original editorial photo of two air fryers on one kitchen island, distinct independent scene; if represented as actual model product shot, exact model identity and editorial usage rights must be verified",
+      "narration": "The big question isn't which one looks more impressive. It's how you normally cook dinner.",
+      "spoken_focus": "both appliances",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 4,
+      "title": "AF141 daily use",
+      "visual": "photo",
+      "asset_requirement": "Genuine properly authorised AF141ANZ product image and separate real-life small-meal scene; no AI imitation labeled as AF141",
+      "narration": "The Ninja AF141 has a single four point seven litre basket. It's a straightforward option for smaller everyday meals.",
+      "spoken_focus": "AF141",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 5,
+      "title": "AF400 dual drawers",
+      "visual": "photo",
+      "asset_requirement": "Genuine properly authorised AF400ANZ product image showing both separate drawers, uncropped; source attribution",
+      "narration": "The AF400 has two separate four point seven five litre drawers, nine point five litres combined.",
+      "spoken_focus": "AF400",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 6,
+      "title": "Critical capacity caveat",
+      "visual": "photo",
+      "asset_requirement": "Original high-resolution kitchen illustration clearly showing two SEPARATE drawers and a larger whole chicken on counter; no fake product markings",
+      "narration": "But nine point five litres does not mean one enormous basket. Think about the shape of the food, not just the combined volume.",
+      "spoken_focus": "AF400 drawers",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 7,
+      "title": "Two dishes",
+      "visual": "photo",
+      "asset_requirement": "Original single-scene editorial cooking shot: roast chicken and vegetables in two distinct dishes; no collage",
+      "narration": "Want chicken and vegetables ready together? Two independently controlled drawers make the AF400 genuinely useful.",
+      "spoken_focus": "two dishes",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 8,
+      "title": "One simple meal",
+      "visual": "photo",
+      "asset_requirement": "Original full-frame lifestyle scene: two plates of chips and nuggets in small apartment kitchen, photographed as ONE shot",
+      "narration": "If you usually reheat leftovers or make one food at a time, the simpler AF141 may be enough.",
+      "spoken_focus": "AF141",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 9,
+      "title": "Family dinner",
+      "visual": "photo",
+      "asset_requirement": "Original full-frame editorial dinner scene with several people and varied dishes, complete faces and hands",
+      "narration": "A larger household cooking a main and side regularly may appreciate two cooking zones. But only if those zones get used.",
+      "spoken_focus": "family meal",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 10,
+      "title": "Countertop and price",
+      "visual": "photo",
+      "asset_requirement": "Original premium Australian countertop scene with tape measure and shopping list; do not invent real price tags",
+      "narration": "Check the bench space, actual local stock and final delivered price before buying. Deals change.",
+      "spoken_focus": "comparison checklist",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 11,
+      "title": "Five-dinner decision test",
+      "visual": "jury_check",
+      "asset_requirement": "Native vector five-meal decision illustration and informative checklist, not text-only slideshow",
+      "narration": "Look at your last five dinners. How often would cooking two foods at once have saved an extra batch? That's your real test.",
+      "spoken_focus": "five-meal checklist",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    },
+    {
+      "scene": 12,
+      "title": "Verdict and direct guide",
+      "visual": "verdict",
+      "asset_requirement": "Verified product comparison graphics, correct unchanged original logo, exact direct related buying-guide link in video description",
+      "narration": "For simple cooking, start with the AF141. For regular mains and sides together, consider the AF400. For the full Australian comparison, use the buying guide linked first in this video's description.",
+      "spoken_focus": "AF141 versus AF400",
+      "image_status": "REQUIRES_INDIVIDUAL_REVIEW",
+      "approved_for_render": false
+    }
+  ],
+  "visual_gate": {
+    "required_independent_original_lifestyle_scenes": 8,
+    "required_correct_product_identity_and_rights": [
+      "AF141ANZ genuine authorised image",
+      "AF400ANZ genuine authorised image"
+    ],
+    "allow_ai_photo_as_genuine_product": false,
+    "allow_collage_crop": false,
+    "allow_generic_device_substitute": false,
+    "allow_text_only_replacement": false,
+    "composition": "contain; unclipped people, products, logo and labels",
+    "native_text": "all overlays added after scene rendering",
+    "original_brand_logo": "assets/smartchoice365-brand-logo-v1.png"
+  },
+  "qa": [
+    "Verify exact Australian SKU and photo rights",
+    "Inspect every independently generated scene before narration",
+    "Match all spoken cues to correct photos and native highlights",
+    "Verify real Kokoro af_heart audio, not system TTS",
+    "Check video and decoded audio, opening, middle and ending frames",
+    "Offer mobile-playable review page before asking for approval"
+  ],
+  "publication_policy": "No YouTube upload, replacement or deletion until owner approves exact reviewed MP4 and SHA256",
+  "blockers": [
+    "Scene image set is not yet individually complete and visually rights verified. AI concept thumbnails and mosaic are not approved production assets.",
+    "Latest AI generation attempts produced comparison thumbnails/contact sheets, not eight independent complete scenes; explicitly rejected for footage."
+  ],
+  "estimated_cost_aud": 0
+}
