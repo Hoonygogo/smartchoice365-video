@@ -108,10 +108,18 @@ def main():
  clips=[]
  for n,t in enumerate(timings):
   png=OUT/f'frame_{n:02}.png';draw(t['scene'],t['cue'],png);mp4=OUT/f'clip_{n:02}.mp4'
-  if not mp4.exists():subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-loop','1','-framerate',str(FPS),'-i',str(png),'-frames:v',str(t['frames']),'-an','-c:v','libx264','-threads','2','-preset','veryfast','-crf','20','-pix_fmt','yuv420p',str(mp4)],check=True)
+  valid=False
+  if mp4.exists():
+   probe=subprocess.run(['ffprobe','-v','error','-show_entries','stream=nb_frames','-of','json',str(mp4)],capture_output=True,text=True)
+   try:valid=probe.returncode==0 and int(json.loads(probe.stdout)['streams'][0]['nb_frames'])==t['frames']
+   except (ValueError,KeyError,IndexError,json.JSONDecodeError):pass
+  if not valid:subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-loop','1','-framerate',str(FPS),'-i',str(png),'-frames:v',str(t['frames']),'-an','-c:v','libx264','-threads','2','-preset','veryfast','-crf','20','-pix_fmt','yuv420p',str(mp4)],check=True)
   clips.append(mp4);print('FRAME',n,flush=True)
  (OUT/'concat.txt').write_text(''.join(f"file '{p}'\n" for p in clips))
- final=OUT/'SmartChoice365_BuyingTrial_AirFryer_Korean_v1.mp4';subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-f','concat','-safe','0','-i',str(OUT/'concat.txt'),'-i',str(OUT/'voice.wav'),'-c:v','copy','-c:a','aac','-b:a','128k','-movflags','+faststart',str(final)],check=True)
+ final=OUT/'SmartChoice365_BuyingTrial_AirFryer_Korean_v1.mp4';subprocess.run(['ffmpeg','-nostdin','-y','-v','error','-xerror','-f','concat','-safe','0','-i',str(OUT/'concat.txt'),'-i',str(OUT/'voice.wav'),'-c:v','copy','-c:a','aac','-b:a','128k','-movflags','+faststart',str(final)],check=True)
+ verified=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-of','json',str(final)]))
+ video=next(x for x in verified['streams'] if x['codec_type']=='video')
+ assert int(video['nb_frames'])==frame and abs(float(video['duration'])-frame/FPS)<.05
  def ts(t):return f'{int(t//3600):02}:{int(t//60)%60:02}:{int(t)%60:02},{round(t%1*1000):03}'
  (OUT/'captions.srt').write_text('\n\n'.join(f'{n+1}\n{ts(t["start"])} --> {ts(t["end"])}\n{t["text"]}' for n,t in enumerate(timings)))
  m=dict(title='에어프라이어 서랍 2개, 결국 하나만 쓰게 될까? | 스마트초이스 구매재판',duration=frame/FPS,voice='Sarah F1',speed=1.1,steps=8,status='awaiting_approval',published=False,sha256=hashlib.sha256(final.read_bytes()).hexdigest(),sources=['https://sharkninja.com.au/products/ninja-foodi-max-xxxl-dual-zone-air-fryer-af400'],disclosure='가상의 구매 토론과 생활 사례. 모든 인물·제품 장면은 연출 이미지이며 특정 모델의 공식 사진이나 실물 시험이 아닙니다. 최근 다섯 번의 저녁 분류는 편집용 자가 점검이며 과학적 성능 점수가 아닙니다.')
