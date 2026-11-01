@@ -1,0 +1,107 @@
+name: Publish approved humidifier Short to YouTube + Meta Reels and Story
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'uploads/SmartChoice365_Humidifier_TwoClip_Short.mp4'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  publish_exact_approved_video:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact owner-approved MP4 before ANY platform upload
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, subprocess
+          p = Path('uploads/SmartChoice365_Humidifier_TwoClip_Short.mp4')
+          assert p.is_file(), 'Approved MP4 missing; nothing published.'
+          assert p.stat().st_size == 4292974, 'Wrong video size.'
+          assert hashlib.sha256(p.read_bytes()).hexdigest() == '4f3c6bd5b691975e1579c86604ca86a08adcdf68f16dc65c657fc1f9e18a27c3', 'Wrong approved MP4 hash.'
+          o = json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(p)], text=True))
+          v = [x for x in o['streams'] if x['codec_type'] == 'video']
+          a = [x for x in o['streams'] if x['codec_type'] == 'audio']
+          assert len(v)==1 and len(a)==1 and v[0]['codec_name']=='h264' and a[0]['codec_name']=='aac', 'Needs exactly H264/AAC.'
+          assert (v[0]['width'],v[0]['height']) == (720,1280), 'Wrong dimensions.'
+          assert 18.8 < float(o['format']['duration']) < 19.0, 'Unexpected duration.'
+          print('APPROVED_VIDEO_VERIFIED: 18.875-second portrait humidifier Short.')
+          PY
+      - name: Publish YouTube Short and verify public processing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_humidifier_two_clip.py
+      - name: Build matching authorized Instagram/Facebook request from verified Short
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from maintenance.publish_youtube_generic import receipt_read
+          yid = 'humidifier-two-clip-ko-short-20261101'
+          info,_ = receipt_read('publications/receipts/'+yid+'-youtube.json')
+          assert info and info.get('status')=='published_verified' and info.get('metadata_verified') is True
+          assert info.get('sha256')=='4f3c6bd5b691975e1579c86604ca86a08adcdf68f16dc65c657fc1f9e18a27c3'
+          video_id = info['video_id']
+          youtube = 'https://www.youtube.com/watch?v='+video_id
+          guide = 'https://smartchoice365-web.pages.dev/guides/2026-humidifier-ultrasonic-steam-evaporative-korea.html'
+          req = {
+            'id': 'humidifier-two-clip-ko-meta-20261101',
+            'approval': 'publish',
+            'channel_id': 'UC4DzAW-Hbd45bIECwGV7-uA',
+            'platforms': ['instagram','facebook'],
+            'share_to_instagram_story': True,
+            'media_path': 'uploads/SmartChoice365_Humidifier_TwoClip_Short.mp4',
+            'sha256': '4f3c6bd5b691975e1579c86604ca86a08adcdf68f16dc65c657fc1f9e18a27c3',
+            'full_video_id': video_id,
+            'facebook_title': '가습기 켰다가 방이 안개 천지?! | Smart Choice 365',
+            'captions': {
+              'instagram': '건조해서 가습기를 켰는데… 방이 안개 천지?! 😱💨\n습도계로 확인하고 알맞게 조절해요!\n\n🔎 가습기 종류별 비교: '+guide+'\n🎬 유튜브 쇼츠: '+youtube+'\n\n이 영상은 이해를 돕기 위한 만화 연출입니다. 가이드에는 광고·제휴 링크가 포함될 수 있습니다.\n\n#가습기 #습도관리 #초음파가습기 #가열식가습기 #SmartChoice365 #릴스',
+              'facebook': '가습기를 켰더니 방이 안개 천지?! 😂\n실내 습도를 확인하고 가습량을 조절하세요.\n\n📖 가습기 3종 비교·관리 방법: '+guide+'\n▶ 유튜브 쇼츠: '+youtube+'\n\n영상은 이해를 돕기 위한 만화 연출입니다. 링크된 구매 가이드에는 광고·제휴 링크가 포함될 수 있습니다.\n\n#가습기 #습도관리 #SmartChoice365'
+            },
+            'notes': 'Owner explicitly approved this exact SHA-256 MP4 for YouTube Shorts, Facebook Reels, Instagram Reels and Instagram Story. The published YouTube Short is linked in Meta captions; no matching full-length humidifier video was verified. IG Story link sticker requires manual Instagram app.'
+          }
+          path = Path('publications/meta-requests/humidifier-two-clip-ko-meta-20261101.json')
+          path.parent.mkdir(parents=True,exist_ok=True)
+          path.write_text(json.dumps(req,ensure_ascii=False,indent=2)+'\n')
+          print('LOCAL_APPROVED_META_REQUEST_READY:',path)
+          PY
+      - name: Publish and verify Instagram and Facebook Reels (exact video)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          META_PUBLISH_ENABLED: 'true'
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_SYSTEM_USER_ACCESS_TOKEN: ${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ vars.META_INSTAGRAM_ACCOUNT_ID || '17841475811391464' }}
+          META_REQUEST_FILE: publications/meta-requests/humidifier-two-clip-ko-meta-20261101.json
+        run: python maintenance/publish_meta_reels.py
+      - name: Automatically publish matching Instagram Story after verified Reel
+        env:
+          GH_TOKEN: ${{ github.token }}
+          META_PUBLISH_ENABLED: 'true'
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_SYSTEM_USER_ACCESS_TOKEN: ${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ vars.META_INSTAGRAM_ACCOUNT_ID || '17841475811391464' }}
+          META_REQUEST_FILE: publications/meta-requests/humidifier-two-clip-ko-meta-20261101.json
+        run: python maintenance/publish_meta_story_from_reel.py
+      - name: Summarize verified distribution
+        if: always()
+        run: |
+          echo 'Check publications/receipts/humidifier-two-clip-ko-short-20261101-youtube.json and publications/meta-receipts/humidifier-two-clip-ko-meta-20261101-*.json for verified links.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Instagram Stories API does not support clickable external Link stickers; add the guide URL as a Link sticker manually if desired.' >> "$GITHUB_STEP_SUMMARY"
