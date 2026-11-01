@@ -1,0 +1,79 @@
+name: Smart Choice 365 — Instagram Stories auto-publish (free Meta API)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'publications/story-requests/*.json'
+  workflow_dispatch:
+    inputs:
+      request_file:
+        description: 'An owner-approved Story request in publications/story-requests/'
+        type: string
+        required: true
+permissions:
+  contents: write
+concurrency:
+  group: smartchoice365-instagram-stories
+  cancel-in-progress: false
+jobs:
+  story:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Select only explicitly approved Story request files
+        env:
+          STORY_FILE: ${{ inputs.request_file }}
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          python - <<'PY'
+          import os,pathlib,subprocess
+          if os.environ["EVENT_NAME"] == "workflow_dispatch":
+              files=[os.environ["STORY_FILE"].strip()]
+          elif os.environ["EVENT_NAME"] == "push":
+              before=os.environ.get("BEFORE","")
+              if before=="0"*40:
+                  raise SystemExit("Missing prior SHA; use workflow_dispatch")
+              files=subprocess.check_output(
+                  ["git","diff","--name-only",before,"HEAD","--","publications/story-requests"],
+                  text=True).splitlines()
+          else:
+              raise SystemExit("Unsupported trigger")
+          files=[p for p in files if p.startswith("publications/story-requests/") and p.endswith(".json")]
+          if not files:
+              raise SystemExit("No approved Instagram Story request changed")
+          for name in files:
+              path=pathlib.Path(name)
+              if len(path.parts)!=3 or ".." in path.parts or not path.is_file():
+                  raise SystemExit("Invalid Instagram Story request path")
+          pathlib.Path("/tmp/sc365_story_requests.txt").write_text("\n".join(files)+"\n")
+          print("Checked",len(files),"Story request(s).")
+          PY
+      - name: Prepare free MP4 validation
+        run: |
+          if ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+      - name: Publish approved Stories with Meta API and duplicate safeguards
+        env:
+          META_SYSTEM_USER_ACCESS_TOKEN: ${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ vars.META_INSTAGRAM_ACCOUNT_ID || '17841475811391464' }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          while IFS= read -r request; do
+            [ -n "$request" ] || continue
+            STORY_REQUEST_FILE="$request" python maintenance/publish_meta_stories.py
+          done < /tmp/sc365_story_requests.txt
+      - name: Summary
+        if: always()
+        run: |
+          echo 'Story media receipts: publications/meta-receipts/*-instagram-story.json' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Story link stickers and clickable URL buttons are not supported by Meta API.' >> "$GITHUB_STEP_SUMMARY"
