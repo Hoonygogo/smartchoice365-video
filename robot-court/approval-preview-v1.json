@@ -1,0 +1,49 @@
+{
+  "duration": 225.917,
+  "size_bytes": 7984696,
+  "sha256": "a21da373e62f8d17fc43cc96fe23189e03f77d68e306f59a460d8ccfcd91e459",
+  "codec": "h264",
+  "audio": "aac",
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "cue_count": 36,
+  "min_decoded_cue_rms": 0.04331761598587036,
+  "faststart": true,
+  "voice": "Kokoro af_heart",
+  "speed": 0.96,
+  "picture_led_scenes": 8,
+  "status": "awaiting_owner_browser_review",
+  "youtube_published": false,
+  "preview_url": "https://smartchoice365-web.pages.dev/reviews/robot-court-a21da373/",
+  "media_url": "https://smartchoice365-web.pages.dev/reviews/robot-court-a21da373/video.mp4",
+  "library_file_id": "libfile_9d896a32fd188191a0612d3e61b5a70b",
+  "website_commit": "163729253f71709c3267ca04aed94056b7232496",
+  "served_sha_matches": true,
+  "served_mime": "video/mp4",
+  "browser_test": {
+    "browser": "Chrome cloud browser",
+    "currentTime": 12.301602,
+    "duration": 225.917,
+    "paused": false,
+    "readyState": 4,
+    "videoWidth": 1920,
+    "videoHeight": 1080,
+    "physical_phone_test": false
+  },
+  "encoded_visual_review": {
+    "reviewed": true,
+    "scenes": [
+      0,
+      1,
+      4,
+      8,
+      10,
+      11
+    ],
+    "notes": "Actual encoded opening, quality steps, corrected photographic scenes, jury diagram and homepage CTA inspected. Full source contain and approved original logo retained."
+  },
+  "comment_draft": "Would a robot vacuum survive your floor? Tell us below! 👉 Need more help choosing? Explore Smart Choice 365 buying guides: https://smartchoice365-web.pages.dev/?utm_source=youtube&utm_medium=comment&utm_campaign=robot_buying_court_en_v1",
+  "approval_received": false
+}
