@@ -1,0 +1,4 @@
+One-time publication trigger for the owner-approved 18.875-second Smart Choice 365 humidifier Short v2.
+Only exact SHA-256 06d18349ff31f07a072b28cfffdf0bad107d90d588a0d1aade0276fd2f523cf7 is approved.
+Publish via the GitHub Actions video SHA-256 safety gate to YouTube Shorts, Instagram Reels, Facebook Reels and Instagram Story. Owner approval in chat: 2026-11-02.
+This text has no credentials.
