@@ -1,0 +1,384 @@
+{
+  "id": "robot-buying-court-en-v1",
+  "language": "en",
+  "title": "Do You Really Need a Robot Vacuum? | The Buying Court | Smart Choice 365",
+  "series_label": "THE BUYING COURT \u00b7 EP.01",
+  "brand_lines": [
+    "Robot vacuum on trial",
+    "Judge the routine, not the gadget"
+  ],
+  "asset_dir": "robot-court/assets",
+  "output_dir": "robot-court/output",
+  "output_name": "SmartChoice365_RobotVacuum_BuyingCourt_English_v1.mp4",
+  "guide_url": "https://smartchoice365-web.pages.dev/?utm_source=youtube&utm_medium=video&utm_campaign=robot_buying_court_en_v1",
+  "link_kind": "homepage",
+  "link_cta": "Need more help choosing? Explore Smart Choice 365 buying guides:",
+  "description_disclosure": "Fictional buying-court dialogue and household examples. Independent AI-created illustrative scenes are not manufacturer photographs or hands-on tests. No specific model performance, price or saving is promised. The three-question checklist is editorial judgement, not a scientific score. Website pages may contain clearly disclosed affiliate advertising.",
+  "sources": [
+    "https://www.eufy.com/au/story/robovac/avoid-stuck-robot-vacuum",
+    "https://www.shopirobot.com.au/media/wysiwyg/Combo_j9_Owners_Guide.pdf",
+    "https://answers.irobot.com/en-CA/knowledge/80000"
+  ],
+  "scenes": [
+    {
+      "heading": "The Buying Court",
+      "visual": "brand_intro",
+      "rows": [],
+      "cues": [
+        {
+          "text": "Hi, welcome to Smart Choice three sixty-five. Today, the Buying Court asks: do you really need a robot vacuum?",
+          "targets": []
+        }
+      ],
+      "photo": null,
+      "note": "Fictional household examples \u00b7 Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "See the evidence clearly",
+      "visual": "quality_intro",
+      "rows": [
+        "Settings",
+        "Quality / Advanced",
+        "1080p"
+      ],
+      "cues": [
+        {
+          "text": "If the picture looks blurry, open settings.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "Choose quality, then advanced if needed.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Select ten eighty p where available. Menus vary by device.",
+          "targets": [
+            "row2"
+          ]
+        },
+        {
+          "text": "Subscribe for more practical buying debates.",
+          "targets": []
+        }
+      ],
+      "photo": null,
+      "note": "Illustrated menu guide \u00b7 controls vary by device"
+    },
+    {
+      "heading": "Exhibit A: the sock",
+      "visual": "photo",
+      "rows": [
+        "The promise: less floor cleaning",
+        "The catch: floor preparation",
+        "Convenience still needs a routine"
+      ],
+      "cues": [
+        {
+          "text": "Your robot vacuum promises to clean your home. But first, you may have to tidy up for your robot vacuum.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "The court calls its first witness: a sock. It has been on the floor since Tuesday.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "This is a fictional case, but the buying question is real: does this fit your routine?",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "photo": 1,
+      "note": "Fictional household examples \u00b7 Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "The buyer takes the stand",
+      "visual": "photo",
+      "rows": [
+        "I want help between big cleans",
+        "Useful task: regular floor pickup",
+        "Check your floors and exact model"
+      ],
+      "cues": [
+        {
+          "text": "The buyer says: I work all day. I want help keeping the floors under control between bigger cleans.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "Fair argument. Repeated floor pickup is the job to consider, rather than a promise of a completely chore-free home.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Match the exact model to your floor types, rugs, layout and cleaning needs.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "photo": 2,
+      "note": "Fictional household examples \u00b7 Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "Objection: the floor is occupied",
+      "visual": "photo",
+      "rows": [
+        "Pick up socks and small toys",
+        "Secure loose charging cables",
+        "Obstacle avoidance varies"
+      ],
+      "cues": [
+        {
+          "text": "The opposition presents socks, toys and a charging cable. Your floor currently has more obstacles than a driving test.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "Manufacturer guidance recommends clearing small items and securing loose cords before a run.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Obstacle avoidance varies by model. Do not assume a clever camera means you can ignore the preparation instructions.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "photo": 3,
+      "note": "Fictional household examples \u00b7 Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "Witness for the defence: pet hair",
+      "visual": "photo",
+      "rows": [
+        "Hair comes back between cleans",
+        "Regular pickup may be useful",
+        "Brush care still matters"
+      ],
+      "cues": [
+        {
+          "text": "The defence calls a dog. No statement, just more hair on the floor.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "If hair and crumbs build up often, regular floor pickup may be valuable to your household.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Compare suitable models, and check brush maintenance. Owning a pet is a reason to investigate, not an automatic verdict to buy.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "photo": 4,
+      "note": "Fictional household examples \u00b7 Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "The staircase files an objection",
+      "visual": "photo",
+      "rows": [
+        "A floor robot has a defined job",
+        "Check stairs and level changes",
+        "Keep another cleaning method"
+      ],
+      "cues": [
+        {
+          "text": "Now the staircase would like a word. Check the exact product's limits around stairs and changes in level.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "For a conventional floor-cleaning robot, plan another way to clean stairs, furniture and places it cannot reach.",
+          "targets": [
+            "row2"
+          ]
+        },
+        {
+          "text": "The useful question is what work it can take over in your home, not whether it replaces every cleaning tool.",
+          "targets": [
+            "row0"
+          ]
+        }
+      ],
+      "photo": 5,
+      "note": "Fictional household examples \u00b7 Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "Exhibit B: the bits it cannot reach",
+      "visual": "photo",
+      "rows": [
+        "Under-furniture clearance matters",
+        "Access depends on your layout",
+        "Expect some manual touch-ups"
+      ],
+      "cues": [
+        {
+          "text": "Before buying, check under-furniture clearance, tight spaces and the areas you actually want cleaned.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "Navigation, edge cleaning and access differ by model and room layout.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Keep realistic expectations about manual touch-ups. This is a helper, not a live-in housekeeper.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "photo": 6,
+      "note": "Fictional household examples \u00b7 Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "Self-emptying does not mean no care",
+      "visual": "photo",
+      "rows": [
+        "Bins, brushes and filters need care",
+        "Docks add their own tasks",
+        "Check ongoing supplies and cost"
+      ],
+      "cues": [
+        {
+          "text": "The maintenance witness has arrived. Apparently, the robot has chores for you as well.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "Depending on the model, you will need to care for bins, brushes and filters. More elaborate docks can add other care tasks.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Check the manual, replacement supplies, warranty and ongoing costs before comparing the purchase price.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "photo": 7,
+      "note": "Fictional household examples \u00b7 Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "Judge the routine, not the gadget",
+      "visual": "photo",
+      "rows": [
+        "Can you keep the floor ready?",
+        "Would you run it regularly?",
+        "Will you do the maintenance?"
+      ],
+      "cues": [
+        {
+          "text": "Picture an ordinary week. Can you keep the floor ready without turning it into a daily argument?",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "Would you run the robot regularly, rather than admire it parked beside the sofa?",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "And who will maintain it? Agree on that before the box arrives.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "photo": 8,
+      "note": "Fictional household examples \u00b7 Smart Choice 365 editorial judgement"
+    },
+    {
+      "heading": "The jury gets three questions",
+      "visual": "jury_check",
+      "rows": [
+        "Floor ready?",
+        "Regular use?",
+        "Care plan?"
+      ],
+      "cues": [
+        {
+          "text": "Here is our editorial self-check, not a scientific score. Can you prepare the floor, use the robot regularly, and keep up with its care?",
+          "targets": []
+        },
+        {
+          "text": "If the answers are yes, compare suitable models and total ownership costs.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "If not, sort out the routine first. A simpler cleaning tool may fit better.",
+          "targets": [
+            "row1"
+          ]
+        }
+      ],
+      "photo": null,
+      "note": "Editorial self-check \u00b7 not a performance test or savings guarantee"
+    },
+    {
+      "heading": "Verdict: a helper, with conditions",
+      "visual": "verdict",
+      "rows": [
+        "Regular use + suitable floors: compare",
+        "Clutter + no care plan: pause",
+        "More buying help: website below"
+      ],
+      "cues": [
+        {
+          "text": "The court finds that a robot vacuum may be a useful helper when the floor, routine and maintenance plan fit.",
+          "targets": [
+            "row0"
+          ]
+        },
+        {
+          "text": "If your floor is permanently occupied and nobody wants the upkeep, pause before spending.",
+          "targets": [
+            "row1"
+          ]
+        },
+        {
+          "text": "Would a robot vacuum survive your floor? Tell us in the comments.",
+          "targets": []
+        },
+        {
+          "text": "Need a little more help deciding what to buy? Explore more buying guides at Smart Choice three sixty-five. The website link is in the description.",
+          "targets": [
+            "row2"
+          ]
+        }
+      ],
+      "photo": null,
+      "note": "Illustrative scenes \u00b7 not hands-on testing \u00b7 model-specific features vary"
+    }
+  ]
+}
