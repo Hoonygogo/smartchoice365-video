@@ -15,5 +15,9 @@
   "url": "https://www.youtube.com/shorts/8OX29Fx2axc",
   "metadata_verified": true,
   "privacy": "public",
-  "processing_status": "succeeded"
+  "processing_status": "succeeded",
+  "old_short_cleanup": {
+    "id": "JgKqCXIvbKI",
+    "status": "deleted_verified"
+  }
 }
