@@ -11,8 +11,8 @@ import urllib.error
 
 API = "https://graph.facebook.com/v26.0"
 TOKEN = os.environ.get("META_SYSTEM_USER_ACCESS_TOKEN", "").strip()
-PAGE_ID = os.environ.get("META_FACEBOOK_PAGE_ID", "").strip()
-IG_ID = os.environ.get("META_INSTAGRAM_ACCOUNT_ID", "").strip()
+PAGE_ID = os.environ.get("META_FACEBOOK_PAGE_ID", "").strip() or "1424295310764332"
+IG_ID = os.environ.get("META_INSTAGRAM_ACCOUNT_ID", "").strip() or "17841475811391464"
 
 if not TOKEN:
     raise SystemExit("FAIL: META_SYSTEM_USER_ACCESS_TOKEN is missing. Confirm repository Actions secret.")
@@ -42,7 +42,7 @@ if me is None or not str(me.get("id", "")):
 print("PASS: Meta accepted the system-user token for /me.")
 
 if PAGE_ID and PAGE_ID.isdigit():
-    page = get("/" + PAGE_ID, "id,name,instagram_business_account")
+    page = get("/" + PAGE_ID, "id,name,instagram_business_account,access_token")
     if page and str(page.get("id")) == PAGE_ID:
         print("PASS: Configured Facebook Page ID is accessible: " + PAGE_ID)
         actual_ig = str((page.get("instagram_business_account") or {}).get("id", ""))
@@ -52,6 +52,21 @@ if PAGE_ID and PAGE_ID.isdigit():
             print("PASS: Page-linked Instagram professional account ID: " + actual_ig)
             if not IG_ID:
                 print("NEXT: Add repository variable META_INSTAGRAM_ACCOUNT_ID with the ID displayed above.")
+        derived_token = page.get("access_token", "")
+        if not isinstance(derived_token, str) or not derived_token:
+            raise SystemExit("FAIL: Could not derive Facebook Page token from system-user token. Check approved Page permissions.")
+        req = urllib.request.Request(
+            API + "/" + PAGE_ID + "?fields=id,name",
+            headers={"Authorization": "Bearer " + derived_token,
+                     "Accept": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=25) as response:
+                check = json.load(response)
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, json.JSONDecodeError):
+            raise SystemExit("FAIL: Derived Facebook Page token did not authenticate. No token data displayed.")
+        if str(check.get("id")) != PAGE_ID:
+            raise SystemExit("FAIL: Derived Page token refers to an unexpected Page ID.")
+        print("PASS: System-user token successfully derived and verified a Facebook Page access token (hidden).")
         else:
             print("CHECK: No Instagram professional account was returned for the configured Facebook Page.")
     else:
