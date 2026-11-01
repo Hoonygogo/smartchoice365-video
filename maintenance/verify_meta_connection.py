@@ -67,8 +67,6 @@ if PAGE_ID and PAGE_ID.isdigit():
         if str(check.get("id")) != PAGE_ID:
             raise SystemExit("FAIL: Derived Page token refers to an unexpected Page ID.")
         print("PASS: System-user token successfully derived and verified a Facebook Page access token (hidden).")
-        else:
-            print("CHECK: No Instagram professional account was returned for the configured Facebook Page.")
     else:
         print("CHECK: Page ID exists as variable but is not accessible to the token.")
 else:
