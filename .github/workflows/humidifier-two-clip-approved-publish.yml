@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'uploads/SmartChoice365_Humidifier_TwoClip_Short_v2.mp4'
+      - 'publications/requests/humidifier-two-clip-ko-v2-start.txt'
   workflow_dispatch:
 permissions:
   contents: write
@@ -20,6 +21,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Ensure ffprobe and ffmpeg available for verification and Meta distribution
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffprobe -version | head -1
       - name: Verify exact owner-approved MP4 before ANY platform upload
         run: |
           python - <<'PY'
