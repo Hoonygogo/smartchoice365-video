@@ -1,0 +1,72 @@
+name: Publish approved Ninja Air Fryer Short (30s)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'uploads/SmartChoice365_Ninja_Shorts_RelatedVideo_CTA.mp4'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  short_upload:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify approved Short fingerprint and file format with Python
+        run: |
+          python - <<'PY'
+          import hashlib, struct
+          from pathlib import Path
+          p=Path('uploads/SmartChoice365_Ninja_Shorts_RelatedVideo_CTA.mp4')
+          assert p.is_file(), 'Missing approved short MP4'
+          raw=p.read_bytes()
+          assert len(raw)==7939869, 'Wrong size (not the approved short)'
+          assert hashlib.sha256(raw).hexdigest()=='57a0721fc4381bb5f60071fa9c3a529d963d08ff9d3c7629e3e679001ee1c0ce', 'Wrong video hash'
+          def boxes(buf):
+              off=0
+              while off+8<=len(buf):
+                  length,typ=struct.unpack_from('>I4s',buf,off)
+                  h=8
+                  if length==1:
+                      length=struct.unpack_from('>Q',buf,off+8)[0]
+                      h=16
+                  if length==0:length=len(buf)-off
+                  assert length>=h and off+length<=len(buf)
+                  yield typ,buf[off+h:off+length]
+                  off+=length
+          def child(buf,typ):return next(x for t,x in boxes(buf) if t==typ)
+          moov=child(raw,b'moov')
+          assert len(child(raw,b'mdat'))>10000
+          streams={}
+          for typ,tr in boxes(moov):
+              if typ!=b'trak':continue
+              mdia=child(tr,b'mdia')
+              hand=child(mdia,b'hdlr')[8:12]
+              stsd=child(child(child(mdia,b'minf'),b'stbl'),b'stsd')
+              codec=stsd[12:16]
+              if hand==b'vide':
+                  x,y=struct.unpack('>II',child(tr,b'tkhd')[-8:])
+                  assert (x//65536,y//65536)==(720,1280)
+                  assert codec==b'avc1'
+              elif hand==b'soun':assert codec==b'mp4a'
+              streams[hand]=codec
+          assert streams.get(b'vide')==b'avc1' and streams.get(b'soun')==b'mp4a'
+          print('PASS exact user-approved 30s portrait H264/AAC short.')
+          PY
+      - name: Publish Short to Smart Choice 365 YouTube and verify public state
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_ninja_airfryer_short.py
+      - name: Note required Studio related-video selection
+        if: success()
+        run: |
+          echo 'The Short is public, but YouTube does not expose the Related Video field through its official upload API.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Studio > Content > Shorts > newly published Short > Related video > Ninja AF141 vs AF400 (2R5Nyt42hRs) > Save.' >> "$GITHUB_STEP_SUMMARY"
