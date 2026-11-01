@@ -1,0 +1,37 @@
+name: Ice maker editorial - Workers AI FREE single image
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ice-maker-workers-ai-experiment.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  single-free-image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify strict A$0 Workers Free gate
+        env:
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+          CF_FREE: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+        run: |
+          if [ -z "$CF_ACCOUNT" ] || [ -z "$CF_TOKEN" ]; then echo "::error::Missing scoped Cloudflare AI credentials"; exit 1; fi
+          if [ "$CF_FREE" != "true" ]; then echo "::error::Workers Free not confirmed; no AI call made"; exit 1; fi
+      - name: Create precisely one FLUX.1 Schnell ice maker illustration
+        env:
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+          CF_FREE: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+        run: python3 scripts/ice_maker_workers_ai_experiment.py
+      - name: Save generated candidate for independent review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add experiments/ice-maker-ai/hero-2026-11-01.b64 experiments/ice-maker-ai/hero-2026-11-01.json
+          git commit -m "Experiment: Cloudflare Workers AI generated ice maker editorial candidate"
+          git pull --rebase origin main
+          git push origin HEAD:main
