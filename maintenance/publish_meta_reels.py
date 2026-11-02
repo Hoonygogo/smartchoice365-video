@@ -119,12 +119,21 @@ def validate_request():
             fail("Missing or overlong platform-specific caption.")
         if "smartchoice365-web.pages.dev" not in caption:
             fail("Each caption must mention the related Smart Choice 365 guide.")
-    full_id = req.get("full_video_id", "")
-    if not isinstance(full_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]{11}", full_id):
-        fail("The exact approved full-length YouTube video ID is required.")
-    for platform in target:
-        if "https://www.youtube.com/watch?v=" + full_id not in req["captions"][platform]:
-            fail("Each platform caption must reference the approved matching YouTube video.")
+    # General reviews must link their exact full video. An explicitly approved
+    # channel introduction has no full review to link and must link the channel.
+    if req.get("channel_intro") is True:
+        if req.get("full_video_id"):
+            fail("A channel introduction must not invent a matching full video ID.")
+        for platform in target:
+            if "https://www.youtube.com/channel/" + CHANNEL not in req["captions"][platform]:
+                fail("A channel introduction must link the actual Smart Choice 365 YouTube channel.")
+    else:
+        full_id = req.get("full_video_id", "")
+        if not isinstance(full_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]{11}", full_id):
+            fail("The exact approved full-length YouTube video ID is required.")
+        for platform in target:
+            if "https://www.youtube.com/watch?v=" + full_id not in req["captions"][platform]:
+                fail("Each platform caption must reference the approved matching YouTube video.")
     return req
 
 def token_for(platform):
