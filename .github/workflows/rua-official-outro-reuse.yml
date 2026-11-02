@@ -1,10 +1,12 @@
-name: RUA official outro - archive and reuse for KR EN Shorts (no publication)
+name: RUA official V2 10s outro - verify and reuse for KR EN Shorts (no publication)
 on:
   push:
     branches: [main]
     paths:
       - ".github/workflows/rua-official-outro-reuse.yml"
       - "uploads/rua-comedy/**"
+      - "assets/rua/official-outro.mp4"
+      - "assets/rua/official-outro.json"
   workflow_dispatch:
     inputs:
       clip_path:
@@ -30,7 +32,7 @@ jobs:
           if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
             sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           fi
-      - name: Archive the approved RUA signature outro from exact source
+      - name: Verify SHA256 of approved 10-second RUA V2 signature outro
         run: python maintenance/rua_official_outro.py build
       - name: Identify a new comedy clip if uploaded
         id: detect
@@ -62,28 +64,27 @@ jobs:
         env:
           RUA_CLIP: "${{ steps.detect.outputs.clip }}"
         run: python maintenance/rua_official_outro.py append "$RUA_CLIP"
-      - name: Permanently commit reused official outro and any preview render
+      - name: Commit any new approved preview render only
         shell: bash
         env:
           RUA_CLIP: "${{ steps.detect.outputs.clip }}"
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/rua/official-outro.mp4 assets/rua/official-outro.json
           if [[ -n "$RUA_CLIP" ]]; then
             git add renders/rua/
           fi
           if git diff --cached --quiet; then
             echo "No changes. Official outro already archived; no duplicate preview."
           else
-            git commit -m "Archive/reuse approved RUA signature outro and any reviewed-source preview"
+            git commit -m "Render approved RUA clip using SHA256-verified 10s V2 outro"
             git push origin HEAD:main
           fi
       - name: Summarize asset and preview status
         if: always()
         run: |
           echo "Official RUA outro: assets/rua/official-outro.mp4" >> "$GITHUB_STEP_SUMMARY"
-          echo "The source master is uploads/SmartChoice365_RUA_EP00_20261102.mp4" >> "$GITHUB_STEP_SUMMARY"
+          echo "The approved full 10s V2 is backed up in ChatGPT Library /SmartChoice365/RUA/RUA_Official_Signature_Outro_V2_10s.mp4" >> "$GITHUB_STEP_SUMMARY"
           echo "KR/EN 10s new clips under uploads/rua-comedy/ are rendered to renders/rua/ with this ending." >> "$GITHUB_STEP_SUMMARY"
-          echo "The separately exported byte-exact original is also backed up in ChatGPT Library /SmartChoice365/RUA/." >> "$GITHUB_STEP_SUMMARY"
+          echo "Approved V2 SHA256: ae161a9dc3d34f705d67ca081cbb708d03e1a2778a4753e2a2ee413ce768b495; this job fails closed until that exact MP4 exists in assets/rua/official-outro.mp4." >> "$GITHUB_STEP_SUMMARY"
           echo "No social publication happens in this workflow. Owner review/approval is needed before posting." >> "$GITHUB_STEP_SUMMARY"
