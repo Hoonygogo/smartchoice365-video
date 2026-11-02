@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Build and reuse a fixed RUA 4.5-second official ending from the approved master.
+"""Validate and reuse the owner's approved RUA 10-second signature ending V2.
 
 Runs with standard ffmpeg in free GitHub Actions; does not publish anything.
-The precise original exported MP4 is backed up separately in the owner's
-ChatGPT Library /SmartChoice365/RUA/. This is a faithful excerpt from the
-already committed original Korean RUA video, not a byte-for-byte copy
-of that separately rendered export.
+The approved V2 full video is archived in ChatGPT Library under
+/SmartChoice365/RUA/RUA_Official_Signature_Outro_V2_10s.mp4.
+Never reconstruct or substitute a previous outro; the repository media must match
+its approved SHA256 before reuse.
 """
 import argparse
 import hashlib
@@ -14,8 +14,6 @@ from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-MASTER = ROOT / "uploads/SmartChoice365_RUA_EP00_20261102.mp4"
-MASTER_SHA256 = "5f7f4cd01c23c2bf9f7869ac4a6850e1825e7e515e80994b975bf2689c223dcf"
 OUTRO = ROOT / "assets/rua/official-outro.mp4"
 MANIFEST = ROOT / "assets/rua/official-outro.json"
 
@@ -42,42 +40,26 @@ def probe(path):
     return float(data["format"]["duration"])
 
 def build():
-    if not MASTER.is_file() or sha256(MASTER) != MASTER_SHA256:
-        raise RuntimeError("Approved source master hash mismatch.")
-    if not 9.9 <= probe(MASTER) <= 10.2:
-        raise RuntimeError("Unexpected master clip duration.")
-    OUTRO.parent.mkdir(parents=True, exist_ok=True)
-    if not OUTRO.exists():
-        run([
-            "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
-            "-ss", "5.5", "-i", str(MASTER), "-t", "4.5",
-            "-map", "0:v:0", "-map", "0:a:0",
-            "-c:v", "libx264", "-preset", "medium", "-crf", "18",
-            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
-            "-movflags", "+faststart", str(OUTRO)
-        ])
+    """Only accept the owner's newly approved 10-second V2 video; never reconstruct V1."""
+    if not OUTRO.is_file():
+        raise RuntimeError(
+            "Approved RUA V2 is saved in ChatGPT Library but its GitHub MP4 has not yet "
+            "been synchronized. Upload the approved 10-second file as assets/rua/official-outro.mp4. "
+            "Refusing to recreate or reuse the removed 4.5-second V1."
+        )
     duration = probe(OUTRO)
-    if not 4.45 <= duration <= 4.65:
-        raise RuntimeError("Unexpected official outro duration.")
+    if not 9.9 <= duration <= 10.2:
+        raise RuntimeError("Expected the approved 10-second RUA V2, not the old 4.5-second V1.")
     digest = sha256(OUTRO)
-    if MANIFEST.exists():
-        recorded = json.loads(MANIFEST.read_text(encoding="utf-8"))
-        if digest != recorded.get("sha256"):
-            raise RuntimeError("Official outro changed from the recorded copy; refusing to use.")
-    else:
-        MANIFEST.write_text(json.dumps({
-            "asset": "assets/rua/official-outro.mp4",
-            "derived_from": "uploads/SmartChoice365_RUA_EP00_20261102.mp4",
-            "source_sha256": MASTER_SHA256,
-            "extraction_start_seconds": 5.5,
-            "extraction_duration_seconds": 4.5,
-            "video_duration_seconds": duration,
-            "sha256": digest,
-            "meaning": "Original RUA voice and animated content, re-extracted and encoded for durable GitHub reuse",
-            "exact_original_export_backup": "/SmartChoice365/RUA/RUA_Signature_Outro_5p5_to_10s_Original_Audio.mp4",
-            "language": "reuse for Korean and English RUA Shorts"
-        }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("OFFICIAL_OUTRO_READY", str(OUTRO.relative_to(ROOT)), digest, duration)
+    approved_sha = "ae161a9dc3d34f705d67ca081cbb708d03e1a2778a4753e2a2ee413ce768b495"
+    if digest != approved_sha:
+        raise RuntimeError("Official RUA V2 SHA256 mismatch. Refusing to use an unapproved video.")
+    if not MANIFEST.is_file():
+        raise RuntimeError("Official RUA V2 manifest is missing.")
+    recorded = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    if recorded.get("sha256") != digest or recorded.get("video_duration_seconds") != 10.026667:
+        raise RuntimeError("RUA V2 manifest does not match approved video.")
+    print("OFFICIAL_OUTRO_V2_READY", str(OUTRO.relative_to(ROOT)), digest, duration)
 
 def append(clip_name):
     clip = (ROOT / clip_name).resolve()
@@ -109,7 +91,7 @@ def append(clip_name):
         "-movflags", "+faststart", str(result)
     ])
     final_duration = probe(result)
-    if not duration + 4.25 <= final_duration <= duration + 4.75:
+    if not duration + 9.8 <= final_duration <= duration + 10.2:
         raise RuntimeError("Wrong joined video duration.")
     print("RUA_SHORT_RENDERED", str(result.relative_to(ROOT)), final_duration, sha256(result))
     print("REVIEW_REQUIRED_BEFORE_SOCIAL_PUBLICATION")
