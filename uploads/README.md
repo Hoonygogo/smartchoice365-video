@@ -1,3 +1,20 @@
+# RUA EP.00 — One-file automatic publication (owner-approved 2026-11-02)
+
+Upload **exactly one unchanged file** through the GitHub web upload screen into the `uploads/` folder on `main`:
+
+`SmartChoice365_RUA_EP00_20261102.mp4`
+
+- Source: approved `main(2).mp4` 10-second original with full original audio and its existing ending. Do not attach a second outro.
+- File size: **4,331,981 bytes**.
+- SHA-256: `5f7f4cd01c23c2bf9f7869ac4a6850e1825e7e515e80994b975bf2689c223dcf`.
+- On upload, `.github/workflows/rua-ep00-one-file-autopublish.yml` is triggered automatically, first verifying original hash and audio, then publishing YouTube Short -> Instagram Reel + Facebook Reel -> Instagram Story.
+- GitHub Actions uses existing channel/Page credentials and free official APIs; success is **not** assured until API receipts confirm each destination.
+- Check GitHub Actions run and `publications/receipts/` + `publications/meta-receipts/`. Receipts prevent blind duplicate uploads.
+- The exact-file trigger is **only for RUA EP.00**; future shorts require their own approved metadata/hash and publishing trigger. Do not assume that arbitrary uploads auto-publish.
+- There is no need to configure new YouTube/Meta credentials if the existing publishing secrets still work. Do not commit tokens.
+
+---
+
 # Owner-approved Ninja V4 video upload
 
 This folder contains media pending upload to the Smart Choice 365 YouTube channel.
