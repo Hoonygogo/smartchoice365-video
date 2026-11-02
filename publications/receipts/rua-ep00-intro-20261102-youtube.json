@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "41396691722",
   "note": "Owner explicitly approved publishing original RUA EP00 without adding outro",
   "video_id": "05yTkr0lBj0",
-  "url": "https://www.youtube.com/shorts/05yTkr0lBj0"
+  "url": "https://www.youtube.com/shorts/05yTkr0lBj0",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
