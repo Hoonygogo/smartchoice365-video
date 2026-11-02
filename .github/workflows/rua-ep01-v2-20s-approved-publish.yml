@@ -4,7 +4,7 @@ on:
     branches: [main]
     paths:
       - "uploads/RUA_EP01_V2_20s.mp4"
-  permissions:
+permissions:
   contents: write
   actions: read
 concurrency:
