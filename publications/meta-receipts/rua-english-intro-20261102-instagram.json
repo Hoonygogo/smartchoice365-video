@@ -4,7 +4,7 @@
   "sha256": "4ae6b12be58f717d00115d3312768efe5202a69fb100f627a734a5184aab4c6a",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/bbc1cf1dd60bef93f5894e01fa132094904db1b8/uploads/SmartChoice365_RUA_English_Intro_20261102.mp4",
   "video_size": 3337041,
-  "status": "ready",
+  "status": "container_creation_initiated",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "run_id": "41401981298"
