@@ -30,8 +30,7 @@ META = {
         "description": (
             "Watch the FULL robot vacuum Buying Court video: "
             "https://www.youtube.com/watch?v=FC4FvuBPS8w\n\n"
-            "My robot vacuum stole my sock... and RUA has questions! 😂🤖
-"
+            "My robot vacuum stole my sock... and RUA has questions! 😂🤖\n"
             "Featuring RUA’s new Smart Choice 365 signature ending.\n"
             "Should you really buy a robot vacuum? Watch the full buying guide above.\n\n"
             "Smart Choice 365 buying guides: " + SITE + "\n"
