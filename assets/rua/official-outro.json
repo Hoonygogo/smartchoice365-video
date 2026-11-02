@@ -1,0 +1,12 @@
+{
+  "asset": "assets/rua/official-outro.mp4",
+  "derived_from": "uploads/SmartChoice365_RUA_EP00_20261102.mp4",
+  "source_sha256": "5f7f4cd01c23c2bf9f7869ac4a6850e1825e7e515e80994b975bf2689c223dcf",
+  "extraction_start_seconds": 5.5,
+  "extraction_duration_seconds": 4.5,
+  "video_duration_seconds": 4.5,
+  "sha256": "04af3b62b8ef8c5480521dacdd7ebd3cb1d8bb7ac8e1fb88017720930774d94b",
+  "meaning": "Original RUA voice and animated content, re-extracted and encoded for durable GitHub reuse",
+  "exact_original_export_backup": "/SmartChoice365/RUA/RUA_Signature_Outro_5p5_to_10s_Original_Audio.mp4",
+  "language": "reuse for Korean and English RUA Shorts"
+}
