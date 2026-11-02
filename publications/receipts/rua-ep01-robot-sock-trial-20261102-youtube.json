@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "41407723986",
   "note": "Owner explicitly approved publishing original RUA EP01 robot sock trial without adding outro",
   "video_id": "4c82S22m69Y",
-  "url": "https://www.youtube.com/shorts/4c82S22m69Y"
+  "url": "https://www.youtube.com/shorts/4c82S22m69Y",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
