@@ -32,9 +32,21 @@ jobs:
           if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
             sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           fi
+      - name: Check whether the approved V2 MP4 has been synchronized
+        id: asset
+        shell: bash
+        run: |
+          if [[ -f assets/rua/official-outro.mp4 ]]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "Approved V2 is stored in Library; GitHub binary upload is still pending. No old V1 will be reused." >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Verify SHA256 of approved 10-second RUA V2 signature outro
+        if: steps.asset.outputs.available == 'true'
         run: python maintenance/rua_official_outro.py build
       - name: Identify a new comedy clip if uploaded
+        if: steps.asset.outputs.available == 'true'
         id: detect
         shell: bash
         env:
@@ -60,11 +72,12 @@ jobs:
           fi
           echo "clip=$clip" >> "$GITHUB_OUTPUT"
       - name: Automatically append official outro to newly uploaded comedy clip
-        if: steps.detect.outputs.clip != ''
+        if: steps.asset.outputs.available == 'true' && steps.detect.outputs.clip != ''
         env:
           RUA_CLIP: "${{ steps.detect.outputs.clip }}"
         run: python maintenance/rua_official_outro.py append "$RUA_CLIP"
       - name: Commit any new approved preview render only
+        if: steps.asset.outputs.available == 'true'
         shell: bash
         env:
           RUA_CLIP: "${{ steps.detect.outputs.clip }}"
@@ -75,7 +88,7 @@ jobs:
             git add renders/rua/
           fi
           if git diff --cached --quiet; then
-            echo "No changes. Official outro already archived; no duplicate preview."
+            echo "No new preview render to commit."
           else
             git commit -m "Render approved RUA clip using SHA256-verified 10s V2 outro"
             git push origin HEAD:main
@@ -83,8 +96,8 @@ jobs:
       - name: Summarize asset and preview status
         if: always()
         run: |
-          echo "Official RUA outro: assets/rua/official-outro.mp4" >> "$GITHUB_STEP_SUMMARY"
+          echo "Official RUA V2 target: assets/rua/official-outro.mp4 (currently pending GitHub binary sync)" >> "$GITHUB_STEP_SUMMARY"
           echo "The approved full 10s V2 is backed up in ChatGPT Library /SmartChoice365/RUA/RUA_Official_Signature_Outro_V2_10s.mp4" >> "$GITHUB_STEP_SUMMARY"
           echo "KR/EN 10s new clips under uploads/rua-comedy/ are rendered to renders/rua/ with this ending." >> "$GITHUB_STEP_SUMMARY"
-          echo "Approved V2 SHA256: ae161a9dc3d34f705d67ca081cbb708d03e1a2778a4753e2a2ee413ce768b495; this job fails closed until that exact MP4 exists in assets/rua/official-outro.mp4." >> "$GITHUB_STEP_SUMMARY"
+          echo "Approved V2 SHA256: ae161a9dc3d34f705d67ca081cbb708d03e1a2778a4753e2a2ee413ce768b495; automatic reuse is paused until that exact MP4 exists in assets/rua/official-outro.mp4." >> "$GITHUB_STEP_SUMMARY"
           echo "No social publication happens in this workflow. Owner review/approval is needed before posting." >> "$GITHUB_STEP_SUMMARY"
