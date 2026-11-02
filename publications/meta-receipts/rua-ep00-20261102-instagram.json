@@ -4,9 +4,10 @@
   "sha256": "5f7f4cd01c23c2bf9f7869ac4a6850e1825e7e515e80994b975bf2689c223dcf",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/2dec5bfef30c4fdd4bb92d0f62d98d831b6c987b/uploads/SmartChoice365_RUA_EP00_20261102.mp4",
   "video_size": 4331981,
-  "status": "media_publish_initiated",
+  "status": "published_unverified",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "run_id": "41396691722",
-  "container_id": "17887656666527047"
+  "container_id": "17887656666527047",
+  "media_id": "18099528098399814"
 }
