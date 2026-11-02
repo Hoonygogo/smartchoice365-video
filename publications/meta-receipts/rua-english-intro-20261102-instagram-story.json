@@ -5,8 +5,9 @@
   "media_path": "uploads/SmartChoice365_RUA_English_Intro_20261102.mp4",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/bbc1cf1dd60bef93f5894e01fa132094904db1b8/uploads/SmartChoice365_RUA_English_Intro_20261102.mp4",
   "video_size": 3337041,
-  "status": "media_publish_initiated",
+  "status": "published_unverified",
   "account_id": "17841475811391464",
   "run_id": "41401981298",
-  "container_id": "17887664622527047"
+  "container_id": "17887664622527047",
+  "media_id": "17956903890292566"
 }
