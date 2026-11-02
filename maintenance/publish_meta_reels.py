@@ -119,6 +119,22 @@ def validate_request():
             fail("Missing or overlong platform-specific caption.")
         if "smartchoice365-web.pages.dev" not in caption:
             fail("Each caption must mention the related Smart Choice 365 guide.")
+    # Make referrals visible before Facebook/Instagram truncate long captions.
+    # A URL buried after the hook does not meet the promotional requirement.
+    for name in target:
+        caption = req["captions"][name]
+        lines = [line.strip() for line in caption.splitlines() if line.strip()]
+        if len(lines) < 3:
+            fail("Caption needs prominent related video, homepage and channel referral lines.")
+        top = "\n".join(lines[:4])
+        if "smartchoice365-web.pages.dev" not in top:
+            fail("Homepage guide must be in the first four nonblank caption lines.")
+        if name == "facebook" and "youtube.com/watch?v=" not in top and not req.get("channel_intro"):
+            fail("Facebook must show the matching YouTube long-form video in the first four lines.")
+        if name == "instagram" and "link in bio" not in caption.lower():
+            fail("Instagram Reel must explicitly direct viewers to the profile link in bio.")
+        if "https://www.youtube.com/channel/" + CHANNEL not in caption:
+            fail("All Reels must carry the direct official YouTube channel URL.")
     # General reviews must link their exact full video. An explicitly approved
     # channel introduction has no full review to link and must link the channel.
     if req.get("channel_intro") is True:
