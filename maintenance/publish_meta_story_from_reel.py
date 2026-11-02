@@ -35,6 +35,13 @@ def main():
     if reel.get("share_to_instagram_story") not in (None, True, False):
         fail("share_to_instagram_story must be a JSON boolean if supplied.")
 
+    # A Reel does not automatically contain a visible website/YouTube referral.
+    # Never cross-post an unreviewed Story with no CTA as though it promotes the site.
+    if reel.get("story_cta_verified") is not True:
+        print("AUTO_STORY_SKIPPED: Story-specific visible YouTube/website CTA not verified. "
+              "Prepare an owner-approved Story export first; no duplicate publication.")
+        return
+
     # A Story can be published only AFTER our Meta Reel receipt is fully verified.
     reel_receipt_path = f"publications/meta-receipts/{reel['id']}-instagram.json"
     reel_receipt, _ = receipt_read(reel_receipt_path)
