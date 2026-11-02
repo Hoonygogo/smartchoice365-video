@@ -1,12 +1,12 @@
 {
   "asset": "assets/rua/official-outro.mp4",
-  "derived_from": "uploads/SmartChoice365_RUA_EP00_20261102.mp4",
-  "source_sha256": "5f7f4cd01c23c2bf9f7869ac4a6850e1825e7e515e80994b975bf2689c223dcf",
-  "extraction_start_seconds": 5.5,
-  "extraction_duration_seconds": 4.5,
-  "video_duration_seconds": 4.5,
-  "sha256": "04af3b62b8ef8c5480521dacdd7ebd3cb1d8bb7ac8e1fb88017720930774d94b",
-  "meaning": "Original RUA voice and animated content, re-extracted and encoded for durable GitHub reuse",
-  "exact_original_export_backup": "/SmartChoice365/RUA/RUA_Signature_Outro_5p5_to_10s_Original_Audio.mp4",
-  "language": "reuse for Korean and English RUA Shorts"
+  "sha256": "ae161a9dc3d34f705d67ca081cbb708d03e1a2778a4753e2a2ee413ce768b495",
+  "video_duration_seconds": 10.026667,
+  "source_file": "글로벌 ending moment.mp4",
+  "approved_file": "RUA_Official_Signature_Outro_V2_10s.mp4",
+  "archived_library_path": "/SmartChoice365/RUA/RUA_Official_Signature_Outro_V2_10s.mp4",
+  "meaning": "Owner-approved complete 10-second RUA V2 signature ending with original audio; reuse for Korean and English Shorts",
+  "previous_v1": "Retired by owner; never rebuild or append old 4.5s V1",
+  "github_binary_status": "Awaiting synchronization of approved MP4; verify SHA256 before use",
+  "published_to_social_media": false
 }
