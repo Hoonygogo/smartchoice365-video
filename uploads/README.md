@@ -1,3 +1,25 @@
+# RUA English Introduction — approved 10-second release (2026-11-02)
+
+The user-approved original from this conversation is ready for the **existing free GitHub Actions -> YouTube + Meta publishing system**. The binary MP4 has not yet been transferred into this GitHub repository.
+
+**Direct browser upload UI:** https://github.com/Hoonygogo/smartchoice365-video/upload/main/uploads
+
+Upload exactly this unmodified MP4 to the `uploads/` directory on the `main` branch:
+
+`SmartChoice365_RUA_English_Intro_20261102.mp4`
+
+- Bytes: **3,337,041**
+- SHA-256: `4ae6b12be58f717d00115d3312768efe5202a69fb100f627a734a5184aab4c6a`
+- Duration: 10.026667 seconds, 720×1280 portrait, H.264 video with original AAC audio
+- Official RUA wardrobe, voice, ending and soundtrack must not be changed in this publishing step
+- **Automatic trigger:** `.github/workflows/rua-english-intro-one-file-autopublish.yml` on matching file push
+- Planned destinations: Smart Choice 365 YouTube Shorts, Instagram Reel, Facebook Reel, then Instagram Story
+- Planned captions: English, linking Smart Choice 365 home and official YouTube channel, with original outro already in the MP4; never append a second outro
+- All four publish statuses must be verified from receipts; an Actions run starting is **not** proof of publication
+- Keep earlier Korean RUA EP00 publication unchanged. No deletions and no blind duplicate uploads.
+
+---
+
 # RUA EP.00 — One-file automatic publication (owner-approved 2026-11-02)
 
 Upload **exactly one unchanged file** through the GitHub web upload screen into the `uploads/` folder on `main`:
