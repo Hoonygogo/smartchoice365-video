@@ -4,10 +4,12 @@
   "sha256": "cb2d89ea755e092fe7d672bc65d16d5ed1ece3e19b1313d9200fc628fb69ae75",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/0ecaaabe0b376f82c9a45913542749a55bf8a194/uploads/RUA_EP01_V2_20s.mp4",
   "video_size": 6300113,
-  "status": "published_unverified",
+  "status": "published_verified",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "run_id": "41431050653",
   "video_id": "1172965952343506",
-  "upload_url": "https://rupload.facebook.com/video-upload/v26.0/1172965952343506"
+  "upload_url": "https://rupload.facebook.com/video-upload/v26.0/1172965952343506",
+  "permalink": "/reel/1172965952343506/",
+  "platform_video_id": "1172965952343506"
 }
