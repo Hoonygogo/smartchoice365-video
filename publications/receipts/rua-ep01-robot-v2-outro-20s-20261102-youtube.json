@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "41431050653",
   "note": "Owner approved final 20s robot vacuum Short with new 10s RUA V2 outro, for cross-platform public posting",
   "video_id": "r-7XCZRuee8",
-  "url": "https://www.youtube.com/shorts/r-7XCZRuee8"
+  "url": "https://www.youtube.com/shorts/r-7XCZRuee8",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
