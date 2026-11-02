@@ -1,0 +1,103 @@
+name: "RUA EP00 — publish approved original from one MP4 upload"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "uploads/SmartChoice365_RUA_EP00_20261102.mp4"
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: "rua-ep00-one-time-multiplatform"
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check the exact approved original file before any network publication
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib
+          p=pathlib.Path("uploads/SmartChoice365_RUA_EP00_20261102.mp4")
+          if not p.is_file():
+              raise SystemExit("The approved RUA EP00 file has not been uploaded yet.")
+          data=p.read_bytes()
+          if len(data)!=4331981 or hashlib.sha256(data).hexdigest()!="5f7f4cd01c23c2bf9f7869ac4a6850e1825e7e515e80994b975bf2689c223dcf":
+              raise SystemExit("Uploaded file differs from the user-approved original. No publishing.")
+          print("APPROVED_RUA_FILE_SHA256_VERIFIED")
+          PY
+          if ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          python - <<'PY'
+          import json,subprocess
+          p="uploads/SmartChoice365_RUA_EP00_20261102.mp4"
+          d=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_streams","-show_format","-of","json",p]))
+          video=[s for s in d["streams"] if s.get("codec_type")=="video"]
+          audio=[s for s in d["streams"] if s.get("codec_type")=="audio"]
+          if len(video)!=1 or len(audio)!=1 or video[0].get("codec_name")!="h264" or audio[0].get("codec_name")!="aac":
+              raise SystemExit("The owner-approved H264/AAC video and original sound are required.")
+          if (video[0].get("width"),video[0].get("height"))!=(720,1280):
+              raise SystemExit("Wrong RUA EP00 original 720x1280 format.")
+          if not 9.9<=float(d["format"]["duration"])<=10.2:
+              raise SystemExit("Wrong duration; no outro should be appended.")
+          print("ORIGINAL_VIDEO_AND_SOUND_VERIFIED")
+          PY
+      - name: Publish approved original YouTube Short and verify public state
+        env:
+          GH_TOKEN: "${{ github.token }}"
+          YOUTUBE_CLIENT_ID: "${{ secrets.YOUTUBE_CLIENT_ID }}"
+          YOUTUBE_CLIENT_SECRET: "${{ secrets.YOUTUBE_CLIENT_SECRET }}"
+          YOUTUBE_REFRESH_TOKEN: "${{ secrets.YOUTUBE_REFRESH_TOKEN }}"
+        run: python maintenance/publish_rua_ep00.py
+      - name: Prepare exact-hash channel introduction Reels request
+        run: |
+          mkdir -p publications/meta-requests
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          channel="https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA"
+          home="https://smartchoice365-web.pages.dev/"
+          data={
+            "id":"rua-ep00-20261102",
+            "approval":"publish",
+            "channel_intro":True,
+            "channel_id":"UC4DzAW-Hbd45bIECwGV7-uA",
+            "platforms":["instagram","facebook"],
+            "media_path":"uploads/SmartChoice365_RUA_EP00_20261102.mp4",
+            "sha256":"5f7f4cd01c23c2bf9f7869ac4a6850e1825e7e515e80994b975bf2689c223dcf",
+            "facebook_title":"루아 첫 등장! 구매 전엔 비교부터 | Smart Choice 365",
+            "share_to_instagram_story":True,
+            "captions":{
+              "instagram":"안녕! 난 루아! 💗 그냥 산다고? 잠깐, 비교부터! 😆\\n\\n제품 비교와 구매 팁: "+home+"\\n루아 영상 채널: "+channel+"\\n\\n재미있는 3D 애니메이션으로 쇼핑 비교를 소개합니다.\\n#SmartChoice365 #루아 #쇼핑꿀팁 #Reels",
+              "facebook":"오늘 루아가 첫 등장합니다! 💗 그냥 구매하기 전에 비교부터 해보세요. 😆\\n\\nSmart Choice 365 구매 가이드: "+home+"\\n공식 YouTube 채널: "+channel+"\\n\\n연출된 캐릭터 애니메이션입니다.\\n#SmartChoice365 #루아 #쇼핑비교"
+            },
+            "approval_note":"Owner approved exact 10.0267s RUA EP00 original and crossposting on 2026-11-02; no duplicated ending; free existing APIs."
+          }
+          Path("publications/meta-requests/rua-ep00-20261102.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+          PY
+      - name: Publish Instagram and Facebook Reels, then the approved Instagram Story
+        env:
+          META_PUBLISH_ENABLED: "true"
+          META_REQUEST_FILE: "publications/meta-requests/rua-ep00-20261102.json"
+          META_PAGE_ACCESS_TOKEN: "${{ secrets.META_PAGE_ACCESS_TOKEN }}"
+          META_SYSTEM_USER_ACCESS_TOKEN: "${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}"
+          META_FACEBOOK_PAGE_ID: "${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}"
+          META_INSTAGRAM_ACCOUNT_ID: "${{ vars.META_INSTAGRAM_ACCOUNT_ID || '17841475811391464' }}"
+          GH_TOKEN: "${{ github.token }}"
+        run: |
+          python maintenance/publish_meta_reels.py
+          python maintenance/publish_meta_story_from_reel.py
+      - name: Recorded publication state
+        if: always()
+        run: |
+          echo "RUA EP00 exact-video automatic publication attempt completed." >> "$GITHUB_STEP_SUMMARY"
+          echo "Verify YouTube receipt under publications/receipts and each Meta platform receipt under publications/meta-receipts." >> "$GITHUB_STEP_SUMMARY"
+          echo "Receipts block duplicate uploads; any partial failure requires investigation, not blind retry." >> "$GITHUB_STEP_SUMMARY"
+          echo "Instagram Story has no API link sticker, so use the profile website link." >> "$GITHUB_STEP_SUMMARY"
