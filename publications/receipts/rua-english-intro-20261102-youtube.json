@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "41401981298",
   "note": "Owner explicitly approved publishing original RUA English Introduction without adding outro",
   "video_id": "MHC5Vx9JgAE",
-  "url": "https://www.youtube.com/shorts/MHC5Vx9JgAE"
+  "url": "https://www.youtube.com/shorts/MHC5Vx9JgAE",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
