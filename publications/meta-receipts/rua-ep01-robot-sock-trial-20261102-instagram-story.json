@@ -5,7 +5,7 @@
   "media_path": "uploads/RUA_EP01_FINAL_14s.mp4",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/83d2d8e2dae75a6b7c6c890b5f10b34745639691/uploads/RUA_EP01_FINAL_14s.mp4",
   "video_size": 3724808,
-  "status": "container_processing",
+  "status": "media_publish_initiated",
   "account_id": "17841475811391464",
   "run_id": "41407723986",
   "container_id": "17887672986527047"
