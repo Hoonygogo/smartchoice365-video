@@ -75,12 +75,12 @@ jobs:
             "facebook_title":"루아 첫 등장! 구매 전엔 비교부터 | Smart Choice 365",
             "share_to_instagram_story":True,
             "captions":{
-              "instagram":"안녕! 난 루아! 💗 그냥 산다고? 잠깐, 비교부터! 😆\\n\\n제품 비교와 구매 팁: "+home+"\\n루아 영상 채널: "+channel+"\\n\\n재미있는 3D 애니메이션으로 쇼핑 비교를 소개합니다.\\n#SmartChoice365 #루아 #쇼핑꿀팁 #Reels",
-              "facebook":"오늘 루아가 첫 등장합니다! 💗 그냥 구매하기 전에 비교부터 해보세요. 😆\\n\\nSmart Choice 365 구매 가이드: "+home+"\\n공식 YouTube 채널: "+channel+"\\n\\n연출된 캐릭터 애니메이션입니다.\\n#SmartChoice365 #루아 #쇼핑비교"
+              "instagram":"안녕! 난 루아! 💗 그냥 산다고? 잠깐, 비교부터! 😆\n\n제품 비교와 구매 팁: "+home+"\n루아 영상 채널: "+channel+"\n\n재미있는 3D 애니메이션으로 쇼핑 비교를 소개합니다.\n#SmartChoice365 #루아 #쇼핑꿀팁 #Reels",
+              "facebook":"오늘 루아가 첫 등장합니다! 💗 그냥 구매하기 전에 비교부터 해보세요. 😆\n\nSmart Choice 365 구매 가이드: "+home+"\n공식 YouTube 채널: "+channel+"\n\n연출된 캐릭터 애니메이션입니다.\n#SmartChoice365 #루아 #쇼핑비교"
             },
             "approval_note":"Owner approved exact 10.0267s RUA EP00 original and crossposting on 2026-11-02; no duplicated ending; free existing APIs."
           }
-          Path("publications/meta-requests/rua-ep00-20261102.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+          Path("publications/meta-requests/rua-ep00-20261102.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
       - name: Publish Instagram and Facebook Reels, then the approved Instagram Story
         env:
