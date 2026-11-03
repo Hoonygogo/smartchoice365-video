@@ -1,12 +1,10 @@
-"""Run locally with: python -m unittest scripts/test_youtube_ai_disclosure.py"""
-import sys
+"""AI disclosure upload regression tests — no network or YouTube credentials needed."""
 import unittest
 from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).resolve().parent))
 from youtube_ai_disclosure import validate_ai_use, apply_upload_disclosure
 
-def approved_review():
+
+def reviewed_cartoon():
     return {"ai_use_review": {
         "classification": "clearly_nonrealistic_animation",
         "final_video_reviewed": True,
@@ -15,86 +13,107 @@ def approved_review():
         "ai_generated_music_main_focus": False,
     }}
 
+
 class AIUseTests(unittest.TestCase):
-    def test_yes_for_realistic_ai_scene(self):
-        self.assertIs(validate_ai_use({"status": {"containsSyntheticMedia": True}}, {}), True)
-    def test_no_for_reviewed_cartoon(self):
-        self.assertIs(validate_ai_use({"status": {"containsSyntheticMedia": False}}, approved_review()), False)
-    def test_unknown_setting_cannot_publish(self):
-        with self.assertRaises(RuntimeError):
-            validate_ai_use({"status": {}}, approved_review())
-    def test_no_without_review_cannot_publish(self):
-        with self.assertRaises(RuntimeError):
-            validate_ai_use({"status": {"containsSyntheticMedia": False}}, {})
-    def test_realistic_scene_cannot_be_labeled_no(self):
-        review=approved_review()
-        review["ai_use_review"]["realistic_synthetic_scene_present"] = True
-        with self.assertRaises(RuntimeError):
-            validate_ai_use({"status": {"containsSyntheticMedia": False}}, review)
-    def test_ai_music_main_focus_cannot_be_labeled_no(self):
-        review=approved_review()
-        review["ai_use_review"]["ai_generated_music_main_focus"] = True
-        with self.assertRaises(RuntimeError):
-            validate_ai_use({"status": {"containsSyntheticMedia": False}}, review)
-    def test_real_person_misrepresentation_cannot_be_labeled_no(self):
-        review=approved_review()
-        review["ai_use_review"]["real_person_or_event_misrepresented"] = True
-        with self.assertRaises(RuntimeError):
-            validate_ai_use({"status": {"containsSyntheticMedia": False}}, review)
-    def test_unreviewed_video_cannot_be_labeled_no(self):
-        review=approved_review()
-        review["ai_use_review"]["final_video_reviewed"] = False
-        with self.assertRaises(RuntimeError):
-            validate_ai_use({"status": {"containsSyntheticMedia": False}}, review)
+    def choose(self, request, initial=None):
+        metadata = {"status": {"privacyStatus": "public"}}
+        if initial is not None:
+            metadata["status"]["containsSyntheticMedia"] = initial
+        selected = apply_upload_disclosure(metadata, request)
+        self.assertIs(metadata["status"]["containsSyntheticMedia"], selected)
+        self.assertEqual(metadata["status"]["privacyStatus"], "public")
+        return selected
 
+    def test_confirmed_fictional_cartoon_always_no_even_with_previous_yes(self):
+        self.assertIs(self.choose(reviewed_cartoon(), True), False)
 
-    def test_force_no_even_when_cartoon_request_says_yes(self):
-        data = {"status": {"containsSyntheticMedia": True, "privacyStatus": "public"}}
-        self.assertIs(apply_upload_disclosure(data, approved_review()), False)
-        self.assertIs(data["status"]["containsSyntheticMedia"], False)
-        self.assertEqual(data["status"]["privacyStatus"], "public")
+    def test_confirmed_fictional_cartoon_no_when_checkbox_absent(self):
+        self.assertIs(self.choose(reviewed_cartoon()), False)
 
-    def test_force_no_when_missing_for_reviewed_cartoon(self):
-        data = {"status": {"privacyStatus": "public"}}
-        self.assertIs(apply_upload_disclosure(data, approved_review()), False)
-        self.assertIs(data["status"]["containsSyntheticMedia"], False)
+    def test_shorts_format_alone_not_sufficient_for_no(self):
+        self.assertIs(self.choose({"video_format": "shorts"}), True)
 
-    def test_mixed_realistic_cartoon_is_not_silently_marked_no(self):
-        req = approved_review()
-        req["ai_use_review"]["realistic_synthetic_scene_present"] = True
-        with self.assertRaises(RuntimeError):
-            apply_upload_disclosure({"status": {"containsSyntheticMedia": True}}, req)
+    def test_full_video_format_alone_not_sufficient_for_no(self):
+        self.assertIs(self.choose({"video_format": "video"}), True)
 
-    def test_reject_cartoon_without_documented_final_video_review(self):
-        req = approved_review()
+    def test_missing_review_uses_yes_without_blocking(self):
+        self.assertIs(self.choose({}, False), True)
+
+    def test_empty_review_uses_yes_without_blocking(self):
+        self.assertIs(self.choose({"ai_use_review": {}}, False), True)
+
+    def test_incomplete_final_review_uses_yes_without_blocking(self):
+        req = reviewed_cartoon()
         req["ai_use_review"]["final_video_reviewed"] = False
-        with self.assertRaises(RuntimeError):
-            apply_upload_disclosure({"status": {"containsSyntheticMedia": True}}, req)
+        self.assertIs(self.choose(req, False), True)
 
-    def test_realistic_video_requires_yes(self):
-        req = approved_review()
+    def test_missing_review_flag_uses_yes_without_blocking(self):
+        req = reviewed_cartoon()
+        del req["ai_use_review"]["realistic_synthetic_scene_present"]
+        self.assertIs(self.choose(req, False), True)
+
+    def test_unknown_classification_uses_yes_without_blocking(self):
+        req = reviewed_cartoon()
+        req["ai_use_review"]["classification"] = "unclassified"
+        self.assertIs(self.choose(req, False), True)
+
+    def test_mixed_cartoon_with_realistic_scenes_uses_yes(self):
+        req = reviewed_cartoon()
+        req["ai_use_review"]["realistic_synthetic_scene_present"] = True
+        self.assertIs(self.choose(req, False), True)
+
+    def test_cartoon_with_real_person_misrepresentation_uses_yes(self):
+        req = reviewed_cartoon()
+        req["ai_use_review"]["real_person_or_event_misrepresented"] = True
+        self.assertIs(self.choose(req, False), True)
+
+    def test_cartoon_with_focal_ai_music_uses_yes(self):
+        req = reviewed_cartoon()
+        req["ai_use_review"]["ai_generated_music_main_focus"] = True
+        self.assertIs(self.choose(req, False), True)
+
+    def test_realistic_video_uses_yes(self):
+        req = reviewed_cartoon()
         req["ai_use_review"].update(classification="realistic_synthetic_content",
                                    realistic_synthetic_scene_present=True)
-        data = {"status": {"containsSyntheticMedia": False}}
-        self.assertIs(apply_upload_disclosure(data, req), True)
-        self.assertIs(data["status"]["containsSyntheticMedia"], True)
+        self.assertIs(self.choose(req, False), True)
 
-    def test_unknown_classification_rejected(self):
-        req = approved_review()
-        req["ai_use_review"]["classification"] = "unclassified"
+    def test_realistic_classification_even_without_flags_uses_yes(self):
+        req = reviewed_cartoon()
+        req["ai_use_review"]["classification"] = "realistic_synthetic_content"
+        self.assertIs(self.choose(req, False), True)
+
+    def test_minor_production_assistance_only_can_be_no_if_reviewed(self):
+        req = reviewed_cartoon()
+        req["ai_use_review"]["classification"] = "minor_edits_or_production_assistance_only"
+        self.assertIs(self.choose(req, True), False)
+
+    def test_minor_edits_mixed_with_reportable_content_uses_yes(self):
+        req = reviewed_cartoon()
+        req["ai_use_review"]["classification"] = "minor_edits_or_production_assistance_only"
+        req["ai_use_review"]["realistic_synthetic_scene_present"] = True
+        self.assertIs(self.choose(req, False), True)
+
+    def test_legacy_validator_uses_same_default_yes(self):
+        metadata = {"status": {"containsSyntheticMedia": False}}
+        self.assertIs(validate_ai_use(metadata, {}), True)
+        self.assertIs(metadata["status"]["containsSyntheticMedia"], True)
+
+    def test_invalid_metadata_structure_is_blocked_not_missing_review(self):
         with self.assertRaises(RuntimeError):
-            apply_upload_disclosure({"status": {}}, req)
+            apply_upload_disclosure({}, {})
 
-    def test_single_use_rua_upload_scripts_are_no(self):
+    def test_one_off_rua_cartoon_uploads_remain_no(self):
         root = Path(__file__).resolve().parents[1] / "maintenance"
         for name in ("publish_rua_ep00.py", "publish_rua_english_intro.py",
                      "publish_rua_ep01_robot_sock_trial.py",
                      "publish_rua_ep01_v2_20s.py"):
             with self.subTest(filename=name):
-                content = (root / name).read_text()
-                self.assertIn('"containsSyntheticMedia": False,', content)
-                self.assertIn('if META["status"]["containsSyntheticMedia"] is not False:', content)
-                self.assertNotIn('"containsSyntheticMedia": True,', content)
+                source = (root / name).read_text()
+                self.assertIn('"containsSyntheticMedia": False,', source)
+                self.assertIn('if META["status"]["containsSyntheticMedia"] is not False:', source)
+                self.assertNotIn('"containsSyntheticMedia": True,', source)
+
 
 if __name__ == "__main__":
     unittest.main()
