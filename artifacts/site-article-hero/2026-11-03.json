@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-03",
+  "channel": "en-au",
+  "topicId": "2026-induction-vs-ceramic-westinghouse-20amp-installation-australia",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-03.jpg",
+  "sha256": "e37c1826145bf9e07c56152eefb2577599e679660e03db813e52906f958e65d7",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-03T02:31:33.422340+00:00",
+  "imageBytes": 434999,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "1a681d3ab8dfd053fe6fea3f1bc3102946701efc"
+}
