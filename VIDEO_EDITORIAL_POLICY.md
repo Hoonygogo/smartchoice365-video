@@ -265,12 +265,29 @@ Source: YouTube Help https://support.google.com/youtube/answer/14328491?hl=en an
 - `containsSyntheticMedia = false` / Studio `AI use = No` for an unmistakably *non-realistic*, clearly fictional cartoon or stylised 3D animation, with no realistic fabricated event/place/person, no AI-created main-focus music and no other disclosure-triggering material. This normally includes the non-photorealistic RUA character and deliberately comic cartoon Shorts.
 - `containsSyntheticMedia = true` / Studio `AI use = Yes` for realistic AI-generated or meaningfully altered footage of a person, product being used, real place, real incident, or another scene that looks like real filming although it did not occur; and for generated music that is the main focus. Mixed videos with realistic generative scenes need disclosure even if they also contain charts or animations.
 - AI used only for scripts, titles, thumbnails, charts, captions, ordinary audiovisual repairs or one's own cloned voice does **not alone** require Yes. Voice content can still trigger disclosure when it misrepresents a real person.
-- **Pre-upload gate:** record a brief visual/audio classification for each new upload. Mark `No` only when the final rendered video was reviewed as exempt; choose `Yes` for realistic material, and hold release for unclear cases. Do not use an undocumented automatic `No` default. `No` is a recommended setting for clearly animated cartoon episodes, not a claim about all AI-made media.
+- **MANDATORY for confirmed fictional animation:** Once the final video has been reviewed as clearly non-realistic RUA-style 3D animation with no reportable realistic scenes or other disclosure-triggering material, YouTube upload must use `containsSyntheticMedia=false` (`AI use = No`). This is mandatory, not optional. The generic uploader automatically overwrites a stale `Yes` with `No` for this reviewed classification. If any realistic synthetic content or other reportable material is present, do not classify as an exempt cartoon: block publication until reviewed and correctly classified. Never mark realistic reportable material `No` just to remove a label.
 - Existing YouTube publications are not retroactively changed by changing GitHub code or policy. Existing videos (including realistic AI lifestyle illustrations in general buying guides) require individual visual review before changing their YouTube Studio AI use flag. Never delete/reupload to remove labels; do not mask YouTube's own player labels with overlays.
 - Never confuse this setting with `made for kids`. The channel is general consumer advice; cartoon style alone does not make content directed to children. Evaluate each video's actual intended audience.
 - YouTube can add some labels automatically or mandatorily, and certain labels cannot be removed. Update disclosure accurately, not to guarantee the absence of a label.
-- Treat hard-coded `containsSyntheticMedia: true` in **historical one-off publication scripts** as the archived status of an earlier release, not as a template for new animated videos. Do not change historical receipts or assert the live status changed without verification.
+- Four existing non-realistic **RUA cartoon one-off upload scripts** have been changed to `containsSyntheticMedia: false` with a pre-upload guard. This affects future upload requests only, not previously published YouTube videos or receipts. Other legacy one-off publishers must be reviewed before reuse.
 
+
+
+### Mandatory upload request review
+
+New generic upload requests must classify the reviewed final video as follows:
+
+```json
+"ai_use_review": {
+  "classification": "clearly_nonrealistic_animation",
+  "final_video_reviewed": true,
+  "realistic_synthetic_scene_present": false,
+  "real_person_or_event_misrepresented": false,
+  "ai_generated_music_main_focus": false
+}
+```
+
+The uploader calls `apply_upload_disclosure(metadata, request)` before YouTube upload and **forces No** for the confirmed non-realistic animation, even if the submitted metadata had `containsSyntheticMedia=true`. Unreviewed or mixed content is blocked. For synthetic media that requires disclosure, classify as `realistic_synthetic_content` with the applicable reportable flag(s), which enforces `Yes`. Pure minor production assistance without reportable content also enforces `No`. This classification cannot be inferred merely from the filename, channel, AI tools used, or the word 'animation'.
 
 ## YouTube-to-homepage continuous linking — 2026-11-03
 
