@@ -72,7 +72,7 @@ def main():
     if digest != request['sha256'] or manifest['sha256'] != digest or manifest['id'] != identity:
         raise RuntimeError('Artifact differs from the approved version; upload blocked.')
     metadata = request['metadata']
-    apply_upload_disclosure(metadata, request)  # Sets AI use No for reviewed fictional cartoons; blocks unreviewed/mixed uploads.
+    apply_upload_disclosure(metadata, request)  # Reviewed non-realistic cartoons: No; realistic/mixed/missing review: Yes. No disclosure-only upload block.
     if metadata['status']['privacyStatus'] != 'public' or metadata['status']['selfDeclaredMadeForKids'] is not False:
         raise RuntimeError('Unexpected publication settings.')
     if len(metadata['snippet']['title']) > 100 or len(metadata['snippet']['description']) > 5000:
