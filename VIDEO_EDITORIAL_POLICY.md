@@ -254,3 +254,19 @@ The same mandatory video → website promotion rule applies to ALL English video
 - Closing spoken invitation and legible screen text: “Need a little more help deciding what to buy? Explore more buying guides at Smart Choice 365. You'll find the website link in the description.” Use the description instruction for general videos; adapt Shorts to a verified clickable placement rather than assuming Shorts descriptions/comments are clickable.
 - First description line and comment draft: “👉 Not sure what to buy next? Explore more Smart Choice 365 buying guides: [verified website URL]”.
 - Keep the invitation engaging and accurate. Never imply that a same-topic detailed article, deal, savings guarantee or tested result exists when it does not. Preserve Kokoro af_heart/0.96 and existing English production quality, mobile HTTPS preview, explicit version approval and publication rules. A rule update does not claim that previously rendered or published videos were modified.
+
+
+## YouTube AI use disclosure — future uploads, 2026-11-03
+
+Source: YouTube Help https://support.google.com/youtube/answer/14328491?hl=en and https://support.google.com/youtube/thread/424874071?hl=en .
+
+**Do not set AI use to Yes simply because AI helped make the video. Do not set No blindly for every video. Assess the exact published visual and audio content before upload.**
+
+- `containsSyntheticMedia = false` / Studio `AI use = No` for an unmistakably *non-realistic*, clearly fictional cartoon or stylised 3D animation, with no realistic fabricated event/place/person, no AI-created main-focus music and no other disclosure-triggering material. This normally includes the non-photorealistic RUA character and deliberately comic cartoon Shorts.
+- `containsSyntheticMedia = true` / Studio `AI use = Yes` for realistic AI-generated or meaningfully altered footage of a person, product being used, real place, real incident, or another scene that looks like real filming although it did not occur; and for generated music that is the main focus. Mixed videos with realistic generative scenes need disclosure even if they also contain charts or animations.
+- AI used only for scripts, titles, thumbnails, charts, captions, ordinary audiovisual repairs or one's own cloned voice does **not alone** require Yes. Voice content can still trigger disclosure when it misrepresents a real person.
+- **Pre-upload gate:** record a brief visual/audio classification for each new upload. Mark `No` only when the final rendered video was reviewed as exempt; choose `Yes` for realistic material, and hold release for unclear cases. Do not use an undocumented automatic `No` default. `No` is a recommended setting for clearly animated cartoon episodes, not a claim about all AI-made media.
+- Existing YouTube publications are not retroactively changed by changing GitHub code or policy. Existing videos (including realistic AI lifestyle illustrations in general buying guides) require individual visual review before changing their YouTube Studio AI use flag. Never delete/reupload to remove labels; do not mask YouTube's own player labels with overlays.
+- Never confuse this setting with `made for kids`. The channel is general consumer advice; cartoon style alone does not make content directed to children. Evaluate each video's actual intended audience.
+- YouTube can add some labels automatically or mandatorily, and certain labels cannot be removed. Update disclosure accurately, not to guarantee the absence of a label.
+- Treat hard-coded `containsSyntheticMedia: true` in **historical one-off publication scripts** as the archived status of an earlier release, not as a template for new animated videos. Do not change historical receipts or assert the live status changed without verification.
