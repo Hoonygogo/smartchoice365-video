@@ -45,7 +45,7 @@ META = {
     "status": {
         "privacyStatus": "public",
         "selfDeclaredMadeForKids": False,
-        "containsSyntheticMedia": True,
+        "containsSyntheticMedia": False,
         "embeddable": True,
         "license": "youtube",
     },
@@ -55,6 +55,8 @@ def save(record):
     receipt_write(RECEIPT, record)
 
 def main():
+    if META["status"]["containsSyntheticMedia"] is not False:
+        raise RuntimeError("RUA fictional animation requires YouTube AI use No.")
     if not MEDIA.is_file():
         raise RuntimeError("Exact owner-approved RUA English Introduction MP4 is not in uploads/ yet.")
     video = MEDIA.read_bytes()
