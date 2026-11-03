@@ -1,0 +1,33 @@
+name: "RUA EP00 — correct YouTube AI-use label for non-photorealistic cartoon"
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/rua-ep00-ai-disclosure.yml"
+permissions:
+  contents: read
+concurrency:
+  group: "rua-ep00-ai-disclosure-20261103"
+  cancel-in-progress: false
+jobs:
+  check-and-correct-one-video:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify animation classification and update only RUA EP00 AI-use checkbox
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/correct_rua_ep00_ai_disclosure.py
+      - name: Audit summary
+        if: always()
+        run: |
+          echo "Target: one non-photorealistic animated RUA EP00 short, 05yTkr0lBj0." >> "$GITHUB_STEP_SUMMARY"
+          echo "The script verifies channel, video title, public status, and other mutable settings." >> "$GITHUB_STEP_SUMMARY"
+          echo "Do not change disclosure for realistic synthetic content; YouTube may apply its own fixed labels." >> "$GITHUB_STEP_SUMMARY"
