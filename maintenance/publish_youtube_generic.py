@@ -13,6 +13,7 @@ import urllib.request
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from check_youtube import request_json
+from youtube_ai_disclosure import validate_ai_use
 
 REPO = 'Hoonygogo/smartchoice365-video'
 CHANNEL = 'UC4DzAW-Hbd45bIECwGV7-uA'
@@ -81,6 +82,7 @@ def main():
     if request.get('source_run_id') != manifest.get('source_run_id'):
         raise RuntimeError('Source run mismatch.')
     metadata = request['metadata']
+    validate_ai_use(metadata, request)  # Explicit, content-accurate AI disclosure; fail closed before OAuth/upload.
     if metadata['status']['privacyStatus'] != 'public' or metadata['status']['selfDeclaredMadeForKids'] is not False:
         raise RuntimeError('Unexpected publication settings.')
     if len(metadata['snippet']['title']) > 100 or len(metadata['snippet']['description']) > 5000:
