@@ -12,7 +12,7 @@ import urllib.parse
 import urllib.request
 
 from check_youtube import request_json
-from youtube_ai_disclosure import validate_ai_use
+from youtube_ai_disclosure import apply_upload_disclosure
 
 REPO = 'Hoonygogo/smartchoice365-video'
 CHANNEL = 'UC4DzAW-Hbd45bIECwGV7-uA'
@@ -72,7 +72,7 @@ def main():
     if digest != request['sha256'] or manifest['sha256'] != digest or manifest['id'] != identity:
         raise RuntimeError('Artifact differs from the approved version; upload blocked.')
     metadata = request['metadata']
-    validate_ai_use(metadata, request)  # Explicit, content-accurate AI disclosure; fail closed before OAuth/upload.
+    apply_upload_disclosure(metadata, request)  # Sets AI use No for reviewed fictional cartoons; blocks unreviewed/mixed uploads.
     if metadata['status']['privacyStatus'] != 'public' or metadata['status']['selfDeclaredMadeForKids'] is not False:
         raise RuntimeError('Unexpected publication settings.')
     if len(metadata['snippet']['title']) > 100 or len(metadata['snippet']['description']) > 5000:
