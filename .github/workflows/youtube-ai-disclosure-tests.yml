@@ -8,6 +8,10 @@ on:
       - "scripts/test_youtube_ai_disclosure.py"
       - "maintenance/publish_youtube_generic.py"
       - "scripts/publish_youtube.py"
+      - "maintenance/publish_rua_ep00.py"
+      - "maintenance/publish_rua_english_intro.py"
+      - "maintenance/publish_rua_ep01_robot_sock_trial.py"
+      - "maintenance/publish_rua_ep01_v2_20s.py"
   workflow_dispatch:
 permissions:
   contents: read
@@ -21,6 +25,6 @@ jobs:
         with:
           python-version: "3.12"
       - name: Compile publishing and validation code
-        run: python -m py_compile scripts/youtube_ai_disclosure.py scripts/test_youtube_ai_disclosure.py maintenance/publish_youtube_generic.py scripts/publish_youtube.py
+        run: python -m py_compile scripts/youtube_ai_disclosure.py scripts/test_youtube_ai_disclosure.py maintenance/publish_youtube_generic.py scripts/publish_youtube.py maintenance/publish_rua_ep00.py maintenance/publish_rua_english_intro.py maintenance/publish_rua_ep01_robot_sock_trial.py maintenance/publish_rua_ep01_v2_20s.py
       - name: Test required AI disclosure cases
         run: python -m unittest discover -s scripts -p test_youtube_ai_disclosure.py -v
