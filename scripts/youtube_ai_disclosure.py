@@ -1,83 +1,50 @@
-"""Fail-closed review of YouTube AI use disclosure for future video publications.
+"""YouTube altered/synthetic disclosure selection for future video publishing.
 
-The boolean is about YouTube's disclosure requirement for realistic
-altered/synthetic media, not whether AI tools helped in production.
+A confirmed non-realistic cartoon without reportable elements is No.
+If a video mixes in realistic AI scenes, or if the review is incomplete or
+ambiguous, choose the conservative Yes rather than blocking an approved upload.
+
+Format is a contextual hint, NOT a final disclosure decision:
+Smart Choice 365 Shorts are mostly animations and full videos are mostly
+realistic AI-assisted buying guides. Check actual finished content when possible.
+This helper does NOT bypass the existing video quality, owner-approval or hash
+checks in the upload pipeline.
 """
 from collections.abc import Mapping
 
-EXEMPT_CLASSIFICATIONS = {
+REPORTABLE_FLAGS = (
+    "realistic_synthetic_scene_present",
+    "real_person_or_event_misrepresented",
+    "ai_generated_music_main_focus",
+)
+EXEMPT_CLASSIFICATIONS = frozenset({
     "clearly_nonrealistic_animation",
     "minor_edits_or_production_assistance_only",
-}
-
-def validate_ai_use(metadata, request):
-    status = metadata.get("status", {}) if isinstance(metadata, Mapping) else {}
-    value = status.get("containsSyntheticMedia")
-    if type(value) is not bool:
-        raise RuntimeError(
-            "YouTube AI use is not explicitly reviewed. Set containsSyntheticMedia "
-            "to true for realistic synthetic media, or false after documented "
-            "review of an exempt final video."
-        )
-    if value is True:
-        return True
-    assessment = request.get("ai_use_review") if isinstance(request, Mapping) else None
-    if not isinstance(assessment, Mapping):
-        raise RuntimeError(
-            "AI use No requires an explicit ai_use_review for the final rendered video."
-        )
-    if assessment.get("classification") not in EXEMPT_CLASSIFICATIONS:
-        raise RuntimeError(
-            "AI use No is allowed only for explicitly reviewed, clearly unreal "
-            "animation or minor/assistance-only changes."
-        )
-    if assessment.get("final_video_reviewed") is not True:
-        raise RuntimeError("AI use No requires a completed review of the final video.")
-    required_facts = (
-        "realistic_synthetic_scene_present",
-        "real_person_or_event_misrepresented",
-        "ai_generated_music_main_focus",
-    )
-    if any(assessment.get(fact) is not False for fact in required_facts):
-        raise RuntimeError(
-            "AI use No blocked: realistic synthetic scenes, real-person/event "
-            "misrepresentation or AI-generated focal music must be ruled out."
-        )
-    return False
+})
 
 
 def apply_upload_disclosure(metadata, request):
-    """Set the correct YouTube AI-use checkbox before a new upload.
+    """Write the AI-use setting directly into YouTube API upload metadata.
 
-    For a confirmed clearly unreal cartoon, No is mandatory; a caller cannot
-    accidentally leave a stale Yes. Reportable realistic or mixed media cannot
-    use the cartoon rule. Unknown content blocks uploading until classified.
+    Only a completed and internally consistent exempt-content assessment can
+    yield No. Mixed, realistic, unclear or unreviewed content yields Yes.
+    Do not reject an otherwise approved upload solely for missing AI review.
     """
     if not isinstance(metadata, dict) or not isinstance(metadata.get("status"), dict):
-        raise RuntimeError("Upload metadata requires a YouTube status object.")
+        raise RuntimeError("YouTube upload metadata requires a valid status object.")
+
     review = request.get("ai_use_review") if isinstance(request, Mapping) else None
-    if not isinstance(review, Mapping) or review.get("final_video_reviewed") is not True:
-        raise RuntimeError("Review the final video and supply ai_use_review before upload.")
-    classification = review.get("classification")
-    facts = ("realistic_synthetic_scene_present",
-             "real_person_or_event_misrepresented",
-             "ai_generated_music_main_focus")
-    if any(type(review.get(flag)) is not bool for flag in facts):
-        raise RuntimeError("AI-use review needs explicit Yes/No answers for all content flags.")
-    reportable = any(review[flag] for flag in facts)
-    if classification == "clearly_nonrealistic_animation":
-        if reportable:
-            raise RuntimeError("Mixed realistic/synthetic content cannot use cartoon AI-use No.")
-        metadata["status"]["containsSyntheticMedia"] = False
-        return False
-    if classification == "minor_edits_or_production_assistance_only":
-        if reportable:
-            raise RuntimeError("Reportable synthetic elements require a different classification.")
-        metadata["status"]["containsSyntheticMedia"] = False
-        return False
-    if classification == "realistic_synthetic_content":
-        if not reportable:
-            raise RuntimeError("Realistic synthetic classification requires a reportable element.")
-        metadata["status"]["containsSyntheticMedia"] = True
-        return True
-    raise RuntimeError("Unrecognized AI-use classification; upload blocked.")
+    reviewed = isinstance(review, Mapping) and review.get("final_video_reviewed") is True
+    clear_exemption = (
+        reviewed
+        and review.get("classification") in EXEMPT_CLASSIFICATIONS
+        and all(review.get(flag) is False for flag in REPORTABLE_FLAGS)
+    )
+    setting = not clear_exemption
+    metadata["status"]["containsSyntheticMedia"] = setting
+    return setting
+
+
+def validate_ai_use(metadata, request):
+    """Backward-compatible validation entry: enforce the same upload setting."""
+    return apply_upload_disclosure(metadata, request)
