@@ -44,3 +44,40 @@ def validate_ai_use(metadata, request):
             "misrepresentation or AI-generated focal music must be ruled out."
         )
     return False
+
+
+def apply_upload_disclosure(metadata, request):
+    """Set the correct YouTube AI-use checkbox before a new upload.
+
+    For a confirmed clearly unreal cartoon, No is mandatory; a caller cannot
+    accidentally leave a stale Yes. Reportable realistic or mixed media cannot
+    use the cartoon rule. Unknown content blocks uploading until classified.
+    """
+    if not isinstance(metadata, dict) or not isinstance(metadata.get("status"), dict):
+        raise RuntimeError("Upload metadata requires a YouTube status object.")
+    review = request.get("ai_use_review") if isinstance(request, Mapping) else None
+    if not isinstance(review, Mapping) or review.get("final_video_reviewed") is not True:
+        raise RuntimeError("Review the final video and supply ai_use_review before upload.")
+    classification = review.get("classification")
+    facts = ("realistic_synthetic_scene_present",
+             "real_person_or_event_misrepresented",
+             "ai_generated_music_main_focus")
+    if any(type(review.get(flag)) is not bool for flag in facts):
+        raise RuntimeError("AI-use review needs explicit Yes/No answers for all content flags.")
+    reportable = any(review[flag] for flag in facts)
+    if classification == "clearly_nonrealistic_animation":
+        if reportable:
+            raise RuntimeError("Mixed realistic/synthetic content cannot use cartoon AI-use No.")
+        metadata["status"]["containsSyntheticMedia"] = False
+        return False
+    if classification == "minor_edits_or_production_assistance_only":
+        if reportable:
+            raise RuntimeError("Reportable synthetic elements require a different classification.")
+        metadata["status"]["containsSyntheticMedia"] = False
+        return False
+    if classification == "realistic_synthetic_content":
+        if not reportable:
+            raise RuntimeError("Realistic synthetic classification requires a reportable element.")
+        metadata["status"]["containsSyntheticMedia"] = True
+        return True
+    raise RuntimeError("Unrecognized AI-use classification; upload blocked.")
