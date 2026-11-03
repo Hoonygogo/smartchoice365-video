@@ -82,7 +82,7 @@ def main():
     if request.get('source_run_id') != manifest.get('source_run_id'):
         raise RuntimeError('Source run mismatch.')
     metadata = request['metadata']
-    apply_upload_disclosure(metadata, request)  # Sets AI use No for reviewed fictional cartoons; blocks unreviewed/mixed uploads.
+    apply_upload_disclosure(metadata, request)  # Reviewed non-realistic cartoons: No; realistic/mixed/missing review: Yes. No disclosure-only upload block.
     if metadata['status']['privacyStatus'] != 'public' or metadata['status']['selfDeclaredMadeForKids'] is not False:
         raise RuntimeError('Unexpected publication settings.')
     if len(metadata['snippet']['title']) > 100 or len(metadata['snippet']['description']) > 5000:
