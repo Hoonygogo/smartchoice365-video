@@ -256,26 +256,26 @@ The same mandatory video → website promotion rule applies to ALL English video
 - Keep the invitation engaging and accurate. Never imply that a same-topic detailed article, deal, savings guarantee or tested result exists when it does not. Preserve Kokoro af_heart/0.96 and existing English production quality, mobile HTTPS preview, explicit version approval and publication rules. A rule update does not claim that previously rendered or published videos were modified.
 
 
-## YouTube AI use disclosure — future uploads, 2026-11-03
+## YouTube AI use disclosure — mandatory upload behavior, updated 2026-11-03
 
-Source: YouTube Help https://support.google.com/youtube/answer/14328491?hl=en and https://support.google.com/youtube/thread/424874071?hl=en .
+Source: https://support.google.com/youtube/answer/14328491?hl=en
 
-**Do not set AI use to Yes simply because AI helped make the video. Do not set No blindly for every video. Assess the exact published visual and audio content before upload.**
+### Smart Choice 365 production tendency (REVIEW REFERENCE, not automatic classification)
 
-- `containsSyntheticMedia = false` / Studio `AI use = No` for an unmistakably *non-realistic*, clearly fictional cartoon or stylised 3D animation, with no realistic fabricated event/place/person, no AI-created main-focus music and no other disclosure-triggering material. This normally includes the non-photorealistic RUA character and deliberately comic cartoon Shorts.
-- `containsSyntheticMedia = true` / Studio `AI use = Yes` for realistic AI-generated or meaningfully altered footage of a person, product being used, real place, real incident, or another scene that looks like real filming although it did not occur; and for generated music that is the main focus. Mixed videos with realistic generative scenes need disclosure even if they also contain charts or animations.
-- AI used only for scripts, titles, thumbnails, charts, captions, ordinary audiovisual repairs or one's own cloned voice does **not alone** require Yes. Voice content can still trigger disclosure when it misrepresents a real person.
-- **MANDATORY for confirmed fictional animation:** Once the final video has been reviewed as clearly non-realistic RUA-style 3D animation with no reportable realistic scenes or other disclosure-triggering material, YouTube upload must use `containsSyntheticMedia=false` (`AI use = No`). This is mandatory, not optional. The generic uploader automatically overwrites a stale `Yes` with `No` for this reviewed classification. If any realistic synthetic content or other reportable material is present, do not classify as an exempt cartoon: block publication until reviewed and correctly classified. Never mark realistic reportable material `No` just to remove a label.
-- Existing YouTube publications are not retroactively changed by changing GitHub code or policy. Existing videos (including realistic AI lifestyle illustrations in general buying guides) require individual visual review before changing their YouTube Studio AI use flag. Never delete/reupload to remove labels; do not mask YouTube's own player labels with overlays.
-- Never confuse this setting with `made for kids`. The channel is general consumer advice; cartoon style alone does not make content directed to children. Evaluate each video's actual intended audience.
-- YouTube can add some labels automatically or mandatorily, and certain labels cannot be removed. Update disclosure accurately, not to guarantee the absence of a label.
-- Four existing non-realistic **RUA cartoon one-off upload scripts** have been changed to `containsSyntheticMedia: false` with a pre-upload guard. This affects future upload requests only, not previously published YouTube videos or receipts. Other legacy one-off publishers must be reviewed before reuse.
+- **Shorts**: Most future Shorts are intended to be obviously fictional RUA/comic cartoons, 3D animation or stylized non-realistic scenes. When the **finished actual video** confirms clearly fictional animation with no reportable realistic synthetic material, its AI-use upload setting is **No**, mandatory.
+- **Ordinary/full videos**: Most planned product buying guides use AI-generated visual scenes that look similar to real people, places and product use. Such realistic synthetic material normally requires **Yes**.
+- These two typical formats are **hints for the video review**. Never set `No` merely because the file is a Short, or `Yes` merely because it is a long video; check the actual visuals and audio.
+- AI production assistance alone (scripts, captions, titles, ordinary edits, etc.) does not necessarily require YouTube altered/synthetic disclosure. A clearly fictional cartoon remains exempt when no other reportable realistic material is present.
 
+### Mandatory automatic setting, without blocking publication for uncertain AI-use review
 
+The normal upload functions `maintenance/publish_youtube_generic.py` and `scripts/publish_youtube.py` call `apply_upload_disclosure(metadata, request)` **before the YouTube API request**. This sets `metadata.status.containsSyntheticMedia` as follows:
 
-### Mandatory upload request review
+1. **No / false**: Only when `ai_use_review` confirms the final video was reviewed, classifies it as `clearly_nonrealistic_animation` (or genuinely only minor production assistance), and explicitly records `false` for every reportable fact. An accidental prior `Yes` is overridden to `No`.
+2. **Yes / true**: Realistic AI scenes, mixed cartoons + realistic synthetic scenes, AI-generated music as the primary focus, manipulated real persons/events, missing review, incomplete review, unknown classification, inconsistent classification or uncertain situation. An accidental prior `No` is overridden to `Yes`.
+3. **Do not block an otherwise approved upload** solely because AI-use review information is missing or because a cartoon includes realistic synthetic media. Choose **Yes** and continue. This does not remove the independent owner approval, exact approved-video hash, quality verification, privacy and channel safety gates, or normal YouTube errors.
 
-New generic upload requests must classify the reviewed final video as follows:
+Example of a reviewed non-realistic cartoon that must upload with `No`:
 
 ```json
 "ai_use_review": {
@@ -287,7 +287,11 @@ New generic upload requests must classify the reviewed final video as follows:
 }
 ```
 
-The uploader calls `apply_upload_disclosure(metadata, request)` before YouTube upload and **forces No** for the confirmed non-realistic animation, even if the submitted metadata had `containsSyntheticMedia=true`. Unreviewed or mixed content is blocked. For synthetic media that requires disclosure, classify as `realistic_synthetic_content` with the applicable reportable flag(s), which enforces `Yes`. Pure minor production assistance without reportable content also enforces `No`. This classification cannot be inferred merely from the filename, channel, AI tools used, or the word 'animation'.
+Example of a product video with realistic generated imagery: classification `realistic_synthetic_content`, `final_video_reviewed: true` and `realistic_synthetic_scene_present: true`; upload AI use = **Yes**. If review is absent entirely, upload AI use = **Yes**, with no extra disclosure-only publishing stop.
+
+Four previously existing non-photorealistic RUA one-off upload scripts are preset to `containsSyntheticMedia=false`; preserve those fictional-cartoon approvals and media hashes. Other historical one-off scripts may contain a hard-coded `True` and must not be blindly reused as template for a confirmed fictional cartoon.
+
+**Already published video settings do not change** by modifying GitHub; YouTube Studio changes require separate action. The AI-use disclosure is separate from the audience flag `made for kids` and does not automatically imply a video targets children.
 
 ## YouTube-to-homepage continuous linking — 2026-11-03
 
