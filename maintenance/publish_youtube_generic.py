@@ -154,7 +154,7 @@ def main():
                 receipt['description_first_line'] = metadata['snippet']['description'].splitlines()[0] if metadata['snippet']['description'] else ''
                 if request.get('video_format') in ('shorts', 'video'):
                     receipt['format'] = request['video_format']
-                elif re.search(r'(?i)#shorts\\b', metadata['snippet']['title']):
+                elif '#shorts' in metadata['snippet']['title'].casefold():
                     receipt['format'] = 'shorts'
                 receipt['status'] = 'published_verified'
                 receipt_write(path, receipt)
