@@ -146,6 +146,16 @@ def main():
                 receipt['metadata_verified'] = True
                 receipt['description_first_line'] = saved['description'].splitlines()[0]
                 receipt['source_run_id'] = request['source_run_id']
+                # Preserve public metadata in the VERIFIED receipt, so the
+                # homepage can import videos even if the YouTube Atom feed
+                # is temporarily unavailable. Never fabricate video titles.
+                receipt['title'] = metadata['snippet']['title']
+                receipt['language'] = metadata['snippet'].get('defaultLanguage', '')
+                receipt['description_first_line'] = metadata['snippet']['description'].splitlines()[0] if metadata['snippet']['description'] else ''
+                if request.get('video_format') in ('shorts', 'video'):
+                    receipt['format'] = request['video_format']
+                elif re.search(r'(?i)#shorts\\b', metadata['snippet']['title']):
+                    receipt['format'] = 'shorts'
                 receipt['status'] = 'published_verified'
                 receipt_write(path, receipt)
                 print(json.dumps(receipt, ensure_ascii=False), flush=True)
