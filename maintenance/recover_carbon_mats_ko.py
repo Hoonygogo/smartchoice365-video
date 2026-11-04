@@ -48,7 +48,7 @@ def accepted_end(headers):
     val=headers.get("Range") or headers.get("range")
     if not val:
         return -1
-    m=re.fullmatch(r"bytes=0-(\\d+)",val.strip())
+    m=re.fullmatch(r"bytes=0-(\d+)",val.strip())
     if not m:
         raise RuntimeError("Unexpected resumable status Range.")
     return int(m.group(1))
