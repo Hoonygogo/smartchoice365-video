@@ -6,12 +6,14 @@
   "platform": "youtube",
   "format": "video",
   "language": "ko",
-  "status": "recovery_attempt_initiated",
+  "status": "uploaded_processing",
   "run_id": "41809954727",
   "note": "Explicit chat approval of exact Korean MP4; user accepted graph-led first video. Do not delete/replace.",
   "recovery_of_run_id": "41809954727",
   "recovery_run_id": "41810790594",
   "original_error": "HTTP 502",
   "owner_verified_studio_absent": true,
-  "recovery_method": "resumable_1MiB_chunks"
+  "recovery_method": "resumable_1MiB_chunks",
+  "video_id": "fqM-5HCCRck",
+  "url": "https://www.youtube.com/watch?v=fqM-5HCCRck"
 }
