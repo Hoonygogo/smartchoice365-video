@@ -5,8 +5,9 @@
   "media_path": "uploads/RUA_Final_30s.mp4",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/ed9664b608b97830ab74ea448d21915b59fa6d5c/uploads/RUA_Final_30s.mp4",
   "video_size": 8854463,
-  "status": "media_publish_initiated",
+  "status": "published_unverified",
   "account_id": "17841475811391464",
   "run_id": "41817055489",
-  "container_id": "17888239776527047"
+  "container_id": "17888239776527047",
+  "media_id": "18349643359280643"
 }
