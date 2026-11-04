@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-05",
+  "channel": "en-au",
+  "topicId": "anko-vs-breville-rice-cooker-batch-size-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-05.jpg",
+  "sha256": "28f2a5bf11b22617cd60248b4ba3b1263b3997434ce8ca1a6b4a1d443f1b627c",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-04T22:59:49.318339+00:00",
+  "imageBytes": 571569,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "a37c4e308a11dff440c291a05f84623a93be5bab"
+}
