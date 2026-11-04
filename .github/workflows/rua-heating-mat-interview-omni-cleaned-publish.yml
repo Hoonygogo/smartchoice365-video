@@ -1,0 +1,42 @@
+name: RUA heating mat interview Omni — final cleaned 30s Shorts
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'uploads/SC365_RUA_HeatingMat_Interview_Omni_30s_Cleaned.mp4'
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify the exact approved cleaned video — no substitution
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p=Path('uploads/SC365_RUA_HeatingMat_Interview_Omni_30s_Cleaned.mp4')
+          assert p.is_file(), 'Approved cleaned MP4 is missing'
+          assert p.stat().st_size==8854463, 'Wrong approved MP4 size'
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='f725e6ac68353286a22f973a81371adae6361e8387ba43c9f04337efc68a8795', 'Approved MP4 checksum differs'
+          PY
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 uploads/SC365_RUA_HeatingMat_Interview_Omni_30s_Cleaned.mp4 | grep -qx '720,1280'
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_type -of csv=p=0 uploads/SC365_RUA_HeatingMat_Interview_Omni_30s_Cleaned.mp4 | grep -qx audio
+      - name: Publish once and verify YouTube status — related video pending Studio
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_rua_heating_mat_interview_omni_cleaned.py
