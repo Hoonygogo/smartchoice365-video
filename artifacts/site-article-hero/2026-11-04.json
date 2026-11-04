@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-04",
+  "channel": "en-au",
+  "topicId": "2026-ikea-tillreda-vs-gatebo-microwave-air-fry-australia",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-04.jpg",
+  "sha256": "a83f02eba270ca272913ae7433630ff3160b7d2ff077f2bc585ee32f21325fd4",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-04T00:14:14.719130+00:00",
+  "imageBytes": 610557,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "4ba3ae809e26c4d7398efa8a35dd0a3863eac420"
+}
