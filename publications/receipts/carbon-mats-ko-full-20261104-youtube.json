@@ -6,7 +6,7 @@
   "platform": "youtube",
   "format": "video",
   "language": "ko",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "41809954727",
   "note": "Explicit chat approval of exact Korean MP4; user accepted graph-led first video. Do not delete/replace.",
   "recovery_of_run_id": "41809954727",
@@ -15,5 +15,10 @@
   "owner_verified_studio_absent": true,
   "recovery_method": "resumable_1MiB_chunks",
   "video_id": "fqM-5HCCRck",
-  "url": "https://www.youtube.com/watch?v=fqM-5HCCRck"
+  "url": "https://www.youtube.com/watch?v=fqM-5HCCRck",
+  "privacy": "public",
+  "title": "탄소매트 vs 전기장판 vs 온수매트｜비싼 게 정말 더 좋을까? 실제 시험·전기요금 비교",
+  "processing_status": "succeeded",
+  "metadata_verified": true,
+  "description_first_line": "👉 탄소매트·전기장판·온수매트 구매 비교표와 전기요금 계산: https://smartchoice365-web.pages.dev/guides/2026-electric-carbon-water-heating-mats.html?utm_source=youtube&utm_medium=video&utm_campaign=carbon_mats_korean"
 }
