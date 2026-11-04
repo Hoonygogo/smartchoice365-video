@@ -1,0 +1,42 @@
+name: RUA carbon mat short with approved V2 outro — one-file YouTube publish
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'uploads/SC365_RUA_CarbonMat_Short_With_Official_Outro.mp4'
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact user-approved RUA+V2 outro short
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('uploads/SC365_RUA_CarbonMat_Short_With_Official_Outro.mp4')
+          assert p.is_file(), 'Upload file missing'
+          assert p.stat().st_size==8614924, 'Wrong uploaded bytes'
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='df15acab62215044de5975ed4077a8950fd474ed162abf75c325c572a941cd75', 'Wrong approved MP4'
+          PY
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 uploads/SC365_RUA_CarbonMat_Short_With_Official_Outro.mp4 | grep -qx '720,1280'
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_type -of csv=p=0 uploads/SC365_RUA_CarbonMat_Short_With_Official_Outro.mp4 | grep -qx audio
+      - name: Publish verified short once (no existing-video deletion)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_rua_carbon_mats_short.py
