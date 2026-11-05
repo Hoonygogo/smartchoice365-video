@@ -4,8 +4,10 @@
   "sha256": "38625d685a36e1eb6d5c6421f10b02aba79ded7c5e99b6c6d5be6102326817b1",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/e4acdf0da534da576759d07564d7ba5465b1c7f1/uploads/RUA_Heart_Burst_20261105.mp4",
   "video_size": 3585977,
-  "status": "start_initiated",
+  "status": "session_created",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
-  "run_id": "42033104781"
+  "run_id": "42033104781",
+  "video_id": "3019857605058789",
+  "upload_url": "https://rupload.facebook.com/video-upload/v27.0/3019857605058789"
 }
