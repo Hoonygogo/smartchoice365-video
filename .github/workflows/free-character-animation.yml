@@ -1,0 +1,26 @@
+name: Free character animation proof of concept
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install free CPU tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          python -m pip install 'Pillow>=10,<13'
+      - name: Render 5-second character test
+        run: python experiments/free_animation.py
+      - name: Verify video stream
+        run: |
+          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 out/free-animation/free_character_test.mp4 | grep -qx h264
+      - uses: actions/upload-artifact@v4
+        with:
+          name: free-character-animation-preview
+          path: out/free-animation/free_character_test.mp4
+          retention-days: 1
