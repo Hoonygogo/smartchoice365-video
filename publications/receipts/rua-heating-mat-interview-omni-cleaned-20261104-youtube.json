@@ -4,11 +4,18 @@
   "platform": "youtube",
   "approval": "owner requested RUA short with V2 signature ending before upload",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "41995524646",
   "related_full_video_id": "fqM-5HCCRck",
   "related_video_studio_status": "PENDING_MANUAL_BINDING",
   "outro_sha256": "ae161a9dc3d34f705d67ca081cbb708d03e1a2778a4753e2a2ee413ce768b495",
   "video_id": "UevuLi0MzeE",
-  "url": "https://www.youtube.com/shorts/UevuLi0MzeE"
+  "url": "https://www.youtube.com/shorts/UevuLi0MzeE",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true,
+  "title": "루아의 난방매트 면접 대참사 😂 탄소매트·전기장판·온수매트 #Shorts",
+  "language": "en",
+  "format": "shorts",
+  "description_first_line": "🎬 본편에서 탄소매트·전기장판·온수매트 비교하기: https://www.youtube.com/watch?v=fqM-5HCCRck"
 }
