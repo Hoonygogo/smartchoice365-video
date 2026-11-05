@@ -4,9 +4,11 @@
   "platform": "youtube",
   "approval": "owner requested RUA short with V2 signature ending before upload",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
-  "status": "upload_initiated",
+  "status": "uploaded_processing",
   "run_id": "41995524646",
   "related_full_video_id": "fqM-5HCCRck",
   "related_video_studio_status": "PENDING_MANUAL_BINDING",
-  "outro_sha256": "ae161a9dc3d34f705d67ca081cbb708d03e1a2778a4753e2a2ee413ce768b495"
+  "outro_sha256": "ae161a9dc3d34f705d67ca081cbb708d03e1a2778a4753e2a2ee413ce768b495",
+  "video_id": "UevuLi0MzeE",
+  "url": "https://www.youtube.com/shorts/UevuLi0MzeE"
 }
