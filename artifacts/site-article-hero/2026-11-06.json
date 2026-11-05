@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-06",
+  "channel": "en-au",
+  "topicId": "anko-heg40a-vs-dimplex-dcpf40dc-pedestal-fans-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-06.jpg",
+  "sha256": "d706e716969ea71ffede5e387405a885f5963540ca334bf136646c6e8bdc39f9",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-05T23:00:25.071414+00:00",
+  "imageBytes": 665985,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "b784daca9d5a99982b9864e6b8e6cebd03cbd904"
+}
