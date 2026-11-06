@@ -1,0 +1,95 @@
+name: "Owner-requested deletion: old RUA Heart Burst Facebook Reel only"
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'publications/delete-requests/rua-original-facebook-20261106.json'
+permissions:
+  contents: write
+concurrency:
+  group: rua-original-facebook-delete-20261106
+  cancel-in-progress: false
+jobs:
+  delete-old-facebook-reel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify owner request, delete exact original and preserve fixed video
+        env:
+          META_SYSTEM_USER_ACCESS_TOKEN: ${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,time,sys,urllib.request,urllib.error
+          from pathlib import Path
+          sys.path.insert(0,str(Path("maintenance").resolve()))
+          from publish_youtube_generic import receipt_read, receipt_write
+          original="3019857605058789"
+          replacement="954371184123880"
+          pageid="1424295310764332"
+          oldsha="38625d685a36e1eb6d5c6421f10b02aba79ded7c5e99b6c6d5be6102326817b1"
+          newsha="4482cde10d668dd6e738ec9b498de2a616b9d98bce3bcabd37bfeab6d5fb95b6"
+          req=json.loads(Path("publications/delete-requests/rua-original-facebook-20261106.json").read_text())
+          old=json.loads(Path("publications/meta-receipts/rua-heart-burst-20261105-facebook.json").read_text())
+          new=json.loads(Path("publications/meta-receipts/rua-heart-burst-fixed-fb-test-20261106-facebook.json").read_text())
+          if (req!={"approval":"delete","platform":"facebook","video_id":original,"preserve_video_id":replacement,"facebook_page_id":pageid} or
+              old.get("video_id")!=original or old.get("sha256")!=oldsha or old.get("platform")!="facebook" or
+              new.get("video_id")!=replacement or new.get("sha256")!=newsha or new.get("platform")!="facebook" or
+              new.get("status")!="published_verified" or os.environ.get("META_FACEBOOK_PAGE_ID")!=pageid):
+              raise SystemExit("DELETE PREFLIGHT: target or approval mismatch; no deletion")
+          receipt="publications/deletion-receipts/rua-original-facebook-20261106.json"
+          prev,_=receipt_read(receipt)
+          if prev and prev.get("status")=="deleted_verified":
+              print("ALREADY_DELETED_VERIFIED")
+              raise SystemExit(0)
+          BASE="https://graph.facebook.com/v26.0/"
+          def call(path, token,method="GET"):
+              r=urllib.request.Request(BASE+path,method=method,headers={"Authorization":"Bearer "+token,"Accept":"application/json"})
+              try:
+                  with urllib.request.urlopen(r,timeout=35) as f:
+                      return json.loads(f.read() or b"{}")
+              except urllib.error.HTTPError as e:
+                  try: detail=json.loads(e.read()).get("error",{})
+                  except Exception: detail={}
+                  return {"http_error":e.code,"error_code":detail.get("code"),"error_subcode":detail.get("error_subcode")}
+          system_token=os.environ.get("META_SYSTEM_USER_ACCESS_TOKEN","").strip()
+          page_token=os.environ.get("META_PAGE_ACCESS_TOKEN","").strip()
+          if system_token:
+              page=call(pageid+"?fields=id,access_token",system_token)
+              if str(page.get("id"))!=pageid or not page.get("access_token"):
+                  raise SystemExit("Meta Page identity/access token preflight failed")
+              page_token=page["access_token"]
+          if not page_token or str(call(pageid+"?fields=id",page_token).get("id"))!=pageid:
+              raise SystemExit("Page access token validation failed")
+          if str(call(replacement+"?fields=id,status",page_token).get("id"))!=replacement:
+              raise SystemExit("Replacement Reel could not be verified; no deletion")
+          if str(call(original+"?fields=id,status",page_token).get("id"))!=original:
+              raise SystemExit("Original Reel could not be positively verified; no deletion")
+          print("DELETING_ONLY_ORIGINAL_FACEBOOK_VIDEO_ID "+original)
+          deleted=call(original,page_token,"DELETE")
+          if deleted.get("success") is not True:
+              raise SystemExit("Meta did not accept deletion; HTTP="+str(deleted.get("http_error"))+" code="+str(deleted.get("error_code")))
+          # Successful delete response is authoritative. Confirm absence separately.
+          state="delete_accepted_unverified"
+          for _ in range(4):
+              time.sleep(2)
+              after=call(original+"?fields=id",page_token)
+              if after.get("http_error") in (400,404) and after.get("error_code") in (100,803):
+                  state="deleted_verified"
+                  break
+              if str(after.get("id"))==original:
+                  continue
+          record={"platform":"facebook","deleted_video_id":original,"preserved_video_id":replacement,
+                  "original_sha256":oldsha,"status":state,"meta_delete_success":True,
+                  "run_id":os.environ.get("GITHUB_RUN_ID")}
+          receipt_write(receipt,record)
+          print("ORIGINAL_FACEBOOK_DELETE_RESULT "+state)
+          if state!="deleted_verified":
+              raise SystemExit("Meta accepted deletion but post-delete absence not verified")
+          PY
