@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - "uploads/RUA_IceMaker_4Part_20261106.mp4"
+      - ".github/workflows/rua-ice-maker-20261106-four-platform-publish.yml"
   workflow_dispatch:
 permissions:
   contents: write
@@ -20,6 +21,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install free FFmpeg tools for strict video inspection
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
       - name: Verify user-approved video, original audio and exact SHA before publishing
         run: |
           python - <<'PY'
