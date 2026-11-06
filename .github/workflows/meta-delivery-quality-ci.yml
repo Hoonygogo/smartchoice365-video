@@ -1,0 +1,54 @@
+name: Meta Reel delivery encode quality regression (no social publishing)
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/meta-delivery-quality-ci.yml"
+      - "maintenance/meta_delivery_quality.py"
+      - "maintenance/publish_meta_reels.py"
+      - "maintenance/publish_meta_story_from_reel.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify python syntax and FFmpeg
+        run: |
+          python -m py_compile maintenance/meta_delivery_quality.py maintenance/publish_meta_reels.py maintenance/publish_meta_story_from_reel.py
+          if ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+      - name: Test real RUA original with 1080p final delivery encode
+        run: |
+          python - <<'PY'
+          import sys,hashlib
+          from pathlib import Path
+          sys.path.insert(0,str(Path("maintenance").resolve()))
+          from meta_delivery_quality import encode, probe, keyframe_times, already_optimized
+          original=Path("uploads/RUA_Heart_Burst_20261105.mp4")
+          if not original.is_file():
+              raise SystemExit("Original RUA fixture missing. No social posting was attempted.")
+          before=hashlib.sha256(original.read_bytes()).hexdigest()
+          output=Path("/tmp/rua_meta_quality_regression.mp4")
+          encode(original,output)
+          after=hashlib.sha256(original.read_bytes()).hexdigest()
+          assert before==after, "Original source was modified"
+          meta,video,audio=probe(output)
+          assert (video["width"],video["height"])==(1080,1920)
+          assert video["codec_name"]=="h264" and audio["codec_name"]=="aac"
+          keys=keyframe_times(output)
+          assert len(keys)>=4 and all(b-a<=2.6 for a,b in zip(keys,keys[1:]))
+          assert already_optimized(output), "Output fails publish-quality criteria"
+          print("META_QUALITY_REGRESSION_PASS", "duration="+meta["format"]["duration"],
+                "output_bytes="+str(output.stat().st_size),
+                "original_sha256_unchanged="+before,
+                "keyframes="+str(keys))
+          print("NO_SOCIAL_POSTS_CREATED")
+          PY
