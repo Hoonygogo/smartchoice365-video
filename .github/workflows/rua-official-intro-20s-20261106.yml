@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "uploads/RUA_Official_Intro_20s_20261106.mp4"
+      - "uploads/RUA_Shorts_With_Official_Ending(1).mp4"
 permissions:
   contents: write
   actions: read
@@ -23,9 +23,9 @@ jobs:
         run: |
           python - <<'PY'
           import hashlib, pathlib, json, subprocess
-          p=pathlib.Path("uploads/RUA_Official_Intro_20s_20261106.mp4")
+          p=pathlib.Path("uploads/RUA_Shorts_With_Official_Ending(1).mp4")
           if not p.is_file(): raise SystemExit("Approved video not uploaded. Nothing published.")
-          if p.stat().st_size != 14281677 or hashlib.file_digest(p.open("rb"),"sha256").hexdigest() != "51c148174ae333f41e3bf8458192195a5915dc90a16ad155209291e33ff12e1e":
+          if p.stat().st_size != 17752819 or hashlib.file_digest(p.open("rb"),"sha256").hexdigest() != "cb72fc0d99af77bee79f96e2743d45f802b658acaa476b07dd929081cf1d093d":
               raise SystemExit("Unapproved file or hash. No publishing.")
           info=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_streams","-show_format","-of","json",str(p)]))
           v=[s for s in info["streams"] if s.get("codec_type")=="video"]
@@ -57,8 +57,8 @@ jobs:
              "channel_intro":True,
              "channel_id":"UC4DzAW-Hbd45bIECwGV7-uA",
              "platforms":["instagram","facebook"],
-             "media_path":"uploads/RUA_Official_Intro_20s_20261106.mp4",
-             "sha256":"51c148174ae333f41e3bf8458192195a5915dc90a16ad155209291e33ff12e1e",
+             "media_path":"uploads/RUA_Shorts_With_Official_Ending(1).mp4",
+             "sha256":"cb72fc0d99af77bee79f96e2743d45f802b658acaa476b07dd929081cf1d093d",
              "facebook_title":"Meet RUA 💜 | Smart Choice 365 Official Intro",
              "share_to_instagram_story":False,
              "story_cta_verified":False,
