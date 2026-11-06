@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "42230763711",
   "note": "Owner explicitly approved publishing original RUA Ice Maker 4-Part without adding outro",
   "video_id": "tqdl2w-fcg4",
-  "url": "https://www.youtube.com/shorts/tqdl2w-fcg4"
+  "url": "https://www.youtube.com/shorts/tqdl2w-fcg4",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
