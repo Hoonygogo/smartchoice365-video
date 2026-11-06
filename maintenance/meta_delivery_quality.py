@@ -183,7 +183,7 @@ def prepare_delivery(req, source_url, source_size):
         filename = req["id"] + "-" + req["sha256"][:12] + "-" + VERSION + ".mp4"
         relative = "uploads/meta-delivery/" + filename
         api_path = "/contents/" + urllib.parse.quote(relative)
-        blob_sha = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\\0" + raw).hexdigest()
+        blob_sha = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
         existing = _github("GET", api_path, token)
         if existing:
             if existing.get("sha") != blob_sha:
