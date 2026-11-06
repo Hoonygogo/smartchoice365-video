@@ -34,3 +34,14 @@ This file is an editorial/operational preference record, not a claim that a vide
 - 영상 생성 및 SNS 게재 시 필요한 임시 파일, GitHub 게시 자동화 코드/발행 영수증, 이미 공개된 SNS 게시물과 영구 미디어 아카이브를 구별할 것.
 - 임시 다운로드 실패 시 새로 검증된 다운로드 아티팩트를 만들되, 자동으로 영구 라이브러리 폴더에 복사해서는 안 됨.
 - 기존에 이미 게시된 SNS 영상이나 원본, 다른 사용자가 승인해 저장한 파일은 이 지침 때문에 임의로 삭제하지 말 것.
+
+
+## Meta 쇼츠 화질 기본값 — 2026-11-06 페이스북 비교 테스트 확정
+- RUA Heart Burst 원본(720×1280, 약 1.9Mbps, 시작 키프레임만)은 페이스북 재생 시 블록 현상이 관찰되었고, 재인코딩한 1080×1920 / 약 4.65Mbps / 2초 키프레임 테스트본은 사용자가 페이스북에서 정상 재생된다고 확인했다. 원본 인코딩과 플랫폼 재압축의 상호작용 가능성이 높아진 것이며 정확한 단일 원인을 입증한 것은 아니다.
+- 앞으로 신규 **Meta Instagram/Facebook Reels** 공개 게시 시 `maintenance/publish_meta_reels.py`가 자동으로 `maintenance/meta_delivery_quality.py`를 사용한다. 원본이 1080×1920, H.264/AAC, 충분한 비트레이트, 2초 수준의 키프레임, faststart에 맞으면 재인코딩 없이 그대로 사용한다.
+- 미달이면 업로드 직전에 기존 이미지 구성/장면 순서/자막/음성을 보존하면서 1080×1920(비율 유지 후 패딩), 약 5Mbps 목표 H.264, 2초 IDR, yuv420p, faststart로 SNS 전송용 MP4만 생성한다. AAC 오디오는 스트림 복사한다. 720p 확대가 사라진 세부 디테일까지 되살리는 것은 아니다.
+- 기존 승인 원본의 SHA-256과 파일은 변경하지 않는다. 새 전송용 MP4는 별도 버전명으로 GitHub에 게시하고 공개 URL을 검사한 다음 Meta API에 전달한다. 배포 결과 영수증에는 원본 SHA와 전송용 SHA를 구분해 기록한다.
+- **기존 게시 영수증이 하나라도 있으면** 그 영수증의 정확한 전송 URL/바이트를 재사용한다. 승인 상태와 이미 발행된 Instagram/Facebook/YouTube 게시물은 절대 무단으로 재인코딩·교체·중복 게시하지 않는다.
+- 인스타그램 Reel에서 이어지는 Story는 검증된 Reel 영수증의 동일한 전송 파일을 재사용한다. 독립 Story·YouTube 게시에는 별도의 승인/검증 규칙을 유지한다.
+- 새로운 파일의 코덱/기간/해상도/키프레임/완전 디코딩 검사는 업로드 전에 실패 시 중단한다. 자동 인코딩 회귀 테스트: `.github/workflows/meta-delivery-quality-ci.yml` (SNS 게시 없음). 이전 Story 보호 테스트: `.github/workflows/meta-reel-story-ci.yml`.
+- **소유자 명시적 예외**가 필요한 경우 새 요청에 `meta_quality_profile: "passthrough"`를 지정할 수 있다. 기본값은 `meta-1080p-2sec-v1`이며 추가 유료 서비스는 사용하지 않는다.
