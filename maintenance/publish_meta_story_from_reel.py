@@ -55,6 +55,14 @@ def main():
 
     # Reuse the already approved clip and Meta credential; never include URL stickers.
     url, info = checked_file(reel)
+    # Stories shared after a verified Reel reuse the SAME delivered MP4.
+    # A newly quality-encoded Reel must not fall back to the old 720p original.
+    delivered = reel_receipt.get("video_source_url", "")
+    if delivered:
+        if not delivered.startswith("https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/"):
+            fail("Unexpected approved Reel media URL for Story reuse.")
+        url = delivered
+        info["size"] = reel_receipt.get("video_size", info["size"])
     if not (3 <= info["duration"] <= 60):
         fail("Instagram Story requires an eligible 3-60-second video; cannot auto-share.")
 
