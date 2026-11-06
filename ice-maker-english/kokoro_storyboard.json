@@ -1,0 +1,70 @@
+{
+  "id": "rua-ice-maker-kokoro-english-20261106",
+  "lang_code": "a",
+  "voice": "af_heart",
+  "speed": 0.96,
+  "sample_rate": 24000,
+  "pad_seconds": 1.3,
+  "scenes": [
+    {
+      "index": 0,
+      "voice": "Welcome to Smart Choice three sixty five. I'm RUA, and after my very chaotic ice maker adventure, we're getting practical. Here are five things to check, plus three real machines sold in Australia. This is a specification comparison, not a hands-on product test."
+    },
+    {
+      "index": 1,
+      "voice": "Before comparing brands, ask five simple questions. Do you want bullet ice or chewable nugget ice? How quickly is the first batch ready? How much ice can the basket hold? How easy is cleaning? And will the machine fit on your bench?"
+    },
+    {
+      "index": 2,
+      "voice": "First, don't confuse daily production with instant storage. Twelve kilograms a day is a claimed output under operating conditions, not a giant bucket of ice waiting for you. These compact examples store only around four hundred and fifty to six hundred grams in the basket at one time."
+    },
+    {
+      "index": 3,
+      "voice": "Most budget countertop machines make bullet-shaped ice. The pieces are compact and practical for water, soft drinks or an esky. Nugget ice is softer and chewable, with a different mouth-feel. That texture usually costs more, so decide whether you'll actually enjoy the difference."
+    },
+    {
+      "index": 4,
+      "voice": "Second, check the batch cycle, not just the daily headline. Kogan lists eight pieces every seven to fifteen minutes. A Devanti twelve-kilo model lists nine pieces in six to thirteen minutes. Heller advertises four to five minute cycles for nugget ice. These are different ice types, so don't treat the times as a laboratory speed test."
+    },
+    {
+      "index": 5,
+      "voice": "Third, don't mix up the water reservoir and the finished ice basket. A large water tank means fewer trips to the tap. A larger basket means fewer trips to empty ice. Neither number tells you everything, especially when you're serving a group of guests over several hours."
+    },
+    {
+      "index": 6,
+      "voice": "Fourth, think about cleaning before buying. A self-cleaning button is useful, but it doesn't mean you'll never need to wipe, drain or maintain the machine. Check the manual for recommended cleaning routines, water quality, and removable parts. This matters particularly if the maker sits unused between parties."
+    },
+    {
+      "index": 7,
+      "voice": "Fifth, measure the real bench space. The listed dimensions aren't always the whole story; you also need room to open the lid and allow air circulation. Noise levels vary and aren't published on a directly comparable basis here. If you run it in a quiet kitchen, check owner feedback before deciding."
+    },
+    {
+      "index": 8,
+      "voice": "Now the actual products. Kogan's twelve-kilo bullet ice maker is a budget-focused option with a one-point-two-litre water tank and a four-hundred-and-fifty-gram basket. It makes eight bullet pieces per cycle, according to its listing. The displayed non-member price at our check was eighty-four dollars ninety-nine. Membership pricing may differ."
+    },
+    {
+      "index": 9,
+      "voice": "The Devanti twelve-kilo black self-cleaning version listed through Bunnings has a one-point-three-litre water tank, a six-hundred-gram basket, and nine pieces per batch in six to thirteen minutes. It includes a cleaning function and low-water alarm. The listed price was one hundred and nine dollars ninety-five, from a marketplace seller rather than an in-store shelf."
+    },
+    {
+      "index": 10,
+      "voice": "For nugget ice, Heller's H I M N twelve S is a different proposition. The retailer lists up to twelve kilos daily, a one-point-seven-litre reservoir, and four to five minute cycles. At three hundred and sixty-nine dollars, it's much pricier. The listing gives inconsistent basket-capacity figures, so confirm that detail with the retailer."
+    },
+    {
+      "index": 11,
+      "voice": "Here's the comparison at a glance. All three advertise up to twelve kilograms per day, but they're not equivalent machines. Kogan and this Devanti model make bullet ice, whereas Heller makes nuggets. Check total basket capacity, retailer service, and the price you actually pay rather than choosing from one big production number."
+    },
+    {
+      "index": 12,
+      "voice": "There isn't one automatic winner. If price is the main concern, look closely at Kogan. If you want bullet ice with a self-cleaning function, Devanti is worth comparing. If you specifically love chewable nugget ice, Heller may justify its higher cost. These suggestions are based on specifications and retailer listings, not personal testing."
+    },
+    {
+      "index": 13,
+      "voice": "One last practical tip: many portable countertop ice makers make ice but do not keep it frozen like a freezer. If you want a big stash for later, transfer finished ice into freezer-safe storage. Check each model's manual for melting, water drainage, and cleaning recommendations, and remember that output varies with room and water conditions."
+    },
+    {
+      "index": 14,
+      "voice": "That's the smarter way to shop: first decide the ice texture, then compare basket size, cycle time, maintenance and total cost. For updated product information and future buying guides, visit Smart Choice three sixty five. If a retailer link earns us a commission, customers pay no additional affiliate fee. Thanks for watching, and subscribe for more RUA!"
+    }
+  ]
+}
