@@ -22,6 +22,7 @@ import urllib.parse
 import urllib.request
 
 from publish_youtube_generic import receipt_read, receipt_write
+from meta_delivery_quality import prepare_delivery
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = "Hoonygogo/smartchoice365-video"
@@ -195,7 +196,27 @@ def preflight_identity(req, token, *, system_user_token=False):
             fail("Derived Page access token does not resolve the intended Instagram account.")
     return page, ig, page_token
 
-def request_record(req, platform, digest, *, url, size):
+def delivery_for_request(req, raw_url, stats):
+    """Use existing receipts on retry; only new publications get default encoding."""
+    existing = []
+    for platform in req["platforms"]:
+        entry, _ = receipt_read(f"publications/meta-receipts/{req['id']}-{platform}.json")
+        if entry:
+            if entry.get("sha256") != req["sha256"] or entry.get("platform") != platform:
+                fail("Existing media receipt is for a different file or platform.")
+            existing.append(entry)
+    if existing:
+        urls = {entry.get("video_source_url") for entry in existing}
+        digests = {entry.get("delivery_sha256", req["sha256"]) for entry in existing}
+        if len(urls) != 1 or not next(iter(urls)) or len(digests) != 1:
+            fail("Meta receipt delivery copies disagree. Manual inspection needed.")
+        first = existing[0]
+        print("META_QUALITY_EXISTING_RECEIPT_PRESERVED; no source change or duplicate encoding.")
+        return first["video_source_url"], first.get("video_size", stats["size"]), next(iter(digests))
+    return prepare_delivery(req, raw_url, stats["size"])
+
+
+def request_record(req, platform, digest, *, url, size, delivery_sha256=None):
     path = f"publications/meta-receipts/{req['id']}-{platform}.json"
     old, _ = receipt_read(path)
     if old:
@@ -204,6 +225,7 @@ def request_record(req, platform, digest, *, url, size):
     else:
         old = {"id":req["id"],"platform":platform,"sha256":digest,
                "video_source_url":url,"video_size":size,
+               "delivery_sha256":delivery_sha256 or digest,
                "status":"ready","approval":"publish",
                "channel_id":CHANNEL,"run_id":os.environ.get("GITHUB_RUN_ID")}
         receipt_write(path,old)
@@ -330,15 +352,20 @@ def main():
         return
     if req.get("approval") != "publish":
         fail("Publishing not owner-approved: request is prepare-only.")
+    # Re-encode only brand-new approved Meta publications. Previously started
+    # or verified platform receipts must retain their original delivery bytes.
+    delivery_url, delivery_size, delivery_sha256 = delivery_for_request(req,url,stats)
     token, system_user_token=token_for("facebook")
     page_id, ig_account, page_token=preflight_identity(req,token,system_user_token=system_user_token)
     media_digest=req["sha256"]
     for platform in req["platforms"]:
-        receipt_path,record=request_record(req,platform,media_digest,url=url,size=stats["size"])
+        receipt_path,record=request_record(req,platform,media_digest,
+                                           url=delivery_url,size=delivery_size,
+                                           delivery_sha256=delivery_sha256)
         if platform=="instagram":
-            instagram(req,page_token,ig_account,url,receipt_path,record)
+            instagram(req,page_token,ig_account,delivery_url,receipt_path,record)
         else:
-            facebook(req,page_token,page_id,url,receipt_path,record)
+            facebook(req,page_token,page_id,delivery_url,receipt_path,record)
 
 if __name__=="__main__":
     try:
