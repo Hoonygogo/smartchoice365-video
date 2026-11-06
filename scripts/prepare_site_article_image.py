@@ -8,6 +8,25 @@ REQUEST=pathlib.Path("requests/site-article-hero")/(TODAY+".json")
 OUT=pathlib.Path("artifacts/site-article-hero")
 META=OUT/(TODAY+".json")
 MODEL="@cf/black-forest-labs/flux-1-schnell"
+# Production request enrichment, validated by the 2026-11-06 free Workers AI pilot.
+# Keep subject evidence and scene detail from research; change only visual direction.
+VISUAL_RULES=(
+    " Photograph the product IN USE within a coherent, naturally lit Australian "
+    "home scene. Prefer an angled or side view and a plain, unmarked surface instead "
+    "of front-facing control panels, screens, or retail branding. For comparison "
+    "guides this is a generic lifestyle illustration, NOT an image of exact models. "
+    "No brand letters, fake trademarks, digits, numbers, display writing, control "
+    "labels, symbols, text, watermark, captions, logos, infographics or collage. "
+    "Show the complete appliance with believable physical proportions and room "
+    "context; do not depict performance evidence or claim product testing."
+)
+def production_prompt(base):
+    # Limit prompt to our established maximum; never truncate source topic detail
+    # for the sake of decoration. Preserve brand-free requirements as the suffix.
+    if len(base)+len(VISUAL_RULES)<=1450:
+        return base+VISUAL_RULES
+    trimmed=base[:1450-len(VISUAL_RULES)].rstrip()
+    return trimmed+VISUAL_RULES
 def write(status,reason,topic="",**extra):
     OUT.mkdir(parents=True,exist_ok=True)
     result={"schemaVersion":1,"publishingDate":TODAY,"channel":"en-au","topicId":topic,
@@ -34,7 +53,7 @@ def run():
     token=os.getenv("CLOUDFLARE_AI_TOKEN","").strip()
     if not account or not token:write("fallback","workers_ai_credentials_missing",topic);return
     url="https://api.cloudflare.com/client/v4/accounts/"+account+"/ai/run/"+MODEL
-    req=urllib.request.Request(url,method="POST",data=json.dumps({"prompt":prompt,"steps":4}).encode(),
+    req=urllib.request.Request(url,method="POST",data=json.dumps({"prompt":production_prompt(prompt),"steps":4}).encode(),
          headers={"Authorization":"Bearer "+token,"Content-Type":"application/json",
                   "User-Agent":"SmartChoice365-Free-Article-Image/1.0"})
     try:
