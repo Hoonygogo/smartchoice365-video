@@ -13,6 +13,7 @@ DIGEST = "a" * 64
 REQUEST = {
     "id": "verified-future-reel",
     "approval": "publish",
+    "story_cta_verified": True,
     "platforms": ["instagram", "facebook"],
     "sha256": DIGEST,
     "media_path": "uploads/approved.mp4",
@@ -79,6 +80,19 @@ class FollowUpTest(unittest.TestCase):
         self.assertEqual(story["instagram_account_id"], "17841475811391464")
         self.assertEqual(story["parent_instagram_reel"], VERIFIED["permalink"])
         self.assertEqual(url, "https://example.com/video.mp4")
+
+    def test_quality_optimized_reel_reuses_delivery_in_story(self):
+        delivery = "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/123abc/uploads/meta-delivery/test.mp4"
+        self.run_main(receipt=dict(VERIFIED, video_source_url=delivery, video_size=5600000))
+        self.result[3].assert_called_once()
+        story, url, info = self.result[3].call_args.args
+        self.assertEqual(url, delivery)
+        self.assertEqual(info["size"], 5600000)
+
+    def test_story_rejects_untrusted_optimized_delivery_host(self):
+        with self.assertRaises(RuntimeError):
+            self.run_main(receipt=dict(VERIFIED, video_source_url="https://example.net/anything.mp4"))
+        self.result[3].assert_not_called()
 
     def test_previously_published_story_is_not_posted_again(self):
         published = {
