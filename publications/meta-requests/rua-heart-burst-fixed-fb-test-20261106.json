@@ -1,0 +1,17 @@
+{
+  "id": "rua-heart-burst-fixed-fb-test-20261106",
+  "approval": "publish",
+  "channel_intro": true,
+  "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
+  "platforms": [
+    "facebook"
+  ],
+  "media_path": "uploads/RUA_Facebook_Fixed.mp4",
+  "sha256": "4482cde10d668dd6e738ec9b498de2a616b9d98bce3bcabd37bfeab6d5fb95b6",
+  "facebook_title": "RUA Heart Burst 💗 | Video Quality Test",
+  "share_to_instagram_story": false,
+  "captions": {
+    "facebook": "RUA's giant pink heart is back! 💗✨ This is our updated video-quality test.\nDiscover Smart Choice 365: https://smartchoice365-web.pages.dev/\nWatch RUA on YouTube: https://www.youtube.com/shorts/7fxD3SRFqjo\nOfficial YouTube channel: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n\nA playful fictional 3D animation. We are testing whether this new higher-bitrate upload plays more clearly on Facebook.\n#SmartChoice365 #RUA #HeartBurst #VideoQualityTest"
+  },
+  "approval_note": "Owner requested on 2026-11-06 that the already-uploaded RUA_Facebook_Fixed.mp4 be posted to Facebook to test blocky video quality. This is one separate Facebook-only test Reel using the exact SHA-256 checked corrected MP4. No YouTube, Instagram or Story reposts. No paid APIs."
+}
