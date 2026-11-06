@@ -1,0 +1,15 @@
+{
+  "id": "bedroom-fan-placement-2026-11-06",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "paidFallback": false,
+  "attemptLimit": 1,
+  "timestampUTC": "2026-11-06T11:20:47.547308+00:00",
+  "status": "ready",
+  "imagePath": "artifacts/image-pilots/bedroom-fan-placement-2026-11-06.jpg",
+  "sha256": "7511f42ef68f143d3a23aefe076d9919ba6fb5e492a841415f2197e402c10b1d",
+  "imageBytes": 573394,
+  "width": 1024,
+  "height": 1024,
+  "usageApproved": false,
+  "visualReviewRequired": true
+}
