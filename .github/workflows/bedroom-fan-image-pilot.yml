@@ -1,0 +1,36 @@
+name: Free Workers AI bedroom fan image pilot
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/bedroom_fan_image_pilot.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sc365-bed-fan-image-pilot
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pillow
+        run: python3 -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+      - name: Generate one free Cloudflare Workers AI image
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+          CLOUDFLARE_WORKERS_FREE_CONFIRMED: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+        run: python3 scripts/bedroom_fan_image_pilot.py
+      - name: Commit candidate and status without publishing
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/image-pilots/
+          if ! git diff --cached --quiet; then
+            git commit -m "Record free Workers AI bedroom fan image pilot"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
