@@ -5,9 +5,10 @@
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/4c5b3efd02855f280fa032927fd836b9585224ad/uploads/RUA_IceMaker_4Part_20261106.mp4",
   "video_size": 23793681,
   "delivery_sha256": "9161982fc310abd5a515a6a1b645304b7165c789c061dafc2a0d27292cb024f2",
-  "status": "media_publish_initiated",
+  "status": "published_unverified",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "run_id": "42230763711",
-  "container_id": "17888795490527047"
+  "container_id": "17888795490527047",
+  "media_id": "18140177686712542"
 }
