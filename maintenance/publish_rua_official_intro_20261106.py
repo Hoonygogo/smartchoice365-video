@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Publish the EXACT owner-approved RUA English introduction original 20s MP4 to YouTube.
 
-One-time upload gate: upload only uploads/RUA_Official_Intro_20s_20261106.mp4.
+One-time upload gate: upload only uploads/RUA_Shorts_With_Official_Ending(1).mp4.
 Other releases need separate owner-approved metadata/hash. No deletion or edits.
 """
 import hashlib
@@ -17,9 +17,9 @@ from publish_youtube_generic import api, receipt_read, receipt_write, CHANNEL
 from check_youtube import request_json
 
 ROOT = Path(__file__).resolve().parents[1]
-MEDIA = ROOT / "uploads" / "RUA_Official_Intro_20s_20261106.mp4"
-SHA256 = "51c148174ae333f41e3bf8458192195a5915dc90a16ad155209291e33ff12e1e"
-SIZE = 14281677
+MEDIA = ROOT / "uploads" / "RUA_Shorts_With_Official_Ending(1).mp4"
+SHA256 = "cb72fc0d99af77bee79f96e2743d45f802b658acaa476b07dd929081cf1d093d"
+SIZE = 17752819
 PUB_ID = "rua-official-intro-20s-20261106"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
 SITE = "https://smartchoice365-web.pages.dev/"
