@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-07",
+  "channel": "en-au",
+  "topicId": "bosch-vs-westinghouse-dishwasher-water-energy-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-07.jpg",
+  "sha256": "a8df11f4bc89746bc5cb46b3e419500cfabe3cce50cbb9d07f7ffad9a1d0ab4a",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-06T23:05:38.678814+00:00",
+  "imageBytes": 486821,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "9e4ee74f432955eb1ee57881a913ecc6408521ef"
+}
