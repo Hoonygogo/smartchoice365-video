@@ -5,20 +5,33 @@
     {
       "platform": "youtube",
       "id": "2R5Nyt42hRs",
-      "status": "failed_or_unverified",
-      "reason": "RuntimeError"
+      "status": "already_present_verified",
+      "readback": {
+        "marker": true,
+        "links": [
+          true,
+          true
+        ],
+        "guide_first_line": true
+      }
     },
     {
       "platform": "youtube",
       "id": "SVtgsad_XsU",
-      "status": "failed_or_unverified",
-      "reason": "RuntimeError"
+      "status": "already_present_verified",
+      "readback": {
+        "marker": true,
+        "links": [
+          true,
+          true
+        ],
+        "guide_first_line": true
+      }
     },
     {
       "platform": "facebook",
       "id": "2693707811060236",
-      "status": "caption_updated_verified",
-      "url": "https://www.facebook.com/reel/2693707811060236/"
+      "status": "already_present"
     }
   ]
 }
