@@ -24,8 +24,8 @@ for i, scene in enumerate(config["scenes"]):
     chunks = []
     # RUA is the written character/brand; voice must say Roo-ah, never R-U-A.
     display_text = scene["voice"]
-    spoken_text = re.sub(r"\\bRUA\\b", "Roo-ah", display_text)
-    if re.search(r"\\bRUA\\b", spoken_text):
+    spoken_text = re.sub(r"\bRUA\b", "Roo-ah", display_text)
+    if re.search(r"\bRUA\b", spoken_text):
         raise RuntimeError("Unnormalized spoken RUA would be spelled letter by letter")
     for result in pipeline(spoken_text,voice="af_heart",speed=0.96):
         a = result.audio
