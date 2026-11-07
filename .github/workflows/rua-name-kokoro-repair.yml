@@ -1,0 +1,33 @@
+name: "RUA Ice Maker — Correct RUA name pronunciation in Kokoro scenes 0 and 14"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ice-maker-english/repair_rua_name.py"
+      - ".github/workflows/rua-name-kokoro-repair.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pronounce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install free Kokoro CPU engine
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng libsndfile1
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.8.0
+          python -m pip install "kokoro==0.9.4" "misaki[en]==0.9.4" "soundfile==0.13.1" "numpy==1.26.4"
+      - name: Correct every spoken RUA name in full ice maker guide
+        run: python ice-maker-english/repair_rua_name.py
+      - name: Retain precise corrected audio with audit evidence, no public posting
+        uses: actions/upload-artifact@v4
+        with:
+          name: rua-kokoro-name-correction-${{ github.run_id }}
+          path: ice-maker-english/name-repair-audio/
+          retention-days: 3
