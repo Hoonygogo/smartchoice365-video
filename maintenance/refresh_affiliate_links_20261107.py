@@ -98,7 +98,10 @@ def update_youtube():
                 or t["guide"] not in desc):
                 raise ValueError("Video identity or exact website guide mismatch")
             if MARKER in desc:
-                item["status"] = "already_present"
+                item["readback"] = {"marker":True,"links":[url in desc for _,url in t["links"]],
+                                    "guide_first_line":t["guide"] in desc.splitlines()[0]}
+                item["status"] = ("already_present_verified" if all(item["readback"]["links"])
+                                  else "partial_missing_link")
                 RESULTS.append(item)
                 continue
             updated = desc.rstrip() + section(t["links"])
@@ -114,15 +117,19 @@ def update_youtube():
                 "https://www.googleapis.com/youtube/v3/videos?"+
                 urllib.parse.urlencode({"part":"snippet","id":t["id"]}),bearer=token)
             newdesc = after["items"][0]["snippet"].get("description","")
-            if MARKER not in newdesc or any(url not in newdesc for _,url in t["links"]):
-                raise RuntimeError("Metadata readback not verified")
-            if desc.splitlines()[0] != newdesc.splitlines()[0]:
+            item["readback"] = {"marker":MARKER in newdesc,
+                                "links":[url in newdesc for _,url in t["links"]],
+                                "same_first_line":desc.splitlines()[0] == newdesc.splitlines()[0],
+                                "description_bytes":len(newdesc.encode("utf-8"))}
+            if not item["readback"]["marker"] or not all(item["readback"]["links"]):
+                raise RuntimeError("Metadata readback missing marker or link")
+            if not item["readback"]["same_first_line"]:
                 raise RuntimeError("Original first description line changed unexpectedly")
             item["status"] = "updated_verified"
             item["url"] = "https://www.youtube.com/watch?v=" + t["id"]
         except Exception as exc:
             item["status"] = "failed_or_unverified"
-            item["reason"] = type(exc).__name__
+            item["reason"] = str(exc) if isinstance(exc,(RuntimeError,ValueError)) else type(exc).__name__
         RESULTS.append(item)
 
 def meta_token(page_id):
@@ -203,7 +210,7 @@ def main():
                                ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     for result in RESULTS:
         print(json.dumps(result,ensure_ascii=False))
-    if not any(x["status"] in ("updated_verified","already_present","caption_updated_verified",
+    if not any(x["status"] in ("updated_verified","already_present_verified","caption_updated_verified",
                                 "comment_published_verified","comment_already_present")
                for x in RESULTS):
         raise SystemExit("No confirmed product-video affiliate metadata update")
