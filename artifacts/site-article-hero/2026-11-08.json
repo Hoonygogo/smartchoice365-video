@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-08",
+  "channel": "en-au",
+  "topicId": "2026-breville-bke625-vs-bke825-temperature-kettle-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-08.jpg",
+  "sha256": "37be58f5c870ddbae0f3da7e68e833c909a238a9f2690a9f0157cce35736d1f7",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-07T23:03:59.327116+00:00",
+  "imageBytes": 496307,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "4c47a8bf4eb2dfed28571b6bc738c2113ff558c1"
+}
