@@ -1,5 +1,18 @@
 # Video editorial standard
 
+## Smart Choice 365 affiliate conversion storytelling — approved 2026-11-08
+
+Shared brand proposition for NEW commerce-focused English videos and Shorts: **"We Compare. You Save."** Supporting line when natural: **"Not just affiliate links. Deals worth your click."** Korean equivalent: **"우리가 비교합니다. 고객은 절약합니다."** Use the official approved logo, not a new artwork substitute.
+
+- The video earns the click by showing the **evidence and consumer benefit**: precise product model, the seller(s) actually checked, delivered price including eligible discount/shipping, tradeoffs, verification date, and whether the lowest-price claim covers only checked retailers. Affiliate commission must not determine editorial selection over customer value.
+- For Shorts, open with the product-specific buyer problem or a genuine date-checked price difference; quickly say what was compared, then invite viewers to open the **related full YouTube video** for the complete comparison. Shorts descriptions and comments do not provide reliable clickable external URLs; do not instruct viewers to click an ordinary Shorts comment URL. A profile/site route may be offered where available. No related-video CTA unless that full video actually exists and is linked.
+- For a regular product video, solve the buying decision with actual comparison details and explicitly mention the video description for (a) the related Smart Choice 365 guide and (b) a genuine, exact-product tracked merchant link when available and network-compliant. Preserve the existing **guide URL on the first description line** rule; place the relevant verified merchant link promptly below it, with conspicuous programme disclosures nearby. Do not mislabel a marketplace search URL as a direct product deal.
+- Possible natural English close: "We compared the offers so you can shop with confidence. Check the full comparison and any verified shopping links in the description. Smart Choice 365 — We Compare. You Save." Adapt to each video rather than treating this as mandatory repetitive narration.
+- Never state "cheapest", "lowest in Australia", "save $X", "exclusive", "discount code" or a supposedly current price without adequate dated evidence. The price can change after upload. Keep time-sensitive figures dated and direct viewers to the guide for refreshed checking; do not claim an unimplemented automatic live-price feature.
+- Never invent coupons, hands-on reviews, exact seller warranties, Amazon/eBay commission links, affiliate approval, tracking, or sales results. Follow each network's disclosure/link-placement requirements and YouTube external-link policies. Do not place a misleading "Verified Deal" badge on unsourced price information.
+- This policy updates **future scripts, descriptions, CTA design and video briefs only**. It does not grant standing approval to generate, upload, replace, delete or re-edit any existing video; preserve the normal exact-version owner approval and publishing receipts. No new paid services or APIs without explicit approval.
+
+
 ## Default Korean general-video production — confirmed 2026-10-31
 
 Current approved published version: `heattech-full-photo-ko-v8`, https://www.youtube.com/watch?v=0vDxn8aXoGU . Graph/highlight defaults originated with `heattech-graph-sync-ko-v5`; the v8 greeting, approved logo and complete-photo rules below also apply. These defaults supersede earlier readability/card experiments. They are a production standard, not standing permission to publish new videos.
