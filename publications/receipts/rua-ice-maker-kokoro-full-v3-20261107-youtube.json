@@ -6,6 +6,8 @@
   "platform": "youtube",
   "format": "video",
   "language": "en",
-  "status": "upload_initiated",
-  "run_id": "42377666282"
+  "status": "uploaded_processing",
+  "run_id": "42377666282",
+  "video_id": "SVtgsad_XsU",
+  "url": "https://www.youtube.com/watch?v=SVtgsad_XsU"
 }
