@@ -6,8 +6,13 @@
   "platform": "youtube",
   "format": "video",
   "language": "en",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "42377666282",
   "video_id": "SVtgsad_XsU",
-  "url": "https://www.youtube.com/watch?v=SVtgsad_XsU"
+  "url": "https://www.youtube.com/watch?v=SVtgsad_XsU",
+  "title": "Ice Maker Buying Guide Australia 2026 | Bullet vs Nugget Ice | RUA & Smart Choice 365",
+  "privacy": "public",
+  "metadata_verified": true,
+  "processing_status": "succeeded",
+  "description_first_line": "🧊 Compare ice makers and buying tips: https://smartchoice365-web.pages.dev/guides/2026-ice-maker-australia-summer-bullet-vs-dispenser.html?utm_source=youtube&utm_medium=video&utm_campaign=rua_ice_maker_2026"
 }
