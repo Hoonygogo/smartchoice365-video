@@ -18,9 +18,9 @@ pipe=KPipeline(lang_code="a")
 receipt={"source":"15-scene production audit","scenes_changed":[0,14],"voice":"af_heart","speed":0.96,"sample_rate":24000,"replacements":[]}
 for index in (0,14):
     original=cfg["scenes"][index]["voice"]
-    assert len(re.findall(r"\\bRUA\\b",original))==1, (index,original)
-    spoken=re.sub(r"\\bRUA\\b", "Roo-ah", original)
-    assert not re.search(r"\\bRUA\\b",spoken)
+    assert len(re.findall(r"\bRUA\b",original))==1, (index,original)
+    spoken=re.sub(r"\bRUA\b", "Roo-ah", original)
+    assert not re.search(r"\bRUA\b",spoken)
     chunks=[]
     for p in pipe(spoken,voice="af_heart",speed=0.96):
         a=p.audio
