@@ -2,6 +2,7 @@
 """Render every approved ice-maker guide sentence with actual Kokoro af_heart, never eSpeak."""
 import hashlib
 import json
+import re
 from pathlib import Path
 import numpy as np
 import soundfile as sf
@@ -21,7 +22,12 @@ receipts = []
 sr = 24000
 for i, scene in enumerate(config["scenes"]):
     chunks = []
-    for result in pipeline(scene["voice"],voice="af_heart",speed=0.96):
+    # RUA is the written character/brand; voice must say Roo-ah, never R-U-A.
+    display_text = scene["voice"]
+    spoken_text = re.sub(r"\\bRUA\\b", "Roo-ah", display_text)
+    if re.search(r"\\bRUA\\b", spoken_text):
+        raise RuntimeError("Unnormalized spoken RUA would be spelled letter by letter")
+    for result in pipeline(spoken_text,voice="af_heart",speed=0.96):
         a = result.audio
         if a is None:
             raise RuntimeError(f"Kokoro generated no audio in scene {i}")
@@ -44,7 +50,7 @@ for i, scene in enumerate(config["scenes"]):
         "speech_seconds":round(speech.size/sr,4),"scene_seconds":round(duration,4),
         "wav_sha256":hashlib.sha256(segpath.read_bytes()).hexdigest(),
         "rms":round(float(np.sqrt(np.mean(speech**2))),6),
-        "text":scene["voice"]
+        "text":scene["voice"], "spoken_text":spoken_text
     })
     print(f"KOKORO_AUDIO_SCENE_{i:02d} speech={speech.size/sr:.2f}s scene={duration:.2f}s rms={receipts[-1]['rms']}",flush=True)
 
