@@ -1,0 +1,43 @@
+name: "RUA Ice Maker V3 full — owner-approved one-file YouTube publish"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "uploads/RUA_IceMaker_Kokoro_PreciseFocus_Stable_V3_NameCorrected.mp4"
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: youtube-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify exact chat-approved RUA V3 file, dimensions, audio, and decode
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python - <<'PY'
+          import hashlib,pathlib
+          p=pathlib.Path("uploads/RUA_IceMaker_Kokoro_PreciseFocus_Stable_V3_NameCorrected.mp4")
+          assert p.is_file(), "V3 MP4 has not been uploaded."
+          assert p.stat().st_size==23336886, "File differs in size from approved V3."
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=="c6ef8a3e98c3ca6dfabaedf2057d70898e6d9940a3e554a79750f49815c198d5", "Hash mismatch: publishing blocked."
+          print("Exact owner-approved 23,336,886-byte V3 verified.")
+          PY
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 uploads/RUA_IceMaker_Kokoro_PreciseFocus_Stable_V3_NameCorrected.mp4 | grep -qx '1920,1080'
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_type -of csv=p=0 uploads/RUA_IceMaker_Kokoro_PreciseFocus_Stable_V3_NameCorrected.mp4 | grep -qx 'audio'
+          ffmpeg -hide_banner -v error -xerror -i uploads/RUA_IceMaker_Kokoro_PreciseFocus_Stable_V3_NameCorrected.mp4 -f null -
+      - name: Upload full English video to the already approved YouTube channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_rua_ice_maker_full_v3.py
