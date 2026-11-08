@@ -40,3 +40,10 @@
 - 동영상 업로드 및 공개·AI·광고 설정: https://help.naver.com/service/30048/contents/24422
 - 네이버 쇼핑커넥트 태그: https://help.naver.com/service/30048/contents/24501
 - 공식 공개 OpenAPI 목록: https://developers.naver.com/products/intro/plan/plan.md
+
+## 공식 클립 프로필 — 사용자 제공 (2026-11-08)
+- 사용자 제공 주소: https://clip.naver.com/@smartchoice365
+- 이 주소는 운영자가 직접 전달한 Smart Choice 365 클립 프로필이다. 외부 브라우저에서 공개 접근 검증은 아직 되지 않았으며, 계정 연결 및 쇼핑커넥트 태그 권한 활성화도 별도 확인이 필요하다.
+- 네이버 계정은 해당 클립 프로필과 네이버 블로그/브랜드커넥트 크리에이터 스페이스에서 **동일한 ID인지** 점검한다.
+- 업로드 대상 프로필 식별자로 `@smartchoice365`를 사용하되 실제 업로드 URL/성공은 확인 전까지 기록하지 않는다.
+- 공식 가이드: https://help.naver.com/service/30027/contents/24394 (쇼핑커넥트 클립 스티커 사용 조건 및 동일 계정), https://help.naver.com/service/30048/contents/24422 (PC 업로드, 콘텐츠 링크, AI/광고 표시).
