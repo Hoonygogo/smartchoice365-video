@@ -1,0 +1,76 @@
+name: "RUA CUCKOO 20L: persuasive Sarah/F1 buyer guide V2 (DRAFT, NOT PUBLISHED)"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "maintenance/render_rua_cuckoo_sarah_sales_v2_20261108.py"
+permissions:
+  contents: write
+concurrency:
+  group: rua-cuckoo-sales-v2-20261108
+  cancel-in-progress: false
+jobs:
+  create-review-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install free Korean Sarah voice and visual tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+          python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Fetch approved F1 Sarah model
+        run: python scripts/download_model.py
+      - name: Render new sales-focused general video (not a public upload)
+        run: python maintenance/render_rua_cuckoo_sarah_sales_v2_20261108.py
+      - name: Verify actual audio, 21 cues and complete video
+        run: |
+          python - <<'PY'
+          import json,pathlib,subprocess,hashlib
+          folder=pathlib.Path("renders/rua-cuckoo-sales-v2-20261108")
+          mp4=folder/"RUA_Cuckoo_20L_Full_Convincing_Sarah_V2_1080p.mp4"
+          data=json.loads((folder/"Sarah_Focus_Timings.json").read_text(encoding="utf-8"))
+          assert data["status"]=="review_only_unpublished"
+          assert (data["voice"],data["language"],data["speed"],data["steps"])==("Sarah/F1","ko",1.1,8)
+          assert len(data["timeline"])==21
+          assert all(x["rms"]>=0.008 and x["end"]>x["start"] for x in data["timeline"])
+          assert [x["focus_card"] for x in data["timeline"]]==[1,2,3]*7
+          meta=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_streams","-show_format","-of","json",str(mp4)]))
+          assert 120 < float(meta["format"]["duration"]) < 350
+          assert any(s.get("codec_type")=="video" and (s.get("width"),s.get("height"))==(1920,1080) for s in meta["streams"])
+          assert any(s.get("codec_type")=="audio" and s.get("codec_name")=="aac" for s in meta["streams"])
+          assert hashlib.sha256(mp4.read_bytes()).hexdigest()==data["sha256"]
+          print("CUCKOO_V2_REVIEW_QA",mp4.stat().st_size, meta["format"]["duration"])
+          PY
+          ffmpeg -hide_banner -v error -xerror -i renders/rua-cuckoo-sales-v2-20261108/RUA_Cuckoo_20L_Full_Convincing_Sarah_V2_1080p.mp4 -f null -
+      - name: Capture design review screenshots
+        run: |
+          mkdir -p renders/rua-cuckoo-sales-v2-20261108/frames
+          for t in 12 42 75 105 135 170 200; do
+            ffmpeg -y -hide_banner -loglevel error -ss "$t" -i renders/rua-cuckoo-sales-v2-20261108/RUA_Cuckoo_20L_Full_Convincing_Sarah_V2_1080p.mp4 -frames:v 1 -q:v 4 "renders/rua-cuckoo-sales-v2-20261108/frames/scene-${t}.jpg" || true
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RUA_Cuckoo_Sales_Review_Sarah_Focus_V2
+          path: renders/rua-cuckoo-sales-v2-20261108/
+          retention-days: 7
+          if-no-files-found: error
+      - name: Commit PRIVATE REVIEW DRAFT into renders; never trigger SNS publish
+        run: |
+          set -eu
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add renders/rua-cuckoo-sales-v2-20261108/
+          if ! git diff --cached --quiet; then
+            git commit -m "Render stronger CUCKOO sales guide V2 draft with Sarah and sourced reviews"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Note no public upload was made
+        run: echo "DRAFT ONLY: no YouTube or Meta publication until user approves this exact V2." >> "$GITHUB_STEP_SUMMARY"
