@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-09",
+  "channel": "en-au",
+  "topicId": "2026-foodsaver-vs4500-vs2198-bag-costs-australia",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-09.jpg",
+  "sha256": "794fa3e6d198f9063ba90d9ad917ea33389ab2117c4fd9ddff401c10e5958c44",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-08T23:11:12.177742+00:00",
+  "imageBytes": 452587,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "dc28853ea924852c1baa5a594972f0de34ad05ec"
+}
