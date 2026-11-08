@@ -23,3 +23,6 @@ Then explain the editorial value without cancelling/obscuring the disclosure:
 스마트초이스365는 가격과 구매 조건, 제품의 장단점과 구매후기를 비교하고, 추천할 이유가 분명한 제품과 구매처를 엄선해 소개합니다. 고객님이 여러 곳을 찾아보고 고민하는 시간과 수고를 줄이는 것이 저희의 목표입니다. 이 링크를 통해 구매하셔도 고객님께 별도의 제휴 수수료가 청구되지 않습니다.
 
 This does not promise free delivery, guaranteed savings, unique coupons, cashback or money paid to readers. State only checks actually performed. Do not imply hands-on testing from desk research.
+
+## Mandatory evidence presentation
+Every selected-product article must include: (1) glanceable delivered-price bars with a zero baseline and conditional card/member offers clearly separated; (2) seller identity/importer cross-check, displayed marketplace badges, shipping, warranty/AS and returns evidence table; (3) actual star-count distribution and review themes, including low-rating complaints and limitations. Preserve discrepancies between displayed totals rather than silently reconcile them. State exactly how many review bodies were read, sorting methods and overlaps; never imply all reviews were read from sampled pages. Identify review rewards and early-use/expectation-only reviews. Ratings, follower counts and badges are signals, not guarantees of authenticity, durability or service speed. Video and social scripts must use these same verified facts, show conditions legibly and retain important exception buyers.
