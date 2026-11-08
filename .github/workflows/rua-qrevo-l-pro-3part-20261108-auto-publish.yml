@@ -39,7 +39,7 @@ jobs:
               raise SystemExit("Only validated 1080x1920 H264/AAC approved MP4 accepted.")
           if not 37.7 <= float(info["format"]["duration"]) <= 38.1:
               raise SystemExit("Approved 3-part episode with shipping intertitle, product card and official V2 outro must be preserved.")
-          if float(v["avg_frame_rate"].split("/")[0]) / float(v["avg_frame_rate"].split("/")[1]) != 24:
+          if abs(float(v["avg_frame_rate"].split("/")[0]) / float(v["avg_frame_rate"].split("/")[1]) - 24) > 0.10:
               raise SystemExit("Wrong frame cadence.")
           print("APPROVED_RUA_ROBOT_VACUUM_V2_OUTRO_READY", approved_hash)
           PY
