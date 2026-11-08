@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Evidence: GS SHOP CMW-A201DW https://www.gsshop.com/prd/prd.gs?lsectid=1660668&lseq=405302&prdid=51842028 (284 reviews, 4.5/5; 79% design, 68% convenience, displayed 2026-11-08).
+# Official manufacturer: https://www.cuckoo.co.kr/mall/productView?productNo=3902 (20L, 700W, dials, A/S).
+# Product-level Coupang demand indicators are from the verified 2026-11-08 Smart Choice 365 published buying guide; user-specific prices must be verified at checkout.
 """Render RUA Cuckoo Korean buyer's guide with locked Sarah/F1 narration and cue-accurate focus rectangles.
 REVIEW DRAFT ONLY: never uploads to YouTube/Meta. Free Supertonic 3, fixed Korean F1 voice.
 """
