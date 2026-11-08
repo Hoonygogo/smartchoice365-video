@@ -1,0 +1,59 @@
+name: "CUCKOO Full V4 CTA Sarah replacement - DRAFT ONLY"
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/rua-cuckoo-cta-sarah-v4-20261108.yml"
+      - "maintenance/render_rua_cuckoo_cta_v4_20261108.py"
+permissions:
+  contents: read
+concurrency:
+  group: rua-cuckoo-cta-sarah-v4-20261108
+  cancel-in-progress: false
+jobs:
+  synthesize-cta:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Set up free Korean approved voice synthesis and video tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+          python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Download pinned approved Sarah/F1 voice model
+        run: python scripts/download_model.py
+      - name: Synthesize three Sarah CTA cues with exact highlights
+        run: python maintenance/render_rua_cuckoo_cta_v4_20261108.py
+      - name: Validate voiced segments and their visual/audio files
+        run: |
+          python - <<'PY'
+          import pathlib,json,subprocess,hashlib
+          root=pathlib.Path("renders/rua-cuckoo-cta-v4-20261108")
+          m=json.loads((root/"manifest.json").read_text(encoding="utf-8"))
+          assert m["status"]=="draft_unpublished" and m["voice"]=="Sarah/F1"
+          assert (m["speed"],m["steps"],len(m["timeline"]))==(1.1,8,3)
+          for x in m["timeline"]:
+              path=root/x["filename"]
+              assert path.stat().st_size>100000 and x["rms"]>=0.008
+              assert hashlib.sha256(path.read_bytes()).hexdigest()==x["sha256"]
+              info=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_streams","-show_format","-of","json",str(path)]))
+              v=[s for s in info["streams"] if s["codec_type"]=="video"]
+              a=[s for s in info["streams"] if s["codec_type"]=="audio"]
+              assert len(v)==1 and len(a)==1 and (v[0]["width"],v[0]["height"])==(1920,1080)
+              assert a[0]["codec_name"]=="aac" and abs(float(info["format"]["duration"])-x["duration"])<.2
+              subprocess.run(["ffmpeg","-v","error","-xerror","-i",str(path),"-f","null","-"],check=True)
+          print("CUCKOO_STRICTLY_VETTED_SARAH_CTA_V4_VALIDATED")
+          PY
+      - name: Save preview artifacts without public posting
+        uses: actions/upload-artifact@v4
+        with:
+          name: CUCKOO_Strictly_Vetted_CTA_V4_Sarah_Only
+          path: renders/rua-cuckoo-cta-v4-20261108/
+          retention-days: 7
+      - name: Confirm unpublished video voice update
+        run: |
+          echo "No SNS action performed; Sarah CTA asset prepared for owner-reviewed V3 edit." >> "$GITHUB_STEP_SUMMARY"
