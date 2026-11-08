@@ -1,5 +1,25 @@
 # Video editorial standard
 
+## Owner-approved mandatory spoken affiliate CTA — CUCKOO V4 standard (2026-11-08)
+
+**Default for every new Smart Choice 365 Korean affiliate-product full video and relevant Shorts; adapt the timing for English scripts and social captions.** This rule is about creating and reviewing future content, **not** blanket permission to publish, delete, or re-upload older material.
+
+- Do **not** merely say "제휴 링크" or read a sterile legal disclaimer. **First** make it clear that the product and purchase link were **엄격히 검토하고 엄선한 구매추천** intended to save customers time and avoid unnecessary expense.
+- Name specific checks actually completed for that product: matching model and option, seller identity, comparison prices, shipping, publicly visible buyer feedback/reviews, warranty/returns or eligibility for card, membership, coupon offers. Never imply a hands-on trial or full-text reviews were read if they were not.
+- Build positive and justified purchase confidence: explain the strongest verified purchase indicators and actual customer benefits, who the product suits, and why the vetted merchant is recommended. State limitations and conditional price terms concisely, without repeatedly undercutting the recommendation or claiming universal lowest prices.
+- Finish the **spoken Korean narration itself** (normally Sarah/F1; not just on-screen text or metadata) with a warm voluntary invitation for customers who found the analysis useful and decided to buy to use the selected affiliate link and support Smart Choice 365's ongoing product research, website, YouTube and social videos.
+- Explicitly disclose the applicable affiliate programme and any commission paid to Smart Choice 365 and that **customers are not charged a separate affiliate commission**. Do not claim buying the item or a paid membership is free.
+- Use the *same substance* in a compact visual CTA and platform-specific caption/description, with the real issued product affiliate URL and its exact selection-reasons deep link. The video image cannot be clicked; route appropriately through the description or verified profile/related-video placement.
+- **Quality gate:** preserve the approved voice, sync each spoken phrase with the correct focus box, retain any approved RUA scene through its natural end, and preserve the owner-approved signature outro without doubling it. Review the final MP4 and obtain approval before public publication.
+
+**Default Korean closing dialogue**, modify the factual checks to match this individual product:
+
+“스마트초이스365가 소개하는 구매 링크는 아무 상품이나 올린 링크가 아닙니다. 저희는 고객님의 시간과 돈을 아껴드리기 위해 제품과 판매자, 가격, 고객 후기와 할인 조건을 비교하고 엄격한 기준으로 검토해 엄선합니다. 왜 이 제품과 구매처를 추천했는지 그 이유도 공개합니다.
+
+오늘 비교 정보가 도움이 되었고 구매를 결정하셨다면, 설명란의 저희가 엄선한 제휴 링크를 이용해 스마트초이스365를 응원해 주세요. 제휴 구매로 저희가 수수료를 받을 수 있지만 고객님께 별도의 제휴 수수료는 청구되지 않습니다. 여러분의 응원이 다음 제품 조사와 더 좋은 영상 제작에 큰 힘이 됩니다. 감사합니다.”
+
+The user explicitly approved the **CUCKOO 20L V4** closing style; do not automatically repeat product-specific numerical details, claims or links in unrelated products.
+
 ## Owner-approved Korean long-video style — Sarah narration + cue-synchronised focus (2026-11-08)
 
 The owner explicitly approved the finished **RUA Qrevo L Pro Sarah/F1 focus-card full video**, GitHub-rendered as `renders/rua-qrevo-sarah-20261108/RUA_Qrevo_L_Pro_Full_Sarah_Focus_1080p.mp4` (SHA-256 `f1c0b63848a87cce8753e1d916b1358b0474e4ee10f4ac90c31fe3ce3008d844`). **Use this production method as the default for future Korean Smart Choice 365 general/full videos**, adapting the editorial visuals, scene count and duration to each topic. This is an approved *style and technique*, not blanket permission to automatically publish new videos.
