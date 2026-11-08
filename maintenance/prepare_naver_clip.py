@@ -31,6 +31,12 @@ def prepare(req, root=ROOT):
         raise ValueError('Exact published owner blog URL required')
     if type(cfg.get('ai_used')) is not bool or type(cfg.get('advertising')) is not bool:
         raise ValueError('Explicit Clip-specific AI and advertising decisions required')
+    shopping = cfg.get('shopping_connect') or req.get('shopping_connect')
+    if shopping:
+        if not shopping.get('affiliate_url') or not shopping.get('product_title') or not shopping.get('seller'):
+            raise ValueError('Shopping Connect requires issued URL, exact product title and seller')
+        if not cfg['advertising']:
+            raise ValueError('Shopping Connect tag requires advertising disclosure/switch')
     title, body = cfg['title'].strip(), cfg['description'].strip()
     description = f'{title}\n\n{body}\n\n관련 블로그: {blog}'
     if len(description) > 3000 or not title or not body:
@@ -50,7 +56,8 @@ def prepare(req, root=ROOT):
                 title=title, description=description, blog_url=blog,
                 blog_title=cfg['blog_title'], category_primary=cfg['category_primary'],
                 category_secondary=cfg['category_secondary'], ai_used=cfg['ai_used'],
-                advertising=cfg['advertising'],
+                advertising=cfg['advertising'], shopping_connect=shopping,
+                shopping_connect_tag_required=bool(shopping),
                 limitation='GitHub runner cannot access the signed-in local Chrome. File transfer remains manual; no Naver password/cookies exported.')
 
 def main():
