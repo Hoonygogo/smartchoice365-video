@@ -7,7 +7,17 @@
 For future distinct clips, the GitHub Actions artifact is optional internal handoff only: give the owner a **copy-ready ChatGPT response** with the exact Clip Creators UI fields: description + hashtags, chosen existing-video cover frame, category, Naver Shopping Connect native product tag/manual checks, affiliate disclosure and optional ads/AI selections where supported. The GitHub workflow does not send ChatGPT messages itself. No confirmed automatic Naver Clip publishing API is in use.
 
 
-**Ready. NOT published yet.** The owner uploads only the approved combined MP4; pushing the uploader file is the publication approval.
+**PUBLISHED AND VERIFIED 2026-11-08.** The owner uploaded the approved 37.855-second combined MP4, and GitHub Actions run [42458265296](https://github.com/Hoonygogo/smartchoice365-video/actions/runs/42458265296) completed successfully. All YouTube/Meta published receipts match the approved SHA-256. Naver Clip was separately manually published/tagged per the owner's confirmation; no official Clip API receipt is claimed.
+
+## Confirmed platform destinations
+- YouTube Shorts: https://www.youtube.com/shorts/KwhM7d6u2RA — `published_verified`
+- Instagram Reels: https://www.instagram.com/reel/DfeNV39j5bQ/ — `published_verified`
+- Facebook Reels: https://www.facebook.com/reel/1524406523069407/ — Facebook receipt `published_verified` (stored path: `/reel/1524406523069407/`)
+- Instagram Story: https://www.instagram.com/stories/smartchoice365official/18100111607558637/ — `published_verified`; Stories may expire through normal Meta retention
+- Naver Clip: owner confirmed manual publication with native Naver Shopping Connect product tag attached, no independent API verification
+
+**Do not re-upload** or create duplicate publications. This workflow is a one-time upload trigger and previous approval records must be preserved.
+
 
 ## Upload destination
 
