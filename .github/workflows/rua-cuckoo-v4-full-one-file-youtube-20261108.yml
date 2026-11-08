@@ -1,0 +1,97 @@
+name: "CUCKOO V4 full video: exact one-file upload -> public YouTube (Sarah/F1)"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "uploads/CUCKOO_V4.mp4"
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: cu-20261108-v4-full-one-file-publication
+  cancel-in-progress: false
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate approved full video and exact merchant-disclosure metadata before posting
+        run: |
+          if ! command -v ffprobe >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          python - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          p=pathlib.Path("uploads/CUCKOO_V4.mp4")
+          req=json.loads(pathlib.Path("publications/requests/rua-cuckoo-20l-v4-full-20261108.json").read_text(encoding="utf-8"))
+          approved="f61d6db7629f591ec681c40d06f0c738bebfa14fc02fbb1892d8aaae08528ef7"
+          if not p.is_file() or p.stat().st_size != 24665457:
+              raise SystemExit("The exact owner-approved CUCKOO V4 MP4 is missing or altered. Nothing posted.")
+          digest=hashlib.sha256(p.read_bytes()).hexdigest()
+          if digest!=approved or req.get("sha256")!=approved:
+              raise SystemExit("Approved media hash mismatch. No publication.")
+          if req.get("id")!="rua-cuckoo-20l-v4-full-20261108" or req.get("source")!="uploads/CUCKOO_V4.mp4" or req.get("approval")!="publish":
+              raise SystemExit("Unapproved source or publication ID.")
+          streams=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_format","-show_streams","-of","json",str(p)]))
+          video=[v for v in streams["streams"] if v.get("codec_type")=="video"]
+          audio=[a for a in streams["streams"] if a.get("codec_type")=="audio"]
+          if len(video)!=1 or len(audio)!=1 or video[0].get("codec_name")!="h264" or audio[0].get("codec_name")!="aac":
+              raise SystemExit("Only H264 video + AAC audio accepted.")
+          if (video[0].get("width"),video[0].get("height"))!=(1920,1080):
+              raise SystemExit("Only approved 16:9 1080p full video accepted.")
+          seconds=float(streams["format"]["duration"])
+          if not 308.60 <= seconds <= 308.72:
+              raise SystemExit("Unexpected runtime: missing long-form content or official ending.")
+          rate=video[0]["avg_frame_rate"].split("/")
+          fps=float(rate[0])/float(rate[1])
+          if not 23.9 < fps < 24.2:
+              raise SystemExit("Unexpected FPS; require V4 24fps render.")
+          meta=req["metadata"];snippet=meta["snippet"];title=snippet["title"];desc=snippet["description"]
+          if len(title)>100 or len(desc)>5000 or "#Shorts" in title:
+              raise SystemExit("This must be valid regular long-form YouTube metadata.")
+          if meta["status"].get("privacyStatus")!="public" or meta["status"].get("selfDeclaredMadeForKids") is not False:
+              raise SystemExit("Wrong target privacy or audience settings.")
+          if (snippet.get("defaultLanguage"),snippet.get("defaultAudioLanguage"))!=("ko","ko"):
+              raise SystemExit("Korean Sarah voice metadata required.")
+          expected=[
+              "https://smartchoice365-web.pages.dev/guides/2026-cuckoo-cmw-a201dw-buying-value.html#selection-reasons",
+              "https://link.coupang.com/a/ivyZMMNjOe",
+              "쿠팡 파트너스","별도의 제휴 수수료","엄선한 구매 링크",
+              "2026년 11월 8일","24,000원","7,890원","31,890원",
+              "https://www.youtube.com/shorts/PlQZ4kdOQVI",
+          ]
+          for needed in expected:
+              if needed not in desc:
+                  raise SystemExit("Missing mandatory checked product, disclosure, short, or coupon detail: "+needed)
+          if not desc.startswith("👉 쿠쿠 CMW-A201DW 엄선 구매추천"):
+              raise SystemExit("First description line must lead to the corresponding exact guide.")
+          print("CUCKOO_V4_FULL_PREFLIGHT_PASSED",digest,round(seconds,3),round(fps,3),len(desc))
+          PY
+          python -m py_compile maintenance/publish_rua_cuckoo_v4_full_20261108.py
+          ffmpeg -hide_banner -v error -xerror -i uploads/CUCKOO_V4.mp4 -f null -
+      - name: Preflight note
+        run: echo "Approved MP4 validated; this check alone does not mean a social video was publicly posted." >> "$GITHUB_STEP_SUMMARY"
+
+  youtube:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Publish one copy to the verified Smart Choice 365 YouTube channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_rua_cuckoo_v4_full_20261108.py
+      - name: Verify publication record
+        if: always()
+        run: |
+          echo "YouTube publication receipt: publications/receipts/rua-cuckoo-20l-v4-full-20261108-youtube.json" >> "$GITHUB_STEP_SUMMARY"
+          echo "Only published_verified means public YouTube success. Do not re-upload on an uncertain response." >> "$GITHUB_STEP_SUMMARY"
+          echo "After success: in YouTube Studio attach Related Video to existing CUCKOO Short PlQZ4kdOQVI, if authorized." >> "$GITHUB_STEP_SUMMARY"
