@@ -18,8 +18,8 @@ from check_youtube import request_json
 
 ROOT = Path(__file__).resolve().parents[1]
 MEDIA = ROOT / "uploads" / "RUA_Qrevo_L_Pro_3Parts_OfficialOutro_Affiliate_Ready_1080x1920.mp4"
-SHA256 = "b9c6d6b3e03993eb2b45e4d3a40700ba597aa29a62257a8aa2667f9dc25da68a"
-SIZE = 15951329
+SHA256 = "6e4995d7237f417b0cf835d82236f84decb5dd04471276a36ce26efff176e645"
+SIZE = 16028684
 PUB_ID = "rua-qrevo-l-pro-3part-20261108"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
 SITE = "https://smartchoice365-web.pages.dev/"
