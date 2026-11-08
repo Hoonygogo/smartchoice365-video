@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "42473626206",
   "note": "Owner approved the exact Cuckoo 31.528s two-part 3D cartoon with buying-link bridge and the official RUA V2 ending; no additional outro",
   "video_id": "PlQZ4kdOQVI",
-  "url": "https://www.youtube.com/shorts/PlQZ4kdOQVI"
+  "url": "https://www.youtube.com/shorts/PlQZ4kdOQVI",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
