@@ -5,10 +5,11 @@
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/bc6a9865e3f839dd9ee3e6228658ec67db073a3f/uploads/RUA_RobotVacuum_OfficialEnding_20s_1080x1920.mp4",
   "video_size": 12542337,
   "delivery_sha256": "ffb71560d4da3a8031a19b3e58684931024ed99543307ed04f1ae0eef0bb1d51",
-  "status": "published_unverified",
+  "status": "published_verified",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "run_id": "42448001865",
   "container_id": "17889252741527047",
-  "media_id": "18093037337301694"
+  "media_id": "18093037337301694",
+  "permalink": "https://www.instagram.com/reel/Dfd7dzODJ-B/"
 }
