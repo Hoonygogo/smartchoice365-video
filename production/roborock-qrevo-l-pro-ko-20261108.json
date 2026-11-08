@@ -1,0 +1,67 @@
+{
+  "id": "roborock-qrevo-l-pro-ko-20261108",
+  "language": "ko",
+  "voice": {
+    "name": "Sarah F1",
+    "engine": "Supertonic 3",
+    "speed": 1.1,
+    "steps": 8
+  },
+  "guide_url": "https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html",
+  "affiliate_url": "https://naver.me/F05el04Z",
+  "status": "research_condition_pending",
+  "publication_authorized": true,
+  "production_pipeline": "existing Korean guide renderer and existing YouTube/Meta publishers; no replacement system",
+  "blockers": [
+    "Final delivered price and seller warranty/return terms not independently verified. Do not render an unqualified seller endorsement.",
+    "No final rendered media, QA hash or public video exists yet."
+  ],
+  "full_video": {
+    "format": "1920x1080",
+    "sections": [
+      {
+        "scene": "intro",
+        "text": "안녕하세요, 스마트 초이스 삼육오입니다. 오늘은 로보락 큐레보 엘 프로를 어떤 분이 고르면 좋을지, 구매처는 어떻게 비교할지 살펴보겠습니다."
+      },
+      {
+        "scene": "verdict",
+        "text": "고온 걸레 세척과 자동 먼지 비움을 원하면서 특정 카드 할인을 맞추기 어렵다면 비교할 만한 모델입니다. 다만 모든 분께 최저가인 구매처가 같지는 않습니다."
+      },
+      {
+        "scene": "comparison",
+        "text": "제조사 표기상 엘 프로는 만팔천오백 파스칼, 큐레보 씨는 만이천 파스칼입니다. 이 숫자가 실제 청소 성능의 비례 차이를 보장하지는 않습니다. 씨 모델은 가장자리 물걸레와 듀얼 엉킴 방지 특징도 비교해야 합니다."
+      },
+      {
+        "scene": "purchase",
+        "text": "조사 당시 네이버 표시가격은 오십일만 구천 원, 에누리에 표시된 지마켓과 옥션 일반가는 오십삼만 백육십 원이었습니다. 하지만 현대스마일카드 조건부 가격은 사십구만 삼천사십 원으로 더 낮았습니다. 모두 이천이십육년 십일월 팔일의 표시정보입니다."
+      },
+      {
+        "scene": "reviews",
+        "text": "공개 후기에서 자동 관리의 편리함을 긍정적으로 설명한 사례를 확인했습니다. 초기 불량과 교환 지연을 주장하는 사례도 있어 보증과 교환 절차를 살펴야 합니다. 저희가 직접 사용한 테스트는 아닙니다."
+      },
+      {
+        "scene": "cta",
+        "text": "이 모델로 결정하셨나요? 설명란의 스마트초이스 삼육오에서 구매처를 비교한 자세한 이유와 아직 확인할 조건을 확인하세요. 실제 구매 조건을 확인할 상품 링크도 함께 안내합니다. 제휴 링크를 이용하셔도 별도의 제휴 수수료는 고객님께 청구되지 않습니다."
+      }
+    ]
+  },
+  "short": {
+    "format": "1080x1920",
+    "script": "로보락 엘 프로, 같은 제품도 카드에 따라 살 곳이 달라집니다. 십일월 팔일 조사에서 네이버는 오십일만 구천 원, 다른 몰 일반가는 오십삼만 원대였지만 특정 카드 조건은 사십구만 원대도 있었습니다. 스마트초이스 삼육오는 유리한 조건과 예외를 함께 비교합니다. 제품과 구매처를 검토한 자세한 이유는 홈페이지에서 확인하세요.",
+    "full_video_url": null,
+    "related_video_status": "not_available_do_not_invent"
+  },
+  "disclosure": "이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.",
+  "customer_value": "제품과 가격, 조건과 후기를 비교해 고객님의 검색 시간과 수고를 줄입니다. 별도의 제휴 수수료는 고객님께 청구되지 않습니다.",
+  "platforms": [
+    "youtube_full",
+    "youtube_shorts",
+    "facebook_reels",
+    "instagram_reels"
+  ],
+  "captions": {
+    "youtube_full_first_line": "제품과 구매처를 비교한 자세한 이유: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html",
+    "facebook": "로보락 Qrevo L Pro, 가격만 보고 고르기 전에 확인할 조건이 있습니다. 제품과 구매처를 비교한 이유: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n구매 조건 확인: https://naver.me/F05el04Z\n이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다. 별도의 제휴 수수료가 고객님께 청구되지 않습니다.",
+    "instagram": "로보락 Qrevo L Pro, 특정 카드가 있느냐에 따라 유리한 구매처가 달라집니다. 스마트초이스365 홈페이지에서 선정 근거와 예외 조건을 확인하세요. 프로필 링크는 실제 설정 상태 확인 후 안내합니다.\nhttps://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다."
+  }
+}
