@@ -1,3 +1,20 @@
+# RUA 로봇청소기 + 공식 V2 엔딩 — 파일 1개로 자동 발행 (2026-11-08)
+
+완성본: `RUA_RobotVacuum_OfficialEnding_20s_1080x1920.mp4`
+
+- 정확한 업로드 화면: https://github.com/Hoonygogo/smartchoice365-video/upload/main/uploads
+- 대상 경로: `uploads/RUA_RobotVacuum_OfficialEnding_20s_1080x1920.mp4`
+- 최종 파일 용량: **12,542,337 bytes**
+- SHA-256: `ffb71560d4da3a8031a19b3e58684931024ed99543307ed04f1ae0eef0bb1d51`
+- 20.053초, 세로 **1080×1920**, 24fps, H.264/AAC, 2초 키프레임과 faststart 적용.
+- 파일 구성: 원본 로봇청소기 10초 + 승인된 루아 공식 시그니처 V2 엔딩 10초, 원본 오디오 유지.
+- **위 완성본 딱 1개만** 업로드하고 `Commit changes`를 누르면 `.github/workflows/rua-robot-vacuum-20261108-four-platform-publish.yml`이 실행되도록 설정되어 있습니다. 다른 이름, 원본 10초 파일, 이미 엔딩이 없는 파일은 이 전용 게시 작업을 트리거하지 않습니다.
+- 자동 발행 시도: **YouTube Shorts, Instagram Reel, Facebook Reel, Instagram Story**. 계정 인증과 API 상태가 정상이어야 실제 공개 성공하며, 각 플랫폼 영수증에서 `published_verified`를 확인해야 합니다.
+- **네이버 클립**: 공식 자동 업로드 API가 확인되지 않아 동영상·한국어 제목/본문을 GitHub Actions 아티팩트로 묶어 준비합니다. 로그인된 클립 크리에이터 화면에서 **수동 공개**가 필요합니다. 공식 쇼핑커넥트 상품 태그, 블로그 링크는 검증 전 임의 입력하지 않습니다.
+- 승인된 엔딩이 **이미 포함된 완성본**입니다. 다른 엔딩을 다시 붙이지 마세요. 이미 게시한 다른 영상을 삭제하거나 재게시하지 않습니다.
+
+---
+
 # RUA English Introduction — approved 10-second release (2026-11-02)
 
 The user-approved original from this conversation is ready for the **existing free GitHub Actions -> YouTube + Meta publishing system**. The binary MP4 has not yet been transferred into this GitHub repository.
