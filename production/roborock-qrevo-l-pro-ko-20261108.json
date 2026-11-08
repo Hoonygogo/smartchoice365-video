@@ -60,7 +60,22 @@
     "format": "1080x1920",
     "script": "로보락 엘 프로로 결정하셨나요? 카드 혜택을 따로 쓰지 않는다면 오십일만 구천 원에 기본 무료배송인 네이버 구매처부터 추천합니다. 공개된 판매 법인과 수입사 일치, 우수셀러 표시, 리뷰 분포까지 확인했습니다. 단, 카드 결제 조건이 맞으면 다른 곳이 더 쌀 수 있습니다. 가격 차트와 낮은 평점 후기, 보증 조건까지 스마트초이스 삼육오 홈페이지에 정리했습니다. 네이버플러스 포인트는 본인 적립 구간과 대상 여부에 따라 달라지니 홈페이지의 조건별 표도 확인하세요.",
     "full_video_url": null,
-    "related_video_status": "not_available_do_not_invent"
+    "related_video_status": "not_available_do_not_invent",
+    "production": {
+      "tool": "Google Flow",
+      "model": "Omni 1.2 Flash",
+      "durationSeconds": 10,
+      "aspectRatio": "9:16",
+      "language": "ko",
+      "character": "existing registered RUA character ingredient",
+      "characterEvidence": "generation history shows RUA thumbnail and accessibility_new character icon",
+      "credits": 30,
+      "sourceBalanceObserved": 50,
+      "status": "generating",
+      "project": "https://flow.google.com/project/dca9de0b-0798-4646-b2fc-bb0293ff8d55",
+      "dialogue": "청소는 로보락에게! 엘 프로 장단점과 구매 혜택, 스마트초이스 삼육오에서 확인해요!",
+      "publicUpload": false
+    }
   },
   "disclosure": "이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.",
   "customer_value": "제품과 가격, 조건과 후기를 비교해 고객님의 검색 시간과 수고를 줄입니다. 별도의 제휴 수수료는 고객님께 청구되지 않습니다.",
