@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - "maintenance/render_rua_cuckoo_sarah_sales_v2_20261108.py"
+      - ".github/workflows/rua-cuckoo-sarah-sales-v2-20261108.yml"
 permissions:
   contents: write
 concurrency:
@@ -73,4 +74,5 @@ jobs:
             git push origin HEAD:main
           fi
       - name: Note no public upload was made
-        run: echo "DRAFT ONLY: no YouTube or Meta publication until user approves this exact V2." >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          echo "DRAFT ONLY - no YouTube or Meta publication until user approves this exact V2." >> "$GITHUB_STEP_SUMMARY"
