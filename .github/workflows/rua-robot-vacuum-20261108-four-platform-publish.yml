@@ -125,14 +125,7 @@ jobs:
           python - <<'PY'
           import json, os, pathlib
           path = pathlib.Path("naver-clip-handoff")
-          caption = (
-              "루아와 로봇청소기! 🤖🧹 청소는 맡기고 구매는 똑똑하게.\n"
-              "로보락 Qrevo L Pro 구매 비교 가이드와 가격·판매자 확인: "
-              "https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n"
-              "실제 제품 테스트가 아닌 3D 캐릭터 애니메이션입니다.\n"
-              "가이드에 제휴 링크가 포함될 수 있으며, 고객에게 별도의 제휴 수수료는 청구되지 않습니다.\n"
-              "#루아 #RUA #로봇청소기 #SmartChoice365"
-          )
+          caption = "\n".join(["광고·제휴 안내: 이 클립에는 네이버 쇼핑커넥트 및 링크프라이스 제휴 링크가 포함되어 있으며, 구매 발생 시 수수료를 제공받을 수 있습니다.","루아와 로봇청소기 🤖🧹 청소는 로봇에게, 구매 비교는 스마트초이스365에서!","로보락 Qrevo L Pro 구매 비교 가이드: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html","네이버 쇼핑커넥트 추천 판매처: https://naver.me/F05el04Z","G마켓 링크프라이스 구매처 (카드/쿠폰 조건 확인): https://bestmore.net/click.php?m=gmarket&a=A100708938&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fitem.gmarket.co.kr%2FItem%3FgoodsCode%3D4822243340","관련 네이버 블로그 비교글: https://blog.naver.com/smartchoice365/224469034521","실제 제품 시연이 아닌 창작 3D 캐릭터 애니메이션입니다. 가격·회원 혜택·배송비는 결제 시점과 개인별 조건에 따라 달라집니다.","제휴 링크를 이용해도 고객에게 별도의 제휴 수수료는 청구되지 않습니다.","#루아 #RUA #로봇청소기 #SmartChoice365"])
           payload = {
               "id": "rua-robot-vacuum-20261108",
               "status": "manual_handoff_ready_no_auto_upload",
@@ -142,12 +135,15 @@ jobs:
               "media_file": "RUA_RobotVacuum_OfficialEnding_20s_1080x1920.mp4",
               "source_sha256": "ffb71560d4da3a8031a19b3e58684931024ed99543307ed04f1ae0eef0bb1d51",
               "category_suggestion": "엔터 > 만화·애니",
-              "blog_content_link": None,
-              "blog_link_status": "not_verified",
-              "shopping_connect_product_tag": None,
-              "shopping_tag_status": "not_issued_or_verified",
-              "ai_use": "review Naver Clip AI-use disclosure toggle in upload UI",
-              "advertising": "review affiliate disclosure and ad/collaboration toggle if placing a commercial link",
+              "blog_content_link": "https://blog.naver.com/smartchoice365/224469034521",
+              "blog_link_status": "owner_blog_url_verified; attach exact article in Clip UI before publication",
+              "shopping_connect_product_tag": {"product": "로보락 Qrevo L Pro", "seller": "로보락판매점", "issued_affiliate_url": "https://naver.me/F05el04Z", "native_tag_required": True, "status": "requires_manual_search_attach_and_readback_in_Naver_UI"},
+              "linkprice_gmarket": "https://bestmore.net/click.php?m=gmarket&a=A100708938&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fitem.gmarket.co.kr%2FItem%3FgoodsCode%3D4822243340",
+              "affiliate_disclosure_required": True,
+              "advertising_collaboration_switch": "on",
+              "shopping_tag_status": "issued_naver_link_confirmed_in_guide; native_clip_tag_not_attached_yet",
+              "ai_use": True,
+              "advertising": True,
               "publication": "must use owner's signed-in Naver Clip Creators UI; no verified public upload API",
               "raw_github_video_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/"+os.environ["GITHUB_SHA"]+"/uploads/RUA_RobotVacuum_OfficialEnding_20s_1080x1920.mp4"
           }
