@@ -1,0 +1,159 @@
+name: "RUA CUCKOO 20L: one MP4 -> YouTube Shorts, Instagram/Facebook Reels, Instagram Story + Naver Clip handoff"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "uploads/RUA_Cuckoo_20L_OfficialOutro_CuratedAffiliate_1080x1920.mp4"
+
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: rua-cuckoo-20l-20261108-exact-upload
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate the exact approved, complete media and purchase links
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          python - <<'PY'
+          import hashlib, json, pathlib, subprocess
+          filename = "uploads/RUA_Cuckoo_20L_OfficialOutro_CuratedAffiliate_1080x1920.mp4"
+          path = pathlib.Path(filename)
+          expected = "b4a661af22a08cbe47916d59630faa66d546cdf83e517b49a5314a04666fcd22"
+          if not path.is_file() or path.stat().st_size != 23027514:
+              raise SystemExit("The exact approved single CUCKOO 31.528s MP4 has not been uploaded.")
+          if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+              raise SystemExit("Uploaded video bytes differ from the owner's approved file. Do not publish.")
+          info = json.loads(subprocess.check_output(["ffprobe","-v","error","-show_streams","-show_format","-of","json",filename]))
+          vids = [s for s in info["streams"] if s.get("codec_type") == "video"]
+          auds = [s for s in info["streams"] if s.get("codec_type") == "audio"]
+          if len(vids)!=1 or len(auds)!=1 or vids[0].get("codec_name")!="h264" or auds[0].get("codec_name")!="aac":
+              raise SystemExit("Approved H.264/AAC streams missing.")
+          if (vids[0].get("width"),vids[0].get("height"))!=(1080,1920):
+              raise SystemExit("Wrong video resolution.")
+          if not 31.40 <= float(info["format"]["duration"]) <= 31.65:
+              raise SystemExit("Wrong duration or incomplete RUA official V2 ending.")
+          y = json.loads(pathlib.Path("publications/requests/rua-cuckoo-20l-20261108-youtube.json").read_text(encoding="utf-8"))
+          m = json.loads(pathlib.Path("publications/meta-requests/rua-cuckoo-20l-20261108.json").read_text(encoding="utf-8"))
+          if y.get("sha256")!=expected or m.get("sha256")!=expected or y.get("approval")!="publish" or m.get("approval")!="publish":
+              raise SystemExit("Missing owner-approved, hash-locked publication requests.")
+          link = "https://link.coupang.com/a/ivyZMMNjOe"
+          guide = "https://smartchoice365-web.pages.dev/guides/2026-cuckoo-cmw-a201dw-buying-value.html#selection-reasons"
+          candidates = {"YouTube":y["metadata"]["snippet"]["description"], "Instagram":m["captions"]["instagram"], "Facebook":m["captions"]["facebook"]}
+          for platform,copy in candidates.items():
+              for required in (link,guide,"쿠팡 파트너스","수수료","와우"):
+                  if required not in copy:
+                      raise SystemExit(f"{platform} missing mandatory verified affiliate or disclosure: {required}")
+          if not m.get("affiliate_programs",{}).get("coupang_partners",{}).get("issued_url")==link:
+              raise SystemExit("Coupang issued link not registered in Meta release request.")
+          if any(len(m["captions"][x])>1800 for x in ("instagram","facebook")):
+              raise SystemExit("Meta caption exceeds platform-safe 1800 character limit.")
+          if len(y["metadata"]["snippet"]["title"])>100 or len(y["metadata"]["snippet"]["description"])>5000:
+              raise SystemExit("YouTube title or description too long.")
+          print("APPROVED_CUCKOO_VIDEO_AND_AFFILIATE_COPY_READY",expected)
+          PY
+          ffmpeg -hide_banner -v error -xerror -i "uploads/RUA_Cuckoo_20L_OfficialOutro_CuratedAffiliate_1080x1920.mp4" -f null -
+      - name: Record preflight state
+        run: echo "Only the exact approved MP4 may trigger public uploads; this check is not a platform publication receipt." >> "$GITHUB_STEP_SUMMARY"
+
+  youtube:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: YouTube Shorts publish with receipt lock and public verification
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_rua_cuckoo_20l_20261108.py
+      - if: always()
+        run: echo "YouTube result in publications/receipts/rua-cuckoo-20l-20261108-youtube.json" >> "$GITHUB_STEP_SUMMARY"
+
+  meta:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ensure FFmpeg is installed
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+      - name: Publish Instagram and Facebook Reels using existing verified APIs
+        env:
+          META_PUBLISH_ENABLED: "true"
+          META_REQUEST_FILE: "publications/meta-requests/rua-cuckoo-20l-20261108.json"
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_SYSTEM_USER_ACCESS_TOKEN: ${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ vars.META_INSTAGRAM_ACCOUNT_ID || '17841475811391464' }}
+          GH_TOKEN: ${{ github.token }}
+        run: python maintenance/publish_meta_reels.py
+      - name: Publish the same approved Instagram Reel media to Story after receipt verification
+        env:
+          META_PUBLISH_ENABLED: "true"
+          META_REQUEST_FILE: "publications/meta-requests/rua-cuckoo-20l-20261108.json"
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_SYSTEM_USER_ACCESS_TOKEN: ${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ vars.META_INSTAGRAM_ACCOUNT_ID || '17841475811391464' }}
+          GH_TOKEN: ${{ github.token }}
+        run: python maintenance/publish_meta_story_from_reel.py
+      - if: always()
+        run: echo "Instagram/Facebook/Story outcomes require published_verified entries under publications/meta-receipts/." >> "$GITHUB_STEP_SUMMARY"
+
+  naver_clip_manual_package:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Produce Naver Clip upload package (official automatic publishing not verified)
+        run: |
+          mkdir -p naver-clip-handoff
+          cp "uploads/RUA_Cuckoo_20L_OfficialOutro_CuratedAffiliate_1080x1920.mp4" naver-clip-handoff/
+          python - <<'PY'
+          import json,pathlib
+          title="루아와 말하는 전자레인지 😂 쿠쿠 20L 가격·와우 가입 쿠폰"
+          caption="\n".join([
+              "[광고 · 쿠팡 파트너스] 루아와 전자레인지의 귀여운 가격 반전! 😂",
+              "쿠쿠 CMW-A201DW 화이트 20L. 고객을 위해 검토하고 엄선한 구매 링크입니다.",
+              "쿠팡 제휴 구매 링크: https://link.coupang.com/a/ivyZMMNjOe",
+              "왜 이 제품과 판매처를 선정했나요? https://smartchoice365-web.pages.dev/guides/2026-cuckoo-cmw-a201dw-buying-value.html#selection-reasons",
+              "2026-11-08 확인: 24,000원은 와우 가입 쿠폰 대상자 조건부 예시. 월회비 한 달 7,890원 포함 31,890원. 모든 고객 적용 금액이 아니며 이후 회비가 정기 청구될 수 있습니다.",
+              "실제 판매가격·배송·쿠폰·반품 조건은 결제 화면에서 확인하세요. 전국 최저가 보장 아님.",
+              "창작 캐릭터 애니메이션으로 실제 제품 외관·실물 시연과 다를 수 있습니다.",
+              "쿠팡 파트너스 활동으로 수수료를 제공받을 수 있으나 고객에게 별도의 제휴 수수료는 청구되지 않습니다.",
+              "RUA 유튜브 https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA",
+              "#광고 #쿠쿠전자레인지 #자취가전 #루아 #RUA #SmartChoice365"
+          ])
+          root=pathlib.Path("naver-clip-handoff")
+          (root/"TITLE_KO.txt").write_text(title+"\n",encoding="utf-8")
+          (root/"CAPTION_KO.txt").write_text(caption+"\n",encoding="utf-8")
+          data={"status":"manual_upload_required","platform":"Naver Clip Creators","media_filename":"RUA_Cuckoo_20L_OfficialOutro_CuratedAffiliate_1080x1920.mp4","title":title,"caption":caption,"guide":"https://smartchoice365-web.pages.dev/guides/2026-cuckoo-cmw-a201dw-buying-value.html#selection-reasons","coupang_issued_link":"https://link.coupang.com/a/ivyZMMNjOe","native_shopping_connect_tag":"not verified or attached; do not fabricate","publish":"owner must manually upload after inspection"}
+          (root/"clip-manual-publish.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rua-cuckoo-20l-naver-clip-ready
+          path: naver-clip-handoff/
+          retention-days: 7
+      - run: echo "Naver Clip package ready for owner manual posting. A native Clip product tag is NOT automatically attached." >> "$GITHUB_STEP_SUMMARY"
