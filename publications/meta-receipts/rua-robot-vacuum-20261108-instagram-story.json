@@ -5,8 +5,9 @@
   "media_path": "uploads/RUA_RobotVacuum_OfficialEnding_20s_1080x1920.mp4",
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/bc6a9865e3f839dd9ee3e6228658ec67db073a3f/uploads/RUA_RobotVacuum_OfficialEnding_20s_1080x1920.mp4",
   "video_size": 12542337,
-  "status": "media_publish_initiated",
+  "status": "published_unverified",
   "account_id": "17841475811391464",
   "run_id": "42448001865",
-  "container_id": "17889253176527047"
+  "container_id": "17889253176527047",
+  "media_id": "18345688159287191"
 }
