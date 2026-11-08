@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish the EXACT owner-approved RUA English introduction four-part 20.053s MP4 to YouTube.
+"""Publish the exact owner-approved 20.053-second RUA robot vacuum cartoon with official V2 ending to YouTube.
 
 One-time upload gate: upload only uploads/RUA_RobotVacuum_OfficialEnding_20s_1080x1920.mp4.
 Other releases need separate owner-approved metadata/hash. No deletion or edits.
@@ -64,7 +64,7 @@ def main():
             "id": PUB_ID, "sha256": digest, "channel_id": CHANNEL,
             "approval": "publish", "platform": "youtube",
             "status": "upload_initiated", "run_id": os.environ.get("GITHUB_RUN_ID"),
-            "note": "Owner explicitly approved publishing original RUA Robot Vacuum with Official Ending without adding outro",
+            "note": "Owner approved the combined 10-second RUA robot vacuum clip plus verified 10-second official V2 ending; do not append an additional ending",
         }
         save(record)
         _, headers = api(
