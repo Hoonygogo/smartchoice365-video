@@ -5,7 +5,7 @@
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/10740ffb4f6e9fb3ef8dd36bdda9e8d69ca43617/uploads/meta-delivery/rua-qrevo-l-pro-3part-20261108-6e4995d7237f-meta-1080p-2sec-v1.mp4",
   "video_size": 24196491,
   "delivery_sha256": "a46535cb9da3b902893fb89f8d1009c7846622cc5e92eaef831d88bf5dfb9c8b",
-  "status": "transfer_complete",
+  "status": "finish_initiated",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "run_id": "42458265296",
