@@ -1,0 +1,27 @@
+name: Prepare Naver Clip draft handoff (no publishing)
+on:
+  workflow_dispatch:
+    inputs:
+      request_file:
+        description: Existing publications/requests or meta-requests JSON with naver_clip settings
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare from existing approved-media request
+        env:
+          REQUEST_FILE: ${{ inputs.request_file }}
+        run: python maintenance/prepare_naver_clip.py --request "$REQUEST_FILE"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naver-clip-browser-handoff
+          path: naver-clip-handoff/
+          if-no-files-found: ignore

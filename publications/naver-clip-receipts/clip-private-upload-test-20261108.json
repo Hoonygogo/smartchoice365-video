@@ -1,0 +1,20 @@
+{
+  "id": "clip-private-upload-test-20261108",
+  "sha256": "c53b4a0660f54b9cacd7fe2f7615babc52a66f1c66b406f20a3989f85a1f0c73",
+  "status": "draft_saved_verified",
+  "draft_url": "https://clipcreators.naver.com/web/draft/1639413",
+  "public": false,
+  "category": [
+    "테크",
+    "인터넷, AI"
+  ],
+  "ai_used": true,
+  "advertising": false,
+  "blog_url": "https://blog.naver.com/smartchoice365/224469034521",
+  "observed": "2026-11-08",
+  "file_selection": "manual_by_owner_after_automatic_file_transfer_failed",
+  "automatic_metadata": true,
+  "public_registration_clicked": false,
+  "existing_rua": "unchanged",
+  "limitation": "Extra unnamed test draft visible; no deletion attempted"
+}

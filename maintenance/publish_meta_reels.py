@@ -345,6 +345,11 @@ def facebook(req, page_token, page_id, url, path, r):
 def main():
     req=validate_request()
     url,stats=checked_file(req)
+    # Optional Naver Clip draft queue; never logs in or publicly posts to Naver.
+    if req.get('naver_clip', {}).get('enabled'):
+        from prepare_naver_clip import enqueue_from_publication
+        enqueue_from_publication(req)
+
     if os.environ.get("META_PUBLISH_ENABLED","").lower()!="true":
         print(json.dumps({"dry_run":True,"validation":"PASSED",
                           "platforms":req["platforms"],"media":stats,

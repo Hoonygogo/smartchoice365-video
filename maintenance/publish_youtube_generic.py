@@ -72,6 +72,12 @@ def main():
     digest = hashlib.sha256(media.read_bytes()).hexdigest()
     if digest != request['sha256'] or manifest['sha256'] != digest or manifest['id'] != identity:
         raise RuntimeError('Artifact differs from the approved version; upload blocked.')
+
+    # Optional Naver Clip draft queue; never logs in or publicly posts to Naver.
+    if request.get('naver_clip', {}).get('enabled'):
+        from prepare_naver_clip import enqueue_from_publication
+        enqueue_from_publication(request)
+
     # Hard stop: earlier exceptional publishing must never bypass future strict quality checks.
     if request.get('quality_verified') is not True or manifest.get('quality_verified') is not True:
         raise RuntimeError('Publication blocked: independently verified quality gate is required.')
