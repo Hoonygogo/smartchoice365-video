@@ -337,3 +337,20 @@ Owner-approved monetisation rule for product-specific videos; applies to new app
 
 ## Selected product comparison → recommendation → distribution — owner direction 2026-11-08
 Apply `guides/CURATED_BUYING_WORKFLOW.md` to owner-selected products. Produce a full comparison and a distinct Short and distribute via the EXISTING YouTube/Meta publishers. Regular video: exact product recommendation article first description line, issued affiliate link next with required disclosure. Short/Reels: useful decision evidence and a truthful route to the same product article and, when actually live, full video. Keep Sarah/Kokoro, approved logo, speech-synchronised focus, full-frame assets, Meta 1080p/2-second-keyframe delivery, hash QA and duplicate protections. This request does not authorise replacing/deleting older uploads. Never claim completed rendering or publication without actual artifacts and receipts. The owner has authorised distribution of these selected products; collect a concrete final media hash through normal QC rather than inventing one.
+
+## Mandatory trust and reader-support principle — owner confirmed 2026-11-08
+This is a DEFAULT requirement for all future affiliate product recommendations on the website, Naver, English Blogger, product YouTube videos/Shorts and social posts. Apply alongside programme disclosures and evidence rules; adapt length to the medium.
+- Explain that the Smart Choice365 team researches and compares on the customer's behalf to reduce search time. Describe only the checks actually completed for that product; do not imply human staffing, expertise, hands-on testing, exhaustive review coverage or continuous monitoring that did not occur.
+- Build trust with dated comparison evidence, seller/review checks, price/benefit conditions, material downsides and openly stated unknowns. Consumer value, not commission, determines the recommendation.
+- Always include a warm, voluntary invitation: if the recommendation helped and the customer decides to purchase, use the issued affiliate link to support the team's ongoing research and website/YouTube/social content. Website/article: near the conclusion/purchase CTA; video: concise closing/description; Short/social: compact caption/end CTA, respecting actual clickable placements. Do not claim older content was updated by saving this rule.
+- Keep the exact network-specific disclosure prominent. Say no separate affiliate commission is charged to customers; never imply product purchase, delivery or paid membership is free, or guarantee equal checkout prices, special discounts or rewards.
+- Review before publication: research basis present; scope honest; useful buyer-specific verdict; genuine affiliate destination; support invitation; commission disclosure; no-extra-affiliate-fee clarification.
+
+Approved Korean default (use only with actual completed checks and adapt the named checks):
+“스마트초이스365 팀은 고객님의 시간과 수고를 줄이기 위해 제품의 특징과 구매후기, 판매자 정보, 가격과 구매 조건을 꼼꼼히 조사하고 비교해 추천드립니다. 확인한 근거와 아쉬운 점, 아직 확인하지 못한 내용까지 함께 안내합니다.
+
+저희의 비교와 추천이 도움이 되셨다면, 구매를 결정하실 때 안내된 제휴 링크로 스마트초이스365를 응원해 주세요. 고객님께 별도의 제휴 수수료가 청구되지 않으며, 판매 시 저희가 받는 수수료는 더 좋은 구매 정보와 홈페이지·유튜브·소셜 채널 운영을 이어가는 데 도움이 됩니다. 고객님의 응원이 다음의 꼼꼼한 비교로 이어집니다. 감사합니다.”
+
+Short form:
+“스마트초이스365 팀이 조사하고 비교한 추천이 도움이 되셨다면, 구매하실 때 제휴 링크로 응원해 주세요. 별도의 제휴 수수료 부담 없이, 더 좋은 구매 정보와 채널 운영에 힘을 보태실 수 있습니다.”
+This support copy supplements, never replaces, the programme advertising disclosure.
