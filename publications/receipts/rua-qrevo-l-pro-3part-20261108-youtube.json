@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "42458265296",
   "note": "Owner approved the approved 3-part RUA story, shipping title, product comparison CTA, and verified 10-second official V2 ending; do not append an additional ending",
   "video_id": "KwhM7d6u2RA",
-  "url": "https://www.youtube.com/shorts/KwhM7d6u2RA"
+  "url": "https://www.youtube.com/shorts/KwhM7d6u2RA",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
