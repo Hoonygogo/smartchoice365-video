@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "42448001865",
   "note": "Owner approved the combined 10-second RUA robot vacuum clip plus verified 10-second official V2 ending; do not append an additional ending",
   "video_id": "Op_8IkgJhGM",
-  "url": "https://www.youtube.com/shorts/Op_8IkgJhGM"
+  "url": "https://www.youtube.com/shorts/Op_8IkgJhGM",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
