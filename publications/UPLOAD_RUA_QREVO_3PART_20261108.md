@@ -1,5 +1,12 @@
 # RUA Qrevo L Pro 3-part Shorts — single-file upload release
 
+## Naver Clip owner-confirmed status — 2026-11-08
+
+**Owner confirmed manually published:** RUA Qrevo L Pro 37.86s Clip is already live in Naver Clip Creators and the **native Naver Shopping Connect product tag has been connected manually**. This statement is owner-provided (no official Clip API receipt was independently retrieved). Do **not** propose re-uploading/re-tagging this video or label it merely as an unpublished draft.
+
+For future distinct clips, the GitHub Actions artifact is optional internal handoff only: give the owner a **copy-ready ChatGPT response** with the exact Clip Creators UI fields: description + hashtags, chosen existing-video cover frame, category, Naver Shopping Connect native product tag/manual checks, affiliate disclosure and optional ads/AI selections where supported. The GitHub workflow does not send ChatGPT messages itself. No confirmed automatic Naver Clip publishing API is in use.
+
+
 **Ready. NOT published yet.** The owner uploads only the approved combined MP4; pushing the uploader file is the publication approval.
 
 ## Upload destination
