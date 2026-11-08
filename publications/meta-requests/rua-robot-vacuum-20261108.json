@@ -14,8 +14,22 @@
   "story_cta_verified": true,
   "meta_quality_profile": "meta-1080p-2sec-v1",
   "captions": {
-    "instagram": "루아가 로봇청소기에게 청소를 맡겼다면? 🤖🧹\n실제 구매 비교 가이드: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n가격·배송·회원 조건은 프로필 링크(link in bio)에서 비교해 보세요.\nRUA 유튜브: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n실제 제품 시연이 아닌 창작 3D 애니메이션입니다.\n구매 가이드의 제휴 링크를 이용해도 고객에게 별도 제휴 수수료가 청구되지 않습니다.\n#루아 #RUA #로봇청소기 #SmartChoice365 #Reels",
-    "facebook": "루아와 로봇청소기, 오늘 청소는 누가 할까? 🤖🧹\n로보락 Qrevo L Pro 구매 비교 가이드: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n가격·구매처·멤버십 조건은 가이드에서 확인해 보세요.\nRUA 공식 유튜브: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n실제 특정 제품의 직접 시연이 아닌 3D 캐릭터 애니메이션입니다.\n가이드의 제휴 링크를 통해 구매해도 고객에게 별도의 제휴 수수료는 청구되지 않습니다.\n#루아 #RUA #로봇청소기 #SmartChoice365 #Reels"
+    "instagram": "광고 | 네이버 쇼핑커넥트·링크프라이스 제휴 링크가 포함된 구매안내입니다.\n🤖 루아와 로봇청소기! 실제 제품 테스트가 아닌 창작 3D 애니메이션이에요.\n🛒 로보락 Qrevo L Pro 가격·판매자 비교: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n✅ 네이버 쇼핑커넥트: https://naver.me/F05el04Z\n✅ G마켓 (링크프라이스, 카드·쿠폰 조건 확인): https://bestmore.net/click.php?m=gmarket&a=A100708938&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fitem.gmarket.co.kr%2FItem%3FgoodsCode%3D4822243340\n인스타그램 릴스 본문 링크는 바로 클릭되지 않을 수 있으니 프로필 링크(link in bio)의 스마트초이스365 가이드에서 확인하세요.\n구매 당시 회원·카드·쿠폰 조건에 따라 실제 결제금액은 달라집니다. 제휴 링크 이용으로 고객에게 별도 제휴 수수료는 청구되지 않습니다.\nRUA 공식 유튜브: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n#RUA #루아 #로봇청소기 #SmartChoice365 #Reels",
+    "facebook": "광고 | 네이버 쇼핑커넥트·링크프라이스 제휴 링크를 안내합니다.\n🤖 루아와 로봇청소기! 이 영상은 직접 테스트가 아닌 창작 애니메이션입니다.\n🛒 로보락 Qrevo L Pro 비교 가이드: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n✅ 네이버 쇼핑커넥트 구매처: https://naver.me/F05el04Z\n✅ G마켓 링크프라이스 구매처 (카드·쿠폰 조건 확인): https://bestmore.net/click.php?m=gmarket&a=A100708938&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fitem.gmarket.co.kr%2FItem%3FgoodsCode%3D4822243340\nRUA 공식 유튜브: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n실제 구매가는 회원·배송·쿠폰·카드 조건에 따라 달라집니다. 구매 시 Smart Choice 365가 수수료를 받을 수 있지만 고객에게 별도 제휴 수수료는 청구되지 않습니다.\n#RUA #루아 #로봇청소기 #SmartChoice365 #Reels"
   },
-  "approval_note": "2026-11-08 owner requested final official V2 outro join and publication automatically when this exact verified final MP4 is committed to uploads/. Video is a fictional 3D animation; separate Roborock buying guide is not a filmed product test. Naver Clip remains a manual handoff, not an official API publish."
+  "approval_note": "2026-11-08 owner requested final official V2 outro join and publication automatically when this exact verified final MP4 is committed to uploads/. Video is a fictional 3D animation; separate Roborock buying guide is not a filmed product test. Naver Clip remains a manual handoff, not an official API publish. Captions include the existing issuer URLs for Naver Shopping Connect and LinkPrice Gmarket (not guaranteed lowest prices).",
+  "affiliate_programs": {
+    "naver_shopping_connect": {
+      "issued_url": "https://naver.me/F05el04Z",
+      "product": "로보락 Qrevo L Pro",
+      "verified_in": "Smart Choice 365 Roborock buying guide"
+    },
+    "linkprice": {
+      "issued_url": "https://bestmore.net/click.php?m=gmarket&a=A100708938&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fitem.gmarket.co.kr%2FItem%3FgoodsCode%3D4822243340",
+      "merchant": "Gmarket",
+      "model": "Roborock Qrevo L Pro",
+      "tracking_code": "A100708938",
+      "verified_in": "Smart Choice 365 Roborock buying guide"
+    }
+  }
 }
