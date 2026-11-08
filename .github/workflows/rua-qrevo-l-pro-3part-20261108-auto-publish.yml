@@ -56,7 +56,7 @@ jobs:
               raise SystemExit("Cannot inspect YouTube approved metadata.")
           metadata = json.loads(ast.literal_eval(m.group(1)))
           request = json.loads(pathlib.Path("publications/meta-requests/rua-qrevo-l-pro-3part-20261108.json").read_text(encoding="utf-8"))
-          source = pathlib.Path(".github/workflows/rua-qrevo-l-pro-3part-20261108-four-platform-publish.yml").read_text(encoding="utf-8")
+          source = pathlib.Path(".github/workflows/rua-qrevo-l-pro-3part-20261108-auto-publish.yml").read_text(encoding="utf-8")
           candidates = {
               "YouTube Shorts": metadata["snippet"]["description"],
               "Instagram Reels": request["captions"]["instagram"],
