@@ -24,8 +24,8 @@ jobs:
           python - <<'PY'
           import hashlib, json, pathlib, subprocess
           p = pathlib.Path("uploads/RUA_Qrevo_L_Pro_3Parts_OfficialOutro_Affiliate_Ready_1080x1920.mp4")
-          approved_hash = "b9c6d6b3e03993eb2b45e4d3a40700ba597aa29a62257a8aa2667f9dc25da68a"
-          if not p.is_file() or p.stat().st_size != 15951329:
+          approved_hash = "6e4995d7237f417b0cf835d82236f84decb5dd04471276a36ce26efff176e645"
+          if not p.is_file() or p.stat().st_size != 16028684:
               raise SystemExit("Approved 3-part source has not been uploaded or has wrong size.")
           if hashlib.sha256(p.read_bytes()).hexdigest() != approved_hash:
               raise SystemExit("Uploaded MP4 does not match the exact final approved with official V2 ending.")
@@ -161,7 +161,7 @@ jobs:
               "title": "루아와 로봇청소기 🤖🧹",
               "caption": caption,
               "media_file": "RUA_Qrevo_L_Pro_3Parts_OfficialOutro_Affiliate_Ready_1080x1920.mp4",
-              "source_sha256": "b9c6d6b3e03993eb2b45e4d3a40700ba597aa29a62257a8aa2667f9dc25da68a",
+              "source_sha256": "6e4995d7237f417b0cf835d82236f84decb5dd04471276a36ce26efff176e645",
               "category_suggestion": "엔터 > 만화·애니",
               "blog_content_link": "https://blog.naver.com/smartchoice365/224469034521",
               "blog_link_status": "owner_blog_url_verified; attach exact article in Clip UI before publication",
