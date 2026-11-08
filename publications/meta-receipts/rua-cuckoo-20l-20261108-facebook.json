@@ -5,7 +5,7 @@
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/2eb59ef3cd4c478ce87983e310823e775485cb02/uploads/RUA_Cuckoo_20L_OfficialOutro_CuratedAffiliate_1080x1920.mp4",
   "video_size": 23027514,
   "delivery_sha256": "b4a661af22a08cbe47916d59630faa66d546cdf83e517b49a5314a04666fcd22",
-  "status": "transfer_complete",
+  "status": "finish_initiated",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "run_id": "42473626206",
