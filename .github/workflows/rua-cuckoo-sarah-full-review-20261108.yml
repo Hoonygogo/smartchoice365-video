@@ -1,0 +1,70 @@
+name: "RUA CUCKOO 20L Korean full review: Sarah/F1 voice and exact focus cards (DRAFT)"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "maintenance/render_rua_cuckoo_sarah_full_20261108.py"
+permissions:
+  contents: write
+concurrency:
+  group: rua-cuckoo-sarah-full-review-20261108
+  cancel-in-progress: false
+jobs:
+  render-review-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install free approved Korean Sarah synthesis dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+          python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Fetch pinned Supertonic 3 public F1 model from official source
+        run: python scripts/download_model.py
+      - name: Render CUCKOO 20L Sarah/F1 narrated general video, all focus cues
+        run: python maintenance/render_rua_cuckoo_sarah_full_20261108.py
+      - name: Verify exact focus narration, audio tracks and complete MP4
+        run: |
+          python - <<'PY'
+          import json, pathlib, subprocess
+          folder=pathlib.Path("renders/rua-cuckoo-sarah-20261108")
+          movie=folder/"RUA_Cuckoo_20L_Full_Sarah_Focus_1080p.mp4"
+          item=json.loads((folder/"Sarah_Focus_Timings.json").read_text())
+          assert item["status"]=="review_only_unpublished"
+          assert (item["voice"],item["language"],item["speed"],item["steps"])==("Sarah/F1","ko",1.1,8)
+          assert len(item["timeline"])==27
+          assert all(x["rms"] >= 0.008 for x in item["timeline"])
+          assert all(x["end"]>x["start"] for x in item["timeline"])
+          probe=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_streams","-show_format","-of","json",str(movie)]))
+          assert 130<float(probe["format"]["duration"])<500
+          assert any(x.get("codec_type")=="video" and x.get("codec_name")=="h264" and (x["width"],x["height"])==(1920,1080) for x in probe["streams"])
+          assert any(x.get("codec_type")=="audio" and x.get("codec_name")=="aac" for x in probe["streams"])
+          print("CUCKOO_SARAH_DRAFT_QA_PASS",movie, movie.stat().st_size, probe["format"]["duration"])
+          PY
+          ffmpeg -hide_banner -v error -xerror -i renders/rua-cuckoo-sarah-20261108/RUA_Cuckoo_20L_Full_Sarah_Focus_1080p.mp4 -f null -
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RUA_Cuckoo_20L_Sarah_Focus_Full_Review_Only
+          path: renders/rua-cuckoo-sarah-20261108/
+          retention-days: 7
+          if-no-files-found: error
+      - name: Commit review draft into renders only (never upload publicly)
+        run: |
+          set -eu
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add renders/rua-cuckoo-sarah-20261108/
+          if ! git diff --cached --quiet; then
+            git commit -m "Render CUCKOO 20L Sarah/F1 16:9 buying guide draft (unpublished)"
+            git push origin HEAD:main
+          fi
+      - name: Keep review unpublished
+        run: |
+          echo "Review-only: no YouTube, Instagram or Facebook API publication. Owner approval required." >> "$GITHUB_STEP_SUMMARY"
+          echo "Locked voice: Supertonic 3 Sarah/F1 ko 1.1 8 steps; 27 speech-synchronised focus boxes." >> "$GITHUB_STEP_SUMMARY"
