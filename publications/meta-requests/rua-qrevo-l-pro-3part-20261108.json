@@ -1,0 +1,35 @@
+{
+  "id": "rua-qrevo-l-pro-3part-20261108",
+  "approval": "publish",
+  "channel_intro": true,
+  "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
+  "platforms": [
+    "instagram",
+    "facebook"
+  ],
+  "media_path": "uploads/RUA_Qrevo_L_Pro_3Parts_OfficialOutro_Affiliate_Ready_1080x1920.mp4",
+  "sha256": "b9c6d6b3e03993eb2b45e4d3a40700ba597aa29a62257a8aa2667f9dc25da68a",
+  "facebook_title": "루아 청소 지옥 탈출 😂 로보락 Qrevo L Pro 구매 가이드 | Smart Choice 365",
+  "share_to_instagram_story": true,
+  "story_cta_verified": true,
+  "meta_quality_profile": "meta-1080p-2sec-v1",
+  "captions": {
+    "instagram": "광고 | 네이버 쇼핑커넥트·링크프라이스 제휴 링크가 포함된 구매안내입니다.\n🤖 루아 청소 지옥 탈출 3편 완결! 실제 제품 테스트가 아닌 창작 3D 애니메이션입니다. 영상 속 로봇 디자인은 실물과 다를 수 있어요.\n🛒 로보락 Qrevo L Pro 가격·판매자 비교: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n✅ 네이버 쇼핑커넥트: https://naver.me/F05el04Z\n✅ G마켓 (링크프라이스, 카드·쿠폰 조건 확인): https://bestmore.net/click.php?m=gmarket&a=A100708938&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fitem.gmarket.co.kr%2FItem%3FgoodsCode%3D4822243340\n인스타그램 릴스 본문 링크는 바로 클릭되지 않을 수 있으니 프로필 링크(link in bio)의 스마트초이스365 가이드에서 확인하세요.\n구매 당시 회원·카드·쿠폰 조건에 따라 실제 결제금액은 달라집니다. 제휴 링크 이용으로 고객에게 별도 제휴 수수료는 청구되지 않습니다.\nRUA 공식 유튜브: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n#RUA #루아 #로봇청소기 #SmartChoice365 #Reels",
+    "facebook": "광고 | 네이버 쇼핑커넥트·링크프라이스 제휴 링크를 안내합니다.\n🤖 루아 청소 지옥 탈출 3편 완결! 직접 테스트가 아닌 창작 3D 애니메이션이며 영상 속 로봇 디자인은 실제 제품과 다를 수 있습니다.\n🛒 로보락 Qrevo L Pro 비교 가이드: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n✅ 네이버 쇼핑커넥트 구매처: https://naver.me/F05el04Z\n✅ G마켓 링크프라이스 구매처 (카드·쿠폰 조건 확인): https://bestmore.net/click.php?m=gmarket&a=A100708938&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fitem.gmarket.co.kr%2FItem%3FgoodsCode%3D4822243340\nRUA 공식 유튜브: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n실제 구매가는 회원·배송·쿠폰·카드 조건에 따라 달라집니다. 구매 시 Smart Choice 365가 수수료를 받을 수 있지만 고객에게 별도 제휴 수수료는 청구되지 않습니다.\n#RUA #루아 #로봇청소기 #SmartChoice365 #Reels"
+  },
+  "approval_note": "Owner requested a NEW 37.855s release after uploading exactly one combined 3-part MP4. The upload must be validated by SHA256; preserve existing earlier 20s release and prevent duplicates. Video contains fictional 3D robot depiction, not physical product test. Product official photo was not embedded; exact model/prices are in linked guide. Naver Shopping Connect and LinkPrice affiliate URLs are both mandatory. Naver Clip has manual handoff, never claim API publication.",
+  "affiliate_programs": {
+    "naver_shopping_connect": {
+      "issued_url": "https://naver.me/F05el04Z",
+      "product": "로보락 Qrevo L Pro",
+      "verified_in": "Smart Choice 365 Roborock buying guide"
+    },
+    "linkprice": {
+      "issued_url": "https://bestmore.net/click.php?m=gmarket&a=A100708938&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fitem.gmarket.co.kr%2FItem%3FgoodsCode%3D4822243340",
+      "merchant": "Gmarket",
+      "model": "Roborock Qrevo L Pro",
+      "tracking_code": "A100708938",
+      "verified_in": "Smart Choice 365 Roborock buying guide"
+    }
+  }
+}
