@@ -32,7 +32,11 @@
       },
       {
         "scene": "purchase",
-        "text": "십일월 팔일 조사에서 네이버는 오십일만 구천 원에 기본 무료배송, 지마켓은 행사 쿠폰가 오십삼만 백육십 원이었습니다. 하지만 여러 카드와 스마일페이 결제 조건이 맞으면 지마켓은 사십구만 삼천오십 원으로 더 낮습니다. 카드 혜택을 쓰지 않는 분께 네이버 구매처부터 추천합니다."
+        "text": "십일월 팔일 조사에서 네이버는 오십일만 구천 원에 기본 무료배송, 지마켓은 행사 쿠폰가 오십삼만 백육십 원이었습니다. 하지만 여러 카드와 스마일페이 결제 조건이 맞으면 지마켓은 사십구만 삼천오십 원으로 결제금액이 더 낮습니다. 포인트를 차감한 최종 비교는 별도입니다. 카드 혜택을 쓰지 않는 분께 네이버 구매처부터 추천합니다."
+      },
+      {
+        "scene": "naver_points",
+        "text": "네이버플러스 회원이라면 포인트도 별도로 확인하세요. 적립 대상 전액 결제이고 이번 이용기간 누적 구매액이 영 원이라면 기본과 멤버십 합계 만육천삼백팔십 포인트라는 계산 예시가 나옵니다. 전액 오 퍼센트 적립이 아닙니다. 이 상품의 고객별 확정 적립 예정액을 확인한 숫자는 아니므로 주문서의 엔페이 플러스 표시와 본인 혜택을 확인해야 합니다. 포인트는 구매 후 적립이며 신규 가입자는 유료 멤버십 비용도 고려해야 합니다."
       },
       {
         "scene": "seller",
@@ -50,7 +54,7 @@
   },
   "short": {
     "format": "1080x1920",
-    "script": "로보락 엘 프로로 결정하셨나요? 카드 혜택을 따로 쓰지 않는다면 오십일만 구천 원에 기본 무료배송인 네이버 구매처부터 추천합니다. 공개된 판매 법인과 수입사 일치, 우수셀러 표시, 리뷰 분포까지 확인했습니다. 단, 카드 결제 조건이 맞으면 다른 곳이 더 쌀 수 있습니다. 가격 차트와 낮은 평점 후기, 보증 조건까지 스마트초이스 삼육오 홈페이지에 정리했습니다.",
+    "script": "로보락 엘 프로로 결정하셨나요? 카드 혜택을 따로 쓰지 않는다면 오십일만 구천 원에 기본 무료배송인 네이버 구매처부터 추천합니다. 공개된 판매 법인과 수입사 일치, 우수셀러 표시, 리뷰 분포까지 확인했습니다. 단, 카드 결제 조건이 맞으면 다른 곳이 더 쌀 수 있습니다. 가격 차트와 낮은 평점 후기, 보증 조건까지 스마트초이스 삼육오 홈페이지에 정리했습니다. 네이버플러스 포인트는 본인 적립 구간과 대상 여부에 따라 달라지니 홈페이지의 조건별 표도 확인하세요.",
     "full_video_url": null,
     "related_video_status": "not_available_do_not_invent"
   },
@@ -67,5 +71,16 @@
     "facebook": "로보락 Qrevo L Pro, 가격만 보고 고르기 전에 확인할 조건이 있습니다. 제품과 구매처를 비교한 이유: https://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n구매 조건 확인: https://naver.me/F05el04Z\n이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다. 별도의 제휴 수수료가 고객님께 청구되지 않습니다.",
     "instagram": "로보락 Qrevo L Pro, 특정 카드가 있느냐에 따라 유리한 구매처가 달라집니다. 스마트초이스365 홈페이지에서 선정 근거와 예외 조건을 확인하세요. 프로필 링크는 실제 설정 상태 확인 후 안내합니다.\nhttps://smartchoice365-web.pages.dev/guides/2026-roborock-qrevo-l-pro-buying-value.html\n이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다."
   },
-  "evidence_url": "https://github.com/Hoonygogo/smartchoice365/blob/main/editorial/products/roborock-qrevo-l-pro-evidence-20261108.json"
+  "evidence_url": "https://github.com/Hoonygogo/smartchoice365/blob/main/editorial/products/roborock-qrevo-l-pro-evidence-20261108.json",
+  "points_evidence": {
+    "kind": "official_formula_conditional_examples_not_product_checkout_quote",
+    "cashPrice": 519000,
+    "basicAssumed": 5190,
+    "memberExtraWhenPeriodSpendZero": 11190,
+    "totalAssumed": 16380,
+    "adjustedReference": 502620,
+    "eligibility": "Npay+ and actual expected points not verified for this product in a customer order",
+    "expiredEventExcluded": "Nov2 extra3%",
+    "membershipFeeMonthly": 4900
+  }
 }
