@@ -49,6 +49,10 @@
       {
         "scene": "cta",
         "text": "이 모델로 결정하셨나요? 설명란의 스마트초이스 삼육오에서 구매처를 비교한 자세한 이유와 아직 확인할 조건을 확인하세요. 실제 구매 조건을 확인할 상품 링크도 함께 안내합니다. 제휴 링크를 이용하셔도 별도의 제휴 수수료는 고객님께 청구되지 않습니다."
+      },
+      {
+        "scene": "money_review_points",
+        "text": "계좌에서 충전한 엔페이 머니로 전액 결제하고 최대 일점오 퍼센트 추가 적립이 적용되며, 플러스 이용기간 누적 구매액이 영 원이라면 포토나 동영상 상품리뷰 백오십 포인트까지 합쳐 이만사천삼백십오 포인트라는 계산 예시가 됩니다. 이 상품의 확정 혜택은 아니며 본인 대상 여부를 확인해야 합니다. 오천 포인트 리뷰 이벤트는 확정 보상으로 넣지 않았습니다. 충전만으로 보상이 생기거나 모든 포인트가 두 배가 되는 방식도 아닙니다."
       }
     ]
   },
@@ -82,5 +86,18 @@
     "eligibility": "Npay+ and actual expected points not verified for this product in a customer order",
     "expiredEventExcluded": "Nov2 extra3%",
     "membershipFeeMonthly": 4900
+  },
+  "money_review_scenarios": {
+    "conditional": true,
+    "notProductSpecificQuote": true,
+    "cash": 519000,
+    "moneyExtraUpTo": 7785,
+    "photoReviewAssumed": 150,
+    "totalWithPlusPeriodZero": 24315,
+    "pointAdjustedReference": 494685,
+    "withEligiblePartnerExtraHalfPercent": 26910,
+    "partnerAdjustedReference": 492090,
+    "sellerReviewBonus": null,
+    "monthlyUseReviewExcluded": true
   }
 }
