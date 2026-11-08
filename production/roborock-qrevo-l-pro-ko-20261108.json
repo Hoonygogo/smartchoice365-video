@@ -71,10 +71,11 @@
       "characterEvidence": "generation history shows RUA thumbnail and accessibility_new character icon",
       "credits": 30,
       "sourceBalanceObserved": 50,
-      "status": "generating",
+      "status": "generated_pending_audio_and_final_edit_QA",
       "project": "https://flow.google.com/project/dca9de0b-0798-4646-b2fc-bb0293ff8d55",
       "dialogue": "청소는 로보락에게! 엘 프로 장단점과 구매 혜택, 스마트초이스 삼육오에서 확인해요!",
-      "publicUpload": false
+      "publicUpload": false,
+      "editor_url": "https://flow.google.com/project/dca9de0b-0798-4646-b2fc-bb0293ff8d55/edit/6dd415b5-cc39-45a7-b774-9e29a81e93f3"
     }
   },
   "disclosure": "이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.",
