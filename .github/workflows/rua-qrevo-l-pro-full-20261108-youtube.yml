@@ -1,73 +1,15 @@
-name: "RUA Qrevo L Pro: approved 16:9 full video upload -> YouTube"
+name: "SUPERSEDED — old non-Sarah Qrevo full video (publishing disabled)"
 on:
-  push:
-    branches: [main]
-    paths:
-      - "uploads/RUA_Qrevo_L_Pro_Full_Buying_Guide_1080p.mp4"
+  workflow_dispatch:
 permissions:
-  contents: write
-  actions: read
-concurrency:
-  group: rua-qrevo-full-exact-upload-20261108
-  cancel-in-progress: false
+  contents: read
 jobs:
-  preflight:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 15
+  disabled:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Verify exact approved 16:9 video and advertising links
+      - name: Explain approved Sarah replacement
         run: |
-          if ! command -v ffprobe >/dev/null || ! command -v ffmpeg >/dev/null; then
-            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          fi
-          python - <<'PY'
-          import ast, hashlib, json, pathlib, re, subprocess
-          p=pathlib.Path("uploads/RUA_Qrevo_L_Pro_Full_Buying_Guide_1080p.mp4")
-          expected="2fc8b5ce5d9294b4746437973e5732eec0ef8985e0ed81a1edc232ac8731b3dc"
-          if not p.is_file() or p.stat().st_size!=14587506:
-              raise SystemExit("Wrong size or missing exact approved 16:9 full video.")
-          if hashlib.sha256(p.read_bytes()).hexdigest()!=expected:
-              raise SystemExit("Full video SHA-256 differs from checked approval.")
-          data=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_format","-show_streams","-of","json",str(p)]))
-          videos=[x for x in data["streams"] if x.get("codec_type")=="video"]
-          audios=[x for x in data["streams"] if x.get("codec_type")=="audio"]
-          if len(videos)!=1 or len(audios)!=1 or videos[0].get("codec_name")!="h264" or audios[0].get("codec_name")!="aac":
-              raise SystemExit("Must be a single H264/AAC video with audio.")
-          v=videos[0]
-          if (v["width"],v["height"])!=(1920,1080):
-              raise SystemExit("Not a 16:9 1080p full video. Shorts cannot use this workflow.")
-          fps=float(v["r_frame_rate"].split("/")[0])/float(v["r_frame_rate"].split("/")[1])
-          if abs(fps-24)>0.01 or not 146.3<float(data["format"]["duration"])<147.3:
-              raise SystemExit("Wrong frame rate or full-video duration.")
-          src=pathlib.Path("maintenance/publish_rua_qrevo_l_pro_full_20261108.py").read_text(encoding="utf-8")
-          m=re.search(r"^META=json\.loads\((.+)\)$",src,flags=re.M)
-          if not m:raise SystemExit("Approved description is not inspectable.")
-          desc=json.loads(ast.literal_eval(m.group(1)))["snippet"]["description"]
-          for required in ("https://naver.me/F05el04Z","https://bestmore.net/click.php?m=gmarket",
-                           "2026-roborock-qrevo-l-pro-buying-value.html#selection-reasons","광고","별도의 제휴 수수료"):
-              if required not in desc:raise SystemExit("Missing affiliate link or disclosure: "+required)
-          print("APPROVED_FULL_16X9_READY",expected)
-          PY
-          ffmpeg -hide_banner -v error -xerror -i uploads/RUA_Qrevo_L_Pro_Full_Buying_Guide_1080p.mp4 -f null -
-  youtube:
-    needs: preflight
-    runs-on: ubuntu-24.04
-    timeout-minutes: 40
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Publish only the exact approved full video with separate duplicate receipt
-        env:
-          GH_TOKEN: ${{ github.token }}
-          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
-          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
-          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
-        run: python maintenance/publish_rua_qrevo_l_pro_full_20261108.py
-      - name: Print publication state
-        if: always()
-        run: |
-          echo "Full video receipt: publications/receipts/rua-qrevo-l-pro-full-20261108-youtube.json" >> "$GITHUB_STEP_SUMMARY"
-          echo "Success requires published_verified. Existing RUA Shorts and Meta Reels are not reposted." >> "$GITHUB_STEP_SUMMARY"
+          echo "The original silent/text-only 16:9 Qrevo full video is superseded."
+          echo "No publishing API is called by this deprecated workflow."
+          echo "Use the Sarah/F1 full YouTube workflow: rua-qrevo-sarah-full-20261108-youtube.yml"
+          echo "No existing published video is modified or deleted."
