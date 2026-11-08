@@ -13,7 +13,8 @@
   "publication_authorized": true,
   "production_pipeline": "existing Korean guide renderer and existing YouTube/Meta publishers; no replacement system",
   "blockers": [
-    "No final rendered media, QA hash or public video exists yet."
+    "Approved Flow Roborock source MP4 has not transferred; UI download and browser asset export failed. Official V2 outro has been obtained and SHA256 verified.",
+    "No final rendered media, final QA hash or public video exists yet."
   ],
   "full_video": {
     "format": "1920x1080",
@@ -71,11 +72,33 @@
       "characterEvidence": "generation history shows RUA thumbnail and accessibility_new character icon",
       "credits": 30,
       "sourceBalanceObserved": 50,
-      "status": "generated_pending_audio_and_final_edit_QA",
+      "status": "owner_approved_base_waiting_source_mp4_for_outro_and_full_video",
       "project": "https://flow.google.com/project/dca9de0b-0798-4646-b2fc-bb0293ff8d55",
       "dialogue": "청소는 로보락에게! 엘 프로 장단점과 구매 혜택, 스마트초이스 삼육오에서 확인해요!",
       "publicUpload": false,
-      "editor_url": "https://flow.google.com/project/dca9de0b-0798-4646-b2fc-bb0293ff8d55/edit/6dd415b5-cc39-45a7-b774-9e29a81e93f3"
+      "editor_url": "https://flow.google.com/project/dca9de0b-0798-4646-b2fc-bb0293ff8d55/edit/6dd415b5-cc39-45a7-b774-9e29a81e93f3",
+      "ownerApprovedBaseClip": true,
+      "sourceAcquisition": {
+        "status": "blocked",
+        "attempts": [
+          "Flow 720p UI download event timed out",
+          "Browser page asset export failed to fetch observed generated video"
+        ],
+        "required": "Owner-approved 10-second Roborock MP4 bytes; do not recreate or substitute"
+      }
+    },
+    "finalAssembly": {
+      "required": true,
+      "order": [
+        "approved_roborock_10s_base",
+        "official_rua_v2_outro_with_original_audio"
+      ],
+      "outroLibraryId": "libfile_ecff34e3592c8191a739fcc8579dcc3b",
+      "outroSha256": "ae161a9dc3d34f705d67ca081cbb708d03e1a2778a4753e2a2ee413ce768b495",
+      "outroLocallyVerified": true,
+      "expectedApproxSeconds": 20,
+      "preventDuplicateOutro": true,
+      "finalPreviewAndHashApprovalRequired": true
     }
   },
   "disclosure": "이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.",
