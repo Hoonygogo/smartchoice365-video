@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-10",
+  "channel": "en-au",
+  "topicId": "2026-sunbeam-hp5520-breville-bpr680-dinner-deadline-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-10.jpg",
+  "sha256": "1e38c674378c6cdfc187df516b72be2d06ec633a3536fa2d070be2cee1dade4f",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-09T23:10:28.857610+00:00",
+  "imageBytes": 408155,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "e1246169b3b626c27eb840551fb5fc2f2be70516"
+}
