@@ -1,0 +1,95 @@
+name: "RUA ROY puffer 3-brand main video: Sarah Korean voiced review draft"
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/rua-roy-puffer-sarah-main-review-20261110.yml"
+      - "maintenance/render_rua_roy_puffer_sarah_full_20261110.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rua-roy-puffer-sarah-main-review-20261110
+  cancel-in-progress: false
+
+jobs:
+  render-review-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install local-free audio and video renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+          python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Download approved Supertonic 3 and Sarah/F1 voice model
+        run: python scripts/download_model.py
+      - name: Verify scripted product recommendations and original approved animation
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib
+          src=pathlib.Path('uploads/SmartChoice365_RUA_ROY_YouTube_Shorts_1080x1920.mp4')
+          assert src.is_file() and src.stat().st_size==17316893
+          assert hashlib.sha256(src.read_bytes()).hexdigest()=='ad68dc22db5663af407ddbecf5ca4d29c0a2d87681d31d91fdc1b24f9196562e'
+          data=json.loads(pathlib.Path('production/rua-roy-puffer-20261110-scenes.json').read_text(encoding='utf-8'))
+          assert data['status']=='draft_review_only' and data['cue_count']==27 and len(data['cues'])==27
+          assert len(data['scenes'])==9 and all(sum(z[0]==key for z in data['cues'])==3 for key in data['scenes'])
+          assert '스마트 초이스' in data['cues'][-1][2] or '수수료' in data['cues'][-1][2]
+          print('REVIEW_ONLY_SOURCE_AND_SCRIPT_VALIDATED')
+          PY
+      - name: Render Korean Sarah full buying guide, focus cards, original intro and outro
+        run: python maintenance/render_rua_roy_puffer_sarah_full_20261110.py
+      - name: Validate full HD MP4, original audio and cue-accurate focus timing
+        run: |
+          python - <<'PY'
+          import json,pathlib,subprocess
+          root=pathlib.Path("renders/rua-roy-puffer-sarah-20261110")
+          media=root/"RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4"
+          m=json.loads((root/'Sarah_Focus_Timings.json').read_text())
+          assert m['status']=='review_only_unpublished'
+          assert (m['voice'],m['language'],m['speed'],m['steps'])==('Sarah/F1','ko',1.1,8)
+          assert len(m['timeline'])==27 and all(x['rms']>=0.008 for x in m['timeline'])
+          assert media.stat().st_size>2_000_000 and media.stat().st_size<95_000_000
+          p=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(media)]))
+          assert any(x.get('codec_type')=='video' and x.get('codec_name')=='h264' and (x.get('width'),x.get('height'))==(1920,1080) for x in p['streams'])
+          assert any(x.get('codec_type')=='audio' and x.get('codec_name')=='aac' for x in p['streams'])
+          dur=float(p['format']['duration'])
+          assert 100<dur<650,dur
+          assert m['total_seconds']==dur
+          assert m['official_outro_reused'] is True
+          print('RUA_ROY_PUFFER_MAIN_REVIEW_VERIFIED',dur,media.stat().st_size,m['sha256'])
+          PY
+          ffmpeg -hide_banner -v error -xerror -ss 45 -i "renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4" -t 7 -f null -
+      - name: Provide the owner with an unlisted review-only artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RUA_ROY_Puffer_Sarah_Main_Review_Only
+          path: "renders/rua-roy-puffer-sarah-20261110/"
+          retention-days: 7
+          if-no-files-found: error
+      - name: Commit draft render for accessible preview, without any SNS posting
+        run: |
+          set -eu
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4"
+          git add "renders/rua-roy-puffer-sarah-20261110/Sarah_Focus_Timings.json"
+          git add "renders/rua-roy-puffer-sarah-20261110/Sarah_Focus_Captions.srt"
+          if ! git diff --cached --quiet; then
+            git commit -m "Render review-only RUA ROY 3-brand Sarah full video (no social publication)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Confirm no publication
+        run: |
+          echo "DRAFT REVIEW ONLY: no YouTube, Meta or Naver upload APIs called." >> "$GITHUB_STEP_SUMMARY"
+          echo "Video: renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4" >> "$GITHUB_STEP_SUMMARY"
+          echo "27 speech cues with exact active focus and official Sarah/F1 1.1 speed." >> "$GITHUB_STEP_SUMMARY"
