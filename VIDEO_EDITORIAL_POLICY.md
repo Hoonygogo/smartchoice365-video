@@ -1,5 +1,12 @@
 # Video editorial standard
 
+## RUA & ROY — Google Flow bilingual creation standard (owner instruction, 2026-11-10)
+- **Canonical project-wide Google Flow Agent Instructions and per-clip prompting template:** [production/GOOGLE_FLOW_RUA_ROY_BILINGUAL_AGENT_RULES.md](production/GOOGLE_FLOW_RUA_ROY_BILINGUAL_AGENT_RULES.md). Read this before new RUA/ROY animated Shorts.
+- Last frame of the approved previous clip is the next clip's start frame; keep character references, fixed camera, identity and costume, 8–10-second second-by-second timeline, precise dialogue/lip-sync and a stable end pose. An unintended puffer opening during brand dialogue was an error: lock wardrobe after changes.
+- **Korean OR English video dialogue is allowed.** Set `VIDEO_LANGUAGE: KOREAN` or `VIDEO_LANGUAGE: ENGLISH` explicitly for each clip. English control directions do not imply English spoken lines; do not silently force Korean, translate, switch voices, or spell RUA as separate letters (pronounce "Roo-ah" when spoken in English).
+- Approved RUA official outro stays separate and is appended once in editing. Do not regenerate it inside Google Flow, overwrite published source audio, start extra credit-consuming generations without approval, or publish without explicit approval.
+
+
 ## Owner-approved mandatory spoken affiliate CTA — CUCKOO V4 standard (2026-11-08)
 
 **Default for every new Smart Choice 365 Korean affiliate-product full video and relevant Shorts; adapt the timing for English scripts and social captions.** This rule is about creating and reviewing future content, **not** blanket permission to publish, delete, or re-upload older material.
