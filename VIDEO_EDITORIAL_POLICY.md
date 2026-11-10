@@ -1,11 +1,13 @@
 # Video editorial standard
 
-## RUA & ROY — Google Flow bilingual creation standard (owner instruction, 2026-11-10)
-- **Canonical project-wide Google Flow Agent Instructions and per-clip prompting template:** [production/GOOGLE_FLOW_RUA_ROY_BILINGUAL_AGENT_RULES.md](production/GOOGLE_FLOW_RUA_ROY_BILINGUAL_AGENT_RULES.md). Read this before new RUA/ROY animated Shorts.
-- Last frame of the approved previous clip is the next clip's start frame; keep character references, fixed camera, identity and costume, 8–10-second second-by-second timeline, precise dialogue/lip-sync and a stable end pose. An unintended puffer opening during brand dialogue was an error: lock wardrobe after changes.
-- **Korean OR English video dialogue is allowed.** Set `VIDEO_LANGUAGE: KOREAN` or `VIDEO_LANGUAGE: ENGLISH` explicitly for each clip. English control directions do not imply English spoken lines; do not silently force Korean, translate, switch voices, or spell RUA as separate letters (pronounce "Roo-ah" when spoken in English).
-- Approved RUA official outro stays separate and is appended once in editing. Do not regenerate it inside Google Flow, overwrite published source audio, start extra credit-consuming generations without approval, or publish without explicit approval.
+## RUA & ROY — registered-character Google Flow master + bilingual episode continuity (owner clarified 2026-11-10)
 
+- The owner's existing **"RUA — SMART CHOICE 365 MASTER PRODUCTION RULES" (12 sections)** is the **authoritative agent instruction for registered @RUA**. **Do not overwrite it** with another generic instruction. It permits Korean and English dialogue, creative costume changes, scripted magical effects, intentional teleportation, cinematic cuts and optional sunglasses. Only critical registered character identity and clothing-logo protection are permanent.
+- **Priority:** registered @RUA identity and official-only clothing logo rule > explicit script of this episode > project defaults. Scripted camera changes, costumes, actions and special effects are allowed. **Unrequested** character or costume changes remain generation defects.
+- **Supplemental continuity prompt:** [production/GOOGLE_FLOW_RUA_ROY_BILINGUAL_AGENT_RULES.md](production/GOOGLE_FLOW_RUA_ROY_BILINGUAL_AGENT_RULES.md). For connected scenes like the successful RUA/ROY puffer café clip, use the exact approved clip's last frame as the next start frame, scene-specific second-by-second beats and stable camera **only when helpful**; avoid sweeping bans on creative cinematic effects.
+- **Language:** Each episode may select `VIDEO_LANGUAGE: KOREAN` or `VIDEO_LANGUAGE: ENGLISH` (and silence when scripted). Match spoken lines to the chosen language, use the approved registered voice when available, preserve lip sync and pronounce RUA "Roo-ah", not the letters R-U-A.
+- **Default Flow settings from RUA master:** Omni 1.1 Flash, 10 seconds, 9:16, 720p, 1 output, premium stylized 3D. Episode-specific choices may override. Get consent before spending credits or generating additional variations.
+- **Outro boundary:** The Google Flow agent does **not** unconditionally attach an outro; it uses the approved outro **when explicitly requested**. For owner-approved Smart Choice 365 finalized promotional Shorts, follow the separate final-edit/publishing outro rule below: append the authentic signature clip at most once with original audio, never AI-regenerate or double it. Do not alter already published clips without authorization.
 
 ## Owner-approved mandatory spoken affiliate CTA — CUCKOO V4 standard (2026-11-08)
 
