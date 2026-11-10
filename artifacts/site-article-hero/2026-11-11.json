@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-11",
+  "channel": "en-au",
+  "topicId": "2026-westinghouse-wcm1400we-wcm2000we-freezer-space-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-11.jpg",
+  "sha256": "65e8dd01c1c7fa0ebed9db8f5ab85928f4c8a58a925a8ea2cb1b9122f6f8092f",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-10T23:04:33.495494+00:00",
+  "imageBytes": 411570,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "203f20fd6c9529ee8792ef543c1c530de8c5eef3"
+}
