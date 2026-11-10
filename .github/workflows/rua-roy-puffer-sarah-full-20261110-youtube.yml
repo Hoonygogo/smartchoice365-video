@@ -1,0 +1,88 @@
+name: "RUA ROY Puffer Sarah/F1 FULL: owner-approved verified YouTube publication"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "publications/requests/rua-roy-puffer-sarah-full-20261110.json"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sc365-rua-roy-puffer-sarah-full-once-20261110
+  cancel-in-progress: false
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify approved Sarah/F1 full video, timed focus and both vetted links
+        run: |
+          if ! command -v ffprobe >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, subprocess
+          root=Path(".")
+          m=root/"renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4"
+          timings=root/"renders/rua-roy-puffer-sarah-20261110/Sarah_Focus_Timings.json"
+          req=json.loads((root/"publications/requests/rua-roy-puffer-sarah-full-20261110.json").read_text())
+          t=json.loads(timings.read_text())
+          if not m.is_file() or m.stat().st_size!=21346443:raise SystemExit("Exact Sarah video file/size missing")
+          digest=hashlib.sha256(m.read_bytes()).hexdigest()
+          expected="a7ae7207e598582d13953956a1b5c30d5a4a2ee1bcb0dff1f56744af499d144a"
+          if digest!=expected or req["sha256"]!=expected:raise SystemExit("Unapproved render hash")
+          if req["id"]!="rua-roy-puffer-sarah-full-20261110" or req["source"]!=str(m):raise SystemExit("Wrong approved source")
+          if (t.get("voice"),t.get("language"),t.get("speed"),t.get("steps"))!=("Sarah/F1","ko",1.1,8):
+            raise SystemExit("Wrong voice: require official Sarah/F1")
+          cues=t.get("timeline",[])
+          if len(cues)!=27 or not all(c["rms"]>=0.008 for c in cues):raise SystemExit("Missing measured Sarah speech clips")
+          if any(cues[i]["start"]>cues[i]["end"] or (i and cues[i]["start"]<cues[i-1]["end"]-0.02) for i in range(len(cues))):
+            raise SystemExit("Invalid voice/focus cue boundaries")
+          if not all(c["focus_card"] in (1,2,3) for c in cues):raise SystemExit("Missing focus target mapping")
+          probe=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_streams","-show_format","-of","json",str(m)]))
+          v=[x for x in probe["streams"] if x.get("codec_type")=="video"]
+          a=[x for x in probe["streams"] if x.get("codec_type")=="audio"]
+          if len(v)!=1 or len(a)!=1 or v[0]["codec_name"]!="h264" or a[0]["codec_name"]!="aac":
+            raise SystemExit("Wrong H264/AAC media streams")
+          if (v[0]["width"],v[0]["height"])!=(1920,1080) or v[0]["r_frame_rate"]!="24/1":
+            raise SystemExit("Wrong 16:9 frame geometry")
+          length=float(probe["format"]["duration"])
+          if abs(length-326.022667)>0.12:raise SystemExit("Unexpected long-form runtime")
+          if abs(cues[-1]["end"]-315.793)>0.12:raise SystemExit("Official closing misaligned")
+          md=req["metadata"];title=md["snippet"]["title"];description=md["snippet"]["description"]
+          if len(title)>100 or len(description)>5000 or md["status"]["privacyStatus"]!="public":
+            raise SystemExit("Video metadata or privacy invalid")
+          for phrase in ["https://naver.me/xUZvtN0A","https://link.coupang.com/a/iyWS0hfVkq",
+                         "2026-lightweight-puffer-buying-value.html#selection-reasons",
+                         "https://www.uniqlo.com/kr/ko/products/E487408-000/00","[광고·제휴 안내]","별도의 제휴 수수료"]:
+            if phrase not in description:raise SystemExit("Missing exact merchant or disclosure: "+phrase)
+          if md["snippet"]["defaultLanguage"]!="ko" or md["snippet"]["defaultAudioLanguage"]!="ko":
+            raise SystemExit("Wrong publishing language")
+          print("SARAH_RUA_ROY_PUFFER_FULL_APPROVED",digest,"duration",length,"cues",len(cues))
+          PY
+          python -m py_compile maintenance/publish_rua_roy_puffer_sarah_full_20261110.py
+          ffmpeg -hide_banner -v error -xerror -i renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4 -f null -
+  youtube:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Post ONLY approved Sarah/F1 full guide to verified YouTube channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_rua_roy_puffer_sarah_full_20261110.py
+      - name: Release result and next-step instructions
+        if: always()
+        run: |
+          echo "Verified YouTube receipt: publications/receipts/rua-roy-puffer-sarah-full-20261110-youtube.json" >> "$GITHUB_STEP_SUMMARY"
+          echo "Success requires published_verified; no older video is overwritten or reposted." >> "$GITHUB_STEP_SUMMARY"
+          echo "After publishing, attach custom thumbnail in YouTube Studio and connect existing Shorts via Related Video." >> "$GITHUB_STEP_SUMMARY"
