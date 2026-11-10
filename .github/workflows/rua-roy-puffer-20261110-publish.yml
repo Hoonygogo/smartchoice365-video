@@ -1,0 +1,146 @@
+name: "RUA ROY Puffer 2026-11-10: verified YouTube Shorts + Instagram and Facebook Reels"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "publications/requests/rua-roy-puffer-20261110-youtube.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: rua-roy-puffer-20261110-one-approved-release
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exact uploaded 30.08-second movie, notices and issued links
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffprobe >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          python - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          media=pathlib.Path("uploads/SmartChoice365_RUA_ROY_YouTube_Shorts_1080x1920.mp4")
+          sha="ad68dc22db5663af407ddbecf5ca4d29c0a2d87681d31d91fdc1b24f9196562e"
+          assert media.is_file() and media.stat().st_size==17316893,"Exact RUA ROY source MP4 missing or wrong size"
+          assert hashlib.sha256(media.read_bytes()).hexdigest()==sha,"Approved SHA mismatch; stop without posting"
+          data=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_streams","-show_format","-of","json",str(media)]))
+          v=[x for x in data["streams"] if x.get("codec_type")=="video"]
+          a=[x for x in data["streams"] if x.get("codec_type")=="audio"]
+          assert len(v)==1 and len(a)==1 and (v[0]["codec_name"],a[0]["codec_name"])==("h264","aac")
+          assert (v[0]["width"],v[0]["height"])==(1080,1920)
+          assert 29.98 <= float(data["format"]["duration"]) <= 30.15
+          y=json.loads(pathlib.Path("publications/requests/rua-roy-puffer-20261110-youtube.json").read_text(encoding="utf-8"))
+          m=json.loads(pathlib.Path("publications/meta-requests/rua-roy-puffer-20261110.json").read_text(encoding="utf-8"))
+          assert y["sha256"]==m["sha256"]==sha and y["size_bytes"]==17316893
+          assert y["approval"]==m["approval"]=="publish"
+          assert y["channel_id"]==m["channel_id"]=="UC4DzAW-Hbd45bIECwGV7-uA"
+          assert y["media_path"]==m["media_path"]==str(media)
+          assert m["platforms"]==["instagram","facebook"]
+          assert m.get("share_to_instagram_story") is False
+          required=("https://naver.me/xUZvtN0A","https://link.coupang.com/a/iyWS0hfVkq","https://www.uniqlo.com/kr/ko/products/E487408-000/00","2026-lightweight-puffer-buying-value.html","쿠팡 파트너스","네이버 쇼핑 커넥트","비제휴","조건부")
+          copies={"youtube":y["metadata"]["snippet"]["description"],**m["captions"]}
+          for platform,c in copies.items():
+            for token in required:
+              if token not in c: raise SystemExit(f"{platform} missing approved link / disclosure: {token}")
+          assert len(y["metadata"]["snippet"]["title"])<=100
+          assert len(y["metadata"]["snippet"]["description"])<=5000
+          assert all(len(m["captions"][key])<=1800 for key in m["platforms"])
+          assert y["metadata"]["status"]["privacyStatus"]=="public"
+          print("APPROVED_SHA_LOCKED_RELEASE_VALIDATED",sha)
+          PY
+          ffmpeg -hide_banner -v error -xerror -i "uploads/SmartChoice365_RUA_ROY_YouTube_Shorts_1080x1920.mp4" -f null -
+
+  youtube:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Publish and verify original Shorts on approved channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_rua_roy_puffer_20261110.py
+      - if: always()
+        run: echo "YouTube receipt publications/receipts/rua-roy-puffer-20261110-youtube.json must be published_verified." >> "$GITHUB_STEP_SUMMARY"
+
+  meta:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ensure FFmpeg available
+        shell: bash
+        run: |
+          if ! command -v ffprobe >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+      - name: Publish approved Instagram + Facebook Reels with duplicate-safe receipts
+        env:
+          META_PUBLISH_ENABLED: "true"
+          META_REQUEST_FILE: "publications/meta-requests/rua-roy-puffer-20261110.json"
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_SYSTEM_USER_ACCESS_TOKEN: ${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ vars.META_INSTAGRAM_ACCOUNT_ID || '17841475811391464' }}
+          GH_TOKEN: ${{ github.token }}
+        run: python maintenance/publish_meta_reels.py
+      - if: always()
+        run: echo "Meta receipts publications/meta-receipts/rua-roy-puffer-20261110-{instagram,facebook}.json must be published_verified. No Instagram Story (not approved)." >> "$GITHUB_STEP_SUMMARY"
+
+  naver_clip_manual:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package exactly approved MP4 + Naver Clip caption; no unsupported automatic posting
+        shell: bash
+        run: |
+          mkdir -p naver-clip-handoff
+          cp "uploads/SmartChoice365_RUA_ROY_YouTube_Shorts_1080x1920.mp4" naver-clip-handoff/
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("naver-clip-handoff")
+          (p/"TITLE_KO.txt").write_text("패딩 길막?! 😂 루아&로이 | 스파오·탑텐·유니클로 경량패딩\n",encoding="utf-8")
+          (p/"CAPTION_KO.txt").write_text("""광고·제휴 안내 | 루아&로이의 카페 패딩 길막! 😂
+세 브랜드 비교: https://smartchoice365-web.pages.dev/guides/2026-lightweight-puffer-jackets.html?utm_source=naver&utm_medium=clip&utm_campaign=rua_roy_puffer_20261110
+엄선 구매추천·선정 이유: https://smartchoice365-web.pages.dev/guides/2026-lightweight-puffer-buying-value.html?utm_source=naver&utm_medium=clip&utm_campaign=rua_roy_puffer_20261110#selection-reasons
+스파오 공용 TC24 · 네이버 쇼핑 커넥트 제휴: https://naver.me/xUZvtN0A
+탑텐 AIRTECH IV·85 · 쿠팡 파트너스 제휴: https://link.coupang.com/a/iyWS0hfVkq
+탑텐 판매처는 조건부 가격 대안으로 상품 리뷰 0건, 반품 왕복 10,000원, 공식 공급 근거 미확인.
+유니클로 PUFFTECH · 비제휴 공식몰: https://www.uniqlo.com/kr/ko/products/E487408-000/00
+저희는 아무 제휴 링크나 추천하지 않습니다. 가격·후기·반품·판매처와 검증 한계를 조사합니다. 구매를 결정하셨다면 안내한 제휴 링크로 Smart Choice 365를 응원해 주세요! 💙
+이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.
+이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+고객에게 별도의 제휴 수수료는 추가되지 않습니다. 상품 가격·배송비·회원비는 별도.
+가격·혜택은 달라질 수 있으며 최저가를 보장하지 않습니다. 코미디 영상은 창작 3D 애니메이션이고 실제 착용·보온 실험이 아닙니다.
+네이버 클립에 실제 스파오 쇼핑커넥트 상품 태그는 업로더가 직접 선택·확인해야 합니다.
+#스파오 #탑텐 #유니클로 #경량패딩 #루아 #로이 #SmartChoice365 #광고
+""",encoding="utf-8")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rua-roy-puffer-20261110-naver-clip-ready
+          path: naver-clip-handoff/
+          retention-days: 7
+      - run: echo "Naver Clip is manual handoff only; no native shopping tag or video was automatically posted." >> "$GITHUB_STEP_SUMMARY"
