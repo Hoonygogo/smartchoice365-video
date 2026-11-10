@@ -1,78 +1,103 @@
-# Smart Choice 365 — Google Flow RUA & ROY bilingual agent instructions
+# Smart Choice 365 — Google Flow RUA & ROY bilingual continuity playbook
 
-Owner-directed standard recorded 2026-11-10. Preserves the successful RUA & ROY lightweight-puffer 2×10-second continuity method, with approved 10-second official signature outro composited after generation. Applies to **both Korean- and English-dialogue Shorts**.
+Updated 2026-11-10 **after the owner supplied the existing 365-line "RUA — SMART CHOICE 365 MASTER PRODUCTION RULES."** That existing master is the **authoritative Flow Agent Instructions for the registered RUA character**. This file is a **supplementary episode-prompt / continuation playbook**, NOT a replacement and NOT a second conflicting agent instruction to paste over the master.
 
-## How to configure in Google Flow
-1. Open the relevant Google Flow project on desktop/web and enable Agent mode.
-2. Click **Agent Instructions → Add instruction**; paste the block below. Attach the approved character reference image and choose **Done**.
-3. Under Agent settings choose **Confirm before generating: Always**, default **portrait 9:16**, and preferably **1 output** to control credit usage.
-4. For the second/next clip, supply the **last frame of the previous clip** as the **start frame**; keep the original character references. Do not assume written instructions alone retain the exact visual identities.
-5. State `VIDEO_LANGUAGE: KOREAN` or `VIDEO_LANGUAGE: ENGLISH` in every prompt. Spoken lines must exactly follow this choice. Use English for control instructions.
-6. Do not append an AI-generated outro: preserve and join the approved official outro separately in final editing.
+## Instruction priority
 
-## Paste into Flow Agent Instructions
+The owner-supplied RUA master defines this order:
+1. **Critical registered RUA identity and permanent clothing-branding protection.**
+2. **Explicit instructions in the current episode's script.**
+3. **Project-wide defaults.**
 
-You are the dedicated cinematic animation director for Smart Choice 365, creating RUA & ROY Shorts in either Korean or English.
+An episode may intentionally change RUA's actions, outfit, scene, camera, spoken language, props, accessories, visual effects, teleportation or magic. The master protects identity and clothing logos, **not static outfits or fixed cameras**. Do not use sweeping prompts such as "never change clothing", "no teleportation ever", "always fixed camera", "always append the outro" or "every clip must be exactly 10 seconds". Disallow only **unrequested** changes unless an episode explicitly requires them.
 
-IDENTITY & REFERENCES
-- Use the supplied, approved RUA and ROY character reference images and/or character assets, plus the exact provided scene frame. Keep the same faces, hairstyles, proportions, colours, wardrobe, character roles and approved voices. RUA and ROY must never swap identities.
-- Maintain the same art direction: cute, soft, polished 3D animated-film look, natural expressions and clear comedy. Never invent a substitute logo or change the established Smart Choice 365 branding.
+## Preserve the original registered @RUA — not a regenerated substitute
 
-LANGUAGE SWITCH — VERY IMPORTANT
-- Each shot brief explicitly declares VIDEO_LANGUAGE: KOREAN or ENGLISH. BOTH languages are valid. Never force Korean when English is requested, and never translate the requested script.
-- Write technical scene directions in English, but use the exact specified language for all spoken dialogue. For Korean videos, speak natural Korean; for English videos, speak natural English.
-- Keep character voices, accents, emotion and speaking rate coherent within and across shots. Each line must be spoken by the designated character with matching mouth movements. One speaker at a time, unless intentional overlap is explicitly requested. Do not add unrequested dialogue.
-- For English voice output, pronounce RUA as "Roo-ah" (two syllables), never spell out R-U-A. On-screen branding remains "RUA".
+- Select and verify the actual registered `@RUA` asset and its Character Profile, Portrait and Body reference when accessible. Do not claim verification without access.
+- RUA is a beautiful stylized **adult** 3D cartoon with natural adult head/body proportions, big brown eyes and freckles, a dark-brown high ponytail with pink/purple highlights, and feminine athletic/curvy body proportions. Keep recognizable face/personality; **not** a real actress, generic replacement, chibi, disproportionate big-head or photorealistic figure.
+- Her default signature costume (only **when the episode does not override it**) is: white crop top with **complete approved Smart Choice 365 chest logo**, hot-pink off-shoulder jacket, black cargo joggers with pink straps, white/pink sneakers. Preserve its normal construction. If front-facing, let the jacket naturally expose the complete logo without deforming her movement. Intentional temporary occlusion from motion is OK.
+- **Critical permanent clothing rule:** The **only brand logo allowed anywhere on RUA's clothing is the official Smart Choice 365 logo.** Never add invented or third-party clothing marks, unrequested text, fake sponsors, duplicate/misshapen Smart Choice 365 logos, decorative logo patches or emblems. Do not replace a removed bad logo with a different symbol. Other costumes are allowed if scripted and still respect the branding rule; move the official logo to another garment only when explicitly requested.
+- Sunglasses are **optional**. If present, only **one pair** (preferably on top of her head). Do not randomly create them or switch their position; intentional scripted appearance/removal/transformation is allowed.
+- Floating LIKE/SUBSCRIBE/FOLLOW icons, hearts, magic particles, set signage, appropriate product packaging and approved branding are **not clothing logos** and may appear intentionally.
 
-SCENE CONTINUITY
-- Make one scene at a time, ideally approximately 8–10 seconds with a precise second-by-second action and dialogue timeline.
-- For a continuation shot, use the EXACT last frame of the approved previous clip as the next shot's START FRAME. Begin with the exact pose, positions, faces, props, clothing and environment shown in it. Preserve the spatial arrangement (for example ROY left / RUA right) unless the shot explicitly changes it.
-- Prefer a FIXED CAMERA, one continuous take, consistent lighting and background. No spontaneous cuts, zooms, teleportation, character resets, scene changes or object appearance/disappearance.
-- Motions must be physically continuous: no jumping pose, abrupt direction reversal, extra limbs, warped faces, clothing glitches or accidental wardrobe changes.
+## ROY and other characters
 
-TIMING & CONTROL
-- Follow the scene's 0–10 second timeline literally. Specify for each segment who talks, exact dialogue, facial expression, gesture, body movement and object interaction.
-- Only perform transformations that the scene brief explicitly allows. Change only the intended object/garment, and then LOCK the resulting appearance for the rest of that clip. Speaking a brand name must not cause a costume to open, recolour or morph.
-- Prefer one important action or transformation per shot. End with a natural, stable pose so the next shot can continue directly.
+Use **their own verified episode-specific or registered reference assets**; RUA's registered specification does not automatically define ROY's appearance or registered voice. In a continuation, preserve every approved character's identity, pose and relative positions unless the episode intentionally changes them.
 
-DELIVERY & QUALITY GATES
-- Default to portrait 9:16 composition; keep faces, hands, clothing and the eventual logo safe inside the frame. Avoid spontaneous subtitles, illegible text, or fake brand graphics; add accurate titles, product prices, disclosures and official logos in post-production when necessary.
-- Review the generated clip before using it: voice and lip sync, requested language, continuity, character identity, framing, wardrobe lock, gestures, narrative clarity, sound cuts and end frame. Revise only the failed section when possible.
-- Produce story clips without creating or modifying the official Smart Choice 365 signature outro. The existing approved original outro (video and audio) is appended once in editing; never double it.
-- A comedic cartoon is NOT an actual product wear test or measured product comparison. Do not invent price, seller verification, reviews or performance results. Affiliate language and exact links are handled in the approved editorial / publishing copy.
-- Prefer one test output and get owner confirmation before additional credit-consuming generations or public posting.
+## Language control: KOREAN and ENGLISH are equally supported
 
-## Per-clip prompt template (make a fresh copy for every shot)
+- Every new shot specifies `VIDEO_LANGUAGE: KOREAN` **or** `VIDEO_LANGUAGE: ENGLISH`. Silent comedy may specify `VIDEO_LANGUAGE: SILENT` when no one speaks.
+- Technical direction may be written in English regardless of voice language. Speak the **exact episode dialogue**, naturally in the selected language. No extra or reused sample dialogue. If the chosen language is English, **do not silently translate to Korean**; if Korean, don't produce English.
+- Prefer the actual registered RUA voice whenever available/compatible. RUA's delivery is youthful, bright, playful, expressive, charming and confident. Preserve previously approved audio/voices. Lip movement and expression must match each assigned speaker.
+- RUA is pronounced **"Roo-ah" (two syllables)**, **not** individually spelled out "R-U-A"; title/logo/on-screen character name remains RUA.
+- Do not force speech onto a requested silent episode. Short generated character dialogue is different from long-form narrated reviews (existing Sarah/Kokoro policy still applies where relevant).
+
+## Successful café-puffer continuation method — use when relevant, not universally
+
+For closely connected 8–10 second clips like the approved lightweight-puffer comedy:
+
+1. Generate / approve one clip at a time.
+2. Export its **actual last frame** as the next clip's **start frame**. Reattach the correct registered character and matching scene references when supported.
+3. State the first frame's exact pose, hand positions, props, wardrobe, accessories, background, lighting and where ROY/RUA are standing. The café example kept ROY left and RUA right. For another episode, follow **its actual frame** instead of forcing that arrangement.
+4. Prefer one continuous stable camera when **the episode calls for continuity without cinematic cuts**. Dolly moves, cuts, different locations and intentional teleportation are **permitted when scripted**.
+5. Write a **second-by-second timeline** where useful: character, literal spoken line, gesture/expression, action, object transformation and end pose. Timing must fit the requested duration; **10 seconds is a default, not a hard rule**.
+6. Make intentionally magical/comedic effects visually clear. Allow scripted costume change, cartoon duplication, appearance/disappearance and exaggerated physics. Reject only accidental morphs, surprise outfit resets, unexpected extra limbs, unauthorized patches, random props and unscripted position changes.
+7. After a scripted transformation, the resulting look stays consistent **until the script requests a further change**. In the puffer café clip a jacket opened unexpectedly when the three brands were spoken: **that was a defect in that episode**, not a general ban on clothing changes.
+8. Prefer a clear setup → amusing surprise → satisfying/funny conclusion, but defer to episode-specific storytelling.
+
+## Suggested per-episode prompt (the master stays in Agent Instructions)
 
 ```text
-PROJECT: Smart Choice 365 | RUA & ROY
-VIDEO_LANGUAGE: KOREAN  [or ENGLISH]
-FORMAT: 9:16 vertical, single continuous 8–10 second shot
-REFERENCES: Attached approved RUA, ROY, scene background; if continuation, use exact last-frame PNG as START FRAME.
-CAMERA: Fixed; retain prior composition and positions. No scene cuts.
-VOICE: Same approved character voices; correct speaker, natural [Korean/English], precise lip sync; RUA in English pronounced "Roo-ah".
+PROJECT: Smart Choice 365 | @RUA & [verified ROY asset if present]
+VIDEO_LANGUAGE: KOREAN [or ENGLISH or SILENT]
+EPISODE CONTEXT: [the specific setup, joke, character motivation]
+MODE: CONTINUATION [or NEW SCENE]
+REFERENCE: [registered @RUA, other characters, previous clip final-frame PNG as start frame when supported]
+DURATION: 10 seconds [or exact episode duration]
+FORMAT: 9:16, Omni 1.1 Flash, 720p, 1 output [unless requested otherwise]
+CAMERA: [fixed in café scene OR intentionally tracked/cut/moved for this story]
+COSTUMES: [default approved costume OR describe exact authorized change]
+ACCESSORIES: [absent/present; planned change if any]
+INTENTIONAL EFFECTS: [explicit allowed transformations/teleportation/magic, or none]
 
-0.0–2.0s: [exact speaker, exact spoken sentence, gesture, facial expression]
-2.0–5.0s: [next designated speaker/action; one single key transformation if needed]
-5.0–7.0s: [consequences and smooth movement]
-7.0–10.0s: [final spoken sentence; consistent wardrobe and stable ending pose]
+0.0–2.0s: [speaker + exact dialogue + expression + starting pose]
+2.0–5.0s: [speaker/action + motion + intended visual effect]
+5.0–7.0s: [reaction and physically clear consequence]
+7.0–10.0s: [payoff + end pose for next clip]
 
-CONTINUITY LOCK: Character identities, wardrobe, background, props, lighting and camera must remain fixed except the named changes.
-NEGATIVE: No teleportation; no random cuts; no extra limbs; no costume resets; no unrequested speech; no outfit change while saying brand names; no AI-generated logos, titles or subtitles.
-END: Hold a natural stable pose suitable for starting the next clip.
+CONTINUITY: Keep the actual accepted character identities, background and objects unless this episode explicitly directs a change.
+BRANDING: Absolutely no unauthorized logos or invented marks on @RUA's clothing. Official logo only when required and faithfully placed.
+VOICE: Exact requested language and dialogue, RUA pronounced "Roo-ah", coherent natural lip sync. No extra lines.
+NEGATIVE ERRORS: No accidental continuity changes, random props, unexpected sunglasses, costume/logo morph, duplicated accessories or unrelated text.
+CREDIT GATE: Show this plan and obtain approval before spending generation credits.
 ```
 
-## What actually worked in the RUA & ROY puffer café Short
-- Exact final-frame continuity: ROY stayed on frame-left, RUA stayed frame-right, within the same café aisle and camera composition.
-- Timed talk/action sequence, including one intentionally visible puffer compression effect.
-- Separate 10-second pieces, stitched after inspection into one story, then the official approved RUA outro attached once.
-- The previous generation still opened RUA's thin jacket unexpectedly when she listed the three brands. Treat that as a **remaining QC defect**, not the desired future behaviour; wardrobe must remain locked after a transformation.
-- Language switch is independent of style: the exact same scene controls can produce natural **English** dialogue when a given shot is set to ENGLISH.
-- Prompts improve reliability but do not guarantee perfect voice, lip sync or morph-free continuity; visually inspect outputs.
+## Original master default generation settings
 
-## Relationship to other standards
-- Preserve existing approved RUA dialogue and signature outro; do not revoice past published assets.
-- For separately narrated **English full-length comparison videos**, follow the established Kokoro voice configuration from `CHAT_PUBLICATION_WORKFLOW.md`. Native English dialogue in newly generated Google Flow **character animation Shorts** is allowed when explicitly selected; do not misapply the Korean Sarah voice to English dialogue.
-- For future Korean full-length reviews, follow Sarah/F1 editorial policy; Flow-generated short character dialogue and downstream full-video narration are different production stages.
-- Follow `BRAND_ASSETS.md` for logo, `VIDEO_EDITORIAL_POLICY.md` for affiliate disclosures and factual product claims, and `CHAT_PUBLICATION_WORKFLOW.md` for final output/audio verification and SNS publishing.
-- This instruction records creator preferences only. It does not itself modify a user's Google Flow Agent settings, incur credits, post a video, or authorize publication.
+- Model: **Omni 1.1 Flash**
+- Duration: **10 seconds**
+- Aspect ratio: **9:16 portrait**
+- Resolution: **720p**
+- Outputs: **1**
+- Style: **premium stylized 3D animation**
+
+These are defaults, **not restrictions on the episode**. Do not silently choose a paid/expensive model. Seek approval before any credit-consuming generation, additional variation or retry. If something fails, fix the smallest section possible without destroying the approved clip's successful parts.
+
+## Outro and publishing boundaries
+
+The existing RUA master states:
+- **Use the approved signature outro when explicitly requested; do not automatically attach it to every Flow generation.**
+- Preserve its original audio; never modify, double or fabricate it.
+- If a **final Smart Choice 365 published Short** must contain the outro under a separate owner-approved publication brief / editorial policy, append it **once in post-production** rather than forcing Google Flow to re-create it. This reconciles the Flow master with downstream publishing requirements.
+- No automatic SNS publication without approval. Existing published video/audio remains unchanged without new approval.
+- Cartoon storytelling need not advertise products. For commerce projects, use genuine evidence, accurate network-specific affiliate disclosures, voluntary support copy, and distinguish fictional animation from product tests.
+
+## Quality checks
+
+Before spending credits: correct registered asset; voice and language; requested/default outfit; complete approved logo where shown; no unauthorized clothing branding; optional sunglasses logic; initial/final poses; camera/prop continuity; intended vs accidental effects; model/resolution/output settings; credit budget and user approval.
+
+After rendering: inspect whole video for RUA identity and proportions, dialogue/lip sync, correct language, logo on all visible clothing frames, unintended third-party text, accessories, prop movement, valid scripted special effects, sound cuts, beginning/end completeness and comedy quality. **Do not label a defective video successful.** Preserve good shots and recommend a targeted correction; no unapproved credit expenditure.
+
+## Relation to other repository policies
+
+Read the existing owner-supplied **RUA — SMART CHOICE 365 MASTER PRODUCTION RULES** as the controlling Flow Agent Instructions. This document only adds a tested prompt technique and bilingual per-episode details. Respect `BRAND_ASSETS.md` for official assets, `VIDEO_EDITORIAL_POLICY.md` for buyer claims, `CHAT_PUBLICATION_WORKFLOW.md` for SNS/encoding and original voice. No claims that this GitHub document edited the user's live Google Flow settings.
