@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "42797651613",
   "note": "Owner approved the exact RUA & ROY 30.08s two-part 3D cartoon with buying-link bridge and the official RUA V2 ending; no additional outro",
   "video_id": "lieH-4dso54",
-  "url": "https://www.youtube.com/shorts/lieH-4dso54"
+  "url": "https://www.youtube.com/shorts/lieH-4dso54",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
