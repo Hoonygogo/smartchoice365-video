@@ -1,0 +1,59 @@
+name: "QA RUA ROY puffer main video: full decode, source, Sarah cues"
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/rua-roy-puffer-main-full-decode-qa-20261110.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  full-video-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install FFmpeg if unavailable
+        run: |
+          command -v ffmpeg && command -v ffprobe || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg; }
+      - name: Verify exact MP4, all timings and unaltered RUA story source
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          p=pathlib.Path('renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4')
+          m=json.loads(pathlib.Path('renders/rua-roy-puffer-sarah-20261110/Sarah_Focus_Timings.json').read_text())
+          assert m['status']=='review_only_unpublished'
+          assert (m['voice'],m['language'],m['steps'])==('Sarah/F1','ko',8)
+          assert m['source_story']=='owner-approved RUA ROY 2-part story'
+          assert len(m['timeline'])==27
+          assert m['official_outro_reused'] is True
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==m['sha256']=='a7ae7207e598582d13953956a1b5c30d5a4a2ee1bcb0dff1f56744af499d144a'
+          assert p.stat().st_size==21346443
+          assert all(x['rms']>0.008 for x in m['timeline'])
+          assert all(m['timeline'][j]['end']<=m['timeline'][j+1]['start']+0.002 for j in range(26))
+          info=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_format','-show_streams','-of','json',str(p)]))
+          assert abs(float(info['format']['duration'])-326.022667)<0.2
+          assert any(x.get('codec_type')=='video' and (x.get('width'),x.get('height'))==(1920,1080) for x in info['streams'])
+          assert any(x.get('codec_type')=='audio' and x.get('codec_name')=='aac' for x in info['streams'])
+          print('FULL_VIDEO_METADATA_PASS',m['sha256'],info['format']['duration'])
+          PY
+      - name: Fully decode video and audio from start to finish
+        run: |
+          ffmpeg -hide_banner -v error -xerror -i "renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4" -map 0:v:0 -map 0:a:0 -f null -
+          echo "Full MP4 video and audio decode completed without errors." >> "$GITHUB_STEP_SUMMARY"
+      - name: Capture visual review keyframes
+        run: |
+          mkdir -p qa-frame-preview
+          ffmpeg -hide_banner -v error -y -ss 4 -i "renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4" -frames:v 1 qa-frame-preview/intro.jpg
+          ffmpeg -hide_banner -v error -y -ss 62 -i "renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4" -frames:v 1 qa-frame-preview/buyer-guide.jpg
+          ffmpeg -hide_banner -v error -y -ss 198 -i "renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4" -frames:v 1 qa-frame-preview/focus.jpg
+          ffmpeg -hide_banner -v error -y -ss 319 -i "renders/rua-roy-puffer-sarah-20261110/RUA_ROY_Puffer_3Brand_Sarah_Focus_Full_1080p.mp4" -frames:v 1 qa-frame-preview/outro.jpg
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RUA_ROY_Puffer_Main_QA_4_Frames
+          path: qa-frame-preview/
+          retention-days: 7
+      - run: |
+          echo "Verified review-only video SHA: a7ae7207e598582d13953956a1b5c30d5a4a2ee1bcb0dff1f56744af499d144a" >> "$GITHUB_STEP_SUMMARY"
+          echo "No YouTube/Meta/Naver posting attempted." >> "$GITHUB_STEP_SUMMARY"
