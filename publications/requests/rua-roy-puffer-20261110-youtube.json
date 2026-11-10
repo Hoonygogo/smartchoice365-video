@@ -35,5 +35,7 @@
       "embeddable": true,
       "license": "youtube"
     }
-  }
+  },
+  "release_trigger_attempt": 2,
+  "release_trigger_reason": "retry after YAML parse correction; previous runs had zero jobs and no social publication"
 }
