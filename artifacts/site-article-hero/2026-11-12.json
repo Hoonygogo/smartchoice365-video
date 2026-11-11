@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-12",
+  "channel": "en-au",
+  "topicId": "2026-breville-lad208-lad308-tank-drain-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-12.jpg",
+  "sha256": "05b8d2df9a41042f854a6fce9d3f2fb28bb97a659c932c977be6825058dc2589",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-11T23:07:17.539798+00:00",
+  "imageBytes": 390578,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "e58886deedb189347324b0d70271bb9acae3fd70"
+}
