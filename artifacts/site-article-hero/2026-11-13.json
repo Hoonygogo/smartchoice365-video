@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-13",
+  "channel": "en-au",
+  "topicId": "2026-bissell-3861f-vs-3911f-spotclean-refills-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-13.jpg",
+  "sha256": "10940ef776aa47245aa1c21acd64f8bd0883f5bd8bfe333889684b2e6862c688",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-12T23:02:03.553506+00:00",
+  "imageBytes": 600666,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "5efcc2c2a0ff503b03701d5a70b28463a1ab30a7"
+}
