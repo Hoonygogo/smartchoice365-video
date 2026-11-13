@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-14",
+  "channel": "en-au",
+  "topicId": "2026-fisher-paykel-wh8060j3-wl8058g1-washer-water-power-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-14.jpg",
+  "sha256": "842c53a22b97b6e8cf89c23b05f165071bf9ad4398440ef90d96f6ed82b3f18b",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-13T23:03:06.458353+00:00",
+  "imageBytes": 478986,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "dc856ba49461531bfab3633b20a892269a7906d8"
+}
