@@ -1,0 +1,29 @@
+name: Ninja AF500ANZ owner-approved publishing configuration QA
+on:
+  pull_request:
+    paths:
+      - 'maintenance/publish_rua_roy_ninja_af500anz_20261113.py'
+      - 'publications/requests/rua-roy-ninja-af500anz-20261113-youtube.json'
+      - 'publications/staged-meta-requests/rua-roy-ninja-af500anz-20261113.json'
+      - '.github/workflows/rua-roy-ninja-af500anz-20261113-one-file-publish.yml'
+      - 'tests/test_rua_roy_ninja_af500anz_20261113.py'
+  push:
+    branches: [main]
+    paths:
+      - 'maintenance/publish_rua_roy_ninja_af500anz_20261113.py'
+      - 'publications/requests/rua-roy-ninja-af500anz-20261113-youtube.json'
+      - 'publications/staged-meta-requests/rua-roy-ninja-af500anz-20261113.json'
+      - '.github/workflows/rua-roy-ninja-af500anz-20261113-one-file-publish.yml'
+      - 'tests/test_rua_roy_ninja_af500anz_20261113.py'
+permissions:
+  contents: read
+jobs:
+  static-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check exact Ninja publish script, captions, hash and workflow trigger
+        run: |
+          python3 -m py_compile maintenance/publish_rua_roy_ninja_af500anz_20261113.py
+          python3 -m unittest discover -s tests -p 'test_rua_roy_ninja_af500anz_20261113.py' -v
