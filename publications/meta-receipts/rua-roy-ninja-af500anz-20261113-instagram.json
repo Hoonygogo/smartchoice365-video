@@ -5,10 +5,11 @@
   "video_source_url": "https://raw.githubusercontent.com/Hoonygogo/smartchoice365-video/93039a105ef2f4e95d922bb95750cee1ece5d5fe/uploads/SmartChoice365_Ninja_AF500ANZ_RUA_ROY_Official_Outro_30s.mp4",
   "video_size": 26213477,
   "delivery_sha256": "5db49b1061e56e23f270784e8812bbc4ea2728ec5d40b3899678ab59733de019",
-  "status": "published_unverified",
+  "status": "published_verified",
   "approval": "publish",
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "run_id": "43432890567",
   "container_id": "17890958289527047",
-  "media_id": "18142461208639916"
+  "media_id": "18142461208639916",
+  "permalink": "https://www.instagram.com/reel/DfrupJqjiDl/"
 }
