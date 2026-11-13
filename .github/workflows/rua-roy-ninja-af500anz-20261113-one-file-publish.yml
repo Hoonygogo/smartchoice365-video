@@ -1,0 +1,133 @@
+name: "RUA ROY Ninja AF500ANZ 30s: one approved MP4 -> YouTube + Meta"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "uploads/SmartChoice365_Ninja_AF500ANZ_RUA_ROY_Official_Outro_30s.mp4"
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: rua-roy-ninja-af500anz-20261113-one-approved-release
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate approved exact final 30-second Ninja video, brand audio and both affiliate merchant choices
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffprobe >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          python - <<'PY'
+          import hashlib, json, pathlib, subprocess
+          media=pathlib.Path("uploads/SmartChoice365_Ninja_AF500ANZ_RUA_ROY_Official_Outro_30s.mp4")
+          digest="5db49b1061e56e23f270784e8812bbc4ea2728ec5d40b3899678ab59733de019"
+          assert media.is_file(), "Approved final MP4 not uploaded under the exact filename"
+          assert media.stat().st_size == 26213477, "Unapproved MP4 size"
+          assert hashlib.sha256(media.read_bytes()).hexdigest() == digest, "Unapproved MP4 SHA-256"
+          data=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_streams","-show_format","-of","json",str(media)]))
+          vids=[s for s in data["streams"] if s["codec_type"]=="video"]
+          auds=[s for s in data["streams"] if s["codec_type"]=="audio"]
+          assert len(vids)==1 and len(auds)==1, "Expected exactly one video and audio stream"
+          assert vids[0]["codec_name"]=="h264" and auds[0]["codec_name"]=="aac", "Approved H264/AAC only"
+          assert (vids[0]["width"],vids[0]["height"])==(1080,1920), "Approved 1080 x 1920 portrait only"
+          assert 30.0<=float(data["format"]["duration"])<=30.10, "Incomplete or unexpected video length"
+          youtube=json.loads(pathlib.Path("publications/requests/rua-roy-ninja-af500anz-20261113-youtube.json").read_text())
+          meta=json.loads(pathlib.Path("publications/staged-meta-requests/rua-roy-ninja-af500anz-20261113.json").read_text())
+          for request in (youtube,meta):
+            assert request["id"]=="rua-roy-ninja-af500anz-20261113"
+            assert request["approval"]=="publish"
+            assert request["sha256"]==digest and request["media_path"]==str(media)
+            assert request["channel_id"]=="UC4DzAW-Hbd45bIECwGV7-uA"
+          assert youtube["size_bytes"]==media.stat().st_size
+          copy = {"YouTube Shorts":youtube["metadata"]["snippet"]["description"],
+                  "Instagram Reels":meta["captions"]["instagram"],
+                  "Facebook Reels":meta["captions"]["facebook"]}
+          for platform, caption in copy.items():
+            for expected in ("https://link.amazon/B0iDDqoqj", "https://ebay.us/Rg5QFm",
+              "2026-ninja-af500anz-curated-buying-australia", "As an Amazon Associate I earn from qualifying purchases."):
+              assert expected in caption, f"{platform}: missing issued affiliate link, guide or disclosure: {expected}"
+            assert "affiliate" in caption.lower() and "commission" in caption.lower(), f"{platform}: clear affiliate disclosure needed"
+          assert len(youtube["metadata"]["snippet"]["title"])<=100
+          assert len(copy["YouTube Shorts"])<=5000
+          assert len(copy["Instagram Reels"])<=1800 and len(copy["Facebook Reels"])<=1800
+          assert meta["platforms"]==["instagram","facebook"] and meta["share_to_instagram_story"] is True
+          print("PASS: approved 30.027s final Ninja RUA ROY MP4; exact bytes, streams, affiliate disclosure, seller guide and story setting.")
+          PY
+          ffmpeg -hide_banner -v error -xerror -i uploads/SmartChoice365_Ninja_AF500ANZ_RUA_ROY_Official_Outro_30s.mp4 -f null -
+      - name: Preflight receipt note
+        if: always()
+        run: echo "A passing MP4 preflight is not proof of public publication; verify each platform receipt." >> "$GITHUB_STEP_SUMMARY"
+
+  youtube:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Publish and verify public Ninja RUA ROY YouTube Short
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python maintenance/publish_rua_roy_ninja_af500anz_20261113.py
+      - name: Check YouTube publication receipt
+        if: always()
+        run: echo "Look for published_verified in publications/receipts/rua-roy-ninja-af500anz-20261113-youtube.json" >> "$GITHUB_STEP_SUMMARY"
+
+  meta:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check FFmpeg availability
+        run: |
+          if ! command -v ffprobe >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+      - name: Activate this one exact approved Meta request only after the MP4 upload
+        run: |
+          mkdir -p publications/meta-requests
+          cp publications/staged-meta-requests/rua-roy-ninja-af500anz-20261113.json publications/meta-requests/rua-roy-ninja-af500anz-20261113.json
+          python -m json.tool publications/meta-requests/rua-roy-ninja-af500anz-20261113.json >/dev/null
+      - name: Publish Instagram Reel and Facebook Reel with verified receipts
+        env:
+          META_PUBLISH_ENABLED: "true"
+          META_REQUEST_FILE: "publications/meta-requests/rua-roy-ninja-af500anz-20261113.json"
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_SYSTEM_USER_ACCESS_TOKEN: ${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ vars.META_INSTAGRAM_ACCOUNT_ID || '17841475811391464' }}
+          GH_TOKEN: ${{ github.token }}
+        run: python maintenance/publish_meta_reels.py
+      - name: Share verified Instagram Reel to Story without duplicating the Reel
+        env:
+          META_PUBLISH_ENABLED: "true"
+          META_REQUEST_FILE: "publications/meta-requests/rua-roy-ninja-af500anz-20261113.json"
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_SYSTEM_USER_ACCESS_TOKEN: ${{ secrets.META_SYSTEM_USER_ACCESS_TOKEN }}
+          META_FACEBOOK_PAGE_ID: ${{ vars.META_FACEBOOK_PAGE_ID || '1424295310764332' }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ vars.META_INSTAGRAM_ACCOUNT_ID || '17841475811391464' }}
+          GH_TOKEN: ${{ github.token }}
+        run: python maintenance/publish_meta_story_from_reel.py
+      - name: Check each independent Meta receipt
+        if: always()
+        run: |
+          echo "Verify published_verified in publications/meta-receipts/rua-roy-ninja-af500anz-20261113-{instagram,facebook,instagram-story}.json" >> "$GITHUB_STEP_SUMMARY"
+          echo "If a prior receipt is partial, inspect platform post before any retry; never double publish." >> "$GITHUB_STEP_SUMMARY"

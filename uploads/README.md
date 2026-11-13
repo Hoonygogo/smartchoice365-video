@@ -1,3 +1,25 @@
+# RUA & ROY Ninja AF500ANZ — English 30-second short, approved one-file auto-publication (2026-11-13)
+
+**Direct GitHub upload:** https://github.com/Hoonygogo/smartchoice365-video/upload/main/uploads
+
+Upload **exactly one** complete, unchanged MP4 under `uploads/` and click **Commit changes**:
+
+`SmartChoice365_Ninja_AF500ANZ_RUA_ROY_Official_Outro_30s.mp4`
+
+- Bytes: **26,213,477** (fits GitHub's 25 MiB browser-file limit by 923 bytes).
+- SHA-256: `5db49b1061e56e23f270784e8812bbc4ea2728ec5d40b3899678ab59733de019`.
+- Duration 30.026667s; 1080×1920 portrait; H.264 video + AAC audio. Full decode checked with FFmpeg.
+- Original 10s RUA/ROY fight + 10s MegaZone twist + already included official 10s outro. **Do not append another outro.**
+- GitHub trigger: `.github/workflows/rua-roy-ninja-af500anz-20261113-one-file-publish.yml` on `main` branch push of this **specific MP4 filename only**.
+- The approved English YouTube title, description, and affiliate disclosures are in `publications/requests/rua-roy-ninja-af500anz-20261113-youtube.json`.
+- Instagram/Facebook approved captions and seller-linked research guide are staged in `publications/staged-meta-requests/rua-roy-ninja-af500anz-20261113.json`.
+- Targets: **YouTube Shorts + Instagram Reel + Facebook Reel + Instagram Story**. Naver is not a destination for this AU English cartoon.
+- The GitHub Action checks SHA-256, exact video/audio format and **both issued Amazon/eBay affiliate URLs** in captions, then invokes the existing connected YouTube/Meta publishing APIs and stores individual verification receipts.
+- Public platform posting is not confirmed until `published_verified` shows in the respective `publications/receipts/` and `publications/meta-receipts/`. Never blindly retry a partial publication or post a duplicate.
+- There are no new subscriptions, apps or third-party connections required. Existing GitHub Actions credentials are used, subject to their validity.
+
+---
+
 # RUA 로봇청소기 + 공식 V2 엔딩 — 파일 1개로 자동 발행 (2026-11-08)
 
 완성본: `RUA_RobotVacuum_OfficialEnding_20s_1080x1920.mp4`
