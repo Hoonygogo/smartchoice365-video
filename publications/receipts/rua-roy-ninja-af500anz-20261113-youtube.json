@@ -4,9 +4,12 @@
   "channel_id": "UC4DzAW-Hbd45bIECwGV7-uA",
   "approval": "publish",
   "platform": "youtube",
-  "status": "uploaded_processing",
+  "status": "published_verified",
   "run_id": "43432890567",
   "note": "Owner approved the exact 30.027s Ninja AF500ANZ 3D cartoon RUA ROY fight + official outro on 2026-11-13; no extra outro",
   "video_id": "gZhxiHznjBI",
-  "url": "https://www.youtube.com/shorts/gZhxiHznjBI"
+  "url": "https://www.youtube.com/shorts/gZhxiHznjBI",
+  "privacy": "public",
+  "processing_status": "succeeded",
+  "metadata_verified": true
 }
