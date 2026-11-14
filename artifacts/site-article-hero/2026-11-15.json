@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-15",
+  "channel": "en-au",
+  "topicId": "2026-small-loaf-bread-makers-australia-bake-cadence",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-15.jpg",
+  "sha256": "f815f5072b66d302f1e5ff145dd8f682c4dec51624fac54e5e6977bd1bfe6864",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-14T23:03:39.223539+00:00",
+  "imageBytes": 548101,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "3a65c811ac1425702bf7092f752527bb516e8f35"
+}
