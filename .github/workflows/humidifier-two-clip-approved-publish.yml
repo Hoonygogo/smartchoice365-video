@@ -14,6 +14,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish_exact_approved_video:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
@@ -64,7 +65,7 @@ jobs:
           assert info.get('sha256')=='06d18349ff31f07a072b28cfffdf0bad107d90d588a0d1aade0276fd2f523cf7'
           video_id = info['video_id']
           youtube = 'https://www.youtube.com/watch?v='+video_id
-          guide = 'https://smartchoice365-web.pages.dev/guides/2026-humidifier-ultrasonic-steam-evaporative-korea.html'
+          guide = 'https://smartc365.com/guides/2026-humidifier-ultrasonic-steam-evaporative-korea'
           req = {
             'id': 'humidifier-two-clip-ko-meta-20261101',
             'approval': 'publish',

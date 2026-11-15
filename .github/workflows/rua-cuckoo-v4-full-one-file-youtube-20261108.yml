@@ -12,6 +12,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   preflight:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -55,7 +56,7 @@ jobs:
           if (snippet.get("defaultLanguage"),snippet.get("defaultAudioLanguage"))!=("ko","ko"):
               raise SystemExit("Korean Sarah voice metadata required.")
           expected=[
-              "https://smartchoice365-web.pages.dev/guides/2026-cuckoo-cmw-a201dw-buying-value.html#selection-reasons",
+              "https://smartc365.com/guides/2026-cuckoo-cmw-a201dw-buying-value#selection-reasons",
               "https://link.coupang.com/a/ivyZMMNjOe",
               "쿠팡 파트너스","별도의 제휴 수수료","엄선한 구매 링크",
               "2026년 11월 8일","24,000원","7,890원","31,890원",
@@ -74,6 +75,7 @@ jobs:
         run: echo "Approved MP4 validated; this check alone does not mean a social video was publicly posted." >> "$GITHUB_STEP_SUMMARY"
 
   youtube:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     needs: preflight
     runs-on: ubuntu-24.04
     timeout-minutes: 45

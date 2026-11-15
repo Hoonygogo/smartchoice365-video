@@ -14,6 +14,7 @@ concurrency:
 
 jobs:
   preflight:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
@@ -46,7 +47,7 @@ jobs:
           if y.get("sha256")!=expected or m.get("sha256")!=expected or y.get("approval")!="publish" or m.get("approval")!="publish":
               raise SystemExit("Missing owner-approved, hash-locked publication requests.")
           link = "https://link.coupang.com/a/ivyZMMNjOe"
-          guide = "https://smartchoice365-web.pages.dev/guides/2026-cuckoo-cmw-a201dw-buying-value.html#selection-reasons"
+          guide = "https://smartc365.com/guides/2026-cuckoo-cmw-a201dw-buying-value#selection-reasons"
           candidates = {"YouTube":y["metadata"]["snippet"]["description"], "Instagram":m["captions"]["instagram"], "Facebook":m["captions"]["facebook"]}
           for platform,copy in candidates.items():
               for required in (link,guide,"쿠팡 파트너스","수수료","와우"):
@@ -65,6 +66,7 @@ jobs:
         run: echo "Only the exact approved MP4 may trigger public uploads; this check is not a platform publication receipt." >> "$GITHUB_STEP_SUMMARY"
 
   youtube:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     needs: preflight
     runs-on: ubuntu-24.04
     timeout-minutes: 30
@@ -84,6 +86,7 @@ jobs:
         run: echo "YouTube result in publications/receipts/rua-cuckoo-20l-20261108-youtube.json" >> "$GITHUB_STEP_SUMMARY"
 
   meta:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     needs: preflight
     runs-on: ubuntu-24.04
     timeout-minutes: 40
@@ -121,6 +124,7 @@ jobs:
         run: echo "Instagram/Facebook/Story outcomes require published_verified entries under publications/meta-receipts/." >> "$GITHUB_STEP_SUMMARY"
 
   naver_clip_manual_package:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     needs: preflight
     runs-on: ubuntu-24.04
     timeout-minutes: 8
@@ -137,7 +141,7 @@ jobs:
               "[광고 · 쿠팡 파트너스] 루아와 전자레인지의 귀여운 가격 반전! 😂",
               "쿠쿠 CMW-A201DW 화이트 20L. 고객을 위해 검토하고 엄선한 구매 링크입니다.",
               "쿠팡 제휴 구매 링크: https://link.coupang.com/a/ivyZMMNjOe",
-              "왜 이 제품과 판매처를 선정했나요? https://smartchoice365-web.pages.dev/guides/2026-cuckoo-cmw-a201dw-buying-value.html#selection-reasons",
+              "왜 이 제품과 판매처를 선정했나요? https://smartc365.com/guides/2026-cuckoo-cmw-a201dw-buying-value#selection-reasons",
               "2026-11-08 확인: 24,000원은 와우 가입 쿠폰 대상자 조건부 예시. 월회비 한 달 7,890원 포함 31,890원. 모든 고객 적용 금액이 아니며 이후 회비가 정기 청구될 수 있습니다.",
               "실제 판매가격·배송·쿠폰·반품 조건은 결제 화면에서 확인하세요. 전국 최저가 보장 아님.",
               "창작 캐릭터 애니메이션으로 실제 제품 외관·실물 시연과 다를 수 있습니다.",
@@ -148,7 +152,7 @@ jobs:
           root=pathlib.Path("naver-clip-handoff")
           (root/"TITLE_KO.txt").write_text(title+"\n",encoding="utf-8")
           (root/"CAPTION_KO.txt").write_text(caption+"\n",encoding="utf-8")
-          data={"status":"manual_upload_required","platform":"Naver Clip Creators","media_filename":"RUA_Cuckoo_20L_OfficialOutro_CuratedAffiliate_1080x1920.mp4","title":title,"caption":caption,"guide":"https://smartchoice365-web.pages.dev/guides/2026-cuckoo-cmw-a201dw-buying-value.html#selection-reasons","coupang_issued_link":"https://link.coupang.com/a/ivyZMMNjOe","native_shopping_connect_tag":"not verified or attached; do not fabricate","publish":"owner must manually upload after inspection"}
+          data={"status":"manual_upload_required","platform":"Naver Clip Creators","media_filename":"RUA_Cuckoo_20L_OfficialOutro_CuratedAffiliate_1080x1920.mp4","title":title,"caption":caption,"guide":"https://smartc365.com/guides/2026-cuckoo-cmw-a201dw-buying-value#selection-reasons","coupang_issued_link":"https://link.coupang.com/a/ivyZMMNjOe","native_shopping_connect_tag":"not verified or attached; do not fabricate","publish":"owner must manually upload after inspection"}
           (root/"clip-manual-publish.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
       - uses: actions/upload-artifact@v4

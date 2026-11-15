@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   preflight:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -61,6 +62,7 @@ jobs:
           ffmpeg -hide_banner -v error -xerror -i "uploads/SmartChoice365_RUA_ROY_YouTube_Shorts_1080x1920.mp4" -f null -
 
   youtube:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     needs: preflight
     runs-on: ubuntu-24.04
     timeout-minutes: 30
@@ -80,6 +82,7 @@ jobs:
         run: echo "YouTube receipt publications/receipts/rua-roy-puffer-20261110-youtube.json must be published_verified." >> "$GITHUB_STEP_SUMMARY"
 
   meta:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     needs: preflight
     runs-on: ubuntu-24.04
     timeout-minutes: 40
@@ -108,6 +111,7 @@ jobs:
         run: echo "Meta receipts publications/meta-receipts/rua-roy-puffer-20261110-{instagram,facebook}.json must be published_verified. No Instagram Story (not approved)." >> "$GITHUB_STEP_SUMMARY"
 
   naver_clip_manual:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]') }}
     needs: preflight
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -123,8 +127,8 @@ jobs:
           p=Path("naver-clip-handoff")
           (p/"TITLE_KO.txt").write_text("패딩 길막?! 😂 루아&로이 | 스파오·탑텐·유니클로 경량패딩\n",encoding="utf-8")
           (p/"CAPTION_KO.txt").write_text("""광고·제휴 안내 | 루아&로이의 카페 패딩 길막! 😂
-          세 브랜드 비교: https://smartchoice365-web.pages.dev/guides/2026-lightweight-puffer-jackets.html?utm_source=naver&utm_medium=clip&utm_campaign=rua_roy_puffer_20261110
-          엄선 구매추천·선정 이유: https://smartchoice365-web.pages.dev/guides/2026-lightweight-puffer-buying-value.html?utm_source=naver&utm_medium=clip&utm_campaign=rua_roy_puffer_20261110#selection-reasons
+          세 브랜드 비교: https://smartc365.com/guides/2026-lightweight-puffer-jackets?utm_source=naver&utm_medium=clip&utm_campaign=rua_roy_puffer_20261110
+          엄선 구매추천·선정 이유: https://smartc365.com/guides/2026-lightweight-puffer-buying-value?utm_source=naver&utm_medium=clip&utm_campaign=rua_roy_puffer_20261110#selection-reasons
           스파오 공용 TC24 · 네이버 쇼핑 커넥트 제휴: https://naver.me/xUZvtN0A
           탑텐 AIRTECH IV·85 · 쿠팡 파트너스 제휴: https://link.coupang.com/a/iyWS0hfVkq
           탑텐 판매처는 조건부 가격 대안으로 상품 리뷰 0건, 반품 왕복 10,000원, 공식 공급 근거 미확인.
