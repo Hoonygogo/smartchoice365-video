@@ -31,10 +31,16 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_naver_clip_handoff.py' -v
           python3 -m unittest discover -s tests -p 'test_rua_roy_ninja_af500anz_20261113.py' -v
           # No edits to approved source material, assets, or historical receipts.
-          if git diff --name-only | grep -Ev '^(.github/workflows/[^/]+\\.yml|maintenance/publish_[^/]+\\.py)$'; then
-            echo "BLOCKED unexpected changed path"
-            exit 1
-          fi
+          python3 - <<'PY'
+          import subprocess,sys
+          paths=subprocess.check_output(['git','diff','--name-only'],text=True).splitlines()
+          unexpected=[p for p in paths if not (
+              p.startswith('.github/workflows/') and p.endswith('.yml') or
+              p.startswith('maintenance/publish_') and p.endswith('.py'))]
+          if unexpected:
+              sys.exit('BLOCKED unexpected changed paths: '+str(unexpected))
+          print('Allowed metadata-only source changes:',len(paths))
+          PY
           echo "Verified source-only migration; no user accounts or publication APIs contacted."
       - name: Commit URL updates without triggering social publication workflows
         shell: bash
