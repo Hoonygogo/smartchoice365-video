@@ -60,6 +60,15 @@ jobs:
               print(path,count)
           print('Legacy-bearing source files:',len(found),
                 ' / legacy literal occurrences:',sum(n for _,n in found))
+          # Historical approvals/receipts are immutable, but future publisher
+          # source and launch workflows must not reintroduce the old URL.
+          allow={'official-site-links-qa.yml','one-time-official-domain-migration.yml'}
+          active=[p for p,n in found if
+                  (p.startswith('.github/workflows/') and Path(p).name not in allow)
+                  or p.startswith('maintenance/publish_')]
+          if active:
+              raise SystemExit('FAIL: active social publisher/workflow still emits old website URLs: '+', '.join(active))
+          print('PASS: zero legacy domain references in active social publishers and launch workflows.')
           PY
       - name: Report new approved social requests that still contain old site URLs
         shell: bash
