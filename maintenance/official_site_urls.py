@@ -17,11 +17,11 @@ def verify_new_publication_site_links(text: str, *, platform: str,
     """
     if not isinstance(text, str):
         raise ValueError(f"{platform}: missing caption/description")
-    if re.search(r"(?i)(?:https?://)?(?:www\\.)?smartchoice365-web\\.pages\\.dev(?:[/:?#\\s]|$)", text):
+    if re.search(r"(?i)(?:https?://)?(?:www\.)?smartchoice365-web\.pages\.dev(?:[/:?#\s]|$)", text):
         raise ValueError(f"{platform}: old Pages domain is not allowed; use {OFFICIAL_SITE}")
     if re.search(r"http://(?:www\.)?smartc365\.com(?:/|\b)", text, re.I):
         raise ValueError(f"{platform}: official site must use HTTPS")
-    if re.search(r"https://smartc365\.com/guides/[a-z0-9-]+\.html(?:[?#\s]|$)", text):
+    if re.search(r"https://smartc365\.com/guides/[^\s?#]+\.html(?=[?#\s]|$)", text, re.I):
         raise ValueError(f"{platform}: link the canonical extensionless guide URL")
     if require_website and not re.search(r"https://smartc365\.com(?:/|\b)", text):
         raise ValueError(f"{platform}: include the official Smart Choice 365 website or guide")
