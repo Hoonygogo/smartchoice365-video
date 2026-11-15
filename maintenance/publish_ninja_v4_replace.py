@@ -22,7 +22,7 @@ DIGEST = "b0d49b9b59c7cfded99259501fbc744e85c83de319d21fa213dba0e81e4c4e51"
 OLD_ID = "UJ-azoT4vso"
 PUB_ID = "ninja-af141-af400-en-v4-precise-focus"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
-GUIDE = "https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html?utm_source=youtube&utm_medium=video&utm_campaign=ninja_af141_af400_en_v4"
+GUIDE = "https://smartc365.com/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket?utm_source=youtube&utm_medium=video&utm_campaign=ninja_af141_af400_en_v4"
 
 META = {
     "snippet": {

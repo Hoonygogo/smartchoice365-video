@@ -19,7 +19,7 @@ SIZE=8614924
 RECEIPT="publications/receipts/"+ID+"-youtube.json"
 FULL_ID="fqM-5HCCRck"
 FULL="https://www.youtube.com/watch?v="+FULL_ID
-GUIDE="https://smartchoice365-web.pages.dev/guides/2026-electric-carbon-water-heating-mats.html?utm_source=youtube&utm_medium=shorts&utm_campaign=rua_carbon_mats"
+GUIDE="https://smartc365.com/guides/2026-electric-carbon-water-heating-mats?utm_source=youtube&utm_medium=shorts&utm_campaign=rua_carbon_mats"
 CHANNEL_URL="https://www.youtube.com/channel/"+CHANNEL
 TITLE="탄소매트 가격에 얼어버린 루아 😂｜비싼 게 정말 좋을까? #Shorts"
 DESCRIPTION=(

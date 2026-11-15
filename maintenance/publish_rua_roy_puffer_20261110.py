@@ -22,7 +22,7 @@ SHA256 = "ad68dc22db5663af407ddbecf5ca4d29c0a2d87681d31d91fdc1b24f9196562e"
 SIZE = 17316893
 PUB_ID = "rua-roy-puffer-20261110"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
-SITE = "https://smartchoice365-web.pages.dev/"
+SITE = "https://smartc365.com/"
 CHANNEL_URL = "https://www.youtube.com/channel/" + CHANNEL
 META = json.loads((ROOT / "publications/requests/rua-roy-puffer-20261110-youtube.json").read_text(encoding="utf-8"))["metadata"]
 

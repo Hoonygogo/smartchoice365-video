@@ -11,7 +11,7 @@ SIZE=23336886
 SHA256="c6ef8a3e98c3ca6dfabaedf2057d70898e6d9940a3e554a79750f49815c198d5"
 RECEIPT="publications/receipts/"+ID+"-youtube.json"
 TITLE="Ice Maker Buying Guide Australia 2026 | Bullet vs Nugget Ice | RUA & Smart Choice 365"
-GUIDE="https://smartchoice365-web.pages.dev/guides/2026-ice-maker-australia-summer-bullet-vs-dispenser.html"
+GUIDE="https://smartc365.com/guides/2026-ice-maker-australia-summer-bullet-vs-dispenser"
 DESCRIPTION=f"""🧊 Compare ice makers and buying tips: {GUIDE}?utm_source=youtube&utm_medium=video&utm_campaign=rua_ice_maker_2026
 
 RUA is back! Which countertop ice maker is right for your home?
@@ -32,7 +32,7 @@ This is a specification-based consumer guide, NOT a hands-on test. Listed specif
 Some shopping links in our buying guides are affiliate links. We may earn a commission if you purchase through them, at NO extra cost to you.
 
 More RUA videos: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA
-Smart Choice 365: https://smartchoice365-web.pages.dev/
+Smart Choice 365: https://smartc365.com/
 
 #IceMaker #RUA #BuyingGuide #SmartChoice365 #Australia #NuggetIce"""
 META={"snippet":{"title":TITLE,"description":DESCRIPTION,"categoryId":"26",

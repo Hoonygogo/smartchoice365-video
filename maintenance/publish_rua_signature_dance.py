@@ -18,7 +18,7 @@ SHA256 = "cb72fc0d99af77bee79f96e2743d45f802b658acaa476b07dd929081cf1d093d"
 SIZE = 17752819
 PUB_ID = "rua-signature-dance-20261106"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
-SITE = "https://smartchoice365-web.pages.dev/"
+SITE = "https://smartc365.com/"
 CHANNEL_URL = "https://www.youtube.com/channel/" + CHANNEL
 META = {
     "snippet": {

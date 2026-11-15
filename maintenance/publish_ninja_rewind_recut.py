@@ -17,7 +17,7 @@ OLD_ID="JgKqCXIvbKI"
 FULL_ID="2R5Nyt42hRs"
 PUB_ID="ninja-rewind-animation-only-short-20261101"
 RECEIPT="publications/receipts/"+PUB_ID+"-youtube.json"
-GUIDE="https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html"
+GUIDE="https://smartc365.com/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket"
 META={
   "snippet":{
      "title":"Air Fryer Mistake? ⏪ Rewind Before You Buy! | Ninja AF141 vs AF400 #Shorts",

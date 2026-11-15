@@ -23,7 +23,7 @@ SHA = "06d18349ff31f07a072b28cfffdf0bad107d90d588a0d1aade0276fd2f523cf7"
 SIZE = 3184884
 ID = "humidifier-two-clip-ko-short-20261101"
 RECEIPT = "publications/receipts/" + ID + "-youtube.json"
-GUIDE = "https://smartchoice365-web.pages.dev/guides/2026-humidifier-ultrasonic-steam-evaporative-korea.html"
+GUIDE = "https://smartc365.com/guides/2026-humidifier-ultrasonic-steam-evaporative-korea"
 METADATA = {
     "snippet": {
         "title": "건조하고 냄새나서 가습기 켰더니… 😂💨 #Shorts",

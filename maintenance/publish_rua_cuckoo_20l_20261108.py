@@ -22,7 +22,7 @@ SHA256 = "b4a661af22a08cbe47916d59630faa66d546cdf83e517b49a5314a04666fcd22"
 SIZE = 23027514
 PUB_ID = "rua-cuckoo-20l-20261108"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
-SITE = "https://smartchoice365-web.pages.dev/"
+SITE = "https://smartc365.com/"
 CHANNEL_URL = "https://www.youtube.com/channel/" + CHANNEL
 META = json.loads((ROOT / "publications/requests/rua-cuckoo-20l-20261108-youtube.json").read_text(encoding="utf-8"))["metadata"]
 

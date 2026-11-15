@@ -22,7 +22,7 @@ SHA256 = "38625d685a36e1eb6d5c6421f10b02aba79ded7c5e99b6c6d5be6102326817b1"
 SIZE = 3585977
 PUB_ID = "rua-heart-burst-20261105"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
-SITE = "https://smartchoice365-web.pages.dev/"
+SITE = "https://smartc365.com/"
 CHANNEL_URL = "https://www.youtube.com/channel/" + CHANNEL
 META = {
     "snippet": {
@@ -30,7 +30,7 @@ META = {
         "description": (
             "💗 Meet RUA, the playful animated face of Smart Choice 365!\n"
             + "One tiny heart... one BIG surprise! ✨😂\n\n"
-            + "👉 Discover Smart Choice 365: https://smartchoice365-web.pages.dev/\n"
+            + "👉 Discover Smart Choice 365: https://smartc365.com/\n"
             + "🎬 More RUA Shorts: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n\n"
             + "A fictional 3D cartoon character and illustrative animated scene.\n"
             + "No real product is depicted or tested.\n"

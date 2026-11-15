@@ -22,7 +22,7 @@ SHA256 = "672e91ea81e47226d89a8c0cff54707ced43301448308b3ac3314e976587ab3f"
 SIZE = 3724808
 PUB_ID = "rua-ep01-robot-sock-trial-20261102"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
-SITE = "https://smartchoice365-web.pages.dev/"
+SITE = "https://smartc365.com/"
 CHANNEL_URL = "https://www.youtube.com/channel/" + CHANNEL
 META = {
     "snippet": {

@@ -22,7 +22,7 @@ SHA256 = "4ae6b12be58f717d00115d3312768efe5202a69fb100f627a734a5184aab4c6a"
 SIZE = 3337041
 PUB_ID = "rua-english-intro-20261102"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
-SITE = "https://smartchoice365-web.pages.dev/"
+SITE = "https://smartc365.com/"
 CHANNEL_URL = "https://www.youtube.com/channel/" + CHANNEL
 META = {
     "snippet": {

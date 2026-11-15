@@ -12,7 +12,7 @@ SIZE=5616343
 SHA256="d8195e3f02a8ecf39a0f8e9fe059167095b65fa2fc56b6810cc3b7108a6c0946"
 RECEIPT="publications/receipts/"+ID+"-youtube.json"
 TITLE="탄소매트 vs 전기장판 vs 온수매트｜비싼 게 정말 더 좋을까? 실제 시험·전기요금 비교"
-DESCRIPTION="""👉 탄소매트·전기장판·온수매트 구매 비교표와 전기요금 계산: https://smartchoice365-web.pages.dev/guides/2026-electric-carbon-water-heating-mats.html?utm_source=youtube&utm_medium=video&utm_campaign=carbon_mats_korean
+DESCRIPTION="""👉 탄소매트·전기장판·온수매트 구매 비교표와 전기요금 계산: https://smartc365.com/guides/2026-electric-carbon-water-heating-mats?utm_source=youtube&utm_medium=video&utm_campaign=carbon_mats_korean
 
 루아처럼 비싼 탄소매트를 보고 고민됐나요? 실제 발열 구조부터 한국소비자원 탄소매트 10종 시험 결과, 전기요금 가상 계산, 관리·안전까지 차근차근 비교합니다.
 

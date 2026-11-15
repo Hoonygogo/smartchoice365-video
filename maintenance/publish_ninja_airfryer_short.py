@@ -22,7 +22,7 @@ SHA256="57a0721fc4381bb5f60071fa9c3a529d963d08ff9d3c7629e3e679001ee1c0ce"
 SHORT_ID="ninja-airfryer-tiny-basket-short-cta-20261101"
 RECEIPT="publications/receipts/"+SHORT_ID+"-youtube.json"
 FULL="https://www.youtube.com/watch?v=2R5Nyt42hRs"
-GUIDE="https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html"
+GUIDE="https://smartc365.com/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket"
 METADATA={
     "snippet":{
         "title":"Air Fryer Too Small? 4 People, 1 Tiny Basket 😂 | Ninja AF141 vs AF400 #Shorts",

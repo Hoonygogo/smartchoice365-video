@@ -22,7 +22,7 @@ SHA256 = "9161982fc310abd5a515a6a1b645304b7165c789c061dafc2a0d27292cb024f2"
 SIZE = 23793681
 PUB_ID = "rua-ice-maker-4part-20261106"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
-SITE = "https://smartchoice365-web.pages.dev/"
+SITE = "https://smartc365.com/"
 CHANNEL_URL = "https://www.youtube.com/channel/" + CHANNEL
 META = {
     "snippet": {
@@ -31,7 +31,7 @@ META = {
             "RUA only wanted a glass of ice... but the ice maker had other ideas! 🧊😂\n"
             "Follow all four parts of RUA's ice maker comedy, with her official ending.\n\n"
             "Want to compare real countertop ice makers in Australia?\n"
-            "Smart Choice 365: https://smartchoice365-web.pages.dev/\n"
+            "Smart Choice 365: https://smartc365.com/\n"
             "Full ice maker buying guide video is in production.\n"
             "Official channel: https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA\n\n"
             "This is a fictional 3D cartoon, NOT a hands-on demonstration or test of a real product.\n"

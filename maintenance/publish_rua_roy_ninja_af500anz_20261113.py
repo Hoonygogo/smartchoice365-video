@@ -22,7 +22,7 @@ SHA256 = "5db49b1061e56e23f270784e8812bbc4ea2728ec5d40b3899678ab59733de019"
 SIZE = 26213477
 PUB_ID = "rua-roy-ninja-af500anz-20261113"
 RECEIPT = "publications/receipts/" + PUB_ID + "-youtube.json"
-SITE = "https://smartchoice365-web.pages.dev/"
+SITE = "https://smartc365.com/"
 CHANNEL_URL = "https://www.youtube.com/channel/" + CHANNEL
 META = json.loads((ROOT / "publications/requests/rua-roy-ninja-af500anz-20261113-youtube.json").read_text(encoding="utf-8"))["metadata"]
 
