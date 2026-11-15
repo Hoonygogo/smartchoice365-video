@@ -34,7 +34,7 @@ def draw_intro(scene,index,total,caption,active,path):
         card((360,610,1560,730),NAVY)
         center('히트텍, 가장 따뜻하면 가장 좋을까요?',626,54,'white')
         if 0 in targets:card((350,600,1570,740),None,GOLD,7)
-        center('smartchoice365-web.pages.dev',760,38,MUTED)
+        center('smartc365.com',760,38,MUTED)
     elif mode=='quality_intro':
         text('화면이 흐리게 보이나요?',80,145,72)
         text('설정에서 화질을 높여 보세요',80,248,46,MUTED)

@@ -4,7 +4,7 @@ This is a mandatory pre-publication gate for **Facebook Reels, Instagram Reels, 
 
 ## Facebook Reels
 - Put the relevant long-form YouTube video **in the first two nonblank lines**, with the real https://www.youtube.com/watch?v=… URL.
-- Put the exact verified related homepage article link next, or https://smartchoice365-web.pages.dev/ when no related article exists.
+- Put the exact verified related homepage article link next, or https://smartc365.com/ when no related article exists.
 - Include the direct official channel URL https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA and a compelling, concise hook.
 - Verify the **actual published description** using the Facebook video API where accessible; a successful publish status is not sufficient proof of correct caption.
 - Consider a comment with links only if platform permission and explicit approval allow it. Never claim pinning unless verified.
@@ -43,3 +43,10 @@ This is a mandatory pre-publication gate for **Facebook Reels, Instagram Reels, 
 
 ## Selected product comparison → recommendation → distribution — owner direction 2026-11-08
 Apply `guides/CURATED_BUYING_WORKFLOW.md` to owner-selected products. Produce a full comparison and a distinct Short and distribute via the EXISTING YouTube/Meta publishers. Regular video: exact product recommendation article first description line, issued affiliate link next with required disclosure. Short/Reels: useful decision evidence and a truthful route to the same product article and, when actually live, full video. Keep Sarah/Kokoro, approved logo, speech-synchronised focus, full-frame assets, Meta 1080p/2-second-keyframe delivery, hash QA and duplicate protections. This request does not authorise replacing/deleting older uploads. Never claim completed rendering or publication without actual artifacts and receipts. The owner has authorised distribution of these selected products; collect a concrete final media hash through normal QC rather than inventing one.
+
+
+## Official website origin for all future social publishing — 2026-11-15
+
+**Smart Choice 365 is https://smartc365.com/**. The previous `https://smartchoice365-web.pages.dev/` address is a permanent 301 migration alias, not a future promotional link. For new YouTube long-video descriptions, Shorts descriptions, pinned-comment drafts, Facebook video captions, Instagram Reel captions/Story CTA, Naver Clip briefs and video end cards, use the verified exact `https://smartc365.com/guides/<slug>` (extensionless final URL), or `https://smartc365.com/` only when no relevant live article exists. Include the appropriate meaningful UTM tracking parameters when needed. `https://smartc365.com/#tvshopping` is the secondary Korean home-shopping entry. Do not claim YouTube Shorts/Instagram ordinary links are always clickable; use real supported channel, profile, related video, native tag or verified links. The canonical official YouTube channel remains `https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA`.
+
+**Preserve original platform-issued affiliate links** from Amazon, eBay, Coupang Partners, Naver Shopping Connect, LinkPrice and AdPick. Change only owned website links. Maintain accurate models/pricing, #ad/affiliate disclosures and explicit publishing approvals; never auto republish or rewrite existing published videos, captions, receipts or product prices as part of migration. New drafts/metadata must not link to `pages.dev`.

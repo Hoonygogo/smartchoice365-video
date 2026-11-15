@@ -61,3 +61,10 @@
 - 신청서가 다음 달 심사 대상에 반영되며 **2026-12-15 이후** 선정 결과가 순차 안내된다고 표시. 지원서 이메일로 별도 안내 예정.
 - 이것은 **크리에이터 프로그램 심사 신청** 완료이며, 선정·수익 지급·네이버 클립 API 권한/자동 발행 연결을 의미하지 않음.
 - 프로그램 심사와 무관하게 `smartchoice365` 계정의 일반 클립 수동 업로드는 별도로 진행 가능. 새 영상은 기존 승인/공개 확인 정책 준수.
+
+
+## Official website origin for all future social publishing — 2026-11-15
+
+**Smart Choice 365 is https://smartc365.com/**. The previous `https://smartchoice365-web.pages.dev/` address is a permanent 301 migration alias, not a future promotional link. For new YouTube long-video descriptions, Shorts descriptions, pinned-comment drafts, Facebook video captions, Instagram Reel captions/Story CTA, Naver Clip briefs and video end cards, use the verified exact `https://smartc365.com/guides/<slug>` (extensionless final URL), or `https://smartc365.com/` only when no relevant live article exists. Include the appropriate meaningful UTM tracking parameters when needed. `https://smartc365.com/#tvshopping` is the secondary Korean home-shopping entry. Do not claim YouTube Shorts/Instagram ordinary links are always clickable; use real supported channel, profile, related video, native tag or verified links. The canonical official YouTube channel remains `https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA`.
+
+**Preserve original platform-issued affiliate links** from Amazon, eBay, Coupang Partners, Naver Shopping Connect, LinkPrice and AdPick. Change only owned website links. Maintain accurate models/pricing, #ad/affiliate disclosures and explicit publishing approvals; never auto republish or rewrite existing published videos, captions, receipts or product prices as part of migration. New drafts/metadata must not link to `pages.dev`.

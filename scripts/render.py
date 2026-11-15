@@ -29,7 +29,7 @@ def validate_request(data):
         raise ValueError("A title is required")
     from urllib.parse import urlparse
     url = urlparse(data.get("guide_url", ""))
-    if url.scheme != "https" or url.hostname != "smartchoice365-web.pages.dev":
+    if url.scheme != "https" or url.hostname != "smartc365.com":
         raise ValueError("Guide URL must use the official HTTPS site")
     for scene in scenes:
         for key in ("eyebrow", "heading", "body", "narration"):

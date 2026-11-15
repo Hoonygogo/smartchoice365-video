@@ -69,3 +69,10 @@ This file is an editorial/operational preference record, not a claim that a vide
 - 인스타그램 Reel에서 이어지는 Story는 검증된 Reel 영수증의 동일한 전송 파일을 재사용한다. 독립 Story·YouTube 게시에는 별도의 승인/검증 규칙을 유지한다.
 - 새로운 파일의 코덱/기간/해상도/키프레임/완전 디코딩 검사는 업로드 전에 실패 시 중단한다. 자동 인코딩 회귀 테스트: `.github/workflows/meta-delivery-quality-ci.yml` (SNS 게시 없음). 이전 Story 보호 테스트: `.github/workflows/meta-reel-story-ci.yml`.
 - **소유자 명시적 예외**가 필요한 경우 새 요청에 `meta_quality_profile: "passthrough"`를 지정할 수 있다. 기본값은 `meta-1080p-2sec-v1`이며 추가 유료 서비스는 사용하지 않는다.
+
+
+## Official website origin for all future social publishing — 2026-11-15
+
+**Smart Choice 365 is https://smartc365.com/**. The previous `https://smartchoice365-web.pages.dev/` address is a permanent 301 migration alias, not a future promotional link. For new YouTube long-video descriptions, Shorts descriptions, pinned-comment drafts, Facebook video captions, Instagram Reel captions/Story CTA, Naver Clip briefs and video end cards, use the verified exact `https://smartc365.com/guides/<slug>` (extensionless final URL), or `https://smartc365.com/` only when no relevant live article exists. Include the appropriate meaningful UTM tracking parameters when needed. `https://smartc365.com/#tvshopping` is the secondary Korean home-shopping entry. Do not claim YouTube Shorts/Instagram ordinary links are always clickable; use real supported channel, profile, related video, native tag or verified links. The canonical official YouTube channel remains `https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA`.
+
+**Preserve original platform-issued affiliate links** from Amazon, eBay, Coupang Partners, Naver Shopping Connect, LinkPrice and AdPick. Change only owned website links. Maintain accurate models/pricing, #ad/affiliate disclosures and explicit publishing approvals; never auto republish or rewrite existing published videos, captions, receipts or product prices as part of migration. New drafts/metadata must not link to `pages.dev`.

@@ -38,6 +38,8 @@ def prepare(req, root=ROOT):
         if not cfg['advertising']:
             raise ValueError('Shopping Connect tag requires advertising disclosure/switch')
     title, body = cfg['title'].strip(), cfg['description'].strip()
+    if "smartchoice365-web.pages.dev" in body or "smartchoice365-web.pages.dev" in title:
+        raise ValueError("New Naver Clip drafts must use https://smartc365.com/ for Smart Choice 365 links")
     description = f'{title}\n\n{body}\n\n관련 블로그: {blog}'
     if len(description) > 3000 or not title or not body:
         raise ValueError('Description must fit the observed 3000-character field')

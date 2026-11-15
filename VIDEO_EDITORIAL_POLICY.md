@@ -280,7 +280,7 @@ User instruction: apply the Korean general-video quality/settings to English, re
 이 규칙은 이전의 Library 링크·sandbox 링크·다운로드 중심 확인 안내보다 우선한다.
 
 1. 적용 범위: 모든 한국어·영어 일반영상, 쇼츠, 파일럿, 재제작 및 수정본. 새 영상마다, 수정된 버전마다 실제 완성 MP4를 재생하는 일반 HTTPS 확인 페이지를 만든다.
-2. 기본 형식: 기존 Smart Choice 365 홈페이지의 버전별 reviews 경로에 반응형 페이지와 실제 영상 파일을 배포한다. 검증된 예: https://smartchoice365-web.pages.dev/reviews/airfryer-143d641d/ . 각 버전은 고유 URL과 SHA-256을 유지하며 승인받는 도중 다른 영상으로 몰래 교체하지 않는다.
+2. 기본 형식: 기존 Smart Choice 365 홈페이지의 버전별 reviews 경로에 반응형 페이지와 실제 영상 파일을 배포한다. 검증된 예: https://smartc365.com/reviews/airfryer-143d641d/ . 각 버전은 고유 URL과 SHA-256을 유지하며 승인받는 도중 다른 영상으로 몰래 교체하지 않는다.
 3. 휴대폰에서 링크 → 브라우저 페이지 → ▶ 재생만으로 확인할 수 있어야 한다. native <video controls playsinline preload="metadata">, video/mp4 소스, 전체 화면 버튼을 사용한다. 화면 비율은 해당 영상의 가로/세로 비율을 유지한다. MP4는 H.264/AAC, yuv420p, faststart를 사용한다. 소리 있는 자동재생은 강제하지 않는다.
 4. Library 링크, sandbox 경로, MP4 다운로드, ZIP, GitHub/Actions 화면, 컴퓨터 전용 절차만으로 확인본 전달을 끝내면 안 된다. 보존용 파일이나 다운로드 링크는 보조로만 제공한다. 사용자에게 별도 앱 설치나 로그인을 요구하지 않는다.
 5. 완료 조건: 배포된 페이지가 실제 확인용 HTML인지 검사한다(홈페이지로 돌아가는 SPA fallback의 HTTP 200은 성공이 아님). 실제 MP4의 MIME·바이트·SHA·전체 재생 길이를 검증한다. 브라우저에서 재생 버튼을 눌러 실제 시간 진행·영상 크기·오류 여부를 확인한다. Range/탐색 동작도 확인하며 지원 여부를 기록하고, 미지원 자체를 숨기거나 확인했다고 꾸미지 않는다. 실제 휴대폰 테스트와 일반 브라우저 테스트를 구별한다.
@@ -294,19 +294,19 @@ User instruction: apply the Korean general-video quality/settings to English, re
 
 ## Homepage promotion even without a related article — 2026-11-01
 User instruction: EVERY video must promote the Smart Choice 365 website, including entertainment/buying-trial videos with no corresponding article. This explicitly overrides any interpretation that the guide-first rule forbids a homepage CTA when no related guide exists.
-- If an exact genuinely related published guide exists, use that deep URL as before. If none exists, link the official homepage https://smartchoice365-web.pages.dev/ with a general buying-decision invitation. Do not omit the website, invent a related article or describe the homepage as a detailed guide to this exact video.
+- If an exact genuinely related published guide exists, use that deep URL as before. If none exists, link the official homepage https://smartc365.com/ with a general buying-decision invitation. Do not omit the website, invent a related article or describe the homepage as a detailed guide to this exact video.
 - New Korean/English general videos and Shorts: include a short natural spoken website invitation and matching legible on-screen brand/address toward the closing; do not bury the only CTA in tiny text. For supported surfaces point to the description/comment link. Embedded MP4 text is not clickable; do not claim it is. Adapt Shorts instructions to actual clickable placements.
 - FIRST line of YouTube description contains the useful CTA plus working URL, with platform/video-specific UTM when supported. Add a natural comment with the link too; pin only if actually supported and verified. Keep the CTA concise and appealing, without unsupported discounts, false urgency, guaranteed savings or a misleading promise about the destination.
 - Korean general homepage CTA: “구매 전, 더 비교해 보고 싶으신가요? 스마트초이스365에서 다양한 구매 가이드를 확인해 보세요. 홈페이지는 설명란 링크로 바로 가실 수 있습니다.”
-- Korean first-line description/comment: “👉 구매 결정에 더 많은 도움이 필요하신가요? 스마트초이스365 구매 가이드 둘러보기: https://smartchoice365-web.pages.dev/”
+- Korean first-line description/comment: “👉 구매 결정에 더 많은 도움이 필요하신가요? 스마트초이스365 구매 가이드 둘러보기: https://smartc365.com/”
 - English general homepage CTA: “Want more help deciding what to buy? Explore more buying guides at Smart Choice 365. You'll find the website link in the description.”
-- English first-line description/comment: “👉 Need more help choosing? Explore Smart Choice 365 buying guides: https://smartchoice365-web.pages.dev/”
+- English first-line description/comment: “👉 Need more help choosing? Explore Smart Choice 365 buying guides: https://smartc365.com/”
 - Keep distinct the separate rule for written articles promoting the YouTube channel; this rule is the reverse direction, video → website.
 - Current buying-trial pilot has no required same-topic article. Use the homepage CTA in its pending description/comment. Adding this rule or metadata draft does not itself modify the already-rendered MP4 or approve YouTube publication; any MP4 revision still requires a new browser-playable review page/version and user approval.
 
 
 ## English no-related-article CTA — user explicitly reconfirmed 2026-11-01
-The same mandatory video → website promotion rule applies to ALL English videos, including topics with no corresponding English article, entertainment/pilots, Shorts and future revisions. Never omit the website promotion because no matching guide exists. Use the exact related English guide when one actually exists; otherwise use https://smartchoice365-web.pages.dev/ with a general buying-guide invitation and appropriate YouTube/video UTM tracking.
+The same mandatory video → website promotion rule applies to ALL English videos, including topics with no corresponding English article, entertainment/pilots, Shorts and future revisions. Never omit the website promotion because no matching guide exists. Use the exact related English guide when one actually exists; otherwise use https://smartc365.com/ with a general buying-guide invitation and appropriate YouTube/video UTM tracking.
 - Closing spoken invitation and legible screen text: “Need a little more help deciding what to buy? Explore more buying guides at Smart Choice 365. You'll find the website link in the description.” Use the description instruction for general videos; adapt Shorts to a verified clickable placement rather than assuming Shorts descriptions/comments are clickable.
 - First description line and comment draft: “👉 Not sure what to buy next? Explore more Smart Choice 365 buying guides: [verified website URL]”.
 - Keep the invitation engaging and accurate. Never imply that a same-topic detailed article, deal, savings guarantee or tested result exists when it does not. Preserve Kokoro af_heart/0.96 and existing English production quality, mobile HTTPS preview, explicit version approval and publication rules. A rule update does not claim that previously rendered or published videos were modified.
@@ -404,3 +404,10 @@ This support copy supplements, never replaces, the programme advertising disclos
 - 원본은 assets/rua/official-outro.json에 지정된 승인된 V2 전체 약 10초 영상과 원래 음성을 사용한다. 구형 V1, 재생성한 대체 엔딩, 무음/음성 교체본으로 대신하지 않는다. 승인된 해시와 실제 파일을 확인하며, 원본을 확보하지 못하면 업로드 완료로 처리하지 않는다.
 - 이미 공식 엔딩이 붙어 있는 영상에는 중복 추가하지 않는다. 합성 후 마지막 장면, 엔딩 음성, 화면 비율, 재생 길이와 연결 구간을 실제 최종 MP4에서 확인한다.
 - 승인 요청과 업로드는 엔딩까지 합성된 동일한 최종 파일/해시를 대상으로 한다. 본편 승인만으로 엔딩 미합성본을 공개 발행하지 않는다. 기존 공개 영상을 자동 재편집·재업로드하는 지시는 아니다.
+
+
+## Official website origin for all future social publishing — 2026-11-15
+
+**Smart Choice 365 is https://smartc365.com/**. The previous `https://smartchoice365-web.pages.dev/` address is a permanent 301 migration alias, not a future promotional link. For new YouTube long-video descriptions, Shorts descriptions, pinned-comment drafts, Facebook video captions, Instagram Reel captions/Story CTA, Naver Clip briefs and video end cards, use the verified exact `https://smartc365.com/guides/<slug>` (extensionless final URL), or `https://smartc365.com/` only when no relevant live article exists. Include the appropriate meaningful UTM tracking parameters when needed. `https://smartc365.com/#tvshopping` is the secondary Korean home-shopping entry. Do not claim YouTube Shorts/Instagram ordinary links are always clickable; use real supported channel, profile, related video, native tag or verified links. The canonical official YouTube channel remains `https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA`.
+
+**Preserve original platform-issued affiliate links** from Amazon, eBay, Coupang Partners, Naver Shopping Connect, LinkPrice and AdPick. Change only owned website links. Maintain accurate models/pricing, #ad/affiliate disclosures and explicit publishing approvals; never auto republish or rewrite existing published videos, captions, receipts or product prices as part of migration. New drafts/metadata must not link to `pages.dev`.

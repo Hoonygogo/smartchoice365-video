@@ -1,7 +1,7 @@
 # Smart Choice 365 Video
 
 ## 최우선 확인본 전달 규칙 — 2026-11-01 확정
-모든 한국어·영어 영상, 쇼츠와 수정본은 **휴대폰 브라우저에서 바로 재생되는 일반 HTTPS 웹페이지**로 전달한다. 검증된 기본 예시는 https://smartchoice365-web.pages.dev/reviews/airfryer-143d641d/ 이다. 버전별 페이지와 실제 MP4를 배포하고, 실제 페이지·영상 해시·브라우저 재생을 확인한 뒤 링크를 준다. Library/sandbox/다운로드/ZIP/Actions 화면만으로 완료 처리하지 않는다. 확인 중인 링크와 영상은 자동 삭제하지 않는다. 명시적인 채팅 승인 후 해당 버전만 유튜브에 게시한다. 자세한 필수 조건은 [VIDEO_EDITORIAL_POLICY.md](VIDEO_EDITORIAL_POLICY.md)의 '모든 영상의 필수 모바일 웹 확인 규칙'을 따른다. 아래 초기 프로토타입의 Pages 설정·ZIP 대안·3일 만료 안내는 현재 사용자 확인본 전달 방식으로 사용하지 않는다.
+모든 한국어·영어 영상, 쇼츠와 수정본은 **휴대폰 브라우저에서 바로 재생되는 일반 HTTPS 웹페이지**로 전달한다. 검증된 기본 예시는 https://smartc365.com/reviews/airfryer-143d641d/ 이다. 버전별 페이지와 실제 MP4를 배포하고, 실제 페이지·영상 해시·브라우저 재생을 확인한 뒤 링크를 준다. Library/sandbox/다운로드/ZIP/Actions 화면만으로 완료 처리하지 않는다. 확인 중인 링크와 영상은 자동 삭제하지 않는다. 명시적인 채팅 승인 후 해당 버전만 유튜브에 게시한다. 자세한 필수 조건은 [VIDEO_EDITORIAL_POLICY.md](VIDEO_EDITORIAL_POLICY.md)의 '모든 영상의 필수 모바일 웹 확인 규칙'을 따른다. 아래 초기 프로토타입의 Pages 설정·ZIP 대안·3일 만료 안내는 현재 사용자 확인본 전달 방식으로 사용하지 않는다.
 
 
 한국어 Sarah 음성으로 모바일 MP4 초안을 만드는 공개 제작 저장소입니다.
@@ -61,3 +61,10 @@ New English general videos MUST use `english-guide/render_english_guide.py` and 
 - Image generation is performed in ChatGPT. Source-image bytes are NOT committed to Git history. Supply the reviewed scene assets and matching `visual_manifest.json` locally or through a trusted Actions artifact. The common manual review workflow requires that artifact's exact run/name; it does not magically generate/transfer images.
 - Output includes MP4, captions, voice WAV/receipts, cue timings, scene/frame evidence, manifest and a mobile-friendly HTML player. Inspect actual encoded opening, mid-video chart and final frames before presenting completion.
 - All new results remain awaiting user approval and are not automatically posted to YouTube. Upload only the exact approved hash, then verify processing/public status and guide-first description. Never claim a comment is pinned solely because the API created it.
+
+
+## Official website origin for all future social publishing — 2026-11-15
+
+**Smart Choice 365 is https://smartc365.com/**. The previous `https://smartchoice365-web.pages.dev/` address is a permanent 301 migration alias, not a future promotional link. For new YouTube long-video descriptions, Shorts descriptions, pinned-comment drafts, Facebook video captions, Instagram Reel captions/Story CTA, Naver Clip briefs and video end cards, use the verified exact `https://smartc365.com/guides/<slug>` (extensionless final URL), or `https://smartc365.com/` only when no relevant live article exists. Include the appropriate meaningful UTM tracking parameters when needed. `https://smartc365.com/#tvshopping` is the secondary Korean home-shopping entry. Do not claim YouTube Shorts/Instagram ordinary links are always clickable; use real supported channel, profile, related video, native tag or verified links. The canonical official YouTube channel remains `https://www.youtube.com/channel/UC4DzAW-Hbd45bIECwGV7-uA`.
+
+**Preserve original platform-issued affiliate links** from Amazon, eBay, Coupang Partners, Naver Shopping Connect, LinkPrice and AdPick. Change only owned website links. Maintain accurate models/pricing, #ad/affiliate disclosures and explicit publishing approvals; never auto republish or rewrite existing published videos, captions, receipts or product prices as part of migration. New drafts/metadata must not link to `pages.dev`.
