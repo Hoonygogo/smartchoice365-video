@@ -17,6 +17,9 @@ on:
       - 'scripts/publish_youtube.py'
       - 'scripts/render.py'
       - 'scripts/draw_intro.py'
+      - 'scripts/publish_*.py'
+      - 'maintenance/publish_*.py'
+      - 'publications/staged-meta-requests/**'
       - 'publications/auto-shorts-requests/**'
       - 'publications/meta-requests/**'
       - 'publications/requests/**'
@@ -65,7 +68,10 @@ jobs:
           allow={'official-site-links-qa.yml','one-time-official-domain-migration.yml'}
           active=[p for p,n in found if
                   (p.startswith('.github/workflows/') and Path(p).name not in allow)
-                  or p.startswith('maintenance/publish_')]
+                  or p.startswith('maintenance/publish_')
+                  or (p.startswith('scripts/') and
+                      (Path(p).name.startswith('publish_') or
+                       Path(p).name in {'render.py','draw_intro.py'}))]
           if active:
               raise SystemExit('FAIL: active social publisher/workflow still emits old website URLs: '+', '.join(active))
           print('PASS: zero legacy domain references in active social publishers and launch workflows.')
@@ -77,8 +83,11 @@ jobs:
           import pathlib, re, subprocess, sys
           roots = ('publications/requests/', 'publications/meta-requests/',
                    'publications/staged-meta-requests/', 'publications/auto-shorts-requests/')
-          # Existing approved/published request snapshots are historic; only new
-          # or modified request files in the CURRENT commit are subject to this gate.
+          # Historical published request/receipt snapshots must never be rewritten.
+          # Detect ALL legacy-bearing request JSONs, not only those in HEAD diff,
+          # so older prepared-but-unpublished requests remain visible for review.
+          # Only new/modified requests fail this gate; all old candidates are
+          # reported and the upload-time validators remain mandatory.
           base = subprocess.run(['git','rev-parse','HEAD^'], capture_output=True, text=True)
           paths = []
           if base.returncode == 0:
@@ -87,13 +96,35 @@ jobs:
               paths = [p for p in changed.stdout.splitlines()
                        if p.startswith(roots) and p.endswith('.json')]
           bad = []
-          for p in paths:
-              f = pathlib.Path(p)
-              if f.is_file() and 'smartchoice365-web.pages.dev' in f.read_text(encoding='utf-8'):
-                  bad.append(p)
+          legacy_inventory = []
+          for root in roots:
+              directory = pathlib.Path(root)
+              if not directory.exists():
+                  continue
+              for f in directory.rglob('*.json'):
+                  if not f.is_file() or f.stat().st_size > 1_000_000:
+                      continue
+                  raw = f.read_text(encoding='utf-8', errors='replace')
+                  if 'smartchoice365-web.pages.dev' not in raw:
+                      continue
+                  # Classification is advisory: a filename/status is NOT proof
+                  # the item was published or safe to resend.
+                  try:
+                      obj = __import__('json').loads(raw)
+                  except ValueError:
+                      obj = {}
+                  state = str(obj.get('status', obj.get('publishStatus', 'unknown'))) if isinstance(obj, dict) else 'unknown'
+                  legacy_inventory.append((f.as_posix(), state))
+                  if f.as_posix() in paths:
+                      bad.append(f.as_posix())
+          print('Legacy-bearing request snapshots (review before any future upload):')
+          for filename,state in legacy_inventory:
+              print('REVIEW', filename, 'stored-status='+state)
+          print('Legacy request inventory:',len(legacy_inventory))
           if bad:
               sys.exit('BLOCKED: New or modified social request uses legacy Pages host: '
                        + ', '.join(bad))
           print('Verified new/modified social requests:',len(paths))
           print('Historical published requests and receipts were not rewritten.')
+          print('WARNING: legacy requests must pass upload-time URL validation if reused; never auto-republish historic snapshots.')
           PY
