@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    if: ${{ (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') && (github.event_name != 'push' || !contains(github.event.head_commit.message, '[migration-only]')) }}
     runs-on: ubuntu-24.04
     environment:
       name: github-pages
@@ -69,7 +69,7 @@ jobs:
           <h1>Ninja AF141 vs AF400: Do You Need Two Drawers?</h1>
           <p>English female narration: Kokoro af_heart · 1080p · For review before YouTube upload</p>
           <video controls playsinline preload="metadata" src="./ninja_af141_af400_en_review.mp4"></video>
-          <p><a class="btn" href="./ninja_af141_af400_en_review.mp4" download>Download MP4</a><a class="btn" href="https://smartchoice365-web.pages.dev/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket.html?utm_source=video_preview&utm_medium=video&utm_campaign=ninja_af141_af400_english">Related buying guide</a></p>
+          <p><a class="btn" href="./ninja_af141_af400_en_review.mp4" download>Download MP4</a><a class="btn" href="https://smartc365.com/guides/2026-ninja-af141-vs-af400-australia-single-dual-basket?utm_source=video_preview&utm_medium=video&utm_campaign=ninja_af141_af400_english">Related buying guide</a></p>
           <p class="notice"><strong>Quality review required.</strong> This is an audio-included draft, not a user-approved final video. Product imagery, graphical overlays, captions and picture composition must be checked before publication. No YouTube publication has been authorised.</p>
           </main></body></html>
           HTML
