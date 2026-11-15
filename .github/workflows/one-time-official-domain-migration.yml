@@ -35,7 +35,6 @@ jobs:
           import subprocess,sys
           paths=subprocess.check_output(['git','diff','--name-only'],text=True).splitlines()
           unexpected=[p for p in paths if not (
-              p.startswith('.github/workflows/') and p.endswith('.yml') or
               p.startswith('maintenance/publish_') and p.endswith('.py'))]
           if unexpected:
               sys.exit('BLOCKED unexpected changed paths: '+str(unexpected))
@@ -46,7 +45,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git add -- .github/workflows/ maintenance/publish_*.py
+          git add -- maintenance/publish_*.py
           if git diff --cached --quiet; then
             echo "All relevant active source URLs already migrated."
             exit 0
