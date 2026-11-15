@@ -22,8 +22,9 @@ EXCLUDE = {
     ".github/workflows/one-time-official-domain-migration.yml",
 }
 def migrate():
-    candidates = list((ROOT/".github/workflows").glob("*.yml"))
-    candidates += list((ROOT/"maintenance").glob("publish_*.py"))
+    # GitHub Actions GITHUB_TOKEN cannot update workflow files. Process only
+    # publishing Python code here; workflows are handled through the GitHub connector.
+    candidates = list((ROOT/"maintenance").glob("publish_*.py"))
     candidates += [ROOT/"scripts/publish_youtube.py"]
     changed = []
     for f in sorted(set(candidates)):
