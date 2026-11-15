@@ -37,6 +37,30 @@ jobs:
         run: |
           python3 -m unittest discover -s tests -p 'test_official_site_urls.py' -v
           python3 -m unittest discover -s tests -p 'test_naver_clip_handoff.py' -v
+      - name: Inventory any remaining legacy website references in current source and future templates
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          roots = ('.github/workflows','maintenance','scripts','config','requests',
+                   'production','ninja-english','guides')
+          extensions = {'.py','.json','.js','.mjs','.md','.yml','.yaml','.txt'}
+          found=[]
+          for root in roots:
+              base=Path(root)
+              if not base.exists():continue
+              for f in base.rglob('*'):
+                  if not f.is_file() or f.suffix.lower() not in extensions:continue
+                  if f.stat().st_size>1_000_000:continue
+                  txt=f.read_text(encoding='utf-8',errors='replace')
+                  count=txt.count('smartchoice365-web.pages.dev')
+                  if count:found.append((f.as_posix(),count))
+          print('LEGACY SOURCE INVENTORY (includes historical code + explicit rejection guards):')
+          for path,count in found:
+              print(path,count)
+          print('Legacy-bearing source files:',len(found),
+                ' / legacy literal occurrences:',sum(n for _,n in found))
+          PY
       - name: Report new approved social requests that still contain old site URLs
         shell: bash
         run: |
