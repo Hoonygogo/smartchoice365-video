@@ -22,6 +22,9 @@ import urllib.parse
 import urllib.request
 
 from publish_youtube_generic import receipt_read, receipt_write
+# Also import safely when a test loads this file via importlib.spec_from_file_location.
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from official_site_urls import verify_new_publication_site_links
 from meta_delivery_quality import prepare_delivery
 

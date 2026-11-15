@@ -4,6 +4,9 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+# Also import safely when a test loads this file via importlib.spec_from_file_location.
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from official_site_urls import verify_new_publication_site_links
 import re
 
