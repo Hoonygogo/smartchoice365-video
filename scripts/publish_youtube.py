@@ -12,6 +12,9 @@ import urllib.parse
 import urllib.request
 
 from check_youtube import request_json
+# Main publishing scripts share the same official-site gate as Meta and Shorts.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'maintenance'))
+from official_site_urls import verify_new_publication_site_links
 from youtube_ai_disclosure import apply_upload_disclosure
 
 REPO = 'Hoonygogo/smartchoice365-video'
@@ -95,6 +98,7 @@ def main():
         video_id = receipt['video_id']
         print('Existing video found in receipt; no new upload created.', flush=True)
     else:
+        verify_new_publication_site_links(metadata['snippet']['description'], platform='YouTube')
         receipt = {'id': identity, 'sha256': digest, 'channel_id': CHANNEL, 'status': 'upload_initiated',
                    'approval': request['approval'], 'run_id': os.environ.get('GITHUB_RUN_ID'), 'platform': 'youtube'}
         # Persist the lock before creating a remote upload; a crash cannot cause a duplicate.
