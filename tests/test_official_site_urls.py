@@ -24,6 +24,15 @@ class OfficialWebsiteLinkTests(unittest.TestCase):
     def test_authoring_html_rejected(self):
         with self.assertRaisesRegex(ValueError, "extensionless"):
             verify_new_publication_site_links("https://smartc365.com/guides/example.html", platform="Naver")
+    def test_legacy_case_variant_rejected(self):
+        with self.assertRaisesRegex(ValueError, "old Pages domain"):
+            verify_new_publication_site_links("HTTPS://SMARTCHOICE365-WEB.PAGES.DEV/guides/example", platform="YouTube")
+    def test_legacy_www_variant_rejected(self):
+        with self.assertRaisesRegex(ValueError, "old Pages domain"):
+            verify_new_publication_site_links("https://www.smartchoice365-web.pages.dev/", platform="Meta")
+    def test_authoring_html_with_fragment_rejected(self):
+        with self.assertRaisesRegex(ValueError, "extensionless"):
+            verify_new_publication_site_links("https://smartc365.com/guides/Example_v2.html#details", platform="YouTube")
     def test_naver_clip_optional_site(self):
         verify_new_publication_site_links("관련 블로그: https://blog.naver.com/smartchoice365/1234",
                                           platform="Naver Clip", require_website=False)
