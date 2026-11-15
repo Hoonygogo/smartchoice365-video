@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-16",
+  "channel": "en-au",
+  "topicId": "2026-kitchenaid-go-vs-corded-hand-blender-battery-cost-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-16.jpg",
+  "sha256": "13ade7639c9ebf3b9fb4ffa347352943e1a7ada912125a5749deef10b5a832b4",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-15T23:06:11.850103+00:00",
+  "imageBytes": 473172,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "d947b509592ac1b629ec875ffd92df08db3d1a96"
+}
