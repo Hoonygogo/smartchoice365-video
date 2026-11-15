@@ -16,6 +16,7 @@ import time
 import urllib.parse
 
 from publish_youtube_generic import api, receipt_read, receipt_write, CHANNEL
+from official_site_urls import verify_new_publication_site_links
 from check_youtube import request_json
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -110,8 +111,7 @@ def main():
     digest = hashlib.sha256(media).hexdigest()
     title = req.get("title", "")
     description = req.get("description", "")
-    if "smartchoice365-web.pages.dev" in description or "https://smartc365.com/" not in description:
-        raise RuntimeError("Shorts must link to the official smartc365.com website, not the legacy Pages domain")
+    verify_new_publication_site_links(description, platform="YouTube Shorts")
     related = req.get("related_video_id", "")
     if not title or len(title) > 100 or not description or len(description) > 5000:
         raise RuntimeError("Invalid title or description")

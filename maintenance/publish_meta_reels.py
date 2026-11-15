@@ -22,6 +22,7 @@ import urllib.parse
 import urllib.request
 
 from publish_youtube_generic import receipt_read, receipt_write
+from official_site_urls import verify_new_publication_site_links
 from meta_delivery_quality import prepare_delivery
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -118,10 +119,7 @@ def validate_request():
         caption = req.get("captions", {}).get(name, "")
         if not isinstance(caption, str) or not 10 <= len(caption) <= 1800:
             fail("Missing or overlong platform-specific caption.")
-        if "smartchoice365-web.pages.dev" in caption or "https://smartc365.com/" not in caption:
-            fail("New Meta captions must use the official smartc365.com guide URL; old Pages links are not allowed.")
-        if "https://smartc365.com/" not in caption:
-            fail("Each caption must mention the related Smart Choice 365 guide.")
+        verify_new_publication_site_links(caption, platform="Meta " + name)
     # Make referrals visible before Facebook/Instagram truncate long captions.
     # A URL buried after the hook does not meet the promotional requirement.
     for name in target:
@@ -130,7 +128,7 @@ def validate_request():
         if len(lines) < 3:
             fail("Caption needs prominent related video, homepage and channel referral lines.")
         top = "\n".join(lines[:4])
-        if "smartc365.com" not in top:
+        if "https://smartc365.com" not in top:
             fail("Homepage guide must be in the first four nonblank caption lines.")
         if name == "facebook" and "youtube.com/watch?v=" not in top and not req.get("channel_intro"):
             fail("Facebook must show the matching YouTube long-form video in the first four lines.")

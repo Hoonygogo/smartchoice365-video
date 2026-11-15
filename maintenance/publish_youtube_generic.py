@@ -14,6 +14,7 @@ import urllib.request
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from check_youtube import request_json
 from youtube_ai_disclosure import apply_upload_disclosure
+from official_site_urls import verify_new_publication_site_links
 
 REPO = 'Hoonygogo/smartchoice365-video'
 CHANNEL = 'UC4DzAW-Hbd45bIECwGV7-uA'
@@ -111,6 +112,8 @@ def main():
         video_id = receipt['video_id']
         print('Existing video found in receipt; no new upload created.', flush=True)
     else:
+        # Only NEW uploads need the current-site check; preserve historic verified receipts.
+        verify_new_publication_site_links(metadata['snippet']['description'], platform='YouTube')
         receipt = {'id': identity, 'sha256': digest, 'channel_id': CHANNEL, 'status': 'upload_initiated',
                    'approval': request['approval'], 'run_id': os.environ.get('GITHUB_RUN_ID'), 'platform': 'youtube'}
         # Persist the lock before creating a remote upload; a crash cannot cause a duplicate.

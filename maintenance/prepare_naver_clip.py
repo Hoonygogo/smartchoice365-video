@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from official_site_urls import verify_new_publication_site_links
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,8 +39,7 @@ def prepare(req, root=ROOT):
         if not cfg['advertising']:
             raise ValueError('Shopping Connect tag requires advertising disclosure/switch')
     title, body = cfg['title'].strip(), cfg['description'].strip()
-    if "smartchoice365-web.pages.dev" in body or "smartchoice365-web.pages.dev" in title:
-        raise ValueError("New Naver Clip drafts must use https://smartc365.com/ for Smart Choice 365 links")
+    verify_new_publication_site_links(title + "\n" + body, platform="Naver Clip", require_website=False)
     description = f'{title}\n\n{body}\n\n관련 블로그: {blog}'
     if len(description) > 3000 or not title or not body:
         raise ValueError('Description must fit the observed 3000-character field')
