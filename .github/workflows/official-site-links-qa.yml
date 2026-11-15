@@ -1,0 +1,66 @@
+name: Official Smart Choice 365 URLs in future social publishing
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * *' # 19:00 Brisbane daily
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/official-site-links-qa.yml'
+      - 'maintenance/official_site_urls.py'
+      - 'tests/test_official_site_urls.py'
+      - 'maintenance/publish_meta_reels.py'
+      - 'maintenance/publish_youtube_generic.py'
+      - 'maintenance/publish_youtube_v8.py'
+      - 'maintenance/publish_shorts_from_render.py'
+      - 'maintenance/prepare_naver_clip.py'
+      - 'scripts/publish_youtube.py'
+      - 'scripts/render.py'
+      - 'scripts/draw_intro.py'
+      - 'publications/auto-shorts-requests/**'
+      - 'publications/meta-requests/**'
+      - 'publications/requests/**'
+permissions:
+  contents: read
+jobs:
+  check_new_outbound_links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Validate syntax for new-link publishers
+        run: |
+          python3 -m py_compile maintenance/official_site_urls.py maintenance/publish_meta_reels.py maintenance/publish_youtube_generic.py maintenance/publish_youtube_v8.py maintenance/publish_shorts_from_render.py maintenance/prepare_naver_clip.py scripts/publish_youtube.py scripts/render.py scripts/draw_intro.py
+      - name: Verify official URL validation and Naver Clip draft safety
+        run: |
+          python3 -m unittest discover -s tests -p 'test_official_site_urls.py' -v
+          python3 -m unittest discover -s tests -p 'test_naver_clip_handoff.py' -v
+      - name: Report new approved social requests that still contain old site URLs
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib, re, subprocess, sys
+          roots = ('publications/requests/', 'publications/meta-requests/',
+                   'publications/staged-meta-requests/', 'publications/auto-shorts-requests/')
+          # Existing approved/published request snapshots are historic; only new
+          # or modified request files in the CURRENT commit are subject to this gate.
+          base = subprocess.run(['git','rev-parse','HEAD^'], capture_output=True, text=True)
+          paths = []
+          if base.returncode == 0:
+              changed = subprocess.run(['git','diff','--name-only','HEAD^','HEAD'],
+                                       capture_output=True,text=True,check=True)
+              paths = [p for p in changed.stdout.splitlines()
+                       if p.startswith(roots) and p.endswith('.json')]
+          bad = []
+          for p in paths:
+              f = pathlib.Path(p)
+              if f.is_file() and 'smartchoice365-web.pages.dev' in f.read_text(encoding='utf-8'):
+                  bad.append(p)
+          if bad:
+              sys.exit('BLOCKED: New or modified social request uses legacy Pages host: '
+                       + ', '.join(bad))
+          print('Verified new/modified social requests:',len(paths))
+          print('Historical published requests and receipts were not rewritten.')
+          PY
