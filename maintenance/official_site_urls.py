@@ -17,7 +17,7 @@ def verify_new_publication_site_links(text: str, *, platform: str,
     """
     if not isinstance(text, str):
         raise ValueError(f"{platform}: missing caption/description")
-    if LEGACY_HOST in text:
+    if re.search(r"(?i)(?:https?://)?(?:www\\.)?smartchoice365-web\\.pages\\.dev(?:[/:?#\\s]|$)", text):
         raise ValueError(f"{platform}: old Pages domain is not allowed; use {OFFICIAL_SITE}")
     if re.search(r"http://(?:www\.)?smartc365\.com(?:/|\b)", text, re.I):
         raise ValueError(f"{platform}: official site must use HTTPS")
