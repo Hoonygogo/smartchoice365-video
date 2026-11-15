@@ -1,0 +1,59 @@
+name: Migrate old video workflow website links without publishing
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/one-time-official-domain-migration.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sc365-migrate-publishing-url-metadata
+  cancel-in-progress: false
+jobs:
+  source_migration_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+          fetch-depth: 2
+      - name: Rewrite ONLY checked-in publisher source and workflow URLs
+        run: python3 maintenance/migrate_official_site_references.py
+      - name: Verify unchanged publication requests and all Python syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m compileall -q maintenance scripts
+          python3 -m unittest discover -s tests -p 'test_official_site_urls.py' -v
+          python3 -m unittest discover -s tests -p 'test_naver_clip_handoff.py' -v
+          python3 -m unittest discover -s tests -p 'test_rua_roy_ninja_af500anz_20261113.py' -v
+          # No edits to approved source material, assets, or historical receipts.
+          if git diff --name-only | grep -Ev '^(.github/workflows/[^/]+\\.yml|maintenance/publish_[^/]+\\.py)$'; then
+            echo "BLOCKED unexpected changed path"
+            exit 1
+          fi
+          echo "Verified source-only migration; no user accounts or publication APIs contacted."
+      - name: Commit URL updates without triggering social publication workflows
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- .github/workflows/ maintenance/publish_*.py
+          if git diff --cached --quiet; then
+            echo "All relevant active source URLs already migrated."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: migrate video social publication URL sources to smartc365.com [skip ci]"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then
+              echo "Website-link source migration committed; no uploads were triggered."
+              exit 0
+            fi
+          done
+          echo "Unable to push migration updates after 3 attempts" >&2
+          exit 1
