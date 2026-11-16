@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-17",
+  "channel": "en-au",
+  "topicId": "2026-hisense-hrbm418e-vs-hrbm418s-fridge-energy-payback-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-17.jpg",
+  "sha256": "147e9225519868799d1cf7bd51163b60f1631856223bc3a57f06b5b48e918071",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-16T23:03:01.945750+00:00",
+  "imageBytes": 433940,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "f7c4ba04f9c89f2b120e2dff06eae6dcc539ffd7"
+}
