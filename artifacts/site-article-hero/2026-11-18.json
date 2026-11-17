@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-18",
+  "channel": "en-au",
+  "topicId": "2026-sodastream-terra-vs-duo-glass-bottle-cost-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-18.jpg",
+  "sha256": "773a23b08cb2f016f71d0d7234286c8f9ffe017d48e5c7df70dfaf6c3ea04acb",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-17T23:08:44.138964+00:00",
+  "imageBytes": 346256,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "0e9da96926cba5a978ee942fae8392a770a82cb1"
+}
