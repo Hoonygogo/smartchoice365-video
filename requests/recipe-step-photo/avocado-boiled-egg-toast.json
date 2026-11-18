@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "slug": "avocado-boiled-egg-toast",
   "title": "Avocado & Boiled Egg Toast",
   "titleKo": "아보카도 삶은 달걀 토스트",
@@ -47,23 +47,19 @@
   "stages": [
     {
       "step": 1,
-      "scene": "Exactly two intact chicken eggs partially submerged in clear gently simmering water in a stainless steel saucepan standing on an ordinary gas hob, true 2cm water above the eggs, no other food. Close side view, no hands. This is step one BEFORE the eggs are cooked and peeled."
+      "scene": "A stainless steel saucepan on a gas stove with precisely TWO ordinary whole white chicken eggs under visibly simmering clear hot water. Eggs visibly submerged below the water surface (roughly 2cm of water above). Water is clearly boiling gently with tiny bubbles. No other ingredients in view. Near-level close-up, no hands."
     },
     {
       "step": 4,
-      "scene": "A ceramic bowl resting on a wooden kitchen countertop with only ripe green avocado flesh 160g being crushed by an ordinary fork leaning INTO the bowl, a squeezed lemon half to the side with no other ingredients. Avocado visibly chunky, not smooth purée. A small pinch of ground black pepper and salt on the mash, no eggs, spinach or toast at this stage."
+      "scene": "ONLY chunky green ripe mashed avocado in one small plain ceramic bowl on a wooden kitchen counter, an ordinary metal fork with its tines touching the avocado, small specks of freshly ground black pepper and salt mixed in. A squeezed lemon slice sitting on the table beside the bowl. NO other food, no eggs, no bread, no spinach, no plate, no writing anywhere. True simple home food prep snapshot."
     },
     {
       "step": 6,
-      "scene": "Close-up of two slices of crispy golden wholemeal toast flat on a ceramic plate, 30g fresh baby spinach leaves placed on the toast, chunky mashed ripe avocado spread over the spinach. NO eggs added to toast yet, no egg pieces visible, no other toppings. Natural portion for two people, plates on a real wooden counter, no people."
+      "scene": "TWO simple slices of crisp toasted wholemeal sandwich bread on a normal plate, each toast is covered in fresh raw baby spinach leaves first, then a generous layer of chunky mashed ripe avocado placed ON TOP of the spinach, avocado is the upper layer. No egg whatsoever yet, no egg slices, no other toppings, no lettering, no branded utensils. A plain kitchen worktop and soft daylight."
     },
     {
       "step": 7,
-      "scene": "Finished two servings of Australian avocado boiled egg toast: on a plain ceramic plate, exactly two golden toasted wholemeal bread slices topped with fresh small baby spinach leaves under chunky mashed avocado and neat round slices of fully cooked hard-boiled egg with pale yellow firm yolks. No runny egg, no raw vegetables other than spinach, no garnish, no tomatoes, no seeds. Natural photographed edible breakfast with realistic proportions."
-    },
-    {
-      "step": 0,
-      "scene": "Separate premium HERO angle different from step seven: finished two avocado-and-hardboiled-egg wholemeal toasts on a light stoneware platter, baby spinach layer below fresh mashed avocado and distinctly sliced hard-boiled egg above, firm pale yolks visible. Focus close on rustic genuine food, simple kitchen morning light. No tomatoes, chilli flakes, microgreens, other toppings, flowers or people, high-resolution landscape editorial photograph."
+      "scene": "A realistic fully finished breakfast photographed as an appetising plate: exactly TWO toasted wholemeal bread slices, each with fresh baby spinach tucked UNDER a thick layer of chunky mashed green avocado, with several round hardboiled egg slices on TOP, yolks fully set and pale yellow. One ordinary beige ceramic plate on bare wooden kitchen worktop, no printed cards or pages, no other ingredients, no parsley, no tomatoes, no seeds. High resolution horizontal food photograph."
     }
   ]
 }
