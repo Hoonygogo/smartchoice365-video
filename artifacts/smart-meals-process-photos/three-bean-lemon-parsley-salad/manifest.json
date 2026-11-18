@@ -154,6 +154,18 @@
       "reviewed": false,
       "revision": 2,
       "replacesRejected": true
+    },
+    {
+      "file": "step-03-v3.jpg",
+      "step": 3,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "26f7faac34bdc14608229e598270e878c7b7c04bda69aa22001bf9326f20e523",
+      "prompt": "Square editorial instructional kitchen photograph of precisely THIS isolated prep stage: 40 grams of FINELY DICED RED ONION, purple and white little 3mm cubes, and 12 grams of FRESH FINELY CHOPPED ITALIAN FLAT-LEAF PARSLEY, green leaf confetti, organized as two separate little piles on a clean LIGHT WOODEN CUTTING BOARD. ONE stainless chef knife rests beside the diced vegetables, blade safely on board. NO BEANS OF ANY KIND, NO CHICKPEAS, NO GREEN BEANS, NO OTHER VEGETABLES, NO FINISHED SALAD, NO COOKED FOOD, NO WATER, NO COLANDER, NO HANDS, NO HUMAN BODY, NO GARNISH, NO WORDS. Close and clear lifelike photographic details, natural light, one coherent preparation scene, correct cut sizes, beautiful warm neutral kitchen background.",
+      "reviewed": false,
+      "revision": 3
     }
   ]
 }
