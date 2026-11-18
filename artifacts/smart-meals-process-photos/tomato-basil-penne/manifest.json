@@ -1,0 +1,140 @@
+{
+  "dish": "tomato-basil-penne",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "koTitle": "토마토 바질 펜네 파스타",
+  "enTitle": "Easy Tomato & Basil Penne",
+  "ingredients": [
+    "180 g penne pasta",
+    "400 g canned chopped tomatoes",
+    "120 g cherry tomatoes",
+    "90 g brown onion",
+    "9 g minced garlic",
+    "15 ml olive oil",
+    "80 ml reserved pasta cooking water",
+    "12 g fresh basil leaves",
+    "25 g grated Parmesan",
+    "2 g salt",
+    "1 g ground black pepper"
+  ],
+  "method": [
+    {
+      "@type": "HowToStep",
+      "name": "Prepare the vegetables and basil",
+      "text": "Finely dice 90 g onion, halve 120 g cherry tomatoes and mince 9 g garlic. Wash and dry 12 g fresh basil leaves, then tear them with your hands. Keep the basil aside for the finish rather than simmering it in the sauce.",
+      "url": "https://smartc365.com/guides/smart-dinner-tomato-basil-penne-en#step-1"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Cook the penne until al dente",
+      "text": "Bring a large pot of water to the boil and add part of the measured 2 g salt. Add 180 g penne and cook for the packet's al dente time. A tasted piece should be tender with a slight bite, not hard or mushy.",
+      "url": "https://smartc365.com/guides/smart-dinner-tomato-basil-penne-en#step-2"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Reserve pasta water before draining",
+      "text": "Just before draining, scoop out at least 80 ml of the starchy pasta water into a clean cup. Drain the pasta. Keep the reserved water to help the tomato sauce cling to the penne instead of discarding it all.",
+      "url": "https://smartc365.com/guides/smart-dinner-tomato-basil-penne-en#step-3"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Soften the onion over medium heat",
+      "text": "Warm 15 ml olive oil in a wide frying pan over medium heat, then add 90 g diced onion. Stir for about 4–5 minutes until translucent and soft. Turn down the heat if it starts sticking or browning too fast.",
+      "url": "https://smartc365.com/guides/smart-dinner-tomato-basil-penne-en#step-4"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Simmer the garlic and tomato sauce",
+      "text": "Stir in 9 g minced garlic for 30 seconds, then add 400 g canned chopped tomatoes. Reduce to medium-low heat and simmer gently for about 7–8 minutes until excess watery liquid reduces and the sauce looks slightly thicker.",
+      "url": "https://smartc365.com/guides/smart-dinner-tomato-basil-penne-en#step-5"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Toss through cherry tomatoes and penne",
+      "text": "Add 120 g halved cherry tomatoes and the drained penne to the sauce. Toss over medium heat for 1–2 minutes until the tomatoes begin to soften and the pasta is evenly coated. Avoid crushing every tomato piece.",
+      "url": "https://smartc365.com/guides/smart-dinner-tomato-basil-penne-en#step-6"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Use the reserved water to control texture",
+      "text": "Add the reserved 80 ml pasta water gradually in two or three splashes while tossing. Stop when a light layer of sauce clings to each pasta tube; you may not need it all. If the sauce becomes watery, simmer briefly until it coats the pasta.",
+      "url": "https://smartc365.com/guides/smart-dinner-tomato-basil-penne-en#step-7"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Finish off the heat with basil and Parmesan",
+      "text": "Turn off the heat. Stir through 12 g torn basil and around half the 25 g Parmesan, then taste and add the measured black pepper and any remaining salt gradually. Divide between two bowls and sprinkle with the remaining cheese.",
+      "url": "https://smartc365.com/guides/smart-dinner-tomato-basil-penne-en#step-8"
+    }
+  ],
+  "reviewed": false,
+  "sitePublished": false,
+  "generated": [
+    {
+      "file": "step-01.jpg",
+      "step": 1,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "8e5cbd6d988ec7601c349e6a7947bd4c38291fde4a85252c02ca033ebb3d673f",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Easy Tomato & Basil Penne. ONLY THESE INGREDIENTS: 180 g penne pasta; 400 g canned chopped tomatoes; 120 g cherry tomatoes; 90 g brown onion; 9 g minced garlic; 15 ml olive oil; 80 ml reserved pasta cooking water; 12 g fresh basil leaves; 25 g grated Parmesan; 2 g salt; 1 g ground black pepper. COMPLETE METHOD CONTEXT: 1: Finely dice 90 g onion, halve 120 g cherry tomatoes and mince 9 g garlic. Wash and dry 12 g fresh basil leaves, then tear them with your hands. Keep the basil aside for the finish rather than simmering it in the sauce. 2: Bring a large pot of water to the boil and add part of the measured 2 g salt. Add 180 g penne and cook for the packet's al dente time. A tasted piece should be tender with a slight bite, not hard or mushy. 3: Just before draining, scoop out at least 80 ml of the starchy pasta water into a clean cup. Drain the pasta. Keep the reserved water to help the tomato sauce cling to the penne instead of discarding it all. 4: Warm 15 ml olive oil in a wide frying pan over medium heat, then add 90 g diced onion. Stir for about 4–5 minutes until translucent and soft. Turn down the heat if it starts sticking or browning too fast. 5: Stir in 9 g minced garlic for 30 seconds, then add 400 g canned chopped tomatoes. Reduce to medium-low heat and simmer gently for about 7–8 minutes until excess watery liquid reduces and the sauce looks slightly thicker. 6: Add 120 g halved cherry tomatoes and the drained penne to the sauce. Toss over medium heat for 1–2 minutes until the tomatoes begin to soften and the pasta is evenly coated. Avoid crushing every tomato piece. 7: Add the reserved 80 ml pasta water gradually in two or three splashes while tossing. Stop when a light layer of sauce clings to each pasta tube; you may not need it all. If the sauce becomes watery, simmer briefly until it coats the pasta. 8: Turn off the heat. Stir through 12 g torn basil and around half the 25 g Parmesan, then taste and add the measured black pepper and any remaining salt gradually. Divide between two bowls and sprinkle with the remaining cheese.. DEPICT EXACTLY STAGE 1 ONLY: Prepare the vegetables and basil: Finely dice 90 g onion, halve 120 g cherry tomatoes and mince 9 g garlic. Wash and dry 12 g fresh basil leaves, then tear them with your hands. Keep the basil aside for the finish rather than simmering it in the sauce.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Show the physical preparation action as close-up, square crop. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "step-02.jpg",
+      "step": 2,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "d1c6bed2e8d6ab51ab3dc41ae912f644792d89f243d62d2a32840c5b3871a186",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Easy Tomato & Basil Penne. ONLY THESE INGREDIENTS: 180 g penne pasta; 400 g canned chopped tomatoes; 120 g cherry tomatoes; 90 g brown onion; 9 g minced garlic; 15 ml olive oil; 80 ml reserved pasta cooking water; 12 g fresh basil leaves; 25 g grated Parmesan; 2 g salt; 1 g ground black pepper. COMPLETE METHOD CONTEXT: 1: Finely dice 90 g onion, halve 120 g cherry tomatoes and mince 9 g garlic. Wash and dry 12 g fresh basil leaves, then tear them with your hands. Keep the basil aside for the finish rather than simmering it in the sauce. 2: Bring a large pot of water to the boil and add part of the measured 2 g salt. Add 180 g penne and cook for the packet's al dente time. A tasted piece should be tender with a slight bite, not hard or mushy. 3: Just before draining, scoop out at least 80 ml of the starchy pasta water into a clean cup. Drain the pasta. Keep the reserved water to help the tomato sauce cling to the penne instead of discarding it all. 4: Warm 15 ml olive oil in a wide frying pan over medium heat, then add 90 g diced onion. Stir for about 4–5 minutes until translucent and soft. Turn down the heat if it starts sticking or browning too fast. 5: Stir in 9 g minced garlic for 30 seconds, then add 400 g canned chopped tomatoes. Reduce to medium-low heat and simmer gently for about 7–8 minutes until excess watery liquid reduces and the sauce looks slightly thicker. 6: Add 120 g halved cherry tomatoes and the drained penne to the sauce. Toss over medium heat for 1–2 minutes until the tomatoes begin to soften and the pasta is evenly coated. Avoid crushing every tomato piece. 7: Add the reserved 80 ml pasta water gradually in two or three splashes while tossing. Stop when a light layer of sauce clings to each pasta tube; you may not need it all. If the sauce becomes watery, simmer briefly until it coats the pasta. 8: Turn off the heat. Stir through 12 g torn basil and around half the 25 g Parmesan, then taste and add the measured black pepper and any remaining salt gradually. Divide between two bowls and sprinkle with the remaining cheese.. DEPICT EXACTLY STAGE 2 ONLY: Cook the penne until al dente: Bring a large pot of water to the boil and add part of the measured 2 g salt. Add 180 g penne and cook for the packet's al dente time. A tasted piece should be tender with a slight bite, not hard or mushy.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Show the physical preparation action as close-up, square crop. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "step-05.jpg",
+      "step": 5,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "41ec91c69019e33d2a75314d2c97585d051e9cca44ec13aff50b46d2dbee596e",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Easy Tomato & Basil Penne. ONLY THESE INGREDIENTS: 180 g penne pasta; 400 g canned chopped tomatoes; 120 g cherry tomatoes; 90 g brown onion; 9 g minced garlic; 15 ml olive oil; 80 ml reserved pasta cooking water; 12 g fresh basil leaves; 25 g grated Parmesan; 2 g salt; 1 g ground black pepper. COMPLETE METHOD CONTEXT: 1: Finely dice 90 g onion, halve 120 g cherry tomatoes and mince 9 g garlic. Wash and dry 12 g fresh basil leaves, then tear them with your hands. Keep the basil aside for the finish rather than simmering it in the sauce. 2: Bring a large pot of water to the boil and add part of the measured 2 g salt. Add 180 g penne and cook for the packet's al dente time. A tasted piece should be tender with a slight bite, not hard or mushy. 3: Just before draining, scoop out at least 80 ml of the starchy pasta water into a clean cup. Drain the pasta. Keep the reserved water to help the tomato sauce cling to the penne instead of discarding it all. 4: Warm 15 ml olive oil in a wide frying pan over medium heat, then add 90 g diced onion. Stir for about 4–5 minutes until translucent and soft. Turn down the heat if it starts sticking or browning too fast. 5: Stir in 9 g minced garlic for 30 seconds, then add 400 g canned chopped tomatoes. Reduce to medium-low heat and simmer gently for about 7–8 minutes until excess watery liquid reduces and the sauce looks slightly thicker. 6: Add 120 g halved cherry tomatoes and the drained penne to the sauce. Toss over medium heat for 1–2 minutes until the tomatoes begin to soften and the pasta is evenly coated. Avoid crushing every tomato piece. 7: Add the reserved 80 ml pasta water gradually in two or three splashes while tossing. Stop when a light layer of sauce clings to each pasta tube; you may not need it all. If the sauce becomes watery, simmer briefly until it coats the pasta. 8: Turn off the heat. Stir through 12 g torn basil and around half the 25 g Parmesan, then taste and add the measured black pepper and any remaining salt gradually. Divide between two bowls and sprinkle with the remaining cheese.. DEPICT EXACTLY STAGE 5 ONLY: Simmer the garlic and tomato sauce: Stir in 9 g minced garlic for 30 seconds, then add 400 g canned chopped tomatoes. Reduce to medium-low heat and simmer gently for about 7–8 minutes until excess watery liquid reduces and the sauce looks slightly thicker.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Show the physical preparation action as close-up, square crop. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "step-06.jpg",
+      "step": 6,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "698f05c497f1d090da80c07cd2beca892b6e8f12fe4378d6c2e050cefcda8cbf",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Easy Tomato & Basil Penne. ONLY THESE INGREDIENTS: 180 g penne pasta; 400 g canned chopped tomatoes; 120 g cherry tomatoes; 90 g brown onion; 9 g minced garlic; 15 ml olive oil; 80 ml reserved pasta cooking water; 12 g fresh basil leaves; 25 g grated Parmesan; 2 g salt; 1 g ground black pepper. COMPLETE METHOD CONTEXT: 1: Finely dice 90 g onion, halve 120 g cherry tomatoes and mince 9 g garlic. Wash and dry 12 g fresh basil leaves, then tear them with your hands. Keep the basil aside for the finish rather than simmering it in the sauce. 2: Bring a large pot of water to the boil and add part of the measured 2 g salt. Add 180 g penne and cook for the packet's al dente time. A tasted piece should be tender with a slight bite, not hard or mushy. 3: Just before draining, scoop out at least 80 ml of the starchy pasta water into a clean cup. Drain the pasta. Keep the reserved water to help the tomato sauce cling to the penne instead of discarding it all. 4: Warm 15 ml olive oil in a wide frying pan over medium heat, then add 90 g diced onion. Stir for about 4–5 minutes until translucent and soft. Turn down the heat if it starts sticking or browning too fast. 5: Stir in 9 g minced garlic for 30 seconds, then add 400 g canned chopped tomatoes. Reduce to medium-low heat and simmer gently for about 7–8 minutes until excess watery liquid reduces and the sauce looks slightly thicker. 6: Add 120 g halved cherry tomatoes and the drained penne to the sauce. Toss over medium heat for 1–2 minutes until the tomatoes begin to soften and the pasta is evenly coated. Avoid crushing every tomato piece. 7: Add the reserved 80 ml pasta water gradually in two or three splashes while tossing. Stop when a light layer of sauce clings to each pasta tube; you may not need it all. If the sauce becomes watery, simmer briefly until it coats the pasta. 8: Turn off the heat. Stir through 12 g torn basil and around half the 25 g Parmesan, then taste and add the measured black pepper and any remaining salt gradually. Divide between two bowls and sprinkle with the remaining cheese.. DEPICT EXACTLY STAGE 6 ONLY: Toss through cherry tomatoes and penne: Add 120 g halved cherry tomatoes and the drained penne to the sauce. Toss over medium heat for 1–2 minutes until the tomatoes begin to soften and the pasta is evenly coated. Avoid crushing every tomato piece.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Show the physical preparation action as close-up, square crop. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "step-08.jpg",
+      "step": 8,
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "034bb037301c98749e54b15ea0c559bdf7a0e8d32f68f33fde2924b0b5c98837",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Easy Tomato & Basil Penne. ONLY THESE INGREDIENTS: 180 g penne pasta; 400 g canned chopped tomatoes; 120 g cherry tomatoes; 90 g brown onion; 9 g minced garlic; 15 ml olive oil; 80 ml reserved pasta cooking water; 12 g fresh basil leaves; 25 g grated Parmesan; 2 g salt; 1 g ground black pepper. COMPLETE METHOD CONTEXT: 1: Finely dice 90 g onion, halve 120 g cherry tomatoes and mince 9 g garlic. Wash and dry 12 g fresh basil leaves, then tear them with your hands. Keep the basil aside for the finish rather than simmering it in the sauce. 2: Bring a large pot of water to the boil and add part of the measured 2 g salt. Add 180 g penne and cook for the packet's al dente time. A tasted piece should be tender with a slight bite, not hard or mushy. 3: Just before draining, scoop out at least 80 ml of the starchy pasta water into a clean cup. Drain the pasta. Keep the reserved water to help the tomato sauce cling to the penne instead of discarding it all. 4: Warm 15 ml olive oil in a wide frying pan over medium heat, then add 90 g diced onion. Stir for about 4–5 minutes until translucent and soft. Turn down the heat if it starts sticking or browning too fast. 5: Stir in 9 g minced garlic for 30 seconds, then add 400 g canned chopped tomatoes. Reduce to medium-low heat and simmer gently for about 7–8 minutes until excess watery liquid reduces and the sauce looks slightly thicker. 6: Add 120 g halved cherry tomatoes and the drained penne to the sauce. Toss over medium heat for 1–2 minutes until the tomatoes begin to soften and the pasta is evenly coated. Avoid crushing every tomato piece. 7: Add the reserved 80 ml pasta water gradually in two or three splashes while tossing. Stop when a light layer of sauce clings to each pasta tube; you may not need it all. If the sauce becomes watery, simmer briefly until it coats the pasta. 8: Turn off the heat. Stir through 12 g torn basil and around half the 25 g Parmesan, then taste and add the measured black pepper and any remaining salt gradually. Divide between two bowls and sprinkle with the remaining cheese.. DEPICT EXACTLY STAGE 8 ONLY: Finish off the heat with basil and Parmesan: Turn off the heat. Stir through 12 g torn basil and around half the 25 g Parmesan, then taste and add the measured black pepper and any remaining salt gradually. Divide between two bowls and sprinkle with the remaining cheese.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Fully finished dish, separate editorial composition from hero, 3:2 landscape. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "hero.jpg",
+      "step": 0,
+      "role": "hero",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8d9b85cc6537b18af10d90f3920a53301b3f3aef5055ce0ee40cfa64fd282067",
+      "prompt": "Photorealistic premium food-magazine HERO image, high-resolution. Finished Easy Tomato & Basil Penne. Ingredients only: 180 g penne pasta; 400 g canned chopped tomatoes; 120 g cherry tomatoes; 90 g brown onion; 9 g minced garlic; 15 ml olive oil; 80 ml reserved pasta cooking water; 12 g fresh basil leaves; 25 g grated Parmesan; 2 g salt; 1 g ground black pepper. Exactly plated at conclusion of: Turn off the heat. Stir through 12 g torn basil and around half the 25 g Parmesan, then taste and add the measured black pepper and any remaining salt gradually. Divide between two bowls and sprinkle with the remaining cheese.. Large appealing three-quarter 3:2 landscape composition, unlike step-final arrangement, genuine edible textures, soft daylight. No extra garnishes, no unknown ingredients, no captions, no typography, no logo.",
+      "reviewed": false
+    }
+  ]
+}
