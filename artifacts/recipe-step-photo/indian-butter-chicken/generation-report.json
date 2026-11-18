@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "slug": "indian-butter-chicken",
+  "recipeName": "Indian Butter Chicken Makhani",
+  "source": "Original official Smart Meals bilingual recipe method",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "reviewed": false,
+  "published": false,
+  "paidFallback": false,
+  "attemptLimitPerStage": 1,
+  "requestRevision": 1,
+  "generatedAtUTC": "2026-11-18T11:42:14.282584+00:00",
+  "stages": [
+    {
+      "step": 3,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/indian-butter-chicken/step-03.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 220348,
+      "sha256": "6d026377417682760c89fa3fe868926b7c93b714a63e7dca74d97572f3781e90"
+    },
+    {
+      "step": 4,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/indian-butter-chicken/step-04.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 225316,
+      "sha256": "8bd2e03fac880e1e4fda3a5c842ba107350cdc05a779251a69b0de107f5547fe"
+    },
+    {
+      "step": 5,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/indian-butter-chicken/step-05.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 199829,
+      "sha256": "3ff463d0e24ec23a86435859387fb6c70673e738effac987653d34578af56def"
+    },
+    {
+      "step": 7,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/indian-butter-chicken/step-07.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 204185,
+      "sha256": "a747270d0c7129eec386d64a338c8a1c38408e9233a04bad8f9bd735c9905ed1"
+    },
+    {
+      "step": 8,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "final",
+      "path": "artifacts/recipe-step-photo/indian-butter-chicken/step-08.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 201474,
+      "sha256": "deae34327c969182d4bf7bac8a0e28a5bce78aef9336fdc2991301fb243ba89e"
+    },
+    {
+      "step": 0,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "hero",
+      "path": "artifacts/recipe-step-photo/indian-butter-chicken/hero.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 254600,
+      "sha256": "1e3e19abcb0aca359a4f422b313826ea0635d75feaacc59e9f16f6b21194af59"
+    }
+  ],
+  "status": "candidates_created_unreviewed"
+}
