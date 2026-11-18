@@ -8,14 +8,14 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 3,
+  "requestRevision": 4,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-18T13:34:01.921203+00:00",
+  "generatedAtUTC": "2026-11-18T13:37:03.056154+00:00",
   "stages": [
     {
       "step": 1,
@@ -26,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-01.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 114448,
-      "sha256": "18fc0a428c1dbdd2a9b4d1586010cf253d0956e47ed49f175130d9c72a7b1f73"
+      "bytes": 136554,
+      "sha256": "0a16593daa188001fc03f14ed22f8c6ffd26272797ad0991c8ce208f13ca2bde"
     },
     {
       "step": 2,
@@ -38,20 +38,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-02.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 220047,
-      "sha256": "88d84c0b96ea4af778b9530cf723a560fa056e66255c6a1dd624cfc006561c37"
-    },
-    {
-      "step": 3,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-03.jpg",
-      "width": 1024,
-      "height": 1024,
-      "bytes": 128108,
-      "sha256": "b8db61a3e5fdb03eb11e72024898a0e5b10d27362420dfb6e2c1c22d66083fab"
+      "bytes": 202674,
+      "sha256": "0f726e950277b89ed47b1a05e05e6fca21e72e3191f561fb6047bee179d8a07b"
     },
     {
       "step": 4,
@@ -62,8 +50,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-04.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 234467,
-      "sha256": "ab8d1847dd0fb9021a0f8cbe2f58e1fe2c5f17d48c8975826242eb55fa916036"
+      "bytes": 203148,
+      "sha256": "dd55aed12c1a8342239ba7786e564b501142fe085788f4ffb388f6d85b97367d"
     },
     {
       "step": 5,
@@ -74,8 +62,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-05.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 122567,
-      "sha256": "2b5a009ba0fe201a5de1955ea0f688c2991c2f3aea682cf867a80be73d091400"
+      "bytes": 123654,
+      "sha256": "81b49b89343439581396a52bf9401d06d10201e298479899231ede5ae9a8c3db"
     },
     {
       "step": 6,
@@ -86,8 +74,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-06.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 148436,
-      "sha256": "eba1fb5ec68917c8d3dc1741492e275a127afdd6155bab65709acf66eb5141b8"
+      "bytes": 125760,
+      "sha256": "70f8b20e12494da50b3c63a26bb622ebf0dc5093fb59d0806c830e1fd2d452f0"
     },
     {
       "step": 7,
@@ -98,8 +86,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-07.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 164556,
-      "sha256": "9b3ad85df56d2800c19fb4f0499884ac82ebd0b702db2919e223b1f265dbc687"
+      "bytes": 145623,
+      "sha256": "b0cb058d563a6b05458f32391512a8c086090df839820c47eb2526fb3449ef69"
     },
     {
       "step": 8,
@@ -110,8 +98,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-08.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 234209,
-      "sha256": "82038721540e7b92941f1428f7fc275e405ebc0765988e218cac71b3ba46a41f"
+      "bytes": 249986,
+      "sha256": "f9fc39b4af1166eabce407c3fa05b2ff7586422511677ea509e7869b4ff722e0"
     },
     {
       "step": 0,
@@ -122,8 +110,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/hero.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 274629,
-      "sha256": "bfce07f18a3ddae1111c7c82bbda5af399d45b9929f5545a5da3dca522918994"
+      "bytes": 232650,
+      "sha256": "6a43fea1abb09de87c87d3f3a5cc3f0a28b15f6c68ca27687289509548c37f79"
     }
   ],
   "referenceDimensions": [
