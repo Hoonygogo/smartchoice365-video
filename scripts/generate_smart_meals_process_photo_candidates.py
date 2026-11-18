@@ -75,12 +75,13 @@ def generate(request_path):
         is_final = step == len(request["fullMethod"])
         target_method = request["fullMethod"][-1] if is_hero else request["fullMethod"][step-1]
         prefix = (
-            f"ONE genuine-looking close-up cooking photograph. Photo subject: {item['scene']}. "
-            f"Recipe {request['title']}. Correct cooking stage: {target_method}. "
-            "Priority: depict ONLY specified visual subject, do not introduce other ingredients or preparation stages. "
-            "Natural home kitchen, realistic food textures and small imperfections, natural soft window light, "
-            "all cooking equipment sits on an actual counter or stove with natural shadows and gravity. "
-            "No face, arms, people, strange hands, airborne food, wrong ingredients, text, collage or CGI appearance."
+            "One single realistic unposed home-kitchen photograph, not a collage, poster, recipe illustration or cookbook page. "
+            + item["scene"] +
+            " Natural daylight, normal household equipment physically resting on a real counter or stove, "
+            "realistic contact shadows and gravity, imperfect edible food texture, natural camera perspective. "
+            "Absolutely NO written words, gibberish letters, typography, printed paper, recipe pages, signs, captions, "
+            "logos, brand labels, watermark, person, face, whole arms, impossible objects, CGI shine or artificial blur. "
+            "Depict only the specified preparation stage, no invented toppings."
         )
         if len(prefix) > 1650:
             prefix = prefix[:1650].rsplit(" ", 1)[0]
