@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-19",
+  "channel": "en-au",
+  "topicId": "2026-philips-sth3020-ste3170-garment-steamer-batch-au",
+  "status": "fallback",
+  "reason": "free_limit_or_rate_limit",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": null,
+  "sha256": null,
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-18T23:08:14.336828+00:00",
+  "callsAttempted": 1,
+  "httpStatus": 429
+}
