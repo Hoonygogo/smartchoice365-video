@@ -1,7 +1,7 @@
 {
-  "checkedAtUTC": "2026-11-18T13:56:53.387301+00:00",
-  "attempt": 6,
-  "allLiveVerified": false,
+  "checkedAtUTC": "2026-11-18T13:58:32.298614+00:00",
+  "attempt": 1,
+  "allLiveVerified": true,
   "entries": [
     {
       "slug": "avocado-boiled-egg-toast",
@@ -64,19 +64,15 @@
           "lang": "ko",
           "http": 200,
           "bytes": 13466,
-          "missing": [
-            "/assets/recipe-step-photos/raspberry-lime-lemonade/step-03.jpg"
-          ],
-          "pass": false
+          "missing": [],
+          "pass": true
         },
         {
           "lang": "en",
           "http": 200,
           "bytes": 13020,
-          "missing": [
-            "/assets/recipe-step-photos/raspberry-lime-lemonade/step-03.jpg"
-          ],
-          "pass": false
+          "missing": [],
+          "pass": true
         }
       ],
       "assets": [
@@ -97,14 +93,6 @@
           "pass": true
         },
         {
-          "path": "/assets/recipe-step-photos/raspberry-lime-lemonade/step-03.jpg",
-          "http": 200,
-          "bytes": 227315,
-          "width": 1024,
-          "height": 1024,
-          "pass": true
-        },
-        {
           "path": "/assets/recipe-step-photos/raspberry-lime-lemonade/step-05.jpg",
           "http": 200,
           "bytes": 191204,
@@ -113,7 +101,7 @@
           "pass": true
         }
       ],
-      "pass": false
+      "pass": true
     },
     {
       "slug": "indian-butter-chicken",
