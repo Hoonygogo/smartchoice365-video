@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "recipeSlug": "tomato-basil-penne",
+  "photoStages": [
+    1,
+    2,
+    5,
+    6,
+    8
+  ],
+  "qualityBar": {
+    "hero": "distinct original finished dish photo >=1400px",
+    "final": "separate finished dish photo >=1400px",
+    "process": "distinct accurate photo per selected original recipe step, no extra unlisted ingredients",
+    "koEn": "same approved photo pair"
+  }
+}
