@@ -61,17 +61,25 @@
   ],
   "stages": [
     {
-      "step": 2,
-      "scene": "One single authentic close-up photograph, no panels: 350 g finely chopped sour napa kimchi in a ceramic bowl, a real wooden chopping board with small neatly chopped onion 130 g and carrot 110 g, spring onion slices 65 g, 8 g crumbled nori on a plate, and a small transparent measuring cup with 55 ml red kimchi brine sitting ON the board. A single kitchen knife lying flat on the board. No rice, no eggs, no mushrooms or other food. No person visible."
+      "step": 1,
+      "scene": "Only an ordinary ceramic bowl of freshly cooked short-grain white rice that was cooled and kept chilled, about 650g rice with individual short plump rice grains gently separated and no other ingredients or food. A clean wooden rice paddle rests against the inside of the bowl on the real countertop. Home-cooking close-up, no text, no garnish, no pink rice."
     },
     {
-      "step": 4,
-      "scene": "Single real stovetop photo at cooking stage four only. A stable black wok with 350 g fermented chopped napa kimchi, finely diced onions and carrots sizzling together in oil; clearly no rice, no fried eggs, no sesame and no chopped nori in the wok yet. Natural slight steam, close view at eye-level. Wok sits naturally on stove, no floating utensils or food."
+      "step": 3,
+      "scene": "On a plain ceramic kitchen plate four medium-size fried chicken eggs, each egg yolk bright solid yellow and completely cooked firm, every white thoroughly set and opaque. A nonstick frying pan sits naturally on a nearby unlit gas hob. These are four fully cooked fried eggs prepared separately BEFORE combining them with rice. No scrambled egg and NO rice, kimchi or sauce, no human hands."
     },
     {
       "step": 5,
-      "scene": "Single candid stovetop photo of the same black wok now containing 650 g chilled cooked rice being mixed into the already cooked fermented kimchi, onion and carrot, all coated red orange with measured gochujang, soy sauce and 55 ml kimchi brine. Use a wooden spoon resting in the wok; visible natural rice grains, clumps breaking up. Do not show eggs, sesame seeds, seaweed or spring onions added yet. No human bodies or floating food."
+      "scene": "A dark wok firmly on a gas stove, filled with fluffy short-grain WHITE RICE being stirred into CHOPPED NAPA KIMCHI and a small amount of diced orange carrots and white onions. Every grain coating red-orange from spicy fermented cabbage gochujang sauce, visible strands of RED seasoned cabbage and red chili sauce, and a plain wooden spatula touching food inside the wok. Strictly vegetarian stage without eggs, meat, chicken, mushrooms, spinach or green garnish. No burnt food."
+    },
+    {
+      "step": 7,
+      "scene": "ONE finished serving bowl of KOREAN KIMCHI FRIED RICE, grains evenly deep red-orange from chopped fermented napa cabbage, small diced carrot and onion, topped with exactly ONE fully set sunny-side-up FRIED EGG with solid cooked bright yellow yolk, a little shredded DARK GREEN roasted nori seaweed and a sprinkle of sesame seeds. On a normal kitchen table, no meat, no seafood, no mushrooms, no extra sauces or vegetable garnish. Real appetising casual Korean homemade rice dish."
+    },
+    {
+      "step": 0,
+      "scene": "Premium 1536px landscape HERO photo, different viewing angle: a large plain white ceramic bowl holding true Korean spicy kimchi fried rice, deep red-orange short-grain rice and small pieces of fried fermented napa cabbage, topped with one fully cooked fried egg with firm yolk, finely crushed roasted nori flakes and sesame seeds. A simple home kitchen, natural sunlight, no other dishes or food. No meat, peas, mushrooms, scrambled eggs, crispy strips, readable text, paper or art. Truly edible home cooked fried rice."
     }
   ],
-  "requestRevision": 3
+  "requestRevision": 4
 }
