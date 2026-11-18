@@ -1,5 +1,5 @@
 {
-  "checkedAtUTC": "2026-11-18T11:38:09.011263+00:00",
+  "checkedAtUTC": "2026-11-18T11:40:04.810191+00:00",
   "attempt": 1,
   "allLiveVerified": true,
   "entries": [
@@ -50,6 +50,60 @@
           "path": "/assets/recipe-step-photos/avocado-boiled-egg-toast/step-07.jpg",
           "http": 200,
           "bytes": 238266,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "slug": "raspberry-lime-lemonade",
+      "pages": [
+        {
+          "lang": "ko",
+          "http": 200,
+          "bytes": 13728,
+          "missing": [],
+          "pass": true
+        },
+        {
+          "lang": "en",
+          "http": 200,
+          "bytes": 13279,
+          "missing": [],
+          "pass": true
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/recipe-step-photos/raspberry-lime-lemonade/hero.jpg",
+          "http": 200,
+          "bytes": 210773,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/raspberry-lime-lemonade/step-02.jpg",
+          "http": 200,
+          "bytes": 232226,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/raspberry-lime-lemonade/step-03.jpg",
+          "http": 200,
+          "bytes": 227315,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/raspberry-lime-lemonade/step-05.jpg",
+          "http": 200,
+          "bytes": 191204,
           "width": 1536,
           "height": 1024,
           "pass": true
