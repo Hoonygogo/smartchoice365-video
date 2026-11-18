@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requestRevision": 2,
+  "requestRevision": 3,
   "slug": "korean-classic-bibimbap",
   "title": "Korean Classic Beef and Vegetable Bibimbap",
   "titleKo": "소고기 채소 비빔밥",
@@ -68,8 +68,40 @@
   ],
   "stages": [
     {
+      "step": 1,
+      "scene": "EXACT STEP 1: Close home-cooking photograph of fluffy fully cooked white SHORT-GRAIN rice resting in a normal stainless saucepan, lid lifted and resting naturally on a real heatproof counter. Rice has distinct plump cooked grains, no milky liquid, no raw dry rice, no ingredients or extra topping. Crop closely to rice and upper half of saucepan, not a room or kitchen. Steam slight and believable."
+    },
+    {
       "step": 2,
-      "scene": "Tight candid documentary food photo of the exact vegetables preparation stage in classic Korean bibimbap, at least 85% frame filled by cut ingredients and wood board. An oak chopping board sits on subtly speckled pale ivory quartz. On board, one generous pile of THIN MATCHSTICK-JULIENNED carrots (180g), next to a separate generous pile of THINLY SLICED fresh brown SHIITAKE mushroom caps (150g): numerous FLAT BROWN FAN-SHAPED slices no thicker than 3mm, each slice showing the beige gills. Absolutely NO WHOLE MUSHROOMS, no whole mushroom caps, no large round mushrooms or big thick stems. One normal metal chef knife lying flat, blade and handle joined naturally. Behind board, only two partly cropped bowls containing clean fresh spinach leaves and cleaned soybean sprouts. All supported by same tiny-fleck quartz bench. STRICTLY no visible room, wall tiles, cupboards, plants, windows or background kitchen. No people or invented ingredients, true lens and shadows."
+      "scene": "EXACT STEP 2: Sharp realistic overhead-close view, 180 g carrots cut as thin long matchsticks in their own tidy but imperfect pile, plus 150 g fresh brown shiitake mushroom caps sliced into many THIN 2–3 mm strips in a second separate pile. Both on plain oak cutting board on faint ivory-speckled quartz. Two small partly cropped plain bowls of clean uncut spinach and yellow-tipped soybean sprouts, separate bowls. Normal single steel kitchen knife lies flat. NO whole unsliced mushrooms, no large chunks, no beef, no extras; everything fully grounded and true natural shadows."
+    },
+    {
+      "step": 3,
+      "scene": "EXACT STEP 3: Freshly blanched dark green SPINACH squeezed into a natural small mound on one side of a shallow plain ceramic plate, and slightly translucent yellow-tipped blanched SOYBEAN SPROUTS drained in a separate little mound. A few sesame-oil droplets, natural damp textures. Metal sieve rests safely over a small bowl at edge of shot. No raw leafy spinach, no raw beans, no beef, carrots, mushroom, eggs, sauce or rice. Real small wet irregularities; close food view from above."
+    },
+    {
+      "step": 4,
+      "scene": "EXACT STEP 4: One black nonstick skillet on gas hob containing 260 g well-browned and crumbled BEEF MINCE as small irregular brown cooked beef bits, NOT meat strips, in a little light soy/garlic cooking juices. Natural small simmer bubbles, no undercooked pink beef. Two small ceramic bowls beside the hob, one containing sautéed matchstick carrots, one holding sautéed thinly sliced shiitake mushrooms; both visibly resting on actual real counter. Tight crop so cooked beef takes 80% of attention; no other food, no whole room, no large props."
+    },
+    {
+      "step": 5,
+      "scene": "EXACT STEP 5: Tight candid overhead shot of small plain ceramic cup holding a thick cohesive deep red authentic gochujang sauce (65 g gochujang combined with little rice vinegar, sugar, soy sauce and sesame oil), being stirred with ONE ordinary metal teaspoon resting IN the sauce. Natural uneven swirl, correct sticky texture not ketchup, not water-thin. Cup clearly physically rests on pale ivory tiny-speckled quartz counter, soft genuine contact shadow. No prepared bibimbap, no egg, no rice, no garnishes, no printed words."
+    },
+    {
+      "step": 6,
+      "scene": "EXACT STEP 6: REAL FULLY COOKED eggs frying gently in one black nonstick frying pan on stove, show exactly TWO fried eggs in pan representing one batch for a four-serving meal. Egg WHITES completely set, YOLKS ALSO FULLY SET opaque warm yellow, NOT glossy runny orange, not liquid or transparent, no soft yolks. Realistic naturally irregular edges browned slightly with tiny cooking oil specks. No rice, no beef, no other food, no whole kitchen. Tight food-focused skillet crop."
+    },
+    {
+      "step": 7,
+      "scene": "EXACT STEP 7: One natural family-size serving of Korean beef vegetable bibimbap in a plain warm ivory ceramic bowl ON the speckled ivory quartz counter, bottom and soft contact shadow visible. White cooked short-grain rice topped in distinct modest sections with four ingredients: orange sautéed julienne carrots, dark green blanched spinach, tender yellow-tip soybean sprouts and thin sautéed brown shiitake, plus one portion of SMALL IRREGULAR fully cooked crumbled BEEF MINCE. On top ONE fried chicken egg with completely SOLID opaque yellow yolk, NOT runny. A few toasted sesame seeds. NO gochujang sauce added yet, NO kimchi, zucchini, cucumber, spring onion, noodles, meat strips or strange garnish. Crop close showing detailed food fills frame."
+    },
+    {
+      "step": 8,
+      "scene": "EXACT STEP 8: One ordinary bibimbap bowl firmly ON an ivory speckled quartz counter, containing cooked rice, fully cooked BROWN CRUMBLED beef mince, wilted spinach, cooked sprouts, cooked carrot matchsticks and sliced shiitake. One metal spoon resting IN bowl and partially mixing in a LITTLE red gochujang from a very small separate sauce dish. The contents at edge are gently streaked red, not over-sauced, food remains edible and irregular. ONE fully cooked fried egg with opaque firm yolk on side of bowl, not runny. NO unrelated ingredients, no kimchi or zucchini. Tight candid meal close-up, natural contrast and surface contact."
+    },
+    {
+      "step": 0,
+      "scene": "SEPARATE LANDSCAPE HERO 1536×1024: Authentic uncomplicated Korean beef-and-vegetable bibimbap in ONE slightly imperfect plain beige ceramic bowl, tightly framed from 40 degrees above. The bowl sits heavily and obviously ON warm ivory finely speckled quartz with a realistic contact shadow along ENTIRE base. Food comprises white short-grain rice, distinctly separated cooked thin JULIENNE carrot, blanched spinach, yellow-tip cooked soybean sprouts, cooked shiitake mushroom slices, seasoned BROWN CRUMBLED lean beef mince (not meat strips), tiny toasted sesame seeds, ONE fried egg with fully SET pale golden yolk. Separate very small bowl of red gochujang sauce nearby, sauce NOT on food yet. Food fills ~88% of image with intimate real home-cooking texture and slight irregularities, neutral daylight, natural lens. Do not show kitchen cabinets, wall, sink, plant, no other vegetable, kimchi, zucchini, cucumber, onion garnish, impossible floating bowl, polished artificial glossy finish."
     }
   ]
 }
