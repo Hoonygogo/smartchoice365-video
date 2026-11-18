@@ -8,14 +8,14 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-18T13:22:56.564711+00:00",
+  "generatedAtUTC": "2026-11-18T13:24:51.840850+00:00",
   "stages": [
     {
       "step": 2,
@@ -26,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-02.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 193419,
-      "sha256": "c1df4007befd2a1aab0c1bcada5a52a441f4a9dc1147ca62e42185d0111f09ee"
+      "bytes": 227045,
+      "sha256": "d4d713c7626e4309f4591711e42ab5564408c8e3dcd6e7388852e3612b16cf65"
     }
   ],
   "referenceDimensions": [
