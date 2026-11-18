@@ -1,0 +1,41 @@
+name: Verify new Smart Meals photographs on both public recipe pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-live-smart-meals-photos.yml'
+      - 'scripts/verify_live_smart_meals_photos.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: verify-live-smart-meals-process-photos
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Pillow and verify public recipe pages
+        run: |
+          python -m pip install 'Pillow>=10,<13'
+          python scripts/verify_live_smart_meals_photos.py
+      - name: Commit actual live verification receipt
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/live-recipe-photo-verification/latest.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "audit: record public Smart Meals photo release verification [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
