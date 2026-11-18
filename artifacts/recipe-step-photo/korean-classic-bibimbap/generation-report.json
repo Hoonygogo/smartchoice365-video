@@ -8,14 +8,14 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 4,
+  "requestRevision": 5,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-18T13:37:03.056154+00:00",
+  "generatedAtUTC": "2026-11-18T13:41:03.436028+00:00",
   "stages": [
     {
       "step": 1,
@@ -26,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-01.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 136554,
-      "sha256": "0a16593daa188001fc03f14ed22f8c6ffd26272797ad0991c8ce208f13ca2bde"
+      "bytes": 122311,
+      "sha256": "baa9bf1f8de873b528031c0eb898f09245b8641bd1ea071d6e1258645c05038b"
     },
     {
       "step": 2,
@@ -38,32 +38,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-02.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 202674,
-      "sha256": "0f726e950277b89ed47b1a05e05e6fca21e72e3191f561fb6047bee179d8a07b"
-    },
-    {
-      "step": 4,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-04.jpg",
-      "width": 1024,
-      "height": 1024,
-      "bytes": 203148,
-      "sha256": "dd55aed12c1a8342239ba7786e564b501142fe085788f4ffb388f6d85b97367d"
-    },
-    {
-      "step": 5,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-05.jpg",
-      "width": 1024,
-      "height": 1024,
-      "bytes": 123654,
-      "sha256": "81b49b89343439581396a52bf9401d06d10201e298479899231ede5ae9a8c3db"
+      "bytes": 175090,
+      "sha256": "4fbb88f1a0c04b75299fc277316f58589ddaeb92ca1bc1aca844b47470427f64"
     },
     {
       "step": 6,
@@ -74,8 +50,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-06.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 125760,
-      "sha256": "70f8b20e12494da50b3c63a26bb622ebf0dc5093fb59d0806c830e1fd2d452f0"
+      "bytes": 135140,
+      "sha256": "3cacfcce2e2e9ad4a964d9fa93e74f0b554521fe38d54c5311aff877ae4e7fbb"
     },
     {
       "step": 7,
@@ -86,8 +62,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-07.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 145623,
-      "sha256": "b0cb058d563a6b05458f32391512a8c086090df839820c47eb2526fb3449ef69"
+      "bytes": 173909,
+      "sha256": "928a3141f54677adf42e02721ae46ca0b646e2c2015419f25912f3a381e62623"
     },
     {
       "step": 8,
@@ -98,8 +74,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/step-08.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 249986,
-      "sha256": "f9fc39b4af1166eabce407c3fa05b2ff7586422511677ea509e7869b4ff722e0"
+      "bytes": 223776,
+      "sha256": "4a565cf5cf4d1ad4fc9050099a4fc6e714e0b5ba809ec64b8d7ff79fe47d6b29"
     },
     {
       "step": 0,
@@ -110,8 +86,8 @@
       "path": "artifacts/recipe-step-photo/korean-classic-bibimbap/hero.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 232650,
-      "sha256": "6a43fea1abb09de87c87d3f3a5cc3f0a28b15f6c68ca27687289509548c37f79"
+      "bytes": 215080,
+      "sha256": "247653810715b85191b64f955ac72cdd627115a351aeb838b3d91ad1570fa8ae"
     }
   ],
   "referenceDimensions": [
