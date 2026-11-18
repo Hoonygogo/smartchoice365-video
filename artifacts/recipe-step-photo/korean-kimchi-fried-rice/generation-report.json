@@ -3,13 +3,13 @@
   "slug": "korean-kimchi-fried-rice",
   "recipeName": "Korean Kimchi Fried Rice with Egg",
   "source": "Original official Smart Meals bilingual recipe method",
-  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
   "reviewed": false,
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 2,
-  "generatedAtUTC": "2026-11-18T10:56:22.100166+00:00",
+  "requestRevision": 3,
+  "generatedAtUTC": "2026-11-18T10:59:15.471338+00:00",
   "stages": [
     {
       "step": 2,
@@ -19,8 +19,8 @@
       "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/step-02.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 196935,
-      "sha256": "88e3033c2811b27a961d0f13942bf390d48560639dc48989319f4275ac359e2c"
+      "bytes": 144129,
+      "sha256": "a49c8c075bd6837e71b53a1cd71888d2298f83da64e561829d6acdc5ed1e2ead"
     },
     {
       "step": 4,
@@ -30,8 +30,8 @@
       "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/step-04.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 249948,
-      "sha256": "72432af6ef96905cc6e89ee30068080e65cd314aa30c155b1f3064d6745c4fc4"
+      "bytes": 167715,
+      "sha256": "a868680b585e091a38e533459bc92c74bdae0351c6ec1fcb9c13b186d5b6305a"
     },
     {
       "step": 5,
@@ -41,8 +41,8 @@
       "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/step-05.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 237903,
-      "sha256": "7a624b9bd2993396ab5544faf2475efba0306f6f025be4e681ca7d7039fa5a62"
+      "bytes": 203768,
+      "sha256": "d012a6a7a059c692b29b158662585126a714ab0774580bf15069f073fded9746"
     }
   ],
   "status": "candidates_created_unreviewed"
