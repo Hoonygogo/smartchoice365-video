@@ -135,6 +135,120 @@
       "sha256": "8d9b85cc6537b18af10d90f3920a53301b3f3aef5055ce0ee40cfa64fd282067",
       "prompt": "Photorealistic premium food-magazine HERO image, high-resolution. Finished Easy Tomato & Basil Penne. Ingredients only: 180 g penne pasta; 400 g canned chopped tomatoes; 120 g cherry tomatoes; 90 g brown onion; 9 g minced garlic; 15 ml olive oil; 80 ml reserved pasta cooking water; 12 g fresh basil leaves; 25 g grated Parmesan; 2 g salt; 1 g ground black pepper. Exactly plated at conclusion of: Turn off the heat. Stir through 12 g torn basil and around half the 25 g Parmesan, then taste and add the measured black pepper and any remaining salt gradually. Divide between two bowls and sprinkle with the remaining cheese.. Large appealing three-quarter 3:2 landscape composition, unlike step-final arrangement, genuine edible textures, soft daylight. No extra garnishes, no unknown ingredients, no captions, no typography, no logo.",
       "reviewed": false
+    },
+    {
+      "file": "step-01-v2.jpg",
+      "step": 1,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "abc548745bb17ebb075b66ec3156916b62c3a20571bcd3fcc6342b4635f51af0",
+      "prompt": "Square lifelike culinary editorial photo ONLY of preparing ingredients for two-person tomato basil PENNE pasta: a single chopped pile of FINE 90 GRAM brown onion dice (no whole onions), 9 GRAM finely minced garlic, 120 grams bright red CHERRY TOMATOES cut into equal halves, 12g fresh basil leaves torn by hand and kept separately. Beautifully arranged on wooden prep board with ONE kitchen knife resting nearby. Exactly these ingredients only, NO PASTA, no pasta sauce, no other food, no text, no hands.",
+      "reviewed": false,
+      "revision": 2
+    },
+    {
+      "file": "step-02-v2.jpg",
+      "step": 2,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "19000fa18d9b51224ed2671568d79fc6b26713d198e8b686281634afc3c3ad6f",
+      "prompt": "Square lifelike detailed cooking-process photograph ONLY of 180 GRAMS DRY PENNE TUBE PASTA cooking in rapidly boiling WATER with a tiny pinch of salt in ONE stainless-steel pot on a stovetop; PENNE TUBES evenly visible just below bubbling clear water surface. No TOMATOES, NO RED INGREDIENTS, no pasta sauce, no garlic, no oil, no garnish, no extra food, no label, no fake writing. Fresh natural kitchen light. This is al-dente boiling stage, NOT a completed dish.",
+      "reviewed": false,
+      "revision": 2
+    }
+  ],
+  "optimised": [
+    {
+      "source": "step-01.jpg",
+      "file": "step-01-web-opt.jpg",
+      "sha256": "71ae277ffca6f1814d21994584164df511a12f2a1e08a90e8b1b84b974ee5874",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 126783,
+      "reviewed": false
+    },
+    {
+      "source": "step-02.jpg",
+      "file": "step-02-web-opt.jpg",
+      "sha256": "7fd7f55e282ac6aa78169b39400b4ef9f700a361a659ba44fc4de60942956a8c",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 150918,
+      "reviewed": false
+    },
+    {
+      "source": "step-05.jpg",
+      "file": "step-05-web-opt.jpg",
+      "sha256": "c5aabd2f640252cb30b546fcb9d6f2179decc9a50caea67fe9abd55a011d66be",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 154528,
+      "reviewed": false
+    },
+    {
+      "source": "step-06.jpg",
+      "file": "step-06-web-opt.jpg",
+      "sha256": "63d84d6b6a7745493ac80cab84f5fc12199552a98009277d9ac84fa3ccfbaa69",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 122968,
+      "reviewed": false
+    },
+    {
+      "source": "step-08.jpg",
+      "file": "step-08-web-opt.jpg",
+      "sha256": "29ffe21adfd700830d717e70bc2e4f64fd13c64e9092c32c81eead17b0d3944f",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 223704,
+      "reviewed": false
+    },
+    {
+      "source": "hero.jpg",
+      "file": "hero-web-opt.jpg",
+      "sha256": "74a0cfee54324d6fee352056c8e03bf8d10072ead616dba7c82631e920b6cf53",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 237067,
+      "reviewed": false
+    },
+    {
+      "source": "step-01-v2.jpg",
+      "file": "step-01-v2-web-opt.jpg",
+      "sha256": "55cf7d17ea4284a6961b801ddd0a94aac2deca706da37ba57b1d74085f0ae7e1",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 171718,
+      "reviewed": false
+    },
+    {
+      "source": "step-02-v2.jpg",
+      "file": "step-02-v2-web-opt.jpg",
+      "sha256": "2dd311d45010fa1ba6ad64267df518229fb1cb3459243e45cd90cbc8931a57e1",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 122264,
+      "reviewed": false
     }
   ]
 }
