@@ -16,7 +16,7 @@ import urllib.request
 
 from PIL import Image
 
-MODEL = "@cf/black-forest-labs/flux-1-schnell"
+MODEL = "@cf/black-forest-labs/flux-2-klein-4b"
 BASE = pathlib.Path(__file__).resolve().parents[1]
 REQUESTS = BASE / "requests/recipe-step-photo"
 OUTPUT = BASE / "artifacts/recipe-step-photo"
@@ -85,11 +85,15 @@ def generate(request_path):
             prefix = prefix[:1400].rsplit(" ", 1)[0]
         result = {"step": step, "status": "not_generated", "reviewed": False, "published": False}
         try:
-            payload = json.dumps({"prompt": prefix, "steps": 4}).encode("utf-8")
+            boundary = "----SC365ProcessPhoto" + hashlib.sha256(os.urandom(16)).hexdigest()[:16]
+            payload = b""
+            for key, value in {"prompt": prefix, "width": 1024, "height": 1024}.items():
+                payload += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"{key}\"\r\n\r\n{value}\r\n").encode("utf-8")
+            payload += (f"--{boundary}--\r\n").encode("utf-8")
             http_req = urllib.request.Request(endpoint, data=payload, method="POST", headers={
                 "Authorization": "Bearer " + token,
-                "Content-Type": "application/json",
-                "User-Agent": "SmartMeals-Free-Process-Photo/1.0"
+                "Content-Type": "multipart/form-data; boundary=" + boundary,
+                "User-Agent": "SmartMeals-Free-Process-Photo/1.1"
             })
             with urllib.request.urlopen(http_req, timeout=90) as response:
                 body = json.load(response)
