@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "slug": "cinnamon-apple-oat-porridge",
   "title": "Cinnamon Apple Oat Porridge",
   "titleKo": "시나몬 사과 따뜻한 오트밀",
@@ -41,23 +41,7 @@
   "stages": [
     {
       "step": 1,
-      "scene": "Close-up of ONE natural red-and-green apple with its core removed, cut into many clean uniform approximately one-centimetre cubes on an ordinary wooden cutting board on a real kitchen counter. One stainless steel kitchen knife lying FLAT on the board. No other fruit, no oats, no hands, no extra toppings, no floating cut pieces."
-    },
-    {
-      "step": 2,
-      "scene": "A stable medium stainless steel saucepan on an ordinary home stove, containing uncooked rolled oat flakes 100g partly submerged in 260ml white milk plus 150ml water as cooking just starts. A real wooden spoon touching the oat-and-milk surface. No fruit, cinnamon, nuts or syrup yet; food looks like raw oats and milk, not cooked porridge."
-    },
-    {
-      "step": 3,
-      "scene": "A medium saucepan sitting on a gas stove, thickening creamy oat flakes and milk just beginning to simmer; many small dice of red-skinned fresh apple and a gentle brown dusting of cinnamon powder added on top and being stirred by a wooden spoon. No walnut pieces or maple syrup yet, no full apple, no other food."
-    },
-    {
-      "step": 6,
-      "scene": "Two normal breakfast bowls containing fully cooked creamy pale golden rolled-oat porridge with tender visible small diced apple pieces, a sprinkling of chopped brown walnuts, modest drizzle of golden maple syrup on each bowl. Warm casual natural home breakfast, realistic oats not rice, no berries, raisins, bananas or whipped cream."
-    },
-    {
-      "step": 0,
-      "scene": "Separate premium 1536px horizontal HERO angle of exactly TWO ceramic bowls of creamy cinnamon-and-apple oatmeal topped with tender tiny diced red-skin apple pieces, chopped walnuts and a little maple syrup drizzle. Visible natural creamy rolled oat flakes, richly textured appetising home-cooked porridge on rustic wooden counter in morning light. No berries, no raisins, no bananas, no extra garnish, no signs, no text."
+      "scene": "Photograph only step 1 of this porridge recipe: a single red-and-green fresh apple precisely diced into realistic 1 cm cubes on a simple light-oak chopping board resting on the reference kitchen's lightly speckled ivory quartz benchtop, with one ordinary stainless knife lying flat and not being held. The photographed room layout, white rectangular splashback and daylight must MATCH input image 0. Show no other fruits, no oats, no porridge and no hands."
     }
   ]
 }
