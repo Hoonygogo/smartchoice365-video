@@ -65,7 +65,11 @@ def main():
    "DEPICT EXACTLY STAGE "+str(i+1)+" ONLY: "+step["name"]+": "+step["text"]+". "+
    "Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. "+
    ("Fully finished dish, separate editorial composition from hero, 3:2 landscape." if last else "Show the physical preparation action as close-up, square crop.")+
-   " No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.")
+   " Real candid food photography with naturally imperfect kitchen materials and soft daylight. "+
+   " Crop close on actual ingredients and worktop; NO faces, torsos, full people or large visible arms. "+
+   " No human figure for static ingredient prep or finished dish; only if physically necessary, a tiny partial hand or fingertips at image edge, never dominating food. "+
+   " All objects visibly grounded on a stable counter, cutting board, stove or sink; believable shadows and gravity; no floating food, utensils, sieves, knives or implausible hands. "+
+   " No synthetic CG gloss, exaggerated blur or fake bokeh; no labels, text, typography, logos, collage, fictitious tools or unrelated dishes.")
   width,height=(1536,1024) if last else (1024,1024)
   raw,fmt,sz=api(prompt,width,height)
   filename=f"step-{i+1:02d}.{fmt}"
@@ -77,7 +81,7 @@ def main():
  hero=("Photorealistic premium food-magazine HERO image, high-resolution. Finished "+
   en["name"]+". Ingredients only: "+ingredients+". Exactly plated at conclusion of: "+steps[-1]["text"]+
   ". Large appealing three-quarter 3:2 landscape composition, unlike step-final arrangement, genuine edible textures, soft daylight. "+
-  "No extra garnishes, no unknown ingredients, no captions, no typography, no logo.")
+  "Close-up of only the finished dish and its natural serving surface, no people, no hands or bodies. Real daylight, authentic food texture, avoid synthetic CGI appearance. No extra garnishes, no unknown ingredients, no captions, no typography, no logo.")
  raw,fmt,sz=api(hero,1536,1024);filename="hero."+fmt
  if (target/filename).exists():raise RuntimeError("Refuse to overwrite prior hero")
  (target/filename).write_bytes(raw)
