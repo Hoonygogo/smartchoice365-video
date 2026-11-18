@@ -1,0 +1,16 @@
+{
+  "type": "one-off rephotograph candidate",
+  "recipe": "three-bean-lemon-parsley-salad",
+  "step": 3,
+  "reason": "User preference: candid food-and-board closeup, no human body or artificial floating utensils",
+  "source": "Published bilingual original method: diced red onion 40g and chopped flat-leaf parsley 12g",
+  "filename": "step-03-natural-v3.jpg",
+  "size": [
+    1024,
+    1024
+  ],
+  "sha256": "df031f45f118910db59e5ffb0562d61fa74e6d2a5c06eaa16320a49cf187b763",
+  "prompt": "ONE extremely natural home-cooking preparation photograph, 1024x1024, intimate slightly overhead viewpoint. Step 3 of Three Bean Lemon Parsley Salad: exactly 40 grams of RED ONION diced finely, and 12 grams of washed, dried FLAT-LEAF PARSLEY finely chopped. A well-used, solid rectangular wooden chopping board lies FLAT on a normal kitchen countertop. A small pile of realistically cut purple-and-white red onion dice sits LEFT; a distinct modest pile of roughly chopped green flat-leaf parsley sits RIGHT. One ordinary clean chef's knife is placed completely flat on the wooden board, blade touching the board with realistic contact shadow; its blade is near the parsley but NOT floating. Tight food-centered crop: the vegetables and chopping board occupy at least 85 percent of the frame. NO PEOPLE, NO FACES, NO HANDS, NO FINGERS, NO WRISTS, NO ARMS, NO TORSO, NO BODY in frame. Candid authentic everyday kitchen photography, not stock glamour, no overly perfect symmetrical piles, a few tiny herb fragments on the board, normal knife marks and wood grain, realistic cut ingredients, soft diffuse natural window light. Believable gravity and contact shadows, no unlisted vegetables or garnish, no floating food, no floating knife, no exaggerated glossy CG food textures, no fake bokeh, no captions, no typography, no logos, no finished salad.",
+  "humanReviewed": false,
+  "sitePublished": false
+}
