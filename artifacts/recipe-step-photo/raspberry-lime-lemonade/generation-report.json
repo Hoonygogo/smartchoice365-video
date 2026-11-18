@@ -8,20 +8,20 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
-  "generatedAtUTC": "2026-11-18T11:34:34.452698+00:00",
+  "requestRevision": 2,
+  "generatedAtUTC": "2026-11-18T11:36:24.738281+00:00",
   "stages": [
     {
-      "step": 1,
+      "step": 2,
       "status": "candidate_needs_actual_visual_review",
       "reviewed": false,
       "published": false,
       "role": "step",
-      "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/step-01.jpg",
+      "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/step-02.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 215025,
-      "sha256": "8330e4a3edc271ae7cca029d090948fb5c8b2f08f53d9a4600e9268386e01823"
+      "bytes": 232226,
+      "sha256": "08676c0dc48fa2931e9825b3879d9e0b2b79fe4bb339fe5077c57d0ef6f2c694"
     },
     {
       "step": 3,
@@ -32,8 +32,8 @@
       "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/step-03.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 235466,
-      "sha256": "ffc5faeaf7612056baccfa88bb7d230ac9559c92eb77a04bd111232b9084782e"
+      "bytes": 227315,
+      "sha256": "c00515b97f0eff94fcb6d8410350f96e62a7a5dbbd80e53319d3eb5122fd4607"
     },
     {
       "step": 4,
@@ -44,32 +44,8 @@
       "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/step-04.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 200447,
-      "sha256": "ab08ade4091cad08029020b326d2675bcbcc61c3a3ab58b8bb86a734df6a4ad0"
-    },
-    {
-      "step": 5,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "final",
-      "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/step-05.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 191204,
-      "sha256": "5bf2a41498ef459085526a343acc30f57d872b17deeeb1d4a28439778b523d30"
-    },
-    {
-      "step": 0,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "hero",
-      "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/hero.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 210773,
-      "sha256": "0169c29dfca5c766a5db9c63794e5c0abb83ffec58cdcaee0129b92e89895317"
+      "bytes": 167532,
+      "sha256": "15690b3015455f22226dd69a306bde3e42b0735b9e70a3a981d560550c9aa42c"
     }
   ],
   "status": "candidates_created_unreviewed"
