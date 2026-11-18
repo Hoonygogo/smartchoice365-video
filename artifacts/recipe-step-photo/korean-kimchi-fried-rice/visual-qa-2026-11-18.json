@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-18",
+  "slug": "korean-kimchi-fried-rice",
+  "source": "Read original Korean and English full recipe, ingredient list and numbered method",
+  "reviewedModel": "@cf/black-forest-labs/flux-2-klein-4b",
+  "requestRevision": 3,
+  "decision": "REJECT_ALL_FOR_PRODUCTION",
+  "publicationAuthorised": false,
+  "stages": [
+    {
+      "step": 2,
+      "pass": false,
+      "reason": "Raw-preparation photo shows pink cubed ingredients unlike leafy chopped napa kimchi; does not clearly represent prescribed cut vegetables."
+    },
+    {
+      "step": 4,
+      "pass": false,
+      "reason": "Shows rice grains at the vegetables-and-kimchi sauté stage, before rice should be added; kimchi not visually clear."
+    },
+    {
+      "step": 5,
+      "pass": false,
+      "reason": "Contains meat-like chunks not in recipe and lacks correct evenly red-orange kimchi-coated rice state."
+    }
+  ],
+  "nextAction": "Generate replacement single-scene exact-stage photos. Do not publish or present these candidates as matching the authentic instructions.",
+  "userAuthoredRecipeOrReviewImages": "not used"
+}
