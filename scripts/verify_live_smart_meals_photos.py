@@ -12,7 +12,7 @@ from PIL import Image
 
 BASE = "https://smartc365.com"
 SLUGS = ["avocado-boiled-egg-toast", "raspberry-lime-lemonade", "indian-butter-chicken", "cinnamon-apple-oat-porridge", "korean-classic-bibimbap"]
-STAGES = {"avocado-boiled-egg-toast": [4,6,7], "raspberry-lime-lemonade": [2,3,5], "indian-butter-chicken": [3,4,5,8], "cinnamon-apple-oat-porridge": [2,3,6], "korean-classic-bibimbap": [1,2,3,4,5,7,8]}
+STAGES = {"avocado-boiled-egg-toast": [4,6,7], "raspberry-lime-lemonade": [2,5], "indian-butter-chicken": [3,4,5,8], "cinnamon-apple-oat-porridge": [2,3,6], "korean-classic-bibimbap": [1,2,3,4,5,7,8]}
 OUT = pathlib.Path("artifacts/live-recipe-photo-verification/latest.json")
 OUT.parent.mkdir(parents=True, exist_ok=True)
 
