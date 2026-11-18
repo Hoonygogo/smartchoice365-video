@@ -8,8 +8,12 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
-  "generatedAtUTC": "2026-11-18T11:43:38.756013+00:00",
+  "requestRevision": 2,
+  "kitchenSet": "smart-meals-warm-quartz-kitchen-v1",
+  "referenceImageConditioningUsed": true,
+  "referenceImagePath": "assets/reference/smart-meals-kitchen-reference-v1.jpg",
+  "referenceSha256": "80998259ebcce4ddd9e145ba2689845ff92a0166f89679192ec0df42f8736469",
+  "generatedAtUTC": "2026-11-18T13:01:34.169032+00:00",
   "stages": [
     {
       "step": 1,
@@ -20,57 +24,13 @@
       "path": "artifacts/recipe-step-photo/cinnamon-apple-oat-porridge/step-01.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 151857,
-      "sha256": "386c10252f4f1588b080ee108c0adc88e69db24cef127fd1ef5e208db59bd176"
-    },
-    {
-      "step": 2,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/cinnamon-apple-oat-porridge/step-02.jpg",
-      "width": 1024,
-      "height": 1024,
-      "bytes": 185558,
-      "sha256": "c98bbd247d39135b6f322fd0c84d3c21d921fee67d98cb3b2e85c9645d69d623"
-    },
-    {
-      "step": 3,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/cinnamon-apple-oat-porridge/step-03.jpg",
-      "width": 1024,
-      "height": 1024,
-      "bytes": 158930,
-      "sha256": "36fbdb5da6fa58ddb51ae48acfe4e7d7fa3a1eda43ac4d853c6c1b59deb12b1d"
-    },
-    {
-      "step": 6,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "final",
-      "path": "artifacts/recipe-step-photo/cinnamon-apple-oat-porridge/step-06.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 242818,
-      "sha256": "2e871ede80eeb319263ec6bff634c53153102c98f079bffb22f6b7c02e2eee0c"
-    },
-    {
-      "step": 0,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "hero",
-      "path": "artifacts/recipe-step-photo/cinnamon-apple-oat-porridge/hero.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 224887,
-      "sha256": "a76aa997e31c76e37a84dc1a9521389010a207e102ba5e436e704a920bb003b1"
+      "bytes": 167708,
+      "sha256": "c5652a2e2d2f776927d09313149b275c63cbdd7ae50c92e7f5612133474c8087"
     }
+  ],
+  "referenceDimensions": [
+    480,
+    270
   ],
   "status": "candidates_created_unreviewed"
 }
