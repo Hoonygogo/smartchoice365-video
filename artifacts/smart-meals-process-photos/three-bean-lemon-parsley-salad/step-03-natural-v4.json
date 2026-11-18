@@ -1,0 +1,16 @@
+{
+  "type": "one-off rephotograph candidate",
+  "recipe": "three-bean-lemon-parsley-salad",
+  "step": 3,
+  "reason": "User preference: candid food-and-board closeup, no human body or artificial floating utensils",
+  "source": "Published bilingual original method: diced red onion 40g and chopped flat-leaf parsley 12g",
+  "filename": "step-03-natural-v4.jpg",
+  "size": [
+    1024,
+    1024
+  ],
+  "sha256": "0336dc750e576217da130eadcfa2282bc83b0f33dbcf158a16017775c376e969",
+  "prompt": "Professional lifelike candid home-kitchen food photograph, overhead 45-degree angle, 1024 by 1024. Exact step three: 40 grams finely DICED purple RED ONION and 12 grams finely CHOPPED flat leaf PARSLEY, fully cut, ready for a three bean salad. Two modest DISTINCT piles of prepared vegetables rest directly on a single well-used rectangular brown wooden chopping board, onion dice on LEFT, finely chopped tiny leaf pieces of parsley on RIGHT. There is EXACTLY ONE SINGLE COMPLETE ORDINARY CHEF KNIFE: a continuous silver blade joined to its ONLY black handle on the right, laying HORIZONTALLY FLAT on the board BEHIND both piles, blade edge down touching the wood. The knife is NOT on top of any vegetable, no other knives, no extra blade, no second handle, no duplicates or overlapping knife forms. Full single knife visible with believable geometry, only one tip and one handle, ordinary scale, accurate shadow contact and gravity. NO people, hands, bodies, arms, fingers, chopping action or extra ingredients. Authentic small home kitchen imperfections: slight unevenness to vegetable cuts, realistic washed flat leaf parsley texture, a few crumbs on board, natural grain, diffused daylight from left. Food and board fill frame, no stylized product photography, no synthetic glassy shine, no fake blur, no hovering ingredients, no text, no garnish, no finished salad. ",
+  "humanReviewed": false,
+  "sitePublished": false
+}
