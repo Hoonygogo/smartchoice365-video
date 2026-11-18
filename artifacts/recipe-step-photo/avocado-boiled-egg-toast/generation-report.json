@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "slug": "avocado-boiled-egg-toast",
+  "recipeName": "Avocado & Boiled Egg Toast",
+  "source": "Original official Smart Meals bilingual recipe method",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "reviewed": false,
+  "published": false,
+  "paidFallback": false,
+  "attemptLimitPerStage": 1,
+  "requestRevision": 1,
+  "generatedAtUTC": "2026-11-18T11:27:50.185157+00:00",
+  "stages": [
+    {
+      "step": 1,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/step-01.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 166720,
+      "sha256": "8241f7f09fd3098614167bbc81ce47213e98b1b00a5c4c741e830ab428e0fa5e"
+    },
+    {
+      "step": 4,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/step-04.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 211191,
+      "sha256": "0c2a58fdda9521fd37707ef92893ad12343c422edf847ce6d5c1407a3a30d386"
+    },
+    {
+      "step": 6,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/step-06.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 206344,
+      "sha256": "20cbc2b9e182bcde2eded395b3caff8d7aebe29bafcca7c6b09e1e2f718d0ec9"
+    },
+    {
+      "step": 7,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "final",
+      "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/step-07.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 247409,
+      "sha256": "68604a9219d99a49db619be027be985b7cd8ef9caa130f9fdeab29ae37e92b5f"
+    },
+    {
+      "step": 0,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "hero",
+      "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/hero.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 227921,
+      "sha256": "1b83652bb5a19dfaec9c643684f79826760b75a77fd84fdf2765b5489d978431"
+    }
+  ],
+  "status": "candidates_created_unreviewed"
+}
