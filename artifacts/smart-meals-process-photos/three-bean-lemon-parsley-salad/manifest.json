@@ -115,6 +115,45 @@
       "sha256": "1e9386fb839a5d733012c81f96fbc71b2a7511807716c2f18540b46d587739c7",
       "prompt": "Photorealistic premium food-magazine HERO image, high-resolution. Finished Three-Bean Lemon Parsley Salad. Ingredients only: 160 g green beans; 160 g canned kidney beans, drained; 160 g canned chickpeas, drained; 40 g red onion; 12 g flat-leaf parsley; 25 ml lemon juice; 20 ml olive oil; 5 g Dijon mustard; 1 g black pepper. Exactly plated at conclusion of: Toss beans, onion and parsley with the dressing. Serve promptly, or refrigerate covered at 5°C or below and preferably eat the same day.. Large appealing three-quarter 3:2 landscape composition, unlike step-final arrangement, genuine edible textures, soft daylight. No extra garnishes, no unknown ingredients, no captions, no typography, no logo.",
       "reviewed": false
+    },
+    {
+      "file": "step-03-v2.jpg",
+      "step": 3,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "f6a608a97fd904d636fbe72ef32c9ed6256b4ac2e456d43a038ee676ab291e2d",
+      "prompt": "Professional, exceptionally realistic food photograph of an EXACT three-bean lemon-parsley salad. The recipe uses deep DARK BURGUNDY RED canned KIDNEY BEANS (smooth large curved kidney shape), PALE BEIGE ROUND chickpeas, vivid green steamed/blanched green beans cut into 3-4 cm segments, FINE 2-3mm DICE of PURPLE RED ONION, chopped Italian FLAT-LEAF PARSLEY, lemon juice, olive oil, a little Dijon mustard and black pepper. NO pinto beans, NO brown beans, NO whole red-onion rings, NO coriander/cilantro, NO cherry tomatoes, NO lettuce, NO unlisted garnish. No text, no watermarks, no collage. STEP 3 IN PROGRESS, NOT A FINISHED SALAD. Detailed top-down natural photography of neat piles of freshly FINELY DICED PURPLE RED ONION (40g) and freshly MINCED FLAT-LEAF PARSLEY (12g) on a rustic cutting board, a single clean kitchen knife positioned to one side. NO HANDS visible, no whole onions in the dish, do not show beans or sauce yet. Bright real home kitchen textures.",
+      "reviewed": false,
+      "revision": 2,
+      "replacesRejected": true
+    },
+    {
+      "file": "step-05-v2.jpg",
+      "step": 5,
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2675d2c68af0f5a85b1212c10141c5b6cfd28afbd36bebb2cf7369130260690b",
+      "prompt": "Professional, exceptionally realistic food photograph of an EXACT three-bean lemon-parsley salad. The recipe uses deep DARK BURGUNDY RED canned KIDNEY BEANS (smooth large curved kidney shape), PALE BEIGE ROUND chickpeas, vivid green steamed/blanched green beans cut into 3-4 cm segments, FINE 2-3mm DICE of PURPLE RED ONION, chopped Italian FLAT-LEAF PARSLEY, lemon juice, olive oil, a little Dijon mustard and black pepper. NO pinto beans, NO brown beans, NO whole red-onion rings, NO coriander/cilantro, NO cherry tomatoes, NO lettuce, NO unlisted garnish. No text, no watermarks, no collage. STEP 5 FINISHED COMBINED THREE BEAN SALAD. A low shallow matte cream CERAMIC BOWL on a wooden table, clearly containing roughly equal proportions of deep burgundy DARK RED kidney beans, beige round chickpeas, and tender fresh green beans cut short, FINE PURPLE ONION DICE and finely chopped flat parsley; everything lightly coated with lemon-Dijon-olive oil dressing, not creamy, and black pepper. Camera 45-degree angle, beautifully natural home-cooked food photography, horizontal 3:2; complete bowl visible.",
+      "reviewed": false,
+      "revision": 2,
+      "replacesRejected": true
+    },
+    {
+      "file": "hero-v2.jpg",
+      "step": 0,
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9aaba216c8b4747446b69610aea24213906b7ed01556742a8ace0f06cdd577dc",
+      "prompt": "Professional, exceptionally realistic food photograph of an EXACT three-bean lemon-parsley salad. The recipe uses deep DARK BURGUNDY RED canned KIDNEY BEANS (smooth large curved kidney shape), PALE BEIGE ROUND chickpeas, vivid green steamed/blanched green beans cut into 3-4 cm segments, FINE 2-3mm DICE of PURPLE RED ONION, chopped Italian FLAT-LEAF PARSLEY, lemon juice, olive oil, a little Dijon mustard and black pepper. NO pinto beans, NO brown beans, NO whole red-onion rings, NO coriander/cilantro, NO cherry tomatoes, NO lettuce, NO unlisted garnish. No text, no watermarks, no collage. EDITORIAL COVER PHOTO of the SAME FINISHED SALAD, photographed from THREE-QUARTER side on a NATURAL LINEN NAPKIN with a wooden table background, distinct composition from final method photo. Small appetising mound of VERY DARK RED KIDNEY BEANS (not pale/brown), beige CHICKPEAS, BLANCHED SHORT GREEN BEANS, only tiny FINELY-DICED RED ONION and FINELY CHOPPED FLAT PARSLEY; glossy pale lemon mustard olive-oil vinaigrette, subtle black pepper. Realistic edible textures, natural daylight, 3:2 landscape, shallow neutral stoneware bowl.",
+      "reviewed": false,
+      "revision": 2,
+      "replacesRejected": true
     }
   ]
 }
