@@ -1,0 +1,16 @@
+{
+  "type": "one-off rephotograph candidate",
+  "recipe": "three-bean-lemon-parsley-salad",
+  "step": 3,
+  "reason": "Physical plausibility: floating knife / missing real person",
+  "source": "Published bilingual original method: diced red onion 40g and chopped flat-leaf parsley 12g",
+  "filename": "step-03-natural-v2.jpg",
+  "size": [
+    1024,
+    1024
+  ],
+  "sha256": "b2ec3d65cbed4da28fcbb3a263953282ae2e2f04fd75cf5016928a565cf0bdae",
+  "prompt": "ONE highly realistic instructional food photograph, square format 1024x1024. Exactly step three of Three-Bean Lemon Parsley Salad: chop 40 grams of RED ONION into small dice, wash, dry and finely chop 12 grams of FLAT-LEAF PARSLEY. A REAL home cook, wearing casual kitchen clothing, is actively chopping the parsley with a standard chef's knife held firmly in the right hand. A left hand carefully gathers the leaves safely. THE KNIFE BLADE'S TIP AND CUTTING EDGE ARE PHYSICALLY TOUCHING THE WOODEN BOARD and visibly supported while cutting. NO floating knives, NO levitating food, no detached hands or object collisions. A stable thick cutting board lies FLAT on a kitchen countertop, with a small separate pile of accurately diced purple red onion on the LEFT, a small pile of freshly chopped green parsley on the RIGHT. Use realistic human hands and anatomy with exactly five fingers on each hand, natural joints and grip, realistic scale and shadow contact. Slight three-quarter overhead camera angle, warm bright real kitchen light, original appetising culinary teaching photography, natural material textures. No added ingredients, vegetables, food containers, floating objects, text, labels, captions, graphics, collage or logos. Do not show completed salad.",
+  "humanReviewed": false,
+  "sitePublished": false
+}
