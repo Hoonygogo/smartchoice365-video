@@ -34,8 +34,8 @@ def generate(request_path):
     if request_path.name != slug + ".json":
         raise ValueError("Request filename does not match recipe slug")
     stages = request["stages"]
-    if len(stages) < 1 or len(stages) > 3 or len({x["step"] for x in stages}) != len(stages):
-        raise ValueError("One-off batch must have 1–3 distinct process stages")
+    if len(stages) < 1 or len(stages) > 7 or len({x["step"] for x in stages}) != len(stages):
+        raise ValueError("One-off batch must have 1–7 distinct photographs")
     report = {
         "schemaVersion": 1, "slug": slug, "recipeName": request["title"],
         "source": "Original official Smart Meals bilingual recipe method",
@@ -67,27 +67,28 @@ def generate(request_path):
     ordered_method = " ".join(f"{i+1}. {s}" for i,s in enumerate(request["fullMethod"]))
     for item in stages:
         step = item["step"]
-        if not isinstance(step, int) or step < 1 or step > len(request["fullMethod"]):
-            raise ValueError("Out of range recipe stage")
         # Keep the generative prompt under established Cloudflare FLUX Schnell input limit.
         # Original full bilingual method stays in request JSON for editor inspection.
+        if not isinstance(step, int) or step < 0 or step > len(request["fullMethod"]):
+            raise ValueError("Invalid recipe step index")
+        is_hero = step == 0
+        is_final = step == len(request["fullMethod"])
+        target_method = request["fullMethod"][-1] if is_hero else request["fullMethod"][step-1]
         prefix = (
-            f"Photorealistic close-up food preparation photograph. Dish: {request['title']}. "
-            f"Step {step} ONLY: {request['fullMethod'][step-1]}. "
-            f"Scene: {item['scene']}. "
-            f"Allowed measured ingredients: {full_ingredients}. "
-            "Natural Australian home kitchen, stable real work surface, actual gravity and shadows, "
-            "authentic food textures, small natural imperfections and honest daylight. "
-            "No people or body; optional tiny hand edge only if required. "
-            "No unlisted ingredients, text, captions, collage, floating food or equipment, fake CGI finish."
+            f"ONE genuine-looking close-up cooking photograph. Photo subject: {item['scene']}. "
+            f"Recipe {request['title']}. Correct cooking stage: {target_method}. "
+            "Priority: depict ONLY specified visual subject, do not introduce other ingredients or preparation stages. "
+            "Natural home kitchen, realistic food textures and small imperfections, natural soft window light, "
+            "all cooking equipment sits on an actual counter or stove with natural shadows and gravity. "
+            "No face, arms, people, strange hands, airborne food, wrong ingredients, text, collage or CGI appearance."
         )
-        if len(prefix) > 1400:
-            prefix = prefix[:1400].rsplit(" ", 1)[0]
+        if len(prefix) > 1650:
+            prefix = prefix[:1650].rsplit(" ", 1)[0]
         result = {"step": step, "status": "not_generated", "reviewed": False, "published": False}
         try:
             boundary = "----SC365ProcessPhoto" + hashlib.sha256(os.urandom(16)).hexdigest()[:16]
             payload = b""
-            for key, value in {"prompt": prefix, "width": 1024, "height": 1024}.items():
+            for key, value in {"prompt": prefix, "width": (1536 if (is_final or is_hero) else 1024), "height": (1024 if (is_final or is_hero) else 1024)}.items():
                 payload += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"{key}\"\r\n\r\n{value}\r\n").encode("utf-8")
             payload += (f"--{boundary}--\r\n").encode("utf-8")
             http_req = urllib.request.Request(endpoint, data=payload, method="POST", headers={
@@ -108,12 +109,12 @@ def generate(request_path):
                 if min(width, height) < 768:
                     raise ValueError("Image size smaller than usable process-photo minimum")
                 converted = src.convert("RGB")
-            photo_name = "step-%02d.jpg" % step
+            photo_name = "hero.jpg" if is_hero else "step-%02d.jpg" % step
             out_dir.mkdir(parents=True, exist_ok=True)
             output = out_dir / photo_name
             converted.save(output, "JPEG", quality=88, optimize=True)
             binary = output.read_bytes()
-            result.update(status="candidate_needs_actual_visual_review",
+            result.update(status="candidate_needs_actual_visual_review", role="hero" if is_hero else ("final" if is_final else "step"),
                           path=str(output.relative_to(BASE)),
                           width=width, height=height, bytes=len(binary),
                           sha256=hashlib.sha256(binary).hexdigest())
