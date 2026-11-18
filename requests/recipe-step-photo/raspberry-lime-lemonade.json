@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "requestRevision": 1,
+  "slug": "raspberry-lime-lemonade",
+  "title": "Raspberry Lime Lemonade",
+  "titleKo": "라즈베리 라임 레모네이드",
+  "sourceUrls": {
+    "ko": "https://smartc365.com/guides/smart-dinner-raspberry-lime-lemonade-ko",
+    "en": "https://smartc365.com/guides/smart-dinner-raspberry-lime-lemonade-en"
+  },
+  "ingredients": [
+    "130 g fresh raspberries",
+    "45 ml fresh lemon juice",
+    "20 ml fresh lime juice",
+    "25 g caster sugar",
+    "330 ml cold drinking water",
+    "160 g ice cubes"
+  ],
+  "ingredientsKo": [
+    "130 g 생라즈베리",
+    "45 ml 생레몬즙",
+    "20 ml 생라임즙",
+    "25 g 고운 설탕",
+    "330 ml 차가운 식수",
+    "160 g 얼음"
+  ],
+  "fullMethod": [
+    "Wash the berries gently: Rinse 130 g raspberries with clean water and drain carefully in a sieve so they do not turn to mush. Reserve a few intact berries for decorating the two glasses.",
+    "Extract two kinds of citrus juice: Squeeze clean lemons for 45 ml juice and limes for 20 ml juice, removing all seeds. A small strainer prevents bitter pips from ending up in the final drink.",
+    "Muddle a bright berry base: In a clean jug, mash the raspberries with 25 g caster sugar using a potato masher for about 30 seconds until juicy. Stir in the measured citrus juices until the sugar begins dissolving.",
+    "Add cold water and adjust acidity: Pour in 330 ml cold drinking water and stir well until the mixture looks evenly pink. If you prefer fewer seeds, pour through a fine sieve now; taste before adding any more sugar.",
+    "Serve over fresh food-safe ice: Divide 160 g clean ice into two glasses, pour in the lemonade and decorate with reserved berries. Drink promptly while chilled, keeping cut citrus and fruit in the fridge until serving."
+  ],
+  "fullMethodKo": [
+    "라즈베리를 부드럽게 씻기: 라즈베리 130g을 깨끗한 물로 살살 씻고 체에 받쳐 물기를 뺀다. 쉽게 무르는 과일이므로 세게 문지르지 않고 온전한 몇 개는 장식용으로 남긴다.",
+    "레몬즙과 라임즙 준비: 씻은 레몬을 짜 45ml, 라임을 짜 20ml를 준비한다. 작은 체에 걸러 씨가 음료에 들어가지 않게 하고 과육이 조금 남는 것은 괜찮다.",
+    "과일과 설탕을 으깨기: 깨끗한 주전자에 라즈베리와 고운 설탕 25g을 넣고 으깨개로 약 30초 눌러 즙을 낸다. 준비한 레몬·라임즙을 넣고 설탕이 녹기 시작할 때까지 섞는다.",
+    "차가운 물로 농도 맞추기: 차가운 식수 330ml를 붓고 색이 고르게 분홍빛이 될 때까지 저어 준다. 씨가 거슬리면 지금 고운 체로 걸러 내고 설탕을 더 넣기 전에 한 모금 맛본다.",
+    "얼음을 넣고 바로 마시기: 깨끗한 잔 두 개에 얼음 160g을 나누고 레모네이드를 붓는다. 남긴 라즈베리로 장식해 차가울 때 바로 마시며 손질한 과일은 냉장 상태를 유지한다."
+  ],
+  "stages": [
+    {
+      "step": 1,
+      "scene": "Only fresh bright red raspberries, all about 130g, gently draining in a plain stainless steel mesh sieve that rests securely inside a kitchen sink. Real droplets on individual raspberries. A few intact berries set aside in a small white bowl on the sink side. No other fruits, no hands, no glass with drink."
+    },
+    {
+      "step": 3,
+      "scene": "One plain clear glass measuring jug resting solidly on a wooden kitchen counter, filled partly with freshly mashed bright red raspberries and a little fine white caster sugar. A short wood potato masher with its base pressing berries inside the jug, and a small measuring glass holding combined lemon and lime juice nearby. No water added, no whole glass beverage, no ice, no other fruit."
+    },
+    {
+      "step": 4,
+      "scene": "A clear glass kitchen jug standing on the countertop, filled with translucent vivid light pink raspberry lemonade mixed evenly with drinking water, real small raspberry bits and a few seeds visible. A metal long spoon rests in jug to stir. No ice cubes in jug, no finished serving glass, no sliced orange or other ingredients. Natural real kitchen counter."
+    },
+    {
+      "step": 5,
+      "scene": "Two normal drinking glasses standing on a kitchen tabletop, each filled with clear ice cubes and fresh naturally pale pink homemade raspberry lemonade, a few whole fresh raspberries resting on the surface. No mint, no lemon wheels, no straws, no garnish other than raspberries; exactly two glasses. Real fresh homemade fruit drink, natural daylight, no printed paper."
+    },
+    {
+      "step": 0,
+      "scene": "Distinct beautiful high-resolution HORIZONTAL HERO photograph of exactly TWO clear drinking glasses of fresh pale pink homemade raspberry lime lemonade on a natural wooden kitchen table, ice cubes visible through the glass and a few fresh whole raspberries on top, realistic soft window light. No mint sprigs, lime or lemon wedges, no flowers, no straws, no extra garnishes and no food other than raspberries. Natural drink photography."
+    }
+  ]
+}
