@@ -1,7 +1,7 @@
 {
-  "checkedAtUTC": "2026-11-18T11:47:36.108734+00:00",
-  "attempt": 1,
-  "allLiveVerified": true,
+  "checkedAtUTC": "2026-11-18T13:56:53.387301+00:00",
+  "attempt": 6,
+  "allLiveVerified": false,
   "entries": [
     {
       "slug": "avocado-boiled-egg-toast",
@@ -63,16 +63,20 @@
         {
           "lang": "ko",
           "http": 200,
-          "bytes": 13728,
-          "missing": [],
-          "pass": true
+          "bytes": 13466,
+          "missing": [
+            "/assets/recipe-step-photos/raspberry-lime-lemonade/step-03.jpg"
+          ],
+          "pass": false
         },
         {
           "lang": "en",
           "http": 200,
-          "bytes": 13279,
-          "missing": [],
-          "pass": true
+          "bytes": 13020,
+          "missing": [
+            "/assets/recipe-step-photos/raspberry-lime-lemonade/step-03.jpg"
+          ],
+          "pass": false
         }
       ],
       "assets": [
@@ -109,7 +113,7 @@
           "pass": true
         }
       ],
-      "pass": true
+      "pass": false
     },
     {
       "slug": "indian-butter-chicken",
@@ -220,6 +224,92 @@
           "path": "/assets/recipe-step-photos/cinnamon-apple-oat-porridge/step-06.jpg",
           "http": 200,
           "bytes": 242818,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "slug": "korean-classic-bibimbap",
+      "pages": [
+        {
+          "lang": "ko",
+          "http": 200,
+          "bytes": 22229,
+          "missing": [],
+          "pass": true
+        },
+        {
+          "lang": "en",
+          "http": 200,
+          "bytes": 22392,
+          "missing": [],
+          "pass": true
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/recipe-step-photos/korean-classic-bibimbap/hero.jpg",
+          "http": 200,
+          "bytes": 215080,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/korean-classic-bibimbap/step-01.jpg",
+          "http": 200,
+          "bytes": 122311,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/korean-classic-bibimbap/step-02.jpg",
+          "http": 200,
+          "bytes": 175090,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/korean-classic-bibimbap/step-03.jpg",
+          "http": 200,
+          "bytes": 128108,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/korean-classic-bibimbap/step-04.jpg",
+          "http": 200,
+          "bytes": 203148,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/korean-classic-bibimbap/step-05.jpg",
+          "http": 200,
+          "bytes": 123654,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/korean-classic-bibimbap/step-07.jpg",
+          "http": 200,
+          "bytes": 173909,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/korean-classic-bibimbap/step-08.jpg",
+          "http": 200,
+          "bytes": 223776,
           "width": 1536,
           "height": 1024,
           "pass": true
