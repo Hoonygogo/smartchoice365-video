@@ -17,31 +17,31 @@ import urllib.request
 from PIL import Image
 
 MODEL = "@cf/black-forest-labs/flux-2-klein-4b"
-KITCHEN_SET_ID = "smart-meals-warm-quartz-kitchen-v1"
-# Identical environment across dishes and every stage; recipe-specific food and
-# physically accurate cookware always take precedence over decorative staging.
-KITCHEN_SET_PROMPT = (
-    "FIXED SMART MEALS 365 KITCHEN: the SAME warm contemporary home kitchen in EVERY photograph. "
-    "Continuous warm ivory cream lightly micro-speckled quartz BENCHTOP with satin finish, "
-    "matte warm-white horizontal rectangular tile splashback, pale natural oak flat-front cabinets. "
-    "Same soft window daylight from CAMERA LEFT. Sink is brushed stainless, hob is charcoal black, "
-    "both integrated into this SAME quartz worktop when needed. "
-    "NEVER replace the bench with wood, marble, granite, black stone or a different kitchen. "
+COUNTERTOP_SET_ID = "smart-meals-ivory-quartz-countertop-v2"
+# Use only the surface MATERIAL from input image 0. The reference is a texture
+# guide, NOT a scene to reconstruct. Every dish must dominate its photograph.
+COUNTERTOP_PROMPT = (
+    "LOCK ONLY THE VISIBLE COUNTERTOP MATERIAL: warm pale ivory quartz, subtle tiny beige-grey speckles, "
+    "matte satin finish, matching input image 0 in colour and fine-grain pattern. "
+    "The countertop is only a small supporting surface beneath the food or cutting board. "
+    "NO visible kitchen room, backsplash, cabinets, windows, full cooker, house plants, or background decor. "
+    "NO overhead wide kitchen establishing shots. For stove steps a tight cooking-pan close-up is correct: "
+    "countertop may be invisible. Photograph the actual food, not the setting. "
 )
 
 BASE = pathlib.Path(__file__).resolve().parents[1]
 REQUESTS = BASE / "requests/recipe-step-photo"
 OUTPUT = BASE / "artifacts/recipe-step-photo"
-KITCHEN_REFERENCE = BASE / "assets/reference/smart-meals-kitchen-reference-v1.jpg"
+COUNTERTOP_REFERENCE = BASE / "assets/reference/smart-meals-countertop-quartz-v2.jpg"
 # Real binary reference input is mandatory. Model requires every input image <512x512.
-KITCHEN_REFERENCE_SHA256 = "80998259ebcce4ddd9e145ba2689845ff92a0166f89679192ec0df42f8736469"
+COUNTERTOP_REFERENCE_SHA256 = "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771"
 
-def read_kitchen_reference():
-    if not KITCHEN_REFERENCE.is_file():
+def read_countertop_reference():
+    if not COUNTERTOP_REFERENCE.is_file():
         raise FileNotFoundError("Fixed kitchen image missing; refusing to create mismatched recipe photos")
-    raw = KITCHEN_REFERENCE.read_bytes()
+    raw = COUNTERTOP_REFERENCE.read_bytes()
     digest = hashlib.sha256(raw).hexdigest()
-    if digest != KITCHEN_REFERENCE_SHA256:
+    if digest != COUNTERTOP_REFERENCE_SHA256:
         raise ValueError("Fixed kitchen reference SHA256 changed; refusing silently substituted background")
     with Image.open(io.BytesIO(raw)) as image:
         size = image.size
@@ -71,10 +71,12 @@ def generate(request_path):
         "model": MODEL, "reviewed": False, "published": False,
         "paidFallback": False, "attemptLimitPerStage": 1,
         "requestRevision": request.get("requestRevision", 1),
-        "kitchenSet": KITCHEN_SET_ID,
+        "countertopSet": COUNTERTOP_SET_ID,
         "referenceImageConditioningUsed": False,
-        "referenceImagePath": str(KITCHEN_REFERENCE.relative_to(BASE)),
-        "referenceSha256": KITCHEN_REFERENCE_SHA256,
+        "referenceImagePath": str(COUNTERTOP_REFERENCE.relative_to(BASE)),
+        "referenceRole": "countertop_material_only_not_room_layout",
+        "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
+        "referenceSha256": COUNTERTOP_REFERENCE_SHA256,
         "generatedAtUTC": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "stages": []
     }
@@ -95,7 +97,7 @@ def generate(request_path):
         report["status"] = "credentials_unavailable_no_requests"
         save_result(slug, report)
         return
-    reference_bytes, reference_dims = read_kitchen_reference()
+    reference_bytes, reference_dims = read_countertop_reference()
     report["referenceDimensions"] = list(reference_dims)
     endpoint = f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{MODEL}"
     full_ingredients = "; ".join(request["ingredients"])
@@ -110,27 +112,24 @@ def generate(request_path):
         is_final = step == len(request["fullMethod"])
         target_method = request["fullMethod"][-1] if is_hero else request["fullMethod"][step-1]
         prefix = (
-            "Use input reference image 0 as the exact fixed Smart Meals kitchen background, "
-            "preserving the same cream quartz countertop, tile backsplash, cabinetry, room layout and left window lighting; "
-            "change only the food and required tools to depict this cooking stage. "
-            "One single realistic unposed home-kitchen photograph, not a collage, poster, recipe illustration or cookbook page. "
-            + KITCHEN_SET_PROMPT
-            + item["scene"] +
-            " Natural daylight, normal household equipment physically resting on a real counter or stove, "
-            "realistic contact shadows and gravity, imperfect edible food texture, natural camera perspective. "
-            "Absolutely NO written words, gibberish letters, typography, printed paper, recipe pages, signs, captions, "
-            "logos, brand labels, watermark, person, face, whole arms, impossible objects, CGI shine or artificial blur. "
-            "Depict only the specified preparation stage, no invented toppings."
+            "Extreme food-first authentic close-up candid cooking photograph. "
+            "The actual food and cooking action fill 75–90 percent of the image; "
+            "show only a narrow band of quartz counter where needed to prove grounding. "
+            "Use image 0 ONLY for counter material colour and tiny speckled texture, NOT its camera view. "
+            + COUNTERTOP_PROMPT
+            + " Precisely show this stage: " + item["scene"]
+            + " Every vessel or finished plate has visible genuine contact with its supporting surface, "
+              "never appears suspended or floating. Edible imperfect home-cooked textures, natural light, "
+              "neutral colour, no plastic gloss, no odd tools or foods, no unrelated props, no people or captions."
         )
         if len(prefix) > 1650:
-            # Cut the optional trailing negatives, not the locked kitchen or
-            # the actual step description. Reject unreasonably long requests.
-            start = ("One single realistic unposed home-kitchen photograph, "
-                     "not a collage, poster, recipe illustration or cookbook page. ")
-            required = start + KITCHEN_SET_PROMPT + item["scene"]
-            if len(required) > 1600:
-                raise ValueError("Stage scene too long for mandatory fixed kitchen prompt; shorten scene")
-            prefix = prefix[:1650].rsplit(" ", 1)[0]
+            required = ("Food dominates 75–90% of frame, food is sharp and realistically grounded. "
+                        "Use input image 0 only for subtle ivory speckled quartz counter material. "
+                        "No kitchen room, cabinets, wall tiles or background staging. "
+                        "Exact cooking stage: " + item["scene"])
+            if len(required) > 1650:
+                raise ValueError("Stage scene too long; shorten without deleting food and countertop requirements")
+            prefix = required
         result = {"step": step, "status": "not_generated", "reviewed": False, "published": False}
         try:
             boundary = "----SC365ProcessPhoto" + hashlib.sha256(os.urandom(16)).hexdigest()[:16]
@@ -138,7 +137,7 @@ def generate(request_path):
             for key, value in {"prompt": prefix, "width": (1536 if (is_final or is_hero) else 1024), "height": (1024 if (is_final or is_hero) else 1024)}.items():
                 payload += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"{key}\"\r\n\r\n{value}\r\n").encode("utf-8")
             payload += (f"--{boundary}\r\n"
-                        'Content-Disposition: form-data; name="input_image_0"; filename="fixed-kitchen-v1.jpg"\r\n'
+                        'Content-Disposition: form-data; name="input_image_0"; filename="countertop-material-v2.jpg"\r\n'
                         "Content-Type: image/jpeg\r\n\r\n").encode("utf-8")
             payload += reference_bytes + b"\r\n"
             payload += (f"--{boundary}--\r\n").encode("utf-8")
