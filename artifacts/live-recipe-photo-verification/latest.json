@@ -1,5 +1,5 @@
 {
-  "checkedAtUTC": "2026-11-18T11:40:04.810191+00:00",
+  "checkedAtUTC": "2026-11-18T11:45:44.337025+00:00",
   "attempt": 1,
   "allLiveVerified": true,
   "entries": [
@@ -104,6 +104,68 @@
           "path": "/assets/recipe-step-photos/raspberry-lime-lemonade/step-05.jpg",
           "http": 200,
           "bytes": 191204,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "slug": "indian-butter-chicken",
+      "pages": [
+        {
+          "lang": "ko",
+          "http": 200,
+          "bytes": 22273,
+          "missing": [],
+          "pass": true
+        },
+        {
+          "lang": "en",
+          "http": 200,
+          "bytes": 21680,
+          "missing": [],
+          "pass": true
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/recipe-step-photos/indian-butter-chicken/hero.jpg",
+          "http": 200,
+          "bytes": 254600,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/indian-butter-chicken/step-03.jpg",
+          "http": 200,
+          "bytes": 220348,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/indian-butter-chicken/step-04.jpg",
+          "http": 200,
+          "bytes": 225316,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/indian-butter-chicken/step-05.jpg",
+          "http": 200,
+          "bytes": 199829,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/indian-butter-chicken/step-08.jpg",
+          "http": 200,
+          "bytes": 201474,
           "width": 1536,
           "height": 1024,
           "pass": true
