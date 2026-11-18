@@ -11,8 +11,8 @@ import urllib.request
 from PIL import Image
 
 BASE = "https://smartc365.com"
-SLUGS = ["avocado-boiled-egg-toast"]
-STAGES = {"avocado-boiled-egg-toast": [4,6,7]}
+SLUGS = ["avocado-boiled-egg-toast", "raspberry-lime-lemonade"]
+STAGES = {"avocado-boiled-egg-toast": [4,6,7], "raspberry-lime-lemonade": [2,3,5]}
 OUT = pathlib.Path("artifacts/live-recipe-photo-verification/latest.json")
 OUT.parent.mkdir(parents=True, exist_ok=True)
 
@@ -41,7 +41,7 @@ for attempt in range(1,7):
                 status,raw=get(BASE+p+"?photo_audit="+str(attempt))
                 with Image.open(io.BytesIO(raw)) as pic:
                     width,height=pic.size
-                row["assets"].append({"path":p,"http":status,"bytes":len(raw),"width":width,"height":height,"pass":status==200 and width>= (1400 if p.endswith(("hero.jpg","step-07.jpg")) else 900)})
+                row["assets"].append({"path":p,"http":status,"bytes":len(raw),"width":width,"height":height,"pass":status==200 and width>= (1400 if p.endswith(("hero.jpg","step-07.jpg","step-05.jpg")) else 900)})
             except Exception as exc:
                 row["assets"].append({"path":p,"pass":False,"error":str(exc)[:300]})
         row["pass"]=all(p["pass"] for p in row["pages"]+row["assets"])
