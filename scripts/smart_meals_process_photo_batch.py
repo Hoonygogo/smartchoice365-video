@@ -44,16 +44,21 @@ def api(prompt,width,height):
 def main():
  if os.environ.get("CLOUDFLARE_WORKERS_FREE_CONFIRMED")!="true":raise RuntimeError("Stop: Free AI status not confirmed")
  if not os.environ.get("CLOUDFLARE_ACCOUNT_ID") or not os.environ.get("CLOUDFLARE_AI_TOKEN"):raise RuntimeError("Stop: AI credentials unavailable")
- slug="three-bean-lemon-parsley-salad"
+ slug=os.getenv("RECIPE_SLUG","three-bean-lemon-parsley-salad")
+ if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*",slug):raise RuntimeError("Invalid selected recipe slug")
  ko=source(slug,"ko");en=source(slug,"en")
  ks,steps=ko["recipeInstructions"],en["recipeInstructions"]
- assert len(ks)==len(steps)==5
+ assert 3<=len(steps)<=8 and len(ks)==len(steps)
+ selected_text=os.getenv("PHOTO_STEPS",", ".join(str(n) for n in range(1,len(steps)+1)))
+ selected=[int(x.strip()) for x in selected_text.split(",") if x.strip()]
+ if len(selected)<2 or len(selected)>7 or len(set(selected))!=len(selected) or any(x<1 or x>len(steps) for x in selected) or len(steps) not in selected:raise RuntimeError("Invalid photo stages; final stage mandatory")
  ingredients="; ".join(en["recipeIngredient"])
  method=" ".join(str(i+1)+": "+str(x["text"]) for i,x in enumerate(steps))
  if len(method)>2400:raise RuntimeError("Full method unexpectedly long")
  target=pathlib.Path("artifacts/smart-meals-process-photos")/slug;target.mkdir(parents=True,exist_ok=True)
  manifest={"dish":slug,"model":MODEL,"koTitle":ko["name"],"enTitle":en["name"],"ingredients":en["recipeIngredient"],"method":steps,"reviewed":False,"sitePublished":False,"generated":[]}
  for i,step in enumerate(steps):
+  if i+1 not in selected:continue
   last=i==len(steps)-1
   prompt=("Photorealistic authentic original recipe cooking-process food photograph. "+en["name"]+". "+
    "ONLY THESE INGREDIENTS: "+ingredients+". COMPLETE METHOD CONTEXT: "+method+". "+
@@ -63,7 +68,9 @@ def main():
    " No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.")
   width,height=(1536,1024) if last else (1024,1024)
   raw,fmt,sz=api(prompt,width,height)
-  filename=f"step-{i+1:02d}.{fmt}";(target/filename).write_bytes(raw)
+  filename=f"step-{i+1:02d}.{fmt}"
+  if (target/filename).exists():raise RuntimeError("Refuse to overwrite prior candidate")
+  (target/filename).write_bytes(raw)
   manifest["generated"].append({"file":filename,"step":i+1,"size":sz,"sha256":hashlib.sha256(raw).hexdigest(),"prompt":prompt,"reviewed":False})
   (target/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n")
   print("IMAGE_CANDIDATE",filename,sz,flush=True)
@@ -71,7 +78,9 @@ def main():
   en["name"]+". Ingredients only: "+ingredients+". Exactly plated at conclusion of: "+steps[-1]["text"]+
   ". Large appealing three-quarter 3:2 landscape composition, unlike step-final arrangement, genuine edible textures, soft daylight. "+
   "No extra garnishes, no unknown ingredients, no captions, no typography, no logo.")
- raw,fmt,sz=api(hero,1536,1024);filename="hero."+fmt;(target/filename).write_bytes(raw)
+ raw,fmt,sz=api(hero,1536,1024);filename="hero."+fmt
+ if (target/filename).exists():raise RuntimeError("Refuse to overwrite prior hero")
+ (target/filename).write_bytes(raw)
  manifest["generated"].append({"file":filename,"step":0,"role":"hero","size":sz,"sha256":hashlib.sha256(raw).hexdigest(),"prompt":hero,"reviewed":False})
  (target/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n")
  print("CANDIDATES_COMPLETE",len(manifest["generated"]),"AWAIT_IMAGE_QA",flush=True)
