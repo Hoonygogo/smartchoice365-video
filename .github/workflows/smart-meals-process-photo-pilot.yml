@@ -1,0 +1,40 @@
+name: Smart Meals exact-method photo candidates free one-recipe pilot
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/smart-meals-process-photo-pilot.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: smart-meals-photo-candidates-oneoff
+  cancel-in-progress: false
+jobs:
+  create-candidates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Install Pillow
+        run: python3 -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+      - name: Generate from exact original cooking instructions without paid fallback
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+          CLOUDFLARE_WORKERS_FREE_CONFIRMED: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+        run: python3 scripts/smart_meals_process_photo_batch.py
+      - name: Save generated candidates privately for editorial image quality check
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/smart-meals-process-photos/ || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Create bilingual Smart Meals process-photo candidates, pending QA [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
