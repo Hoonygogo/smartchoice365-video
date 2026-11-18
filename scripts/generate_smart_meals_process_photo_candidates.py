@@ -63,8 +63,8 @@ def generate(request_path):
     if request_path.name != slug + ".json":
         raise ValueError("Request filename does not match recipe slug")
     stages = request["stages"]
-    if len(stages) < 1 or len(stages) > 7 or len({x["step"] for x in stages}) != len(stages):
-        raise ValueError("One-off batch must have 1–7 distinct photographs")
+    if len(stages) < 1 or len(stages) > 9 or len({x["step"] for x in stages}) != len(stages):
+        raise ValueError("One-off batch must have 1–9 distinct photographs")
     report = {
         "schemaVersion": 1, "slug": slug, "recipeName": request["title"],
         "source": "Original official Smart Meals bilingual recipe method",
