@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "slug": "raspberry-lime-lemonade",
   "title": "Raspberry Lime Lemonade",
   "titleKo": "라즈베리 라임 레모네이드",
@@ -40,24 +40,16 @@
   ],
   "stages": [
     {
-      "step": 1,
-      "scene": "Only fresh bright red raspberries, all about 130g, gently draining in a plain stainless steel mesh sieve that rests securely inside a kitchen sink. Real droplets on individual raspberries. A few intact berries set aside in a small white bowl on the sink side. No other fruits, no hands, no glass with drink."
+      "step": 2,
+      "scene": "Natural unposed close-up of one halved fresh yellow lemon and one halved fresh green lime on a normal wooden cutting board. A small handheld metal citrus juicer resting securely on a ceramic bowl filled with freshly squeezed pale lemon and lime juice. A fine tea strainer with just a few removed citrus seeds beside the bowl. No raspberries, no finished drink, no other ingredients, no lettering."
     },
     {
       "step": 3,
-      "scene": "One plain clear glass measuring jug resting solidly on a wooden kitchen counter, filled partly with freshly mashed bright red raspberries and a little fine white caster sugar. A short wood potato masher with its base pressing berries inside the jug, and a small measuring glass holding combined lemon and lime juice nearby. No water added, no whole glass beverage, no ice, no other fruit."
+      "scene": "A single clear glass kitchen jug firmly standing on a wooden counter, containing bright red FRESH RASPBERRIES partly crushed into their natural red juices with a visible little white caster sugar. ONE small potato masher with a single round perforated metal head rests on the berries inside the jug. Nearby a small measuring cup of prepared clear lemon-lime juice. NO duplicate masher, no extra tools, NO milk, no water yet, no other fruits."
     },
     {
       "step": 4,
-      "scene": "A clear glass kitchen jug standing on the countertop, filled with translucent vivid light pink raspberry lemonade mixed evenly with drinking water, real small raspberry bits and a few seeds visible. A metal long spoon rests in jug to stir. No ice cubes in jug, no finished serving glass, no sliced orange or other ingredients. Natural real kitchen counter."
-    },
-    {
-      "step": 5,
-      "scene": "Two normal drinking glasses standing on a kitchen tabletop, each filled with clear ice cubes and fresh naturally pale pink homemade raspberry lemonade, a few whole fresh raspberries resting on the surface. No mint, no lemon wheels, no straws, no garnish other than raspberries; exactly two glasses. Real fresh homemade fruit drink, natural daylight, no printed paper."
-    },
-    {
-      "step": 0,
-      "scene": "Distinct beautiful high-resolution HORIZONTAL HERO photograph of exactly TWO clear drinking glasses of fresh pale pink homemade raspberry lime lemonade on a natural wooden kitchen table, ice cubes visible through the glass and a few fresh whole raspberries on top, realistic soft window light. No mint sprigs, lime or lemon wedges, no flowers, no straws, no extra garnishes and no food other than raspberries. Natural drink photography."
+      "scene": "A transparent household glass measuring pitcher standing on a kitchen counter, filled with thin TRANSLUCENT CLEAR pink water-based raspberry and lemon lemonade; you can clearly see THROUGH the lightly pink water. A few tiny red raspberry fragments at bottom, one simple metal stirring spoon supported in the pitcher, no ice. This is a diluted watery fruit beverage, NOT opaque milk, cream, smoothie, yoghurt, pink milky shake or froth. No other garnishes, no text."
     }
   ]
 }
