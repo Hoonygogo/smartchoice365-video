@@ -41,14 +41,17 @@ def generate(request_path):
         "source": "Original official Smart Meals bilingual recipe method",
         "model": MODEL, "reviewed": False, "published": False,
         "paidFallback": False, "attemptLimitPerStage": 1,
+        "requestRevision": request.get("requestRevision", 1),
         "generatedAtUTC": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "stages": []
     }
     out_dir = OUTPUT / slug
     previous = out_dir / "generation-report.json"
     if previous.exists():
-        print("ALREADY_PROCESSED_NO_RETRY", slug)
-        return
+        old = json.loads(previous.read_text(encoding="utf-8"))
+        if old.get("requestRevision", 1) >= request.get("requestRevision", 1):
+            print("ALREADY_PROCESSED_NO_RETRY", slug)
+            return
     if os.getenv("CLOUDFLARE_WORKERS_FREE_CONFIRMED") != "true":
         report["status"] = "free_plan_not_confirmed_no_requests"
         save_result(slug, report)
@@ -66,15 +69,20 @@ def generate(request_path):
         step = item["step"]
         if not isinstance(step, int) or step < 1 or step > len(request["fullMethod"]):
             raise ValueError("Out of range recipe stage")
+        # Keep the generative prompt under established Cloudflare FLUX Schnell input limit.
+        # Original full bilingual method stays in request JSON for editor inspection.
         prefix = (
-            f"One original photorealistic candid home-kitchen cooking instruction photo. "
-            f"Recipe: {request['title']}. Depict ONLY stage {step}: {request['fullMethod'][step-1]}. "
-            f"Visual direction: {item['scene']}. "
-            f"Ingredients allowed: {full_ingredients}. Full recipe sequence for accuracy: {ordered_method}. "
-            "Actual kitchen counter, real grounded equipment, convincing contact shadows and gravity, natural daylight, realistic slightly imperfect textures. "
-            "Close-up on food, no faces, people, torsos, large arms or body; a tiny cropped hand only if necessary. "
-            "No unlisted garnish, ingredient, lettering, caption, text, extra steps, collage, flying objects, floating food, misplaced tools, synthetic sheen or artificial bokeh."
+            f"Photorealistic close-up food preparation photograph. Dish: {request['title']}. "
+            f"Step {step} ONLY: {request['fullMethod'][step-1]}. "
+            f"Scene: {item['scene']}. "
+            f"Allowed measured ingredients: {full_ingredients}. "
+            "Natural Australian home kitchen, stable real work surface, actual gravity and shadows, "
+            "authentic food textures, small natural imperfections and honest daylight. "
+            "No people or body; optional tiny hand edge only if required. "
+            "No unlisted ingredients, text, captions, collage, floating food or equipment, fake CGI finish."
         )
+        if len(prefix) > 1400:
+            prefix = prefix[:1400].rsplit(" ", 1)[0]
         result = {"step": step, "status": "not_generated", "reviewed": False, "published": False}
         try:
             payload = json.dumps({"prompt": prefix, "steps": 4}).encode("utf-8")
@@ -106,7 +114,8 @@ def generate(request_path):
                           width=width, height=height, bytes=len(binary),
                           sha256=hashlib.sha256(binary).hexdigest())
         except urllib.error.HTTPError as exc:
-            result.update(status="cloudflare_429_free_quota_or_rate" if exc.code == 429 else "cloudflare_http_"+str(exc.code))
+            detail = exc.read(350).decode("utf-8", "replace")
+            result.update(status="cloudflare_429_free_quota_or_rate" if exc.code == 429 else "cloudflare_http_"+str(exc.code), errorDetail=detail[:300])
             report["stages"].append(result)
             if exc.code == 429:
                 break
