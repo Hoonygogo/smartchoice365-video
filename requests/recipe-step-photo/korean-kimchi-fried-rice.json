@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "slug": "korean-kimchi-fried-rice",
+  "title": "Korean Kimchi Fried Rice with Egg",
+  "titleKo": "계란 프라이 올린 김치볶음밥",
+  "sourceUrls": {
+    "ko": "https://smartc365.com/guides/smart-dinner-korean-kimchi-fried-rice-ko",
+    "en": "https://smartc365.com/guides/smart-dinner-korean-kimchi-fried-rice-en"
+  },
+  "originalYield": {
+    "ko": "4 servings",
+    "en": "4 servings"
+  },
+  "ingredients": [
+    "650 g previously cooked short-grain rice, rapidly chilled at 5°C or below",
+    "350 g fermented napa kimchi, finely chopped",
+    "55 ml kimchi brine, measured",
+    "130 g onion, finely diced",
+    "110 g carrot, finely diced",
+    "65 g spring onion, thinly sliced",
+    "25 g Korean chilli paste",
+    "20 ml light soy sauce",
+    "35 ml neutral cooking oil, divided",
+    "15 ml toasted sesame oil",
+    "4 each large eggs to fry until set",
+    "8 g roasted nori seaweed, crumbled",
+    "15 g toasted sesame seeds"
+  ],
+  "ingredientsKo": [
+    "650 g 조리 직후 빠르게 식혀 5°C 이하 냉장한 밥",
+    "350 g 잘게 썬 충분히 익은 배추김치",
+    "55 ml 계량한 김치 국물",
+    "130 g 잘게 썬 양파",
+    "110 g 잘게 썬 당근",
+    "65 g 얇게 썬 대파",
+    "25 g 고추장",
+    "20 ml 연간장",
+    "35 ml 식용유(나눠 사용)",
+    "15 ml 참기름",
+    "4 each 완숙 프라이용 큰 달걀",
+    "8 g 잘게 부순 구운 김",
+    "15 g 볶은 참깨"
+  ],
+  "fullMethod": [
+    "Check refrigerated rice was cooled promptly: Use 650 g cooked rice that was cooled rapidly after cooking and kept at 5°C or below, not rice left sitting warm overnight. Break the cold rice into loose clumps with a clean spoon before frying, keeping it refrigerated until needed.",
+    "Prepare fermented kimchi and vegetables: Finely chop 350 g sour fermented kimchi and measure 55 ml kimchi juice separately. Dice 130 g onion and 110 g carrot, slice 65 g spring onion and crumble 8 g roasted nori. Check kimchi product labels for fish or shellfish if serving anyone with allergies.",
+    "Fry eggs completely and keep warm: Heat 10 ml of the measured 35 ml oil in a non-stick frying pan over medium-low heat. Crack four eggs in two batches and fry for 3–5 minutes until egg whites and yolks are fully set; cover briefly to cook the surface if needed. Move to a clean plate.",
+    "Sauté onion, carrot and sour kimchi well: Warm the remaining 25 ml oil in a broad wok over medium-high heat. Add onion and carrot for about 3 minutes, then 350 g chopped kimchi for another 4–5 minutes until softened and deeper in colour. Stir regularly so the chilli residue does not catch on the hot pan.",
+    "Mix paste and rice with controlled moisture: Add 25 g gochujang, 20 ml soy sauce and 55 ml kimchi juice to the kimchi and stir briefly. Add all 650 g chilled rice and work with a wooden spatula for 3–4 minutes until clumps separate and every grain takes on an even red-orange coating.",
+    "Finish frying until hot throughout: Increase the heat for one or two minutes so the rice becomes hot throughout and a few grains crisp lightly on the bottom without burning. Turn off the heat, stir through 15 ml toasted sesame oil and sliced spring onion, then taste with a clean spoon before deciding if extra seasoning is necessary.",
+    "Plate with eggs and nori, refrigerate leftovers: Divide fried rice into four clean bowls, top each with a fully cooked fried egg and distribute the 8 g crumbled nori and 15 g toasted sesame seeds. Serve immediately; refrigerate any extra rice promptly at 5°C or colder and do not leave it warm on the stove."
+  ],
+  "fullMethodKo": [
+    "안전하게 식혀 냉장한 밥 준비: 지은 직후 빠르게 식혀 5°C 이하 냉장한 밥 650g을 준비합니다. 밤새 실온에 놓인 밥은 사용하지 않습니다. 차가운 밥을 깨끗한 주걱으로 적당히 풀어 볶기 직전까지 냉장해 둡니다.",
+    "신김치·양파·당근·대파 손질: 익은 김치 350g은 잘게 썰고 김치 국물 55ml는 따로 계량합니다. 양파 130g과 당근 110g은 잘게 썰고 대파 65g은 얇게 썹니다. 구운 김 8g도 부숴 둡니다. 김치의 액젓·새우젓 포함 여부를 확인합니다.",
+    "달걀 네 개 완숙 프라이 만들기: 코팅 팬에 전체 식용유 중 10ml를 중약불로 데웁니다. 달걀 네 개를 나눠 약 3~5분씩 흰자와 노른자까지 완전히 굳게 익힙니다. 윗면이 덜 익으면 잠시 뚜껑을 덮고 완성 프라이는 깨끗한 접시에 옮겨둡니다.",
+    "양파·당근·익은 김치를 충분히 볶기: 넓은 웍에 남은 식용유 25ml를 중강불로 데워 양파·당근을 약 3분 볶습니다. 잘게 썬 익은 김치 350g을 넣어 4~5분 더 볶아 김치가 부드럽고 색이 진해지게 합니다. 고추 양념이 팬 바닥에 타지 않도록 저어줍니다.",
+    "고추장·김치 국물·밥을 골고루 섞기: 볶은 김치에 고추장 25g, 간장 20ml, 김치 국물 55ml를 넣어 짧게 섞습니다. 냉장 밥 650g을 넣고 주걱으로 3~4분 덩어리를 풀어 쌀알마다 주황빛 양념이 고루 묻도록 볶습니다.",
+    "밥 속까지 뜨겁게 볶고 참기름 넣기: 불을 조금 높여 1~2분 더 볶아 밥 전체가 뜨겁고 바닥 일부에 살짝 구운 자국이 나게 합니다. 불을 끄고 참기름 15ml와 대파를 섞은 후 깨끗한 숟가락으로 간을 확인합니다.",
+    "계란·김가루 올려 네 그릇 제공: 완성한 김치볶음밥을 네 그릇에 나누고 완숙 달걀프라이 한 개씩 올립니다. 김가루 8g과 볶은 참깨 15g을 고르게 뿌려 바로 제공합니다. 남은 밥은 신속히 5°C 이하 냉장하고 팬에서 따뜻하게 오래 방치하지 않습니다."
+  ],
+  "stages": [
+    {
+      "step": 2,
+      "scene": "One single authentic close-up photograph, no panels: 350 g finely chopped sour napa kimchi in a ceramic bowl, a real wooden chopping board with small neatly chopped onion 130 g and carrot 110 g, spring onion slices 65 g, 8 g crumbled nori on a plate, and a small transparent measuring cup with 55 ml red kimchi brine sitting ON the board. A single kitchen knife lying flat on the board. No rice, no eggs, no mushrooms or other food. No person visible."
+    },
+    {
+      "step": 4,
+      "scene": "Single real stovetop photo at cooking stage four only. A stable black wok with 350 g fermented chopped napa kimchi, finely diced onions and carrots sizzling together in oil; clearly no rice, no fried eggs, no sesame and no chopped nori in the wok yet. Natural slight steam, close view at eye-level. Wok sits naturally on stove, no floating utensils or food."
+    },
+    {
+      "step": 5,
+      "scene": "Single candid stovetop photo of the same black wok now containing 650 g chilled cooked rice being mixed into the already cooked fermented kimchi, onion and carrot, all coated red orange with measured gochujang, soy sauce and 55 ml kimchi brine. Use a wooden spoon resting in the wok; visible natural rice grains, clumps breaking up. Do not show eggs, sesame seeds, seaweed or spring onions added yet. No human bodies or floating food."
+    }
+  ]
+}
