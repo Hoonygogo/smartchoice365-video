@@ -17,6 +17,18 @@ import urllib.request
 from PIL import Image
 
 MODEL = "@cf/black-forest-labs/flux-2-klein-4b"
+KITCHEN_SET_ID = "smart-meals-warm-quartz-kitchen-v1"
+# Identical environment across dishes and every stage; recipe-specific food and
+# physically accurate cookware always take precedence over decorative staging.
+KITCHEN_SET_PROMPT = (
+    "FIXED SMART MEALS 365 KITCHEN: the SAME warm contemporary home kitchen in EVERY photograph. "
+    "Continuous warm ivory cream lightly micro-speckled quartz BENCHTOP with satin finish, "
+    "matte warm-white horizontal rectangular tile splashback, pale natural oak flat-front cabinets. "
+    "Same soft window daylight from CAMERA LEFT. Sink is brushed stainless, hob is charcoal black, "
+    "both integrated into this SAME quartz worktop when needed. "
+    "NEVER replace the bench with wood, marble, granite, black stone or a different kitchen. "
+)
+
 BASE = pathlib.Path(__file__).resolve().parents[1]
 REQUESTS = BASE / "requests/recipe-step-photo"
 OUTPUT = BASE / "artifacts/recipe-step-photo"
@@ -42,6 +54,8 @@ def generate(request_path):
         "model": MODEL, "reviewed": False, "published": False,
         "paidFallback": False, "attemptLimitPerStage": 1,
         "requestRevision": request.get("requestRevision", 1),
+        "kitchenSet": KITCHEN_SET_ID,
+        "referenceImageConditioningUsed": False,
         "generatedAtUTC": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "stages": []
     }
@@ -76,6 +90,7 @@ def generate(request_path):
         target_method = request["fullMethod"][-1] if is_hero else request["fullMethod"][step-1]
         prefix = (
             "One single realistic unposed home-kitchen photograph, not a collage, poster, recipe illustration or cookbook page. "
+            + KITCHEN_SET_PROMPT
             + item["scene"] +
             " Natural daylight, normal household equipment physically resting on a real counter or stove, "
             "realistic contact shadows and gravity, imperfect edible food texture, natural camera perspective. "
@@ -84,6 +99,13 @@ def generate(request_path):
             "Depict only the specified preparation stage, no invented toppings."
         )
         if len(prefix) > 1650:
+            # Cut the optional trailing negatives, not the locked kitchen or
+            # the actual step description. Reject unreasonably long requests.
+            start = ("One single realistic unposed home-kitchen photograph, "
+                     "not a collage, poster, recipe illustration or cookbook page. ")
+            required = start + KITCHEN_SET_PROMPT + item["scene"]
+            if len(required) > 1600:
+                raise ValueError("Stage scene too long for mandatory fixed kitchen prompt; shorten scene")
             prefix = prefix[:1650].rsplit(" ", 1)[0]
         result = {"step": step, "status": "not_generated", "reviewed": False, "published": False}
         try:
