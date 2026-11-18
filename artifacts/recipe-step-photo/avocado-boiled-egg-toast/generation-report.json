@@ -8,8 +8,8 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
-  "generatedAtUTC": "2026-11-18T11:27:50.185157+00:00",
+  "requestRevision": 2,
+  "generatedAtUTC": "2026-11-18T11:30:18.811561+00:00",
   "stages": [
     {
       "step": 1,
@@ -20,8 +20,8 @@
       "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/step-01.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 166720,
-      "sha256": "8241f7f09fd3098614167bbc81ce47213e98b1b00a5c4c741e830ab428e0fa5e"
+      "bytes": 181228,
+      "sha256": "82e3ec183078ded16c9e7bf0076273f00388bcd37496d9a63048f62610c6b06d"
     },
     {
       "step": 4,
@@ -32,8 +32,8 @@
       "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/step-04.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 211191,
-      "sha256": "0c2a58fdda9521fd37707ef92893ad12343c422edf847ce6d5c1407a3a30d386"
+      "bytes": 203882,
+      "sha256": "ebc40f4531133d15cca1d825e4b13cee796979f9c9d2b5ff9f84102f0364db54"
     },
     {
       "step": 6,
@@ -44,8 +44,8 @@
       "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/step-06.jpg",
       "width": 1024,
       "height": 1024,
-      "bytes": 206344,
-      "sha256": "20cbc2b9e182bcde2eded395b3caff8d7aebe29bafcca7c6b09e1e2f718d0ec9"
+      "bytes": 154032,
+      "sha256": "7e309297bb3c8852fa22139a9a253a920da7692df4e5bc1edb7c9764aa9114b6"
     },
     {
       "step": 7,
@@ -56,20 +56,8 @@
       "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/step-07.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 247409,
-      "sha256": "68604a9219d99a49db619be027be985b7cd8ef9caa130f9fdeab29ae37e92b5f"
-    },
-    {
-      "step": 0,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "hero",
-      "path": "artifacts/recipe-step-photo/avocado-boiled-egg-toast/hero.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 227921,
-      "sha256": "1b83652bb5a19dfaec9c643684f79826760b75a77fd84fdf2765b5489d978431"
+      "bytes": 238266,
+      "sha256": "aa234ab7698bba3de018b847ee77ddb0a3f2641ef361e340bfcc991a888bfeff"
     }
   ],
   "status": "candidates_created_unreviewed"
