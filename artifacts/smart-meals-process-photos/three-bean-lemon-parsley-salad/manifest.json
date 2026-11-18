@@ -1,0 +1,120 @@
+{
+  "dish": "three-bean-lemon-parsley-salad",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "koTitle": "레몬 파슬리 3종 콩 샐러드",
+  "enTitle": "Three-Bean Lemon Parsley Salad",
+  "ingredients": [
+    "160 g green beans",
+    "160 g canned kidney beans, drained",
+    "160 g canned chickpeas, drained",
+    "40 g red onion",
+    "12 g flat-leaf parsley",
+    "25 ml lemon juice",
+    "20 ml olive oil",
+    "5 g Dijon mustard",
+    "1 g black pepper"
+  ],
+  "method": [
+    {
+      "@type": "HowToStep",
+      "name": "Blanch the green beans",
+      "text": "Trim 160 g green beans and boil for about 3–4 minutes until tender-crisp. Refresh in cold water and drain thoroughly.",
+      "url": "https://smartc365.com/guides/smart-dinner-three-bean-lemon-parsley-salad-en#step-1"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Prepare the canned beans",
+      "text": "Rinse and drain 160 g canned kidney beans and 160 g canned chickpeas separately.",
+      "url": "https://smartc365.com/guides/smart-dinner-three-bean-lemon-parsley-salad-en#step-2"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Chop the vegetables",
+      "text": "Finely dice 40 g red onion. Wash, dry and chop 12 g flat-leaf parsley.",
+      "url": "https://smartc365.com/guides/smart-dinner-three-bean-lemon-parsley-salad-en#step-3"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Whisk the dressing",
+      "text": "Whisk together 25 ml lemon juice, 20 ml olive oil, 5 g Dijon mustard and 1 g black pepper.",
+      "url": "https://smartc365.com/guides/smart-dinner-three-bean-lemon-parsley-salad-en#step-4"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Combine and serve",
+      "text": "Toss beans, onion and parsley with the dressing. Serve promptly, or refrigerate covered at 5°C or below and preferably eat the same day.",
+      "url": "https://smartc365.com/guides/smart-dinner-three-bean-lemon-parsley-salad-en#step-5"
+    }
+  ],
+  "reviewed": false,
+  "sitePublished": false,
+  "generated": [
+    {
+      "file": "step-01.jpg",
+      "step": 1,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "9c1b9cd4b91ee1380a82edd42c4b3e295b745b70792c09ed54d810ccecc12b3f",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Three-Bean Lemon Parsley Salad. ONLY THESE INGREDIENTS: 160 g green beans; 160 g canned kidney beans, drained; 160 g canned chickpeas, drained; 40 g red onion; 12 g flat-leaf parsley; 25 ml lemon juice; 20 ml olive oil; 5 g Dijon mustard; 1 g black pepper. COMPLETE METHOD CONTEXT: 1: Trim 160 g green beans and boil for about 3–4 minutes until tender-crisp. Refresh in cold water and drain thoroughly. 2: Rinse and drain 160 g canned kidney beans and 160 g canned chickpeas separately. 3: Finely dice 40 g red onion. Wash, dry and chop 12 g flat-leaf parsley. 4: Whisk together 25 ml lemon juice, 20 ml olive oil, 5 g Dijon mustard and 1 g black pepper. 5: Toss beans, onion and parsley with the dressing. Serve promptly, or refrigerate covered at 5°C or below and preferably eat the same day.. DEPICT EXACTLY STAGE 1 ONLY: Blanch the green beans: Trim 160 g green beans and boil for about 3–4 minutes until tender-crisp. Refresh in cold water and drain thoroughly.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Show the physical preparation action as close-up, square crop. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "step-02.jpg",
+      "step": 2,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "faaf28e33c5ac7472d5c30be78adc7de17172f075e6d2035676be6c72bc49820",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Three-Bean Lemon Parsley Salad. ONLY THESE INGREDIENTS: 160 g green beans; 160 g canned kidney beans, drained; 160 g canned chickpeas, drained; 40 g red onion; 12 g flat-leaf parsley; 25 ml lemon juice; 20 ml olive oil; 5 g Dijon mustard; 1 g black pepper. COMPLETE METHOD CONTEXT: 1: Trim 160 g green beans and boil for about 3–4 minutes until tender-crisp. Refresh in cold water and drain thoroughly. 2: Rinse and drain 160 g canned kidney beans and 160 g canned chickpeas separately. 3: Finely dice 40 g red onion. Wash, dry and chop 12 g flat-leaf parsley. 4: Whisk together 25 ml lemon juice, 20 ml olive oil, 5 g Dijon mustard and 1 g black pepper. 5: Toss beans, onion and parsley with the dressing. Serve promptly, or refrigerate covered at 5°C or below and preferably eat the same day.. DEPICT EXACTLY STAGE 2 ONLY: Prepare the canned beans: Rinse and drain 160 g canned kidney beans and 160 g canned chickpeas separately.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Show the physical preparation action as close-up, square crop. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "step-03.jpg",
+      "step": 3,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "7e9518b598c31ddd4376eb063f1437cb10f8e79f539f50bd3a8b89be298dd54a",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Three-Bean Lemon Parsley Salad. ONLY THESE INGREDIENTS: 160 g green beans; 160 g canned kidney beans, drained; 160 g canned chickpeas, drained; 40 g red onion; 12 g flat-leaf parsley; 25 ml lemon juice; 20 ml olive oil; 5 g Dijon mustard; 1 g black pepper. COMPLETE METHOD CONTEXT: 1: Trim 160 g green beans and boil for about 3–4 minutes until tender-crisp. Refresh in cold water and drain thoroughly. 2: Rinse and drain 160 g canned kidney beans and 160 g canned chickpeas separately. 3: Finely dice 40 g red onion. Wash, dry and chop 12 g flat-leaf parsley. 4: Whisk together 25 ml lemon juice, 20 ml olive oil, 5 g Dijon mustard and 1 g black pepper. 5: Toss beans, onion and parsley with the dressing. Serve promptly, or refrigerate covered at 5°C or below and preferably eat the same day.. DEPICT EXACTLY STAGE 3 ONLY: Chop the vegetables: Finely dice 40 g red onion. Wash, dry and chop 12 g flat-leaf parsley.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Show the physical preparation action as close-up, square crop. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "step-04.jpg",
+      "step": 4,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "4a74f60d0ef7ede959c73ff9a638a1f5c7ad6adbad1b4d4f762d065a0ebe4ad7",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Three-Bean Lemon Parsley Salad. ONLY THESE INGREDIENTS: 160 g green beans; 160 g canned kidney beans, drained; 160 g canned chickpeas, drained; 40 g red onion; 12 g flat-leaf parsley; 25 ml lemon juice; 20 ml olive oil; 5 g Dijon mustard; 1 g black pepper. COMPLETE METHOD CONTEXT: 1: Trim 160 g green beans and boil for about 3–4 minutes until tender-crisp. Refresh in cold water and drain thoroughly. 2: Rinse and drain 160 g canned kidney beans and 160 g canned chickpeas separately. 3: Finely dice 40 g red onion. Wash, dry and chop 12 g flat-leaf parsley. 4: Whisk together 25 ml lemon juice, 20 ml olive oil, 5 g Dijon mustard and 1 g black pepper. 5: Toss beans, onion and parsley with the dressing. Serve promptly, or refrigerate covered at 5°C or below and preferably eat the same day.. DEPICT EXACTLY STAGE 4 ONLY: Whisk the dressing: Whisk together 25 ml lemon juice, 20 ml olive oil, 5 g Dijon mustard and 1 g black pepper.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Show the physical preparation action as close-up, square crop. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "step-05.jpg",
+      "step": 5,
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "28e6758ddccd6e0c84a25cad9975af5c9b9e32045efeaf33ce3b877ec66dd920",
+      "prompt": "Photorealistic authentic original recipe cooking-process food photograph. Three-Bean Lemon Parsley Salad. ONLY THESE INGREDIENTS: 160 g green beans; 160 g canned kidney beans, drained; 160 g canned chickpeas, drained; 40 g red onion; 12 g flat-leaf parsley; 25 ml lemon juice; 20 ml olive oil; 5 g Dijon mustard; 1 g black pepper. COMPLETE METHOD CONTEXT: 1: Trim 160 g green beans and boil for about 3–4 minutes until tender-crisp. Refresh in cold water and drain thoroughly. 2: Rinse and drain 160 g canned kidney beans and 160 g canned chickpeas separately. 3: Finely dice 40 g red onion. Wash, dry and chop 12 g flat-leaf parsley. 4: Whisk together 25 ml lemon juice, 20 ml olive oil, 5 g Dijon mustard and 1 g black pepper. 5: Toss beans, onion and parsley with the dressing. Serve promptly, or refrigerate covered at 5°C or below and preferably eat the same day.. DEPICT EXACTLY STAGE 5 ONLY: Combine and serve: Toss beans, onion and parsley with the dressing. Serve promptly, or refrigerate covered at 5°C or below and preferably eat the same day.. Match the precise recipe at this stage, cut size, equipment, raw/cooked state, no unlisted extra food or garnish. Fully finished dish, separate editorial composition from hero, 3:2 landscape. No labels, text, typography, logos, collage, fictitious tools or unrelated dishes.",
+      "reviewed": false
+    },
+    {
+      "file": "hero.jpg",
+      "step": 0,
+      "role": "hero",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1e9386fb839a5d733012c81f96fbc71b2a7511807716c2f18540b46d587739c7",
+      "prompt": "Photorealistic premium food-magazine HERO image, high-resolution. Finished Three-Bean Lemon Parsley Salad. Ingredients only: 160 g green beans; 160 g canned kidney beans, drained; 160 g canned chickpeas, drained; 40 g red onion; 12 g flat-leaf parsley; 25 ml lemon juice; 20 ml olive oil; 5 g Dijon mustard; 1 g black pepper. Exactly plated at conclusion of: Toss beans, onion and parsley with the dressing. Serve promptly, or refrigerate covered at 5°C or below and preferably eat the same day.. Large appealing three-quarter 3:2 landscape composition, unlike step-final arrangement, genuine edible textures, soft daylight. No extra garnishes, no unknown ingredients, no captions, no typography, no logo.",
+      "reviewed": false
+    }
+  ]
+}
