@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "slug": "korean-kimchi-fried-rice",
+  "recipeName": "Korean Kimchi Fried Rice with Egg",
+  "source": "Original official Smart Meals bilingual recipe method",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "reviewed": false,
+  "published": false,
+  "paidFallback": false,
+  "attemptLimitPerStage": 1,
+  "generatedAtUTC": "2026-11-18T10:53:59.247757+00:00",
+  "stages": [
+    {
+      "step": 2,
+      "status": "cloudflare_http_400",
+      "reviewed": false,
+      "published": false
+    },
+    {
+      "step": 4,
+      "status": "cloudflare_http_400",
+      "reviewed": false,
+      "published": false
+    },
+    {
+      "step": 5,
+      "status": "cloudflare_http_400",
+      "reviewed": false,
+      "published": false
+    }
+  ],
+  "status": "no_images_created"
+}
