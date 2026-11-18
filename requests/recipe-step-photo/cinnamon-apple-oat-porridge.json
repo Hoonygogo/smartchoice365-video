@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "requestRevision": 1,
+  "slug": "cinnamon-apple-oat-porridge",
+  "title": "Cinnamon Apple Oat Porridge",
+  "titleKo": "시나몬 사과 따뜻한 오트밀",
+  "ingredients": [
+    "100 g rolled oats",
+    "180 g cored apple, diced",
+    "260 ml milk",
+    "150 ml drinking water",
+    "3 g ground cinnamon",
+    "30 g chopped walnuts",
+    "20 ml maple syrup"
+  ],
+  "ingredientsKo": [
+    "100 g 압착 귀리",
+    "180 g 씨 제거한 사과",
+    "260 ml 우유",
+    "150 ml 식수",
+    "3 g 시나몬 가루",
+    "30 g 다진 호두",
+    "20 ml 메이플 시럽"
+  ],
+  "fullMethod": [
+    "Prepare one apple in small pieces: Rinse an apple, remove the core and measure 180 g edible flesh. Cut into about 1 cm pieces so they soften before the oats thicken; keep the pieces similar in size.",
+    "Measure the oats and warm liquid: Place 100 g ordinary rolled oats in a medium saucepan with 260 ml milk and 150 ml drinking water. Set over medium-low heat and stir immediately to prevent oats settling on the bottom.",
+    "Add apple and cinnamon when simmering: When small bubbles appear after roughly 2 to 3 minutes, add the chopped 180 g apple and 3 g ground cinnamon. Stir gently so the spice disperses without leaving dry clumps.",
+    "Simmer gently until oats are creamy: Cook over medium-low heat for around 6 to 8 more minutes, stirring frequently, until the oats swell and a spoon leaves a trail. If the mixture dries too soon, add a splash of water instead of increasing heat.",
+    "Check apple pieces before finishing: Taste a small cooled spoonful of porridge; apple should be tender rather than hard and oats should not feel dry or gritty. Keep simmering briefly with extra water if either remains firm.",
+    "Portion and add walnuts and maple syrup: Divide porridge into two bowls, sprinkle over 30 g chopped walnuts and drizzle 20 ml maple syrup between the servings. Stir before eating and allow the hot porridge to cool to a safe spoon temperature."
+  ],
+  "fullMethodKo": [
+    "사과를 작게 고르게 썰기: 사과를 씻고 씨를 제거한 과육 180g을 계량한다. 오트밀이 걸쭉해지기 전에 익도록 약 1cm 크기로 썰며 조각 두께를 비슷하게 맞춘다.",
+    "귀리와 우유를 냄비에 담기: 중간 크기 냄비에 압착 귀리 100g, 우유 260ml, 식수 150ml를 넣는다. 중약불을 켜고 바닥에 귀리가 붙지 않도록 처음부터 부드럽게 저어 준다.",
+    "작은 기포가 생기면 사과 투입: 약 2~3분 후 작은 기포가 보이면 썰어 둔 사과 180g과 시나몬 가루 3g을 넣는다. 향신료 덩어리가 생기지 않게 골고루 저어 준다.",
+    "귀리가 부드러워질 때까지 저어 끓이기: 중약불에서 약 6~8분 더 끓이며 자주 저어 준다. 귀리가 불어 숟가락 자국이 잠깐 남으면 된다. 너무 빨리 걸쭉해지면 불을 세게 올리지 말고 물을 조금 더한다.",
+    "사과와 귀리의 실제 익힘 확인: 오트밀을 소량 식혀 맛보면 사과가 딱딱하지 않고 귀리에도 마른 가루 느낌이 없어야 한다. 아직 단단하면 물을 조금 더 넣고 짧게 끓인다.",
+    "두 그릇에 호두·시럽 나눠 올리기: 완성한 오트밀을 두 그릇에 나누고 다진 호두 총 30g과 메이플 시럽 20ml를 골고루 올린다. 뜨거우므로 먹기 좋은 온도로 식힌 후 저어 먹는다."
+  ],
+  "stages": [
+    {
+      "step": 1,
+      "scene": "Close-up of ONE natural red-and-green apple with its core removed, cut into many clean uniform approximately one-centimetre cubes on an ordinary wooden cutting board on a real kitchen counter. One stainless steel kitchen knife lying FLAT on the board. No other fruit, no oats, no hands, no extra toppings, no floating cut pieces."
+    },
+    {
+      "step": 2,
+      "scene": "A stable medium stainless steel saucepan on an ordinary home stove, containing uncooked rolled oat flakes 100g partly submerged in 260ml white milk plus 150ml water as cooking just starts. A real wooden spoon touching the oat-and-milk surface. No fruit, cinnamon, nuts or syrup yet; food looks like raw oats and milk, not cooked porridge."
+    },
+    {
+      "step": 3,
+      "scene": "A medium saucepan sitting on a gas stove, thickening creamy oat flakes and milk just beginning to simmer; many small dice of red-skinned fresh apple and a gentle brown dusting of cinnamon powder added on top and being stirred by a wooden spoon. No walnut pieces or maple syrup yet, no full apple, no other food."
+    },
+    {
+      "step": 6,
+      "scene": "Two normal breakfast bowls containing fully cooked creamy pale golden rolled-oat porridge with tender visible small diced apple pieces, a sprinkling of chopped brown walnuts, modest drizzle of golden maple syrup on each bowl. Warm casual natural home breakfast, realistic oats not rice, no berries, raisins, bananas or whipped cream."
+    },
+    {
+      "step": 0,
+      "scene": "Separate premium 1536px horizontal HERO angle of exactly TWO ceramic bowls of creamy cinnamon-and-apple oatmeal topped with tender tiny diced red-skin apple pieces, chopped walnuts and a little maple syrup drizzle. Visible natural creamy rolled oat flakes, richly textured appetising home-cooked porridge on rustic wooden counter in morning light. No berries, no raisins, no bananas, no extra garnish, no signs, no text."
+    }
+  ]
+}
