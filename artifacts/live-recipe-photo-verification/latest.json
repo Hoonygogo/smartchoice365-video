@@ -1,5 +1,5 @@
 {
-  "checkedAtUTC": "2026-11-18T11:45:44.337025+00:00",
+  "checkedAtUTC": "2026-11-18T11:47:36.108734+00:00",
   "attempt": 1,
   "allLiveVerified": true,
   "entries": [
@@ -166,6 +166,60 @@
           "path": "/assets/recipe-step-photos/indian-butter-chicken/step-08.jpg",
           "http": 200,
           "bytes": 201474,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "slug": "cinnamon-apple-oat-porridge",
+      "pages": [
+        {
+          "lang": "ko",
+          "http": 200,
+          "bytes": 14743,
+          "missing": [],
+          "pass": true
+        },
+        {
+          "lang": "en",
+          "http": 200,
+          "bytes": 14375,
+          "missing": [],
+          "pass": true
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/recipe-step-photos/cinnamon-apple-oat-porridge/hero.jpg",
+          "http": 200,
+          "bytes": 224887,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/cinnamon-apple-oat-porridge/step-02.jpg",
+          "http": 200,
+          "bytes": 185558,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/cinnamon-apple-oat-porridge/step-03.jpg",
+          "http": 200,
+          "bytes": 158930,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/cinnamon-apple-oat-porridge/step-06.jpg",
+          "http": 200,
+          "bytes": 242818,
           "width": 1536,
           "height": 1024,
           "pass": true
