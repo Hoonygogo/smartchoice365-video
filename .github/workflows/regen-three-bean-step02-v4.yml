@@ -1,0 +1,35 @@
+name: Generate correctly grounded two-colander bean draining step image
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/regen-three-bean-step02-v4.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  photo:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - run: python3 -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+      - name: Free-only grounded drained kidney bean and chickpea photograph
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+          CLOUDFLARE_WORKERS_FREE_CONFIRMED: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+        run: python3 scripts/regen_three_bean_step02.py
+      - name: Commit verified-resolution candidate in private editorial photo workspace
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/smart-meals-process-photos/three-bean-lemon-parsley-salad/step-02-natural-v4.* || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'Candidate: grounded two separate drained bean colanders [skip ci]'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
