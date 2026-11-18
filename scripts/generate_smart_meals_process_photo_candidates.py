@@ -32,6 +32,23 @@ KITCHEN_SET_PROMPT = (
 BASE = pathlib.Path(__file__).resolve().parents[1]
 REQUESTS = BASE / "requests/recipe-step-photo"
 OUTPUT = BASE / "artifacts/recipe-step-photo"
+KITCHEN_REFERENCE = BASE / "assets/reference/smart-meals-kitchen-reference-v1.jpg"
+# Real binary reference input is mandatory. Model requires every input image <512x512.
+KITCHEN_REFERENCE_SHA256 = "80998259ebcce4ddd9e145ba2689845ff92a0166f89679192ec0df42f8736469"
+
+def read_kitchen_reference():
+    if not KITCHEN_REFERENCE.is_file():
+        raise FileNotFoundError("Fixed kitchen image missing; refusing to create mismatched recipe photos")
+    raw = KITCHEN_REFERENCE.read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != KITCHEN_REFERENCE_SHA256:
+        raise ValueError("Fixed kitchen reference SHA256 changed; refusing silently substituted background")
+    with Image.open(io.BytesIO(raw)) as image:
+        size = image.size
+        if image.format != "JPEG" or size[0] >= 512 or size[1] >= 512:
+            raise ValueError("Fixed reference must be a JPEG smaller than 512 pixels in both dimensions")
+    return raw, size
+
 
 def save_result(slug, obj):
     target = OUTPUT / slug / "generation-report.json"
@@ -56,6 +73,8 @@ def generate(request_path):
         "requestRevision": request.get("requestRevision", 1),
         "kitchenSet": KITCHEN_SET_ID,
         "referenceImageConditioningUsed": False,
+        "referenceImagePath": str(KITCHEN_REFERENCE.relative_to(BASE)),
+        "referenceSha256": KITCHEN_REFERENCE_SHA256,
         "generatedAtUTC": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "stages": []
     }
@@ -76,6 +95,8 @@ def generate(request_path):
         report["status"] = "credentials_unavailable_no_requests"
         save_result(slug, report)
         return
+    reference_bytes, reference_dims = read_kitchen_reference()
+    report["referenceDimensions"] = list(reference_dims)
     endpoint = f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{MODEL}"
     full_ingredients = "; ".join(request["ingredients"])
     ordered_method = " ".join(f"{i+1}. {s}" for i,s in enumerate(request["fullMethod"]))
@@ -89,6 +110,9 @@ def generate(request_path):
         is_final = step == len(request["fullMethod"])
         target_method = request["fullMethod"][-1] if is_hero else request["fullMethod"][step-1]
         prefix = (
+            "Use input reference image 0 as the exact fixed Smart Meals kitchen background, "
+            "preserving the same cream quartz countertop, tile backsplash, cabinetry, room layout and left window lighting; "
+            "change only the food and required tools to depict this cooking stage. "
             "One single realistic unposed home-kitchen photograph, not a collage, poster, recipe illustration or cookbook page. "
             + KITCHEN_SET_PROMPT
             + item["scene"] +
@@ -113,7 +137,12 @@ def generate(request_path):
             payload = b""
             for key, value in {"prompt": prefix, "width": (1536 if (is_final or is_hero) else 1024), "height": (1024 if (is_final or is_hero) else 1024)}.items():
                 payload += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"{key}\"\r\n\r\n{value}\r\n").encode("utf-8")
+            payload += (f"--{boundary}\r\n"
+                        'Content-Disposition: form-data; name="input_image_0"; filename="fixed-kitchen-v1.jpg"\r\n'
+                        "Content-Type: image/jpeg\r\n\r\n").encode("utf-8")
+            payload += reference_bytes + b"\r\n"
             payload += (f"--{boundary}--\r\n").encode("utf-8")
+            report["referenceImageConditioningUsed"] = True
             http_req = urllib.request.Request(endpoint, data=payload, method="POST", headers={
                 "Authorization": "Bearer " + token,
                 "Content-Type": "multipart/form-data; boundary=" + boundary,
