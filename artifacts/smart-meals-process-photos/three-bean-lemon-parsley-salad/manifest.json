@@ -166,6 +166,30 @@
       "prompt": "Square editorial instructional kitchen photograph of precisely THIS isolated prep stage: 40 grams of FINELY DICED RED ONION, purple and white little 3mm cubes, and 12 grams of FRESH FINELY CHOPPED ITALIAN FLAT-LEAF PARSLEY, green leaf confetti, organized as two separate little piles on a clean LIGHT WOODEN CUTTING BOARD. ONE stainless chef knife rests beside the diced vegetables, blade safely on board. NO BEANS OF ANY KIND, NO CHICKPEAS, NO GREEN BEANS, NO OTHER VEGETABLES, NO FINISHED SALAD, NO COOKED FOOD, NO WATER, NO COLANDER, NO HANDS, NO HUMAN BODY, NO GARNISH, NO WORDS. Close and clear lifelike photographic details, natural light, one coherent preparation scene, correct cut sizes, beautiful warm neutral kitchen background.",
       "reviewed": false,
       "revision": 3
+    },
+    {
+      "file": "step-01-v2.jpg",
+      "step": 1,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "7f19f46ba00e87f58516d647e502c67d0b4d11f0ba56e489731aacf6dbd2210e",
+      "prompt": "One lifelike editorial close-up kitchen photograph showing the FIRST RECIPE STAGE of preparing three-bean salad: trimmed fresh green beans (160 grams) BLANCHING in a small stainless steel saucepan of gently boiling water on stove, vivid fresh green, bubbles, NO other vegetables, NO ice cubes, NO icy water bowls, NO drain baskets, NO garnish, no labels or text. Single cooking action happening, top angled home kitchen square frame.",
+      "revision": 2,
+      "reviewed": false
+    },
+    {
+      "file": "step-02-v2.jpg",
+      "step": 2,
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "183137d542b2b6e4840b147ac9140ba3604bce01440a9a353a9c12bcfbda400b",
+      "prompt": "One lifelike editorial close-up home-kitchen photograph of SECOND STAGE of three-bean salad: a sturdy stainless steel kitchen colander under gentle running water in kitchen sink, filled with cooked DEEP BURGUNDY RED canned kidney beans (160g) and PALE BEIGE CHICKPEAS (160g), both clearly distinct, rinsing before draining. NO CANS, NO PRINTED LABELS, NO WORDS, no green beans, no other food, no person's hands, just colander, faucet water and two kinds of legumes. Square magazine-realistic photo.",
+      "revision": 2,
+      "reviewed": false
     }
   ]
 }
