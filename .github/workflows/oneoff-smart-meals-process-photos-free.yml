@@ -1,0 +1,48 @@
+name: One-off Smart Meals free-only process-photo candidates
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'requests/recipe-step-photo/*.json'
+      - 'scripts/generate_smart_meals_process_photo_candidates.py'
+      - '.github/workflows/oneoff-smart-meals-process-photos-free.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: smart-meals-process-photo-free-review-handoff
+  cancel-in-progress: false
+jobs:
+  generate-candidates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Install Pillow, check source syntax
+        run: |
+          python3 -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+          python3 -m py_compile scripts/generate_smart_meals_process_photo_candidates.py
+      - name: Generate only free-plan candidates without production publication
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+          CLOUDFLARE_WORKERS_FREE_CONFIRMED: ${{ vars.CLOUDFLARE_WORKERS_FREE_CONFIRMED }}
+        run: |
+          shopt -s nullglob
+          for request in requests/recipe-step-photo/*.json; do
+            python3 scripts/generate_smart_meals_process_photo_candidates.py "$request"
+          done
+      - name: Commit only unreviewed originals and generation report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/recipe-step-photo/ || true
+          if ! git diff --cached --quiet; then
+            git commit -m "candidate: free Smart Meals step photos awaiting human visual review [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
