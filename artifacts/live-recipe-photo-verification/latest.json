@@ -1,0 +1,61 @@
+{
+  "checkedAtUTC": "2026-11-18T11:38:09.011263+00:00",
+  "attempt": 1,
+  "allLiveVerified": true,
+  "entries": [
+    {
+      "slug": "avocado-boiled-egg-toast",
+      "pages": [
+        {
+          "lang": "ko",
+          "http": 200,
+          "bytes": 15306,
+          "missing": [],
+          "pass": true
+        },
+        {
+          "lang": "en",
+          "http": 200,
+          "bytes": 14825,
+          "missing": [],
+          "pass": true
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/recipe-step-photos/avocado-boiled-egg-toast/hero.jpg",
+          "http": 200,
+          "bytes": 227921,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/avocado-boiled-egg-toast/step-04.jpg",
+          "http": 200,
+          "bytes": 203882,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/avocado-boiled-egg-toast/step-06.jpg",
+          "http": 200,
+          "bytes": 154032,
+          "width": 1024,
+          "height": 1024,
+          "pass": true
+        },
+        {
+          "path": "/assets/recipe-step-photos/avocado-boiled-egg-toast/step-07.jpg",
+          "http": 200,
+          "bytes": 238266,
+          "width": 1536,
+          "height": 1024,
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  ]
+}
