@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "slug": "raspberry-lime-lemonade",
+  "recipeName": "Raspberry Lime Lemonade",
+  "source": "Original official Smart Meals bilingual recipe method",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "reviewed": false,
+  "published": false,
+  "paidFallback": false,
+  "attemptLimitPerStage": 1,
+  "requestRevision": 1,
+  "generatedAtUTC": "2026-11-18T11:34:34.452698+00:00",
+  "stages": [
+    {
+      "step": 1,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/step-01.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 215025,
+      "sha256": "8330e4a3edc271ae7cca029d090948fb5c8b2f08f53d9a4600e9268386e01823"
+    },
+    {
+      "step": 3,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/step-03.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 235466,
+      "sha256": "ffc5faeaf7612056baccfa88bb7d230ac9559c92eb77a04bd111232b9084782e"
+    },
+    {
+      "step": 4,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/step-04.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 200447,
+      "sha256": "ab08ade4091cad08029020b326d2675bcbcc61c3a3ab58b8bb86a734df6a4ad0"
+    },
+    {
+      "step": 5,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "final",
+      "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/step-05.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 191204,
+      "sha256": "5bf2a41498ef459085526a343acc30f57d872b17deeeb1d4a28439778b523d30"
+    },
+    {
+      "step": 0,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "hero",
+      "path": "artifacts/recipe-step-photo/raspberry-lime-lemonade/hero.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 210773,
+      "sha256": "0169c29dfca5c766a5db9c63794e5c0abb83ffec58cdcaee0129b92e89895317"
+    }
+  ],
+  "status": "candidates_created_unreviewed"
+}
