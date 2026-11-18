@@ -1,0 +1,23 @@
+{
+  "checkedAtUTC": "2026-11-18T12:24:17.781940+00:00",
+  "pass": true,
+  "attempt": 1,
+  "checks": {
+    "admin_http_200": true,
+    "admin_new_version": true,
+    "admin_control_present": true,
+    "public_source_hiding_available": true,
+    "shared_script_uses_new_loader": true,
+    "korean_problem_step_3_removed": true,
+    "english_problem_step_3_removed": true,
+    "recipe_steps_preserved": true
+  },
+  "http": {
+    "admin": 200,
+    "admin_js": 200,
+    "reader_js": 200,
+    "shared_js": 200,
+    "ko": 200,
+    "en": 200
+  }
+}
