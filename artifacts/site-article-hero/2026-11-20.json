@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "publishingDate": "2026-11-20",
+  "channel": "en-au",
+  "topicId": "2026-canon-ts3660-vs-g3630-print-volume-au",
+  "status": "ready",
+  "reason": "image_candidate_needs_editorial_review",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "attemptLimit": 1,
+  "paidFallback": false,
+  "imagePath": "artifacts/site-article-hero/2026-11-20.jpg",
+  "sha256": "b0e44c59a1014168f64ec1b832e56414a88164130303367f97964d67d2c948b1",
+  "neuronUsage": null,
+  "visualReviewRequired": true,
+  "usageApproved": false,
+  "checkedAtUTC": "2026-11-19T23:08:34.726054+00:00",
+  "imageBytes": 420181,
+  "width": 1024,
+  "height": 1024,
+  "callsAttempted": 1,
+  "researchCommitSha": "4b781f7fd1d25dd562b59a443b859ad15223df53"
+}
