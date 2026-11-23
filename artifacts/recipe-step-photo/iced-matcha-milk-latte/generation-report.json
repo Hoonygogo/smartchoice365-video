@@ -8,27 +8,15 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-23T10:32:35.098756+00:00",
+  "generatedAtUTC": "2026-11-23T10:34:29.829837+00:00",
   "stages": [
-    {
-      "step": 0,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "hero",
-      "path": "artifacts/recipe-step-photo/iced-matcha-milk-latte/hero.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 181205,
-      "sha256": "f7411730cc5fb80933a10843fbcbcee5f0b571ab2853d5ab6d29de0da64008fc"
-    },
     {
       "step": 1,
       "status": "candidate_needs_actual_visual_review",
@@ -38,32 +26,8 @@
       "path": "artifacts/recipe-step-photo/iced-matcha-milk-latte/step-01.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 198713,
-      "sha256": "afb879abe8e3c1990b50b06f46084b856156ff07fa9ea5d2831f1308e82dd357"
-    },
-    {
-      "step": 2,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/iced-matcha-milk-latte/step-02.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 255691,
-      "sha256": "b5fdf5597fdfcf037092834ee93ea7f0008ceffc71b32c62563a2575cce944e2"
-    },
-    {
-      "step": 3,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/iced-matcha-milk-latte/step-03.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 232251,
-      "sha256": "7e6a3df95303aab280c8f97e5b75018977e9a687af0a5fde1fa2b10672ecc4e4"
+      "bytes": 169219,
+      "sha256": "c17a0896917f939c1fb95911140dfbb2f4e4ee68a219f102994a83a38fda2788"
     },
     {
       "step": 4,
@@ -74,20 +38,8 @@
       "path": "artifacts/recipe-step-photo/iced-matcha-milk-latte/step-04.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 195333,
-      "sha256": "ac1804b9de9471438e1a53460e77d848d056bfa1240b89748f4c23a75abe4714"
-    },
-    {
-      "step": 5,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "final",
-      "path": "artifacts/recipe-step-photo/iced-matcha-milk-latte/step-05.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 185666,
-      "sha256": "85c1709510fda3727ebe99969d51b4df69ac66ab11d64a6848f38dd870b38cdc"
+      "bytes": 166380,
+      "sha256": "46b9f5a01d4c2ee23e2b53acbd5345db01dc5beb3f21980e0c90a3480c5231a2"
     }
   ],
   "referenceDimensions": [
