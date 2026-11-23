@@ -134,7 +134,7 @@ def generate(request_path):
         try:
             boundary = "----SC365ProcessPhoto" + hashlib.sha256(os.urandom(16)).hexdigest()[:16]
             payload = b""
-            for key, value in {"prompt": prefix, "width": (1536 if (is_final or is_hero or slug in ("korean-kimchi-fried-rice", "crunchy-purple-cabbage-coleslaw")) else 1024), "height": 1024}.items():
+            for key, value in {"prompt": prefix, "width": (1536 if (is_final or is_hero or slug in ("korean-kimchi-fried-rice", "crunchy-purple-cabbage-coleslaw", "iced-matcha-milk-latte")) else 1024), "height": 1024}.items():
                 payload += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"{key}\"\r\n\r\n{value}\r\n").encode("utf-8")
             payload += (f"--{boundary}\r\n"
                         'Content-Disposition: form-data; name="input_image_0"; filename="countertop-material-v2.jpg"\r\n'
