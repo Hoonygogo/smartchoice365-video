@@ -1,0 +1,72 @@
+{
+  "recipe": "cucumber-tomato-feta-olive-salad",
+  "title_ko": "오이 토마토 페타 올리브 샐러드",
+  "title_en": "Cucumber, Tomato, Feta & Olive Salad",
+  "servings": 2,
+  "selection": {
+    "hero": "Cloudflare revision 2",
+    "step01": "revision 4",
+    "step02": "revision 5",
+    "step03": "revision 2",
+    "step04": "revision 1",
+    "step05": "revision 3"
+  },
+  "quality": "Six individual independent 1536×1024 originals, manually visually reviewed against current KO and EN cooking stages.",
+  "photos": [
+    {
+      "file": "hero.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 211866,
+      "sha256": "35154836238495a2fb51f0ad2f807e02d4d3d25ea7e7fd3cadbe28db7d098182",
+      "alt_ko": "대표사진: 오이 토마토 페타 올리브 샐러드",
+      "alt_en": "Hero: Greek cucumber tomato feta olive salad"
+    },
+    {
+      "file": "step-01.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 241685,
+      "sha256": "a5ca0e3ed45e4c6401bd2b1d9461b2e3cfdcf2ffb0a253a36f7a1f1a3bb91050",
+      "alt_ko": "1단계: 오이·방울토마토 세척과 적양파 손질",
+      "alt_en": "Step 1: Wash whole cucumber, cherry tomatoes and peel red onion"
+    },
+    {
+      "file": "step-02.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 372617,
+      "sha256": "e915727678cff14abe0da15041eef9ebdeb315092a7e4a6f2b3912b621bb34cd",
+      "alt_ko": "2단계: 오이 썰기·토마토 반으로 자르기·적양파 얇게 썰기",
+      "alt_en": "Step 2: Slice cucumber, halve tomatoes and thinly slice onion"
+    },
+    {
+      "file": "step-03.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 194161,
+      "sha256": "84713a1d07bc302358bad23272cd836a702c3f9d31e46f93ec697d8fe64d1f13",
+      "alt_ko": "3단계: 레몬 올리브유 드레싱 만들기",
+      "alt_en": "Step 3: Mix light lemon and olive oil vinaigrette"
+    },
+    {
+      "file": "step-04.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 231360,
+      "sha256": "1bf242e2c67cc64939146794c5067a22bbe3b8693b21f078bcc9afc40e411c7d",
+      "alt_ko": "4단계: 오이·토마토·적양파·칼라마타 올리브 섞기",
+      "alt_en": "Step 4: Toss cucumbers, tomato, onion and Kalamata olives before feta"
+    },
+    {
+      "file": "step-05.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 212497,
+      "sha256": "7d10af074aada504c0a729bda895e7b512e74be211320326d6cd89d658a2f16a",
+      "alt_ko": "5단계: 페타 치즈와 레몬 드레싱으로 완성",
+      "alt_en": "Step 5: Add feta and lemon dressing to finish"
+    }
+  ],
+  "websiteHeroReplaced": true
+}

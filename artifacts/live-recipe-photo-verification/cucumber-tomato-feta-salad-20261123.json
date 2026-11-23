@@ -1,0 +1,100 @@
+{
+  "checkedAtUTC": "2026-11-23T11:13:11.233592+00:00",
+  "recipe": "cucumber-tomato-feta-olive-salad",
+  "attempt": 1,
+  "publicVerified": true,
+  "checks": [
+    {
+      "kind": "page",
+      "language": "ko",
+      "http": 200,
+      "missingSteps": [],
+      "schemaUrls": true,
+      "newHero": true,
+      "newHeroMetadata": true,
+      "pass": true
+    },
+    {
+      "kind": "page",
+      "language": "en",
+      "http": 200,
+      "missingSteps": [],
+      "schemaUrls": true,
+      "newHero": true,
+      "newHeroMetadata": true,
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "name": "hero.jpg",
+      "http": 200,
+      "bytes": 211866,
+      "width": 1536,
+      "height": 1024,
+      "format": "JPEG",
+      "sha256": "35154836238495a2fb51f0ad2f807e02d4d3d25ea7e7fd3cadbe28db7d098182",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "name": "step-01.jpg",
+      "http": 200,
+      "bytes": 241685,
+      "width": 1536,
+      "height": 1024,
+      "format": "JPEG",
+      "sha256": "a5ca0e3ed45e4c6401bd2b1d9461b2e3cfdcf2ffb0a253a36f7a1f1a3bb91050",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "name": "step-02.jpg",
+      "http": 200,
+      "bytes": 372617,
+      "width": 1536,
+      "height": 1024,
+      "format": "JPEG",
+      "sha256": "e915727678cff14abe0da15041eef9ebdeb315092a7e4a6f2b3912b621bb34cd",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "name": "step-03.jpg",
+      "http": 200,
+      "bytes": 194161,
+      "width": 1536,
+      "height": 1024,
+      "format": "JPEG",
+      "sha256": "84713a1d07bc302358bad23272cd836a702c3f9d31e46f93ec697d8fe64d1f13",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "name": "step-04.jpg",
+      "http": 200,
+      "bytes": 231360,
+      "width": 1536,
+      "height": 1024,
+      "format": "JPEG",
+      "sha256": "1bf242e2c67cc64939146794c5067a22bbe3b8693b21f078bcc9afc40e411c7d",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "name": "step-05.jpg",
+      "http": 200,
+      "bytes": 212497,
+      "width": 1536,
+      "height": 1024,
+      "format": "JPEG",
+      "sha256": "7d10af074aada504c0a729bda895e7b512e74be211320326d6cd89d658a2f16a",
+      "hashVerified": true,
+      "pass": true
+    }
+  ]
+}
