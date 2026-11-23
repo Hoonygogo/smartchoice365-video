@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requestRevision": 2,
+  "requestRevision": 3,
   "slug": "cucumber-tomato-feta-olive-salad",
   "title": "Cucumber, Tomato, Feta & Olive Salad",
   "titleKo": "오이 토마토 페타 올리브 샐러드",
@@ -46,24 +46,16 @@
   ],
   "stages": [
     {
-      "step": 0,
-      "scene": "HERO: One stunning photorealistic editorial food photograph of a freshly made Greek cucumber tomato feta olive salad for TWO, in a single handsome white ceramic salad bowl completely supported on warm pale ivory quartz, framed at attractive close three-quarter angle. Only 180g Lebanese cucumber cut to 8mm ROUND slices, 180g SMALL CHERRY tomatoes EACH CUT IN HALF (no whole tomatoes, no plum tomato wedges), 50g wafer-thin RED ONION slivers, 45g pitted black purple Kalamata olives, 70g roughly torn FETA chunks not neat cubes, a very LIGHT barely visible sheen of 15ml olive oil/10ml lemon dressing, tiny black pepper and dried oregano. Food texture looks genuinely fresh, visually appetizing and unsymmetrical, dominated by crisp colorful vegetables and abundant distinct irregular white feta. Absolutely NO extra ingredients, no fresh parsley, no mint, no large pools or puddles of yellow oil, no uncut cherry tomatoes, no text or collage, no floating ingredients. Bowl grounded with natural contact shadow, 85% food, pale quartz background minimal."
-    },
-    {
       "step": 1,
-      "scene": "STAGE 1: One clear authentic natural still photo of produce washed and dried but not yet cut: ONE FULL WHOLE UN-SLICED medium Lebanese cucumber green with natural skin bumps approx 180g, a realistic handful of WHOLE ROUND SMALL RED CHERRY TOMATOES approx 180g, and ONE SMALL peeled WHOLE RED ONION WITH INTACT SHAPE about 50g, fully uncut. All resting naturally on clean folded ivory cotton towel atop warm pale ivory quartz. The whole onion is NOT sliced, NOT halved, NOT rings; no knife, chopped food, olive, feta, dressing, herbs or extra vegetables. Physically supported, authentic irregular produce, food tight macro, no text collage."
+      "scene": "STEP 1 REALISTIC SINGLE PHOTO of INGREDIENTS BEFORE CUTTING. On an ivory folded towel on beige-speckled quartz lie ONE WHOLE uncut Lebanese cucumber (small green smooth cucumber about 180g) and a handful of WHOLE tiny red cherry tomatoes 180g and ONLY ONE small RED ONION 50g. The ONE RED ONION is FRESHLY PEELED (shiny firm purple surface without papery skin), WHOLE completely intact with no slice, no half, no cross section, no extra onion fragment, one single onion only. Water droplets on vegetables, naturally real irregular shapes. No leafy greens, olives, feta, knife, cutting board, lemons, herbs, cheese, captions. Entire photo one shot and all items realistically on stable fabric."
     },
     {
       "step": 2,
-      "scene": "STAGE 2: Close documentary photograph showing the three different prepared raw vegetables on a light wooden cutting board sitting securely on ivory speckled quartz: 180g dark green Lebanese CUCUMBER cut in many ROUND 8mm slices, 180g tiny CHERRY TOMATOES each cut exactly IN HALF showing seed compartments, and 50g RED ONION cut into EXCEPTIONALLY THIN translucent hairlike PURPLE SLIVERS, not thick rings. Three clear separate piles, knife optional but if present lays perfectly flat and entirely supported. No feta, no black olives, no salad dressing, no leaves, no parsley, no mint, no green peppers, no floating objects, no text, no panels. All foods visibly accurately cut, realistic water droplets, 80% frame food on board."
-    },
-    {
-      "step": 3,
-      "scene": "STAGE 3: SINGLE simple small white ceramic dressing bowl firmly resting on matte warm pale-ivory speckled quartz with a real contact shadow. Bowl contains a SMALL amount 25ml of thin glossy naturally CLOUDY lemon-olive-oil vinaigrette in pale gold with visible tiny natural dried oregano 2g and ground black pepper 1g. No pooled cup of pure oil, dressing is semi-emulsified and thin. Exactly ONE simple plain genuine silver teaspoon, single metal bowl and single handle joined correctly, resting diagonally INSIDE the ceramic bowl with its one handle touching the rim; NO second spoon, NO impossible merged utensils, no whisk, no fork, no giant handle, no hands, no floating items. No salt, herbs, garlic, sugar, honey, cream, dressing bottle, or extra props. Close real food photography."
+      "scene": "STEP 2 exactly 3 prepared vegetables on ONE FLAT natural wood cutting board supported with realistic contact shadow on pale ivory speckled quartz: ONLY Lebanese cucumber sliced into several ~8mm ROUND green-edged disks (180g), ONLY CHERRY tomatoes all cut straight in HALF with glossy seeds visible (180g, each small and circular, NOT large plum tomatoes, not wedges, none whole), RED ONION chopped into exceptionally thin 1mm PAPER-THIN PURPLE CRESCENT SLIVERS (50g), not round onion rings, not thick rings, not wedges. THREE neatly separated authentic distinct vegetable piles, NO KNIFE or any tool at all, NO olives, feta, oil, herbs or dressing. Single natural photo, food fills 85%, no collages, physically stable."
     },
     {
       "step": 5,
-      "scene": "STAGE 5, FINISH: One bowl of Greek style CUCUMBER TOMATO FETA KALAMATA OLIVE salad for TWO set fully flat on ivory matte quartz, natural soft contact shadow, food fills shot. Visible 8mm thick Lebanese cucumber green-rimmed ROUND slices, small cherry tomatoes HALVED not quartered or whole, very THIN red onion crescents, dark PURPLE-BLACK pitted Kalamata olives, 70g unevenly CRUMBLED white feta CHUNKS sprinkled on top; naturally mixed only one or two gentle tosses. Exactly 15ml olive oil + 10ml lemon juice with dried oregano and black pepper lightly coats the food as a thin sheen, NO puddles or yellow liquid pooling anywhere under or around salad, no extra feta, no whole cherry tomatoes, no extra garnish, no mint, parsley, lettuce, oregano stems, green vegetables, peppers, lemon slices, crackers, forks, spoons, or pouring container. Realistic edible naturally imperfect editorial food photography, a distinct 40-degree framing different from hero, no fake AI textures or text."
+      "scene": "STEP 5 CLOSE FINAL food photo, beautiful Greek-style salad in ONE shallow ivory ceramic bowl stably resting on pale beige fine-speckle quartz. Ingredients 180g Lebanese cucumber ~8mm green-edged rounds, 180g cherry tomatoes EACH AND EVERY ONE CUT IN HALF with clearly visible juicy seed chambers, 50g very thin red onion slivers, 45g whole pitted black-purple Kalamata olives, 70g natural uneven white feta CHEESE CHUNKS on top, minimal dried oregano and black pepper flecks. **ABSOLUTELY NO WHOLE CHERRY TOMATOES OR OTHER UNCUT RED TOMATOES**: all tomatoes cut faces visible. A very faint thin sheen of only 15ml extra virgin olive oil and 10ml lemon juice — NO yellow oil puddles or pooled liquid anywhere. Close 40deg oblique camera different from hero, natural food real textures, no extra ingredients, parsley, leafy greens, mint, cucumbers not sliced, herbs, tableware, utensils, saucer or background objects. All bowl firmly grounded, no collage, no text."
     }
   ]
 }
