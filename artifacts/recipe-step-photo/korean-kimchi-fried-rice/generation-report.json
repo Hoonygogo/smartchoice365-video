@@ -8,32 +8,26 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 4,
-  "generatedAtUTC": "2026-11-18T11:40:37.515398+00:00",
+  "requestRevision": 5,
+  "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
+  "referenceImageConditioningUsed": true,
+  "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
+  "referenceRole": "countertop_material_only_not_room_layout",
+  "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
+  "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
+  "generatedAtUTC": "2026-11-23T04:21:18.120443+00:00",
   "stages": [
     {
-      "step": 1,
+      "step": 4,
       "status": "candidate_needs_actual_visual_review",
       "reviewed": false,
       "published": false,
       "role": "step",
-      "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/step-01.jpg",
-      "width": 1024,
+      "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/step-04.jpg",
+      "width": 1536,
       "height": 1024,
-      "bytes": 187882,
-      "sha256": "b5970a17e1841e00a57529ad2d816db84de01bf09a6e2a5679b37810b6e66c11"
-    },
-    {
-      "step": 3,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/step-03.jpg",
-      "width": 1024,
-      "height": 1024,
-      "bytes": 177636,
-      "sha256": "ca611d97c995ab907723c0ef50318b53749f8de9850c0123fac6445606bab97d"
+      "bytes": 346847,
+      "sha256": "8306b3de5dbadfd7b02d34fcb178884df50ac219621879f66f3dd4dc969701c0"
     },
     {
       "step": 5,
@@ -42,35 +36,27 @@
       "published": false,
       "role": "step",
       "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/step-05.jpg",
-      "width": 1024,
+      "width": 1536,
       "height": 1024,
-      "bytes": 196541,
-      "sha256": "cba5f0ec0c765691e8425a6c3ce3fcaaa3f81e338f13841508541829b22e10c0"
+      "bytes": 268965,
+      "sha256": "18bc55739de23d4fcd7b19252057b9bbe3773995875d7c7f07aff195ae9231ff"
     },
     {
-      "step": 7,
+      "step": 6,
       "status": "candidate_needs_actual_visual_review",
       "reviewed": false,
       "published": false,
-      "role": "final",
-      "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/step-07.jpg",
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/step-06.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 233519,
-      "sha256": "ab7f09433ca7890f34ff9e7b4bb51634e4e8a7349127688d2b0689363dc1b8c5"
-    },
-    {
-      "step": 0,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "hero",
-      "path": "artifacts/recipe-step-photo/korean-kimchi-fried-rice/hero.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 233740,
-      "sha256": "d462c7577cef27fb07abf683ed3a56629bdad5142cad2d22815c72ac89e92716"
+      "bytes": 333191,
+      "sha256": "86b9dffc29ac04f6e72d7edc4696b080713b16fdbcb69477cee3a09af20896c2"
     }
+  ],
+  "referenceDimensions": [
+    480,
+    270
   ],
   "status": "candidates_created_unreviewed"
 }
