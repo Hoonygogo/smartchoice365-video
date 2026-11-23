@@ -1,0 +1,54 @@
+{
+  "checkedAtUTC": "2026-11-23T10:10:36.604547+00:00",
+  "slug": "crunchy-purple-cabbage-coleslaw",
+  "attempts": 1,
+  "publicVerified": true,
+  "results": [
+    {
+      "kind": "page",
+      "lang": "ko",
+      "url": "https://smartc365.com/guides/smart-dinner-crunchy-purple-cabbage-coleslaw-ko?photo_release_check=1",
+      "status": 200,
+      "missing": [],
+      "pass": true
+    },
+    {
+      "kind": "page",
+      "lang": "en",
+      "url": "https://smartc365.com/guides/smart-dinner-crunchy-purple-cabbage-coleslaw-en?photo_release_check=1",
+      "status": 200,
+      "missing": [],
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "path": "/assets/recipe-step-photos/crunchy-purple-cabbage-coleslaw/step-03.jpg",
+      "status": 200,
+      "bytes": 193391,
+      "width": 1536,
+      "height": 1024,
+      "format": "JPEG",
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "path": "/assets/recipe-step-photos/crunchy-purple-cabbage-coleslaw/step-04.jpg",
+      "status": 200,
+      "bytes": 256226,
+      "width": 1536,
+      "height": 1024,
+      "format": "JPEG",
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "path": "/assets/recipe-step-photos/crunchy-purple-cabbage-coleslaw/step-05.jpg",
+      "status": 200,
+      "bytes": 208302,
+      "width": 1536,
+      "height": 1024,
+      "format": "JPEG",
+      "pass": true
+    }
+  ]
+}
