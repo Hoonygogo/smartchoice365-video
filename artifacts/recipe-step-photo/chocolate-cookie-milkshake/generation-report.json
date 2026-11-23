@@ -8,27 +8,15 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 2,
+  "requestRevision": 3,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-23T11:23:02.710472+00:00",
+  "generatedAtUTC": "2026-11-23T11:24:42.023240+00:00",
   "stages": [
-    {
-      "step": 0,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "hero",
-      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/hero.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 246282,
-      "sha256": "30ecb706dcd901952ebdea9654c6fcf5cf02aea5707d7fd11e91fa17bf84b131"
-    },
     {
       "step": 1,
       "status": "candidate_needs_actual_visual_review",
@@ -38,32 +26,8 @@
       "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-01.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 165166,
-      "sha256": "6171f44748b919e2e1a8cc9ed0bda4c6e7e8b29621bab8f71a691b27d535387e"
-    },
-    {
-      "step": 2,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-02.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 306238,
-      "sha256": "27aa1c9e0e2043df814f02df1f24281e0d047f9c66fab2dd735b20a6695a5b3f"
-    },
-    {
-      "step": 3,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-03.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 156901,
-      "sha256": "ccd32d12c29ebc3597d141bb72053cb0596f98faa56ac9f3d523b8776e5e3330"
+      "bytes": 175923,
+      "sha256": "911ed70861872aef683c2d5c52b0e73a37fb3df552ceb8c2f003ae6ef59b31e5"
     },
     {
       "step": 4,
@@ -74,20 +38,8 @@
       "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-04.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 192603,
-      "sha256": "17da705a1fbc8ec57752aa99298964205ad1de01ee015907309a46e0ce8b46e5"
-    },
-    {
-      "step": 5,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "final",
-      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-05.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 229617,
-      "sha256": "61b40c0ca95fc9ad2f1907701e4c73fb158e8c5e4fb246ed1785dd9d86962e19"
+      "bytes": 196010,
+      "sha256": "2363c28f7a03303fd6aed1ace2bf54c1ee638707dc6f40496895a58f15e9fdb0"
     }
   ],
   "referenceDimensions": [
