@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "slug": "iced-matcha-milk-latte",
   "title": "Iced Matcha Milk Latte",
   "titleKo": "아이스 말차 밀크 라테",
@@ -38,28 +38,12 @@
   ],
   "stages": [
     {
-      "step": 0,
-      "scene": "Hero photograph ONLY: exactly TWO tall clear glasses of naturally layered ICED MATCHA MILK LATTE, distinctly pale milk-white lower half and deep soft jade-green matcha upper half with realistic wispy liquid transition, chunky food-safe clear ice 140g TOTAL for two, creamy milk 320ml total, vivid but not neon. Both cups securely resting directly on pale-ivory matte speckled quartz, genuine base contact shadows. Matcha 6g dissolved in 70ml water and 15ml maple syrup. Single elegant professional real-world beverage still, different from step-5 camera position, no mint, straws, cinnamon, cookies, whipped cream, coffee, tea bags, text, floating cups, collage."
-    },
-    {
       "step": 1,
-      "scene": "Step 1 ONLY: measured 70ml of warm clean clear drinking water freshly heated then cooled to 75–80°C, sitting in a small stable transparent heat-resistant glass measuring cup directly ON pale ivory satin speckled quartz, subtle realistic warmth, one stainless electric kettle fully rested upright OFF to the side. NO green matcha powder in this stage, no milk, no ice, no syrup, no other liquids, no pouring from unsupported kettle, no floating vessels, no text or collage. Close-up real food photography."
-    },
-    {
-      "step": 2,
-      "scene": "Step 2 ONLY: exactly 6g intensely natural muted leaf-green finely powdered MATCHA being sifted with ONE simple small fine mesh metal tea strainer into ONE small DRY ceramic matcha bowl that rests flat on ivory quartz; the mesh sieve sits ON bowl rim and the handle is visibly supported by cropped fingertips at edge of frame. Small mound of dry matcha directly below sieve, dry powder visible in strainer. NO water, milk, maple syrup, ice or finished drinks. No airborne tools, no floating food, no captions, ONE photorealistic scene."
-    },
-    {
-      "step": 3,
-      "scene": "Step 3 ONLY: close-up of ONE small traditional ceramic bowl sitting securely on ivory speckled quartz, holding only smooth dark fresh jade GREEN MATCHA concentrate (6g sieved matcha fully whisked with 70ml 75–80°C water). Exactly ONE bamboo matcha whisk upright partially inside the bowl supported naturally by cropped fingertips at upper frame edge. Realistic liquid surface, very fine tiny bubbles at side, no dry clumps, NO milk, NO ice, NO glass of finished latte, NO honey or garnish, no hovering utensils, one candid cooking photo."
+      "scene": "ONE documentary close-up still photograph of exactly 70 ml CLEAN COMPLETELY COLORLESS TRANSPARENT PLAIN DRINKING WATER warmed then allowed to cool to about 75–80°C in a clear heatproof glass measuring cup. The water is visibly absolutely CLEAR, NEUTRAL TRANSPARENT, not yellow, gold, orange, green or brown. Cup bottom completely physically rests on pale ivory finely speckled quartz worktop with real shadow. One small stainless kettle in background is upright resting on counter, off and not pouring. NO tea, lemon, citrus, any flavor, food, milk, matcha powder or syrup present. Natural soft ambient light, realistic scale and liquid transparency. One photographic frame only, no text."
     },
     {
       "step": 4,
-      "scene": "Step 4 ONLY: TWO same-size simple transparent drinking glasses ON matte ivory quartz with realistic bottom contact shadows; both each contain about 70g clear ice and 160ml cold WHITE COW MILK, white opaque lower half with visible clear ice edges and NO GREEN MATCHA poured in yet. Separately on the work surface, ONE small sturdy stable matcha bowl containing green matcha concentrate already stirred with 15ml maple syrup; supported spoon rests inside. Glasses and matcha bowl fully physically supported. NO pouring, no coffee, garnish, text or floating objects, natural kitchen documentary food photo."
-    },
-    {
-      "step": 5,
-      "scene": "Step 5 ONLY: two finished iced MATCHA MILK LATTES in two clear glasses firmly resting side-by-side on light pale ivory quartz with complete realistic bottom contact shadows; gently layered GREEN MATCHA on top of milky WHITE lower half, realistic wisps at boundary and clear ice cubes inside, slight condensation on glass. Each filled from 6g matcha total, 70ml warm water, 320ml cold milk, 15ml maple syrup, 140g ice for two drinks. Natural uneven colours, NOT artificial neon, no latte art, NO floating jug or pouring liquid, no garnishes, no straws, no extra ingredients; distinct composition from hero shot."
+      "scene": "Step 4 only: TWO tall drinking glasses physically grounded on ivory quartz, each containing 160ml perfectly WHITE COLD MILK and around 70g translucent clean ice; both glasses stand securely with visible base contact shadows. In foreground ONE small stable matcha bowl sits ON the same countertop with a SMALL amount of SMOOTH FLUID dark green matcha concentrate: 6g matcha previously whisked into 70ml warm water + 15ml maple syrup, behaves like low-viscosity thin tea liquid, NOT thick sludge, grit, lumpy puree or matcha paste; one ordinary clean metal teaspoon lies resting securely on its bowl rim. Green liquid MUST ONLY BE IN SMALL BOWL, not in glasses yet. No other cups, fruit, coffee, cereal, herbs, garnishes, floating objects or collage; close natural photographic composition."
     }
   ]
 }
