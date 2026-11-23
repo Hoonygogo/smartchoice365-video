@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requestRevision": 4,
+  "requestRevision": 5,
   "slug": "cucumber-tomato-feta-olive-salad",
   "title": "Cucumber, Tomato, Feta & Olive Salad",
   "titleKo": "오이 토마토 페타 올리브 샐러드",
@@ -46,12 +46,8 @@
   ],
   "stages": [
     {
-      "step": 1,
-      "scene": "STAGE ONE: just washed fresh whole uncut produce on one cream towel resting on beige tiny-speckled kitchen counter, food 80% image. ONE entire freshly peeled small RED ONION 50g looks like a SOLID ROUND BULB or oval, skin purple, with natural smooth curved OUTER SURFACE, root end lightly visible, NO cut face, NO half, NO onion cross section or interior rings; only this one onion. A ONE WHOLE Lebanese cucumber 180g fully uncut. Eight little whole red cherry tomatoes 180g uncut. All stable on towel with natural water droplets; no knife or sliced food. If physically difficult show onion partially BEHIND the cucumber to hide potential sliced area, but keep unmistakably a whole round bulb. No extra ingredients, art, text or anything else."
-    },
-    {
       "step": 2,
-      "scene": "STAGE TWO on a wide physically supported natural wooden chopping board on ivory speckled quartz, real documentary cooking still. Three fully prepared groups: Lebanese cucumber 180g cut in 8mm green-rimmed round slices; cherry tomatoes 180g ALL CUT IN HALF with VISIBLE OPEN RED WET INTERIOR SEED CHAMBERS on EVERY tomato piece — NO whole round red tomato anywhere in image, NO glossy intact whole cherry tomatoes, NO large tomato wedges; 50g red onion sliced into numerous extremely thin 1mm crescent ribbons, not thick intact round rings. Only these ingredients, no knife or other utensil whatsoever. Realistic uneven food textures, board flat and grounded, food takes 80% frame, no text, no background props."
+      "scene": "STAGE 2: ONE close-up photorealistic cutting board of correctly chopped ingredients ONLY. Exactly THREE visibly separate piles of pre-cut foods: LEFT, 12 natural green-edged CUCUMBER round slices 8mm thick; CENTER, EXACTLY SIX RED CHERRY TOMATO HALVES only, ALL SIX FACE-UP WITH COMPLETELY VISIBLE CUT RED WET SEED INTERIORS AND PERICARP — they are HALVES of three cherry tomatoes, **NO ROUND WHOLE RED TOMATO, NO INTACT RED SKIN BALL, NO RED TOMATO WITH NO VISIBLE SEEDS ANYWHERE, NO EXTRA TOMATOES**. RIGHT, a modest pile of finely SLIVERED VERY THIN straight PURPLE RED ONION STRIPS / slender crescents less than 2mm wide, **NOT ONION RINGS, NOT CIRCULAR ONION LOOPS OR LARGE ROTUND PIECES**. A real rectangular light oak cutting board entirely flat on pale ivory speckled quartz with contact shadow. No knife, no utensils, no olives, no feta, no herb, no dressing, no other ingredients, no text or collage. All foods clearly separate, realistic close-up; no duplicates or distorted food."
     }
   ]
 }
