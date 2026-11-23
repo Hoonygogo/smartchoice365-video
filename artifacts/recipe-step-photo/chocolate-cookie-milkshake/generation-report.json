@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "slug": "chocolate-cookie-milkshake",
+  "recipeName": "Chocolate Cookie Milkshake",
+  "source": "Original official Smart Meals bilingual recipe method",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "reviewed": false,
+  "published": false,
+  "paidFallback": false,
+  "attemptLimitPerStage": 1,
+  "requestRevision": 1,
+  "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
+  "referenceImageConditioningUsed": true,
+  "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
+  "referenceRole": "countertop_material_only_not_room_layout",
+  "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
+  "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
+  "generatedAtUTC": "2026-11-23T11:21:27.990512+00:00",
+  "stages": [
+    {
+      "step": 0,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "hero",
+      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/hero.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 225697,
+      "sha256": "aa2efd3a19ea62704074852097da3b9d9f51ec2ff3bac8ee5bc7b9a3ffa7c44a"
+    },
+    {
+      "step": 1,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-01.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 218762,
+      "sha256": "aeec7ca9c7febd4350b90763b70d68fd5015462093169bc2e76e872c97e8973c"
+    },
+    {
+      "step": 2,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-02.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 225089,
+      "sha256": "98e300da0e26a39af33c74ef3e7c14877c62e89f58bdae71e6470f2ddc8a878c"
+    },
+    {
+      "step": 3,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-03.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 156663,
+      "sha256": "5cb42905fb3ba20dbb7203cb0d0adc26a4757220a8e3d94ae28b573889e7371b"
+    },
+    {
+      "step": 4,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "step",
+      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-04.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 175810,
+      "sha256": "901dc0c8daed18df19344cc078524d0d9133a33631fdfa20f9810e45c1216c36"
+    },
+    {
+      "step": 5,
+      "status": "candidate_needs_actual_visual_review",
+      "reviewed": false,
+      "published": false,
+      "role": "final",
+      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-05.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 244330,
+      "sha256": "43de7bef7b301bd043c2b1fff55ca9625317d0a7d3d343f5aaddd5042426ceb1"
+    }
+  ],
+  "referenceDimensions": [
+    480,
+    270
+  ],
+  "status": "candidates_created_unreviewed"
+}
