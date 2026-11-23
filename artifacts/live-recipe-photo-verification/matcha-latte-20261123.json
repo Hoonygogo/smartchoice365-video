@@ -1,0 +1,92 @@
+{
+  "checkedAtUTC": "2026-11-23T10:41:35.358375+00:00",
+  "slug": "iced-matcha-milk-latte",
+  "attempt": 7,
+  "publicVerified": false,
+  "results": [
+    {
+      "kind": "page",
+      "language": "ko",
+      "pass": false,
+      "error": "name 'EXPECT' is not defined"
+    },
+    {
+      "kind": "page",
+      "language": "en",
+      "pass": false,
+      "error": "name 'EXPECT' is not defined"
+    },
+    {
+      "kind": "asset",
+      "name": "hero.jpg",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 181205,
+      "format": "JPEG",
+      "sha256": "f7411730cc5fb80933a10843fbcbcee5f0b571ab2853d5ab6d29de0da64008fc",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "asset",
+      "name": "step-01.jpg",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 169219,
+      "format": "JPEG",
+      "sha256": "c17a0896917f939c1fb95911140dfbb2f4e4ee68a219f102994a83a38fda2788",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "asset",
+      "name": "step-02.jpg",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 255691,
+      "format": "JPEG",
+      "sha256": "b5fdf5597fdfcf037092834ee93ea7f0008ceffc71b32c62563a2575cce944e2",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "asset",
+      "name": "step-03.jpg",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 232251,
+      "format": "JPEG",
+      "sha256": "7e6a3df95303aab280c8f97e5b75018977e9a687af0a5fde1fa2b10672ecc4e4",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "asset",
+      "name": "step-04.jpg",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 166380,
+      "format": "JPEG",
+      "sha256": "46b9f5a01d4c2ee23e2b53acbd5345db01dc5beb3f21980e0c90a3480c5231a2",
+      "hashVerified": true,
+      "pass": true
+    },
+    {
+      "kind": "asset",
+      "name": "step-05.jpg",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 185666,
+      "format": "JPEG",
+      "sha256": "85c1709510fda3727ebe99969d51b4df69ac66ab11d64a6848f38dd870b38cdc",
+      "hashVerified": true,
+      "pass": true
+    }
+  ]
+}
