@@ -1,0 +1,39 @@
+name: Verify fixed grounded coleslaw step 4 on both live recipe pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-coleslaw-step04-grounded-v2.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: verify-coleslaw-step04-grounded-v2
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify public Korean and English page sources and actual JPEG hash
+        run: |
+          python3 -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+          python3 scripts/verify_coleslaw_step04_grounded_v2.py
+      - name: Save factual public-verification receipt even on error
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/live-recipe-photo-verification/coleslaw-step04-grounded-v2.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Record public verification of grounded coleslaw photo [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
