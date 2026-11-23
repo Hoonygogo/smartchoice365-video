@@ -8,39 +8,15 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 2,
+  "requestRevision": 3,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-23T10:49:05.808952+00:00",
+  "generatedAtUTC": "2026-11-23T10:50:21.274169+00:00",
   "stages": [
-    {
-      "step": 2,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/iced-caramel-coffee-cream/step-02.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 174899,
-      "sha256": "fb51b347843339eb7b4ab15974ac71349363d5879a0ec9adcf3bcb8b00e5c187"
-    },
-    {
-      "step": 4,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/iced-caramel-coffee-cream/step-04.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 183755,
-      "sha256": "7c6296aa0073044f71225063f9e5af9d44f9dbb8393bf0e06517b44aa76f8bae"
-    },
     {
       "step": 5,
       "status": "candidate_needs_actual_visual_review",
@@ -50,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/iced-caramel-coffee-cream/step-05.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 165400,
-      "sha256": "87b3ead19d831fe5a2b3f691f4ca878f0dddbb3edc773614ca16f4607f287b2c"
+      "bytes": 212701,
+      "sha256": "3edf0b6f37f1bb64f152e54630930fdfa3b7209003423575a996e80ee3beaea2"
     }
   ],
   "referenceDimensions": [
