@@ -1,0 +1,37 @@
+{
+  "checkedAtUTC": "2026-11-23T10:14:25.443618+00:00",
+  "attempt": 1,
+  "publicVerified": true,
+  "slug": "crunchy-purple-cabbage-coleslaw",
+  "step": 4,
+  "results": [
+    {
+      "kind": "page",
+      "language": "ko",
+      "http": 200,
+      "hasVersionedSource": true,
+      "hasVersionedStepSchema": true,
+      "pass": true
+    },
+    {
+      "kind": "page",
+      "language": "en",
+      "http": 200,
+      "hasVersionedSource": true,
+      "hasVersionedStepSchema": true,
+      "pass": true
+    },
+    {
+      "kind": "image",
+      "path": "/assets/recipe-step-photos/crunchy-purple-cabbage-coleslaw/step-04.jpg?v=20261123-grounded-v2",
+      "http": 200,
+      "format": "JPEG",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 290934,
+      "sha256": "91ec2e3fce3389fe3e2d3f49ea3c230f4fab73b6a28b78524c084ec24782d6c4",
+      "expectedSha256": "91ec2e3fce3389fe3e2d3f49ea3c230f4fab73b6a28b78524c084ec24782d6c4",
+      "pass": true
+    }
+  ]
+}
