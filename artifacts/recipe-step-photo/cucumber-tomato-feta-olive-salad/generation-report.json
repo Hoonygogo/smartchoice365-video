@@ -8,27 +8,15 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 2,
+  "requestRevision": 3,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-23T11:06:09.276678+00:00",
+  "generatedAtUTC": "2026-11-23T11:07:43.148962+00:00",
   "stages": [
-    {
-      "step": 0,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "hero",
-      "path": "artifacts/recipe-step-photo/cucumber-tomato-feta-olive-salad/hero.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 211866,
-      "sha256": "35154836238495a2fb51f0ad2f807e02d4d3d25ea7e7fd3cadbe28db7d098182"
-    },
     {
       "step": 1,
       "status": "candidate_needs_actual_visual_review",
@@ -38,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/cucumber-tomato-feta-olive-salad/step-01.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 204960,
-      "sha256": "cdbc6e2ee024c690b0856e7a2b5cb43d078954bc96107f7f1ca43f2389ed1bfc"
+      "bytes": 277228,
+      "sha256": "26b46adf13eb5ca044c7330a1fb4beeaae94f549e3c3447eedd061f07de9fd95"
     },
     {
       "step": 2,
@@ -50,20 +38,8 @@
       "path": "artifacts/recipe-step-photo/cucumber-tomato-feta-olive-salad/step-02.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 274546,
-      "sha256": "a1c4f7508608af0968a226cc89dda68942560a9d779ec8d4751e3e0a4d8c3b68"
-    },
-    {
-      "step": 3,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/cucumber-tomato-feta-olive-salad/step-03.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 194161,
-      "sha256": "84713a1d07bc302358bad23272cd836a702c3f9d31e46f93ec697d8fe64d1f13"
+      "bytes": 336497,
+      "sha256": "8ee44a73e8ed439b48c22793442527757f7eadcb872a4f5cc909fa657dba5e90"
     },
     {
       "step": 5,
@@ -74,8 +50,8 @@
       "path": "artifacts/recipe-step-photo/cucumber-tomato-feta-olive-salad/step-05.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 342666,
-      "sha256": "5b57ff97c92572f1d6cd980e5bcf0f68d6da19d88c8cfc576f82cb2fd6f558ab"
+      "bytes": 212497,
+      "sha256": "7d10af074aada504c0a729bda895e7b512e74be211320326d6cd89d658a2f16a"
     }
   ],
   "referenceDimensions": [
