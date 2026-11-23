@@ -1,0 +1,110 @@
+{
+  "checkedAtUTC": "2026-11-23T10:53:17.283736+00:00",
+  "slug": "iced-caramel-coffee-cream",
+  "publicVerified": true,
+  "attempt": 1,
+  "checks": [
+    {
+      "type": "page",
+      "language": "ko",
+      "http": 200,
+      "missing_steps": [],
+      "schema_urls": true,
+      "newHero": true,
+      "pass": true
+    },
+    {
+      "type": "page",
+      "language": "en",
+      "http": 200,
+      "missing_steps": [],
+      "schema_urls": true,
+      "newHero": true,
+      "pass": true
+    },
+    {
+      "type": "photo",
+      "name": "hero.jpg",
+      "url": "/assets/recipe-photos/iced-caramel-coffee-cream.jpg?v=20261123-hero-revised",
+      "http": 200,
+      "sha256": "59f6407066624394eba488ed48374615923e765afc82ab4cbf6ba99ab2b177d7",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 232475,
+      "hash_verified": true,
+      "pass": true
+    },
+    {
+      "type": "photo",
+      "name": "step-01.jpg",
+      "url": "/assets/recipe-step-photos/iced-caramel-coffee-cream/step-01.jpg",
+      "http": 200,
+      "sha256": "6097fc9c0c5164064ed8f5350f538a2491f6b9a0661591e08fee7036c1b131ac",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 160875,
+      "hash_verified": true,
+      "pass": true
+    },
+    {
+      "type": "photo",
+      "name": "step-02.jpg",
+      "url": "/assets/recipe-step-photos/iced-caramel-coffee-cream/step-02.jpg",
+      "http": 200,
+      "sha256": "fb51b347843339eb7b4ab15974ac71349363d5879a0ec9adcf3bcb8b00e5c187",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 174899,
+      "hash_verified": true,
+      "pass": true
+    },
+    {
+      "type": "photo",
+      "name": "step-03.jpg",
+      "url": "/assets/recipe-step-photos/iced-caramel-coffee-cream/step-03.jpg",
+      "http": 200,
+      "sha256": "a9d511b4aa02f24356a392083591590c81a136cb426aa4d793d4c6bf16d13409",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 139352,
+      "hash_verified": true,
+      "pass": true
+    },
+    {
+      "type": "photo",
+      "name": "step-04.jpg",
+      "url": "/assets/recipe-step-photos/iced-caramel-coffee-cream/step-04.jpg",
+      "http": 200,
+      "sha256": "7c6296aa0073044f71225063f9e5af9d44f9dbb8393bf0e06517b44aa76f8bae",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 183755,
+      "hash_verified": true,
+      "pass": true
+    },
+    {
+      "type": "photo",
+      "name": "step-05.jpg",
+      "url": "/assets/recipe-step-photos/iced-caramel-coffee-cream/step-05.jpg",
+      "http": 200,
+      "sha256": "3edf0b6f37f1bb64f152e54630930fdfa3b7209003423575a996e80ee3beaea2",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 212701,
+      "hash_verified": true,
+      "pass": true
+    }
+  ]
+}

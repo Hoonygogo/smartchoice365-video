@@ -1,0 +1,71 @@
+{
+  "recipe_slug": "iced-caramel-coffee-cream",
+  "title_ko": "아이스 캐러멜 크림 커피",
+  "title_en": "Iced Caramel Coffee with Cream",
+  "yield": "2 glasses",
+  "items": [
+    {
+      "filename": "hero.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 232475,
+      "sha256": "59f6407066624394eba488ed48374615923e765afc82ab4cbf6ba99ab2b177d7",
+      "alt_ko": "대표사진: 휘핑크림을 올린 아이스 캐러멜 커피 두 잔",
+      "alt_en": "Hero: two caramel iced coffees with cream"
+    },
+    {
+      "filename": "step-01.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 160875,
+      "sha256": "6097fc9c0c5164064ed8f5350f538a2491f6b9a0661591e08fee7036c1b131ac",
+      "alt_ko": "1. 에스프레소 추출 후 식히기",
+      "alt_en": "1. Brew and cool espresso"
+    },
+    {
+      "filename": "step-02.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 174899,
+      "sha256": "fb51b347843339eb7b4ab15974ac71349363d5879a0ec9adcf3bcb8b00e5c187",
+      "alt_ko": "2. 유리잔 두 개에 얼음 나눠 담기",
+      "alt_en": "2. Divide ice between two glasses"
+    },
+    {
+      "filename": "step-03.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 139352,
+      "sha256": "a9d511b4aa02f24356a392083591590c81a136cb426aa4d793d4c6bf16d13409",
+      "alt_ko": "3. 캐러멜 시럽과 찬 우유 넣기",
+      "alt_en": "3. Add caramel syrup and cold milk"
+    },
+    {
+      "filename": "step-04.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 183755,
+      "sha256": "7c6296aa0073044f71225063f9e5af9d44f9dbb8393bf0e06517b44aa76f8bae",
+      "alt_ko": "4. 식힌 에스프레소 나눠 넣기",
+      "alt_en": "4. Add cooled espresso to both glasses"
+    },
+    {
+      "filename": "step-05.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 212701,
+      "sha256": "3edf0b6f37f1bb64f152e54630930fdfa3b7209003423575a996e80ee3beaea2",
+      "alt_ko": "5. 휘핑크림을 올려 완성",
+      "alt_en": "5. Finish both with whipped cream"
+    }
+  ],
+  "generated_by": "Cloudflare Workers AI Free, visually reviewed",
+  "websiteHeroReplaced": true,
+  "stepPhotos": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}
