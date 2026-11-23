@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestRevision": 1,
+  "slug": "crunchy-purple-cabbage-coleslaw",
+  "title": "Crunchy Purple Cabbage Coleslaw",
+  "titleKo": "아삭한 적양배추 코울슬로",
+  "sourceUrls": {
+    "ko": "https://smartc365.com/guides/smart-dinner-crunchy-purple-cabbage-coleslaw-ko",
+    "en": "https://smartc365.com/guides/smart-dinner-crunchy-purple-cabbage-coleslaw-en"
+  },
+  "ingredients": [
+    "300 g red cabbage, finely shredded",
+    "130 g carrot, grated",
+    "100 g plain yoghurt",
+    "50 g mayonnaise",
+    "12 g Dijon mustard",
+    "15 ml apple cider vinegar",
+    "2 g fine salt"
+  ],
+  "ingredientsKo": [
+    "300 g 가늘게 채 썬 적양배추",
+    "130 g 채 썬 당근",
+    "100 g 플레인 요거트",
+    "50 g 마요네즈",
+    "12 g 디종 머스터드",
+    "15 ml 사과식초",
+    "2 g 소금"
+  ],
+  "fullMethod": [
+    "Rinse 300 g red cabbage and 130 g carrot. Remove the cabbage core and dry the leaves well; watery leaves dilute the finished dressing.",
+    "Slice the cabbage into fine 2 to 3 mm ribbons with a sharp knife and grate the carrot coarsely. Keep fingers clear of the blade and use even strips for a soft but crunchy bite.",
+    "In a clean bowl combine 100 g plain yoghurt, 50 g mayonnaise, 12 g Dijon mustard, 15 ml apple cider vinegar and 2 g salt. Stir until smooth and taste before adding any extra vinegar.",
+    "Put the shredded vegetables in a large bowl and pour in the measured dressing. Toss from the bottom with two clean spoons for about 30 seconds until every ribbon is lightly coated.",
+    "Cover and refrigerate the coleslaw for about 10 minutes to settle flavours, then toss once more. Keep it at 5°C or below and never leave mayonnaise-based slaw on a hot table."
+  ],
+  "fullMethodKo": [
+    "적양배추 300g과 당근 130g을 씻고 양배추의 단단한 심을 제거한다. 물기를 충분히 말려야 드레싱이 채소에서 미끄러지지 않는다.",
+    "적양배추는 날카로운 칼로 약 2~3mm 두께 채를 썰고 당근은 굵게 채 친다. 손가락을 칼날에서 멀리 두고 비슷한 굵기를 유지한다.",
+    "깨끗한 볼에 플레인 요거트 100g, 마요네즈 50g, 디종 머스터드 12g, 사과식초 15ml, 소금 2g을 넣어 매끄럽게 저어 준다.",
+    "넓은 볼에 채 썬 채소를 넣고 계량한 드레싱을 붓는다. 깨끗한 숟가락 두 개로 아래에서 위로 약 30초 뒤집으며 고르게 묻힌다.",
+    "볼을 덮고 약 10분 냉장해 맛을 어우러지게 한 다음 한 번 더 섞는다. 마요네즈가 들어 있어 5°C 이하로 보관하고 더운 식탁에 오래 두지 않는다."
+  ],
+  "stages": [
+    {
+      "step": 3,
+      "scene": "ONLY a close-up of a single clear glass mixing bowl on subtle pale ivory quartz countertop, one small metal whisk stirring a smooth cool ivory dressing. The entire bowl contains ONLY 100g plain unsweetened yoghurt, 50g mayonnaise, 12g Dijon mustard, 15ml apple cider vinegar, 2g salt. Creamy natural off-white emulsion, subtle mustard tint, NOT pepper flecks. Show a small smear on interior bowl wall. No vegetables in this step, no cabbage, no carrots, no apple, no onions, no herbs, no pepper, no sugar, no garlic, no seeded spice flecks, no text or collage. One independent realistic food photograph."
+    },
+    {
+      "step": 4,
+      "scene": "ONLY a close-up of a large stable clear glass mixing bowl containing a raw mixture of finely shredded purple RED CABBAGE (300g, 2-3mm ribbons) and orange grated CARROT (130g) receiving the smooth pale yogurt-mayonnaise-Dijon dressing from a small tilted bowl. Two ordinary clean wooden spoons sit inside the bowl ready to toss from bottom to top. Visible natural lightly coated purple cabbage and orange carrot ribbons, not a pure white salad. NO apple matchsticks, NO white cabbage, onion, celery, parsley, herbs, pepper specks, raisins, sugar or any third vegetable. No full hands, no captions, no panels, realistic one exposure, food fills the frame."
+    },
+    {
+      "step": 5,
+      "scene": "ONLY a single photorealistic landscape close-up of the finished, refrigerated 10 minutes, crunchy purple cabbage and carrot COLESLAW served in a single simple speckled ivory ceramic bowl resting on pale ivory quartz. ONLY fine irregular 2-3mm purple cabbage ribbons (300g) and coarse orange carrot shreds (130g), lightly coated with smooth pale yogurt/mayonnaise/Dijon dressing; natural believable sheen and crisp textures, not drowning in sauce. Slightly uneven hand tossed shapes, no garnish and no cutlery, NO apples, onions, white cabbage, celery, fresh herbs, pepper, nuts, raisins, extra ingredients. One standalone finish-stage photograph, visibly DIFFERENT from site hero, no labels, no collage."
+    }
+  ]
+}
