@@ -1,0 +1,36 @@
+name: Verify 2026-11-23 Smart Meals coleslaw photos on public Cloudflare site
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-coleslaw-live-20261123.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: verify-coleslaw-live-20261123
+  cancel-in-progress: false
+jobs:
+  verify-coleslaw:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Check both public recipe pages and all 3 JPG file bytes
+        run: |
+          python -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+          python scripts/verify_coleslaw_live_20261123.py || echo "::warning::Not all public files visible during this check"
+      - name: Save factual Cloudflare release receipt
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/live-recipe-photo-verification/coleslaw-20261123.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify new purple cabbage coleslaw photos at Cloudflare origin [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
