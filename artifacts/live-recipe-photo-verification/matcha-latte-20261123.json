@@ -1,20 +1,26 @@
 {
-  "checkedAtUTC": "2026-11-23T10:41:35.358375+00:00",
+  "checkedAtUTC": "2026-11-23T10:42:24.553095+00:00",
   "slug": "iced-matcha-milk-latte",
-  "attempt": 7,
-  "publicVerified": false,
+  "attempt": 1,
+  "publicVerified": true,
   "results": [
     {
       "kind": "page",
       "language": "ko",
-      "pass": false,
-      "error": "name 'EXPECT' is not defined"
+      "http": 200,
+      "missingStages": [],
+      "originalHeroPreserved": true,
+      "schemaImageURLsFound": true,
+      "pass": true
     },
     {
       "kind": "page",
       "language": "en",
-      "pass": false,
-      "error": "name 'EXPECT' is not defined"
+      "http": 200,
+      "missingStages": [],
+      "originalHeroPreserved": true,
+      "schemaImageURLsFound": true,
+      "pass": true
     },
     {
       "kind": "asset",
