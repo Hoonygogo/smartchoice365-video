@@ -1,0 +1,40 @@
+name: Package and publicly verify cucumber tomato feta salad photos
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/package-verify-feta-salad-20261123.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: package-verify-feta-salad-20261123
+  cancel-in-progress: false
+jobs:
+  package-and-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Build six approved independent JPEG originals into ZIP and check public Cloudflare
+        run: |
+          python3 -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+          python3 -m py_compile scripts/package_verify_feta_salad_20261123.py
+          python3 scripts/package_verify_feta_salad_20261123.py
+      - name: Commit photo ZIP, bilingual manifest, contact sheet and factual QA receipt
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/recipe-step-photo/cucumber-tomato-feta-olive-salad/cucumber-tomato-feta-olive-salad-hero-and-5-steps.zip || true
+          git add artifacts/recipe-step-photo/cucumber-tomato-feta-olive-salad/package-manifest.json || true
+          git add artifacts/recipe-step-photo/cucumber-tomato-feta-olive-salad/preview-contact-sheet.jpg || true
+          git add artifacts/live-recipe-photo-verification/cucumber-tomato-feta-salad-20261123.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Deliver selected feta salad photo set and public verification [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
