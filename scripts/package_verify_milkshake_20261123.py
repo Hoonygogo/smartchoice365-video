@@ -36,7 +36,7 @@ EN=["Chocolate cookie milkshake, two finished glasses","Separate cold milk and v
     "Broken chocolate cookies added to the blender before brief pulsing","Two chocolate cookie milkshakes finished with syrup and cookie crumbs"]
 
 def sha256(data): return hashlib.sha256(data).hexdigest()
-def gitblob(data): return hashlib.sha1(f"blob {len(data)}\\0".encode()+data).hexdigest()
+def gitblob(data): return hashlib.sha1(f"blob {len(data)}".encode()+bytes([0])+data).hexdigest()
 
 items=[];thumbs=[]
 for idx,name in enumerate(FILES):
@@ -61,13 +61,13 @@ manifest=dict(recipe=SLUG,titleKo="초콜릿 쿠키 밀크셰이크",titleEn="Ch
     selectedRevisions={"hero":2,"step1":3,"step2":2,"step3":2,"step4":4,"step5":2},
     images=items, visuallyReviewed=True, processPhotoCount=5,
     siteCommit="463d90e1172d8749da07724a45f9ea6e7dca68fc")
-(PHOTOS/"package-manifest.json").write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+"\\n",encoding="utf-8")
+(PHOTOS/"package-manifest.json").write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
 bundle=PHOTOS/(SLUG+"-hero-and-5-steps.zip")
 with zipfile.ZipFile(bundle,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=6) as archive:
     for name in FILES: archive.write(PHOTOS/name,name)
     archive.writestr("preview-contact-sheet.jpg",contact_bytes)
     archive.writestr("manifest.json",json.dumps(manifest,ensure_ascii=False,indent=2))
-    archive.writestr("README.txt","Smart Meals 365 chocolate cookie milkshake. One hero and five individual stages, original 1536x1024 JPEGs.\\nRecipe: https://smartc365.com/guides/smart-dinner-chocolate-cookie-milkshake-ko\\n")
+    archive.writestr("README.txt","Smart Meals 365 chocolate cookie milkshake. One hero and five individual stages, original 1536x1024 JPEGs.\nRecipe: https://smartc365.com/guides/smart-dinner-chocolate-cookie-milkshake-ko\n")
 with zipfile.ZipFile(bundle) as archive:
     if archive.testzip() is not None or len(archive.namelist())!=9: raise RuntimeError("ZIP failed integrity check")
 print("PACKAGE_READY",bundle,bundle.stat().st_size,flush=True)
@@ -102,7 +102,7 @@ for attempt in range(1,9):
         except Exception as exc:checks.append(dict(kind="image",name=name,ok=False,error=str(exc)[:220]))
     successful=all(x["ok"] for x in checks)
     RECEIPT.write_text(json.dumps(dict(checkedAtUTC=dt.datetime.now(dt.timezone.utc).isoformat(),
-                  recipe=SLUG,attempt=attempt,publicVerified=successful,checks=checks),ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+                  recipe=SLUG,attempt=attempt,publicVerified=successful,checks=checks),ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("PUBLIC_VERIFY",json.dumps(dict(attempt=attempt,success=successful,failed=[x for x in checks if not x["ok"]]),ensure_ascii=False),flush=True)
     if successful:break
     if attempt<8:time.sleep(10)
