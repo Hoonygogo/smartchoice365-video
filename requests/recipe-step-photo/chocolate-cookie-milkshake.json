@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requestRevision": 2,
+  "requestRevision": 3,
   "slug": "chocolate-cookie-milkshake",
   "title": "Chocolate Cookie Milkshake",
   "titleKo": "초콜릿 쿠키 밀크셰이크",
@@ -38,28 +38,12 @@
   ],
   "stages": [
     {
-      "step": 0,
-      "scene": "PHOTO HERO, TWO matching real clear 350 ml glasses of chocolate cookie milkshake, side by side, same height and fill level, touching ivory quartz with genuine contact shadows. Warm light chocolate shake with sparse fine dark cookie flecks, fine drizzles of dark chocolate syrup clinging to INSIDE glass walls, restrained teaspoon of authentic crushed dark chocolate biscuit crumbs on the surface of EACH glass (not a mound). Exactly TWO slim brown paper drinking straws total, ONE correctly inserted per glass, angled slightly, no third straw. No cream, ice cubes, whole cookies, marshmallows, hands, text, other toppings. Natural premium but imperfect cafe food photo."
-    },
-    {
       "step": 1,
-      "scene": "STEP ONE PREP. A CLEAN EMPTY DRY glass blender pitcher on stable counter, with black lid removed beside it. A separate short plain glass measuring cup filled with COLD white milk and a separate small ceramic bowl filled with 2 to 3 real scoops of plain VANILLA ICE CREAM. All three objects visibly stand on stable pale ivory quartz. Milk and ice cream absolutely NOT in the blender yet. No blender lid on jar, no graduated numbers, no text, no floating or merged glassware, no chocolate or cookie ingredients yet. Close composition of actual uncombined food."
-    },
-    {
-      "step": 2,
-      "scene": "STEP TWO BISCUITS: Authentic CRUNCHY DARK CHOCOLATE BISCUITS that are flat, baked, round, dry crisp cookies. Several roughly broken jagged biscuit pieces are closely grouped on a small WOODEN cutting board. Small separate pinch of fine biscuit crumbs in a tiny ceramic bowl beside the main pile, both fully supported on board/ivory quartz. Cookie texture should be CRISP, thin, brittle and baked, NOT fudgy soft brownies, truffles, cake sponge, chocolate fudge, chopped candy, or cookie dough balls. Small genuine crumbs and irregular broken edges, photorealistic candid close-up."
-    },
-    {
-      "step": 3,
-      "scene": "STEP THREE BLEND. One real 1.5 litre transparent upright blender jar firmly seated on its matching black motor BASE resting on quartz. BLENDER LID PROPERLY CLOSED. Its integrated transparent handle fully joined to pitcher at BOTH ends, no severed dangling glass. Only 1/3 to 1/2 of the jug is filled with smooth light cocoa-milkshake liquid from vanilla ice cream, milk and cocoa (enough for two normal glasses). NO biscuits yet, NO dark specks, NO syrup, no extra toppings or food, no spoon in the closed blender. Realistic unbranded household blender, grounded and natural shadows."
+      "scene": "STEP 1 BEFORE ANY COMBINING. Close candid food photo of ONLY TWO prepared refrigerated ingredients on pale ivory quartz: a SINGLE small plain transparent glass cup of cold white milk (180 ml); next to it a fully grounded ceramic bowl with several natural scoops of chilled plain white vanilla ice cream (260 g). Along back edge sits a clean DRY EMPTY transparent blender jar, clearly completely EMPTY, transparent throughout, NO MILK OR ANY FOOD inside it, with black lid lying flat nearby. Absolutely no duplicate milk, no other drinking glass filled with milk, no liquid inside blender, no cookie, no cocoa, no syrup. One cup milk, one bowl ice cream, one EMPTY jar, no labels or text, natural shadows and ordinary proportions."
     },
     {
       "step": 4,
-      "scene": "STEP FOUR ADD COOKIES. Show SAME NORMAL BLENDER: clear upright blender jar LOCKED onto real black motor base on quartz, genuine attached handle, 1/3 to 1/2 full of light cocoa-coloured thick milkshake. Blender OFF, black lid resting flat next to it, visibly open jar top showing SMALL CRISPY BROKEN DARK CHOCOLATE BISCUIT PIECES resting in milkshake before brief pulse. A few cookie specks inside the drink, no spills outside the blender. No unrelated jars, smoothie serving cups, cookie crumbs on counter, hovering utensils or hands. Slight overhead close photo revealing open pitcher mouth, realistic kitchen scale."
-    },
-    {
-      "step": 5,
-      "scene": "STEP FIVE SERVE: TWO identical straight-sided 350 ml tall glasses physically resting on pale ivory speckled quartz, filled evenly with light chocolate cookie milkshake and tiny natural crunchy dark biscuit flecks. Chocolate syrup 10ml per glass produces a few thin dark irregular streaks on INSIDE glass walls. Exactly a very LIGHT scattering of reserved dry dark chocolate biscuit crumbs on the surface of each glass, no hill of crushed biscuit; drink surface fully visible. Natural slightly uneven homemade appearance, no cream or ice, NO STRAWS in this step, no whole cookies on rims, no extra garnishes, no spoon, no fake drips floating in air."
+      "scene": "STEP 4 only, close high angled view mainly INSIDE the mouth of a clean transparent normal household BLENDER PITCHER resting securely on its blender motor base below frame. The blender is OFF and its lid removed, resting flat on the counter. A half pitcher of blended light cocoa milkshake shows a small, realistic handful of jagged dark crispy crushed chocolate biscuits just added on the surface; a few crumbs sunken into it. The blender handle is physically attached. Image cropped ABOVE ALL MOTOR CONTROLS and BRAND TEXT, no labels, no writing, no symbols, no buttons visible. Definitely NOT a drinking jar, mason jar or serving glass, no spilled crumbs on counter, no levitating utensils, no hands. Focus 85% of frame on real biscuit texture and shake inside anchored blender pitcher."
     }
   ]
 }
