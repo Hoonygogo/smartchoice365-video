@@ -32,7 +32,7 @@ for attempt in range(1,8):
                 "originalHeroPreserved":preserved,"schemaImageURLsFound":schema_all,
                 "pass":code==200 and not missing and preserved and schema_all})
         except Exception as e:checks.append({"kind":"page","language":lang,"pass":False,"error":str(e)[:220]})
-    for name,expected in EXPECT.items():
+    for name,expected in EXPECTED.items():
         url=f"{BASE}{DIR}/{name}?photo_qa={attempt}"
         try:
             code,raw=get(url);sha=hashlib.sha256(raw).hexdigest()

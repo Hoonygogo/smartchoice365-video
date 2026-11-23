@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/verify-matcha-latte-20261123.yml'
+      - 'scripts/verify_matcha_latte_live_20261123.py'
   workflow_dispatch:
 permissions:
   contents: write
