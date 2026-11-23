@@ -1,0 +1,80 @@
+{
+  "recipe": "chocolate-cookie-milkshake",
+  "titleKo": "초콜릿 쿠키 밀크셰이크",
+  "titleEn": "Chocolate Cookie Milkshake",
+  "servings": 2,
+  "ingredients": [
+    "vanilla ice cream 260 g",
+    "milk 180 ml",
+    "cocoa 12 g",
+    "chocolate biscuits 60 g",
+    "chocolate syrup 20 ml"
+  ],
+  "selectedRevisions": {
+    "hero": 2,
+    "step1": 3,
+    "step2": 2,
+    "step3": 2,
+    "step4": 4,
+    "step5": 2
+  },
+  "images": [
+    {
+      "file": "hero.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 246282,
+      "sha256": "30ecb706dcd901952ebdea9654c6fcf5cf02aea5707d7fd11e91fa17bf84b131",
+      "alt_ko": "초콜릿 쿠키 밀크셰이크 완성 2잔",
+      "alt_en": "Chocolate cookie milkshake, two finished glasses"
+    },
+    {
+      "file": "step-01.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 175923,
+      "sha256": "911ed70861872aef683c2d5c52b0e73a37fb3df552ceb8c2f003ae6ef59b31e5",
+      "alt_ko": "차가운 우유와 바닐라 아이스크림을 빈 믹서 옆에 준비",
+      "alt_en": "Separate cold milk and vanilla ice cream beside an empty blender"
+    },
+    {
+      "file": "step-02.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 306238,
+      "sha256": "27aa1c9e0e2043df814f02df1f24281e0d047f9c66fab2dd735b20a6695a5b3f",
+      "alt_ko": "초콜릿 쿠키를 부수고 장식용 부스러기를 따로 보관",
+      "alt_en": "Broken chocolate biscuits and reserved garnish crumbs"
+    },
+    {
+      "file": "step-03.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 156901,
+      "sha256": "ccd32d12c29ebc3597d141bb72053cb0596f98faa56ac9f3d523b8776e5e3330",
+      "alt_ko": "우유·바닐라 아이스크림·코코아를 뚜껑 닫고 갈기",
+      "alt_en": "Smooth milk, vanilla ice cream and cocoa in a closed blender"
+    },
+    {
+      "file": "step-04.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 222571,
+      "sha256": "b7ac5bfe6a69ef11954d400373f86c8709576dc2327add1c6acc6a1aedc67a54",
+      "alt_ko": "초콜릿 셰이크에 부순 쿠키를 넣고 짧게 섞기 직전",
+      "alt_en": "Broken chocolate cookies added to the blender before brief pulsing"
+    },
+    {
+      "file": "step-05.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 229617,
+      "sha256": "61b40c0ca95fc9ad2f1907701e4c73fb158e8c5e4fb246ed1785dd9d86962e19",
+      "alt_ko": "초콜릿 시럽과 쿠키 부스러기를 올린 완성 밀크셰이크 2잔",
+      "alt_en": "Two chocolate cookie milkshakes finished with syrup and cookie crumbs"
+    }
+  ],
+  "visuallyReviewed": true,
+  "processPhotoCount": 5,
+  "siteCommit": "463d90e1172d8749da07724a45f9ea6e7dca68fc"
+}

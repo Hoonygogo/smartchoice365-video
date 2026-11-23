@@ -1,0 +1,100 @@
+{
+  "checkedAtUTC": "2026-11-23T11:27:57.128104+00:00",
+  "recipe": "chocolate-cookie-milkshake",
+  "attempt": 1,
+  "publicVerified": true,
+  "checks": [
+    {
+      "kind": "page",
+      "lang": "ko",
+      "http": 200,
+      "missingSteps": [],
+      "schema": true,
+      "hero": true,
+      "embedded": true,
+      "ok": true
+    },
+    {
+      "kind": "page",
+      "lang": "en",
+      "http": 200,
+      "missingSteps": [],
+      "schema": true,
+      "hero": true,
+      "embedded": true,
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "hero.jpg",
+      "http": 200,
+      "sha256": "30ecb706dcd901952ebdea9654c6fcf5cf02aea5707d7fd11e91fa17bf84b131",
+      "expected": "30ecb706dcd901952ebdea9654c6fcf5cf02aea5707d7fd11e91fa17bf84b131",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-01.jpg",
+      "http": 200,
+      "sha256": "911ed70861872aef683c2d5c52b0e73a37fb3df552ceb8c2f003ae6ef59b31e5",
+      "expected": "911ed70861872aef683c2d5c52b0e73a37fb3df552ceb8c2f003ae6ef59b31e5",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-02.jpg",
+      "http": 200,
+      "sha256": "27aa1c9e0e2043df814f02df1f24281e0d047f9c66fab2dd735b20a6695a5b3f",
+      "expected": "27aa1c9e0e2043df814f02df1f24281e0d047f9c66fab2dd735b20a6695a5b3f",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-03.jpg",
+      "http": 200,
+      "sha256": "ccd32d12c29ebc3597d141bb72053cb0596f98faa56ac9f3d523b8776e5e3330",
+      "expected": "ccd32d12c29ebc3597d141bb72053cb0596f98faa56ac9f3d523b8776e5e3330",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-04.jpg",
+      "http": 200,
+      "sha256": "b7ac5bfe6a69ef11954d400373f86c8709576dc2327add1c6acc6a1aedc67a54",
+      "expected": "b7ac5bfe6a69ef11954d400373f86c8709576dc2327add1c6acc6a1aedc67a54",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-05.jpg",
+      "http": 200,
+      "sha256": "61b40c0ca95fc9ad2f1907701e4c73fb158e8c5e4fb246ed1785dd9d86962e19",
+      "expected": "61b40c0ca95fc9ad2f1907701e4c73fb158e8c5e4fb246ed1785dd9d86962e19",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    }
+  ]
+}
