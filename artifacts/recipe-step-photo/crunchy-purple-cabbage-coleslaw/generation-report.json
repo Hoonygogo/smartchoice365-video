@@ -8,14 +8,14 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-23T10:04:47.320295+00:00",
+  "generatedAtUTC": "2026-11-23T10:06:29.268959+00:00",
   "stages": [
     {
       "step": 3,
@@ -26,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/crunchy-purple-cabbage-coleslaw/step-03.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 178251,
-      "sha256": "bb6a2cdcbc1daf874d06e02eae27039c2b490754d4f7494ff0d667ac42b8be38"
+      "bytes": 193391,
+      "sha256": "38a0d7ff8b173e7a02c38eea903e09796e28671940dc88a4ffe6ec1ba70efbdb"
     },
     {
       "step": 4,
@@ -38,20 +38,8 @@
       "path": "artifacts/recipe-step-photo/crunchy-purple-cabbage-coleslaw/step-04.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 256226,
-      "sha256": "4d0ddbf51e1b8acd2b392adac868344a722716fea38b04454896c9b632270ace"
-    },
-    {
-      "step": 5,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "final",
-      "path": "artifacts/recipe-step-photo/crunchy-purple-cabbage-coleslaw/step-05.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 208302,
-      "sha256": "78f78214bcbb193b56bb3893b92a0a18f039d5e37c537311d9e80bb2e4f45bd2"
+      "bytes": 232065,
+      "sha256": "7f97329028378817de7ae9fb53a101f7fa214db5a99fc6d74222562556145d83"
     }
   ],
   "referenceDimensions": [
