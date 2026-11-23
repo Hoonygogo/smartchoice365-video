@@ -1,0 +1,70 @@
+{
+  "recipe": "iced-matcha-milk-latte",
+  "yield": "2 glasses",
+  "originalHeroOnSitePreserved": true,
+  "photos": [
+    {
+      "file": "hero.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 181205,
+      "sha256": "f7411730cc5fb80933a10843fbcbcee5f0b571ab2853d5ab6d29de0da64008fc",
+      "ko": "대표사진 — 아이스 말차 밀크 라테 2잔",
+      "en": "Hero — two iced matcha milk lattes"
+    },
+    {
+      "file": "step-01.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 169219,
+      "sha256": "c17a0896917f939c1fb95911140dfbb2f4e4ee68a219f102994a83a38fda2788",
+      "ko": "1. 투명한 물 70ml 준비",
+      "en": "1. Prepare 70 ml clear warm water"
+    },
+    {
+      "file": "step-02.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 255691,
+      "sha256": "b5fdf5597fdfcf037092834ee93ea7f0008ceffc71b32c62563a2575cce944e2",
+      "ko": "2. 말차 가루 6g 체 치기",
+      "en": "2. Sift 6 g matcha powder"
+    },
+    {
+      "file": "step-03.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 232251,
+      "sha256": "7e6a3df95303aab280c8f97e5b75018977e9a687af0a5fde1fa2b10672ecc4e4",
+      "ko": "3. 따뜻한 물로 말차 원액 풀기",
+      "en": "3. Whisk matcha in warm water"
+    },
+    {
+      "file": "step-04.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 166380,
+      "sha256": "46b9f5a01d4c2ee23e2b53acbd5345db01dc5beb3f21980e0c90a3480c5231a2",
+      "ko": "4. 얼음과 우유 두 잔, 말차 원액 따로 준비",
+      "en": "4. Two iced milk glasses and separate concentrate"
+    },
+    {
+      "file": "step-05.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 185666,
+      "sha256": "85c1709510fda3727ebe99969d51b4df69ac66ab11d64a6848f38dd870b38cdc",
+      "ko": "5. 말차를 우유에 부어 두 잔 완성",
+      "en": "5. Finished two iced matcha milk lattes"
+    }
+  ],
+  "stagePhotos": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "originalPhotoSource": "Cloudflare Workers AI Free, visually checked",
+  "qualityRule": "The six JPEGs are independent full-resolution originals, never crops of a collage."
+}
