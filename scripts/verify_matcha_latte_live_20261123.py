@@ -24,7 +24,7 @@ for attempt in range(1,8):
         url=f"{BASE}/guides/smart-dinner-{SLUG}-{lang}?photo_qa={attempt}"
         try:
             code,raw=get(url);h=raw.decode("utf-8","replace")
-            missing=[name for name in EXPECT if name!="hero.jpg" and f'{DIR}/{name}' not in h]
+            missing=[name for name in EXPECTED if name!="hero.jpg" and f'{DIR}/{name}' not in h]
             # The original site hero stays unchanged even when an optional new hero file is available.
             preserved="/assets/recipe-photos/iced-matcha-milk-latte.jpg" in h
             schema_all=all(f"{BASE}{DIR}/step-{i:02d}.jpg" in h for i in range(1,6))
