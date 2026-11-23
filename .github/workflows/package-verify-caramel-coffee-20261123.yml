@@ -1,0 +1,40 @@
+name: Package and publicly verify Smart Meals caramel iced coffee images
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/package-verify-caramel-coffee-20261123.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: package-verify-caramel-coffee-oneoff-20261123
+  cancel-in-progress: false
+jobs:
+  package-and-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Build exact-hash six-photo ZIP and verify live bilingual Cloudflare release
+        run: |
+          python3 -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+          python3 -m py_compile scripts/package_verify_caramel_coffee_20261123.py
+          python3 scripts/package_verify_caramel_coffee_20261123.py
+      - name: Commit ZIP, contact-sheet and factual live QA receipt
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/recipe-step-photo/iced-caramel-coffee-cream/iced-caramel-coffee-cream-hero-and-5-steps.zip || true
+          git add artifacts/recipe-step-photo/iced-caramel-coffee-cream/preview-contact-sheet.jpg || true
+          git add artifacts/recipe-step-photo/iced-caramel-coffee-cream/package-manifest.json || true
+          git add artifacts/live-recipe-photo-verification/caramel-coffee-20261123.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Deliver reviewed caramel coffee photography and exact public release receipt [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
