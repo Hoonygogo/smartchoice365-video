@@ -1,0 +1,55 @@
+name: Validate the published caramel coffee pictures against Smart Meals photo rules
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/validate-caramel-photos-20261123.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/checkout@v4
+        with:
+          repository: Hoonygogo/smartchoice365
+          ref: main
+          path: site
+          persist-credentials: false
+      - name: Run the canonical original-size duplicate and bilingual step-photo validator
+        shell: bash
+        run: |
+          mkdir -p artifacts/recipe-step-photo/iced-caramel-coffee-cream
+          set +e
+          python3 site/scripts/check_recipe_step_photo_quality.py iced-caramel-coffee-cream > /tmp/caramel-photo-validation.log 2>&1
+          code=$?
+          set -e
+          cat /tmp/caramel-photo-validation.log
+          CAR_CODE="$code" python3 - <<'PY'
+          import datetime, json, os, pathlib
+          content=pathlib.Path('/tmp/caramel-photo-validation.log').read_text(encoding='utf-8')
+          data={'validatedAtUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                'slug':'iced-caramel-coffee-cream',
+                'command':'python3 site/scripts/check_recipe_step_photo_quality.py iced-caramel-coffee-cream',
+                'passed':os.environ['CAR_CODE']=='0','returnCode':int(os.environ['CAR_CODE']),
+                'output':content}
+          pathlib.Path('artifacts/recipe-step-photo/iced-caramel-coffee-cream/quality-validation.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
+          PY
+          exit "$code"
+      - name: Record canonical validation receipt even on error
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/recipe-step-photo/iced-caramel-coffee-cream/quality-validation.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Record rule-based caramel coffee photography quality audit [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
