@@ -8,39 +8,15 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-23T10:47:20.984345+00:00",
+  "generatedAtUTC": "2026-11-23T10:49:05.808952+00:00",
   "stages": [
-    {
-      "step": 0,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "hero",
-      "path": "artifacts/recipe-step-photo/iced-caramel-coffee-cream/hero.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 232475,
-      "sha256": "59f6407066624394eba488ed48374615923e765afc82ab4cbf6ba99ab2b177d7"
-    },
-    {
-      "step": 1,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/iced-caramel-coffee-cream/step-01.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 160875,
-      "sha256": "6097fc9c0c5164064ed8f5350f538a2491f6b9a0661591e08fee7036c1b131ac"
-    },
     {
       "step": 2,
       "status": "candidate_needs_actual_visual_review",
@@ -50,20 +26,8 @@
       "path": "artifacts/recipe-step-photo/iced-caramel-coffee-cream/step-02.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 154782,
-      "sha256": "65a4b5d951c0ba5283830316ac6516b31aa34217f1c87702028aedf2596f9f34"
-    },
-    {
-      "step": 3,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/iced-caramel-coffee-cream/step-03.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 139352,
-      "sha256": "a9d511b4aa02f24356a392083591590c81a136cb426aa4d793d4c6bf16d13409"
+      "bytes": 174899,
+      "sha256": "fb51b347843339eb7b4ab15974ac71349363d5879a0ec9adcf3bcb8b00e5c187"
     },
     {
       "step": 4,
@@ -74,8 +38,8 @@
       "path": "artifacts/recipe-step-photo/iced-caramel-coffee-cream/step-04.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 199679,
-      "sha256": "26cf224db0d0b9bd52507b74ad883e5124ccb729c12785e6f98ca8a4db0d21bd"
+      "bytes": 183755,
+      "sha256": "7c6296aa0073044f71225063f9e5af9d44f9dbb8393bf0e06517b44aa76f8bae"
     },
     {
       "step": 5,
@@ -86,8 +50,8 @@
       "path": "artifacts/recipe-step-photo/iced-caramel-coffee-cream/step-05.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 195839,
-      "sha256": "d73ffc7fea9dbfa57f30c01d7068bb774bb7d0536f123bb9581b6407732cde89"
+      "bytes": 165400,
+      "sha256": "87b3ead19d831fe5a2b3f691f4ca878f0dddbb3edc773614ca16f4607f287b2c"
     }
   ],
   "referenceDimensions": [
