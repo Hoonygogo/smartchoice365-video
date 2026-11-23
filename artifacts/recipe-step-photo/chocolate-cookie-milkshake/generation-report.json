@@ -8,27 +8,15 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 3,
+  "requestRevision": 4,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-23T11:24:42.023240+00:00",
+  "generatedAtUTC": "2026-11-23T11:25:36.384587+00:00",
   "stages": [
-    {
-      "step": 1,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-01.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 175923,
-      "sha256": "911ed70861872aef683c2d5c52b0e73a37fb3df552ceb8c2f003ae6ef59b31e5"
-    },
     {
       "step": 4,
       "status": "candidate_needs_actual_visual_review",
@@ -38,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/chocolate-cookie-milkshake/step-04.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 196010,
-      "sha256": "2363c28f7a03303fd6aed1ace2bf54c1ee638707dc6f40496895a58f15e9fdb0"
+      "bytes": 222571,
+      "sha256": "b7ac5bfe6a69ef11954d400373f86c8709576dc2327add1c6acc6a1aedc67a54"
     }
   ],
   "referenceDimensions": [
