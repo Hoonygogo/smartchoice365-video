@@ -1,0 +1,80 @@
+{
+  "recipe": "pineapple-coconut-smoothie",
+  "titleKo": "파인애플 코코넛 스무디",
+  "titleEn": "Pineapple Coconut Smoothie",
+  "servings": 2,
+  "ingredients": [
+    "fresh pineapple 300 g",
+    "unsweetened coconut milk 200 ml",
+    "fresh lime juice 20 ml",
+    "clean ice cubes 120 g",
+    "cold drinking water 40 ml"
+  ],
+  "selectedRevisions": {
+    "hero": 2,
+    "step1": 1,
+    "step2": 2,
+    "step3": 1,
+    "step4": 2,
+    "step5": 1
+  },
+  "images": [
+    {
+      "file": "hero.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 167031,
+      "sha256": "ee3f413de3a06d3cf3268fb89fafc7b39f0926f687a6592620ddc82b4eb37ee8",
+      "alt_ko": "파인애플 코코넛 스무디 대표사진 두 잔",
+      "alt_en": "Two finished pineapple coconut smoothies"
+    },
+    {
+      "file": "step-01.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 256596,
+      "sha256": "51a6c8f7b1855cf4f8ffc8d449202977f4a58a037864cf0c11a27c074a651e03",
+      "alt_ko": "파인애플 껍질과 심을 제거하고 과육 300g을 작은 큐브로 손질",
+      "alt_en": "Peeled cored pineapple chopped into small cubes"
+    },
+    {
+      "file": "step-02.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 177189,
+      "sha256": "343247fb2c39e1272224fcd5acb6b071f0afb7efc09203457cb0c4067dbd9700",
+      "alt_ko": "무가당 코코넛밀크와 차가운 물을 깨끗한 믹서에 넣어 계량",
+      "alt_en": "Unsweetened coconut milk and cold water in an open blender"
+    },
+    {
+      "file": "step-03.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 138304,
+      "sha256": "e3b2af7f9667a3705ec44c23ee8031220a6456e6f4137a574df3ad2e774e390e",
+      "alt_ko": "파인애플과 코코넛밀크를 갈아 연노란 스무디로 만든 중간 과정",
+      "alt_en": "Smooth pineapple blended with coconut milk before lime and ice"
+    },
+    {
+      "file": "step-04.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 154703,
+      "sha256": "1561afd847b26b88d776e68d3428df010e8245bc03d1d98f6c1f5f9a3803ce4c",
+      "alt_ko": "믹서의 파인애플 코코넛 혼합물에 라임즙과 얼음을 더하기",
+      "alt_en": "Add clean ice and lime juice to pineapple coconut blender mixture"
+    },
+    {
+      "file": "step-05.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 155457,
+      "sha256": "37e5605145aece7bae9c72cf3b78fc88ea501cc4ec517075ca930dfd1321a226",
+      "alt_ko": "파인애플 코코넛 스무디 두 잔 완성",
+      "alt_en": "Two finished glasses of pineapple coconut smoothie"
+    }
+  ],
+  "visuallyReviewed": true,
+  "processPhotoCount": 5,
+  "siteCommit": "6c1fa06da6bec6bf5ca024a9376b1d8aeae15cee"
+}

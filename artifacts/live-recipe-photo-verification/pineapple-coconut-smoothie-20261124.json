@@ -1,0 +1,100 @@
+{
+  "checkedAtUTC": "2026-11-24T09:10:07.206869+00:00",
+  "recipe": "pineapple-coconut-smoothie",
+  "attempt": 1,
+  "publicVerified": true,
+  "checks": [
+    {
+      "kind": "page",
+      "lang": "ko",
+      "http": 200,
+      "missingSteps": [],
+      "schema": true,
+      "hero": true,
+      "embedded": true,
+      "ok": true
+    },
+    {
+      "kind": "page",
+      "lang": "en",
+      "http": 200,
+      "missingSteps": [],
+      "schema": true,
+      "hero": true,
+      "embedded": true,
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "hero.jpg",
+      "http": 200,
+      "sha256": "ee3f413de3a06d3cf3268fb89fafc7b39f0926f687a6592620ddc82b4eb37ee8",
+      "expected": "ee3f413de3a06d3cf3268fb89fafc7b39f0926f687a6592620ddc82b4eb37ee8",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-01.jpg",
+      "http": 200,
+      "sha256": "51a6c8f7b1855cf4f8ffc8d449202977f4a58a037864cf0c11a27c074a651e03",
+      "expected": "51a6c8f7b1855cf4f8ffc8d449202977f4a58a037864cf0c11a27c074a651e03",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-02.jpg",
+      "http": 200,
+      "sha256": "343247fb2c39e1272224fcd5acb6b071f0afb7efc09203457cb0c4067dbd9700",
+      "expected": "343247fb2c39e1272224fcd5acb6b071f0afb7efc09203457cb0c4067dbd9700",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-03.jpg",
+      "http": 200,
+      "sha256": "e3b2af7f9667a3705ec44c23ee8031220a6456e6f4137a574df3ad2e774e390e",
+      "expected": "e3b2af7f9667a3705ec44c23ee8031220a6456e6f4137a574df3ad2e774e390e",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-04.jpg",
+      "http": 200,
+      "sha256": "1561afd847b26b88d776e68d3428df010e8245bc03d1d98f6c1f5f9a3803ce4c",
+      "expected": "1561afd847b26b88d776e68d3428df010e8245bc03d1d98f6c1f5f9a3803ce4c",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    },
+    {
+      "kind": "image",
+      "name": "step-05.jpg",
+      "http": 200,
+      "sha256": "37e5605145aece7bae9c72cf3b78fc88ea501cc4ec517075ca930dfd1321a226",
+      "expected": "37e5605145aece7bae9c72cf3b78fc88ea501cc4ec517075ca930dfd1321a226",
+      "size": [
+        1536,
+        1024
+      ],
+      "ok": true
+    }
+  ]
+}
