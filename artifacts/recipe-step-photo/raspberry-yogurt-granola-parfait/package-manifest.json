@@ -1,0 +1,72 @@
+{
+  "title_ko": "라즈베리 요거트 그래놀라 파르페",
+  "title_en": "Raspberry Yoghurt Granola Parfait",
+  "originalRecipe": "https://smartc365.com/guides/smart-dinner-raspberry-yogurt-granola-parfait-ko",
+  "servings": 2,
+  "ingredients": [
+    "240 g plain Greek yoghurt",
+    "130 g crunchy granola",
+    "140 g fresh raspberries",
+    "15 ml honey",
+    "1 g lemon zest"
+  ],
+  "source": "Cloudflare Workers AI, independently generated and visually reviewed originals",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "format": "JPEG",
+  "stageVersion": {
+    "hero": 1,
+    "step-01": 1,
+    "step-02": 1,
+    "step-03": 1,
+    "step-04": 2,
+    "step-05": 1,
+    "step-06": 3
+  },
+  "files": [
+    {
+      "name": "hero.jpg",
+      "sizeBytes": 202083,
+      "sha256": "38bb49e7d851bc9a5290deeb9318f7a577c693adb2937c1bdcf488a493751c3a",
+      "labelKo": "대표사진"
+    },
+    {
+      "name": "step-01.jpg",
+      "sizeBytes": 166048,
+      "sha256": "95cef433a7659a9feecd4ff9c2c803b4a7ab4d5fd81f04e54c64846543c5624b",
+      "labelKo": "깨끗한 빈 컵 두 개 준비"
+    },
+    {
+      "name": "step-02.jpg",
+      "sizeBytes": 239984,
+      "sha256": "2a8907a1c61041cbacc022b4446307e325ec616cd8bd54c19b952c6fe58e362a",
+      "labelKo": "라즈베리 살살 씻어 물기 제거"
+    },
+    {
+      "name": "step-03.jpg",
+      "sizeBytes": 185992,
+      "sha256": "1233c32860980ad19303ec7b1bf0b47d33f800d539ed4b713a5c79af3cc5a2ea",
+      "labelKo": "요거트·꿀·레몬 제스트 섞기"
+    },
+    {
+      "name": "step-04.jpg",
+      "sizeBytes": 189355,
+      "sha256": "2b1c11124e03ec47c0d6974b4fde6d71f2c2d4550cd397fb75b855e0645a5e6b",
+      "labelKo": "두 컵에 요거트 반과 라즈베리 반만 넣기"
+    },
+    {
+      "name": "step-05.jpg",
+      "sizeBytes": 235472,
+      "sha256": "9e8c721927e6567c4cbe7883ff679e50f4b40ff275d5b6feb340720fe9b4ff50",
+      "labelKo": "그래놀라·남은 요거트·라즈베리로 층 쌓기"
+    },
+    {
+      "name": "step-06.jpg",
+      "sizeBytes": 214993,
+      "sha256": "54b4eb2089d6009a5ba0cf870b2b208f30988741fd1e9853216022566e615835",
+      "labelKo": "두 잔의 파르페를 차갑게 제공"
+    }
+  ]
+}
