@@ -8,39 +8,15 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 3,
+  "requestRevision": 4,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-24T11:39:46.556338+00:00",
+  "generatedAtUTC": "2026-11-24T11:40:57.454615+00:00",
   "stages": [
-    {
-      "step": 1,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/silky-lemon-garlic-hummus/step-01.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 214437,
-      "sha256": "1bdf34250b9cbcfa6b49eea468320ddf2ba12547e7091d1184eeefa9a955920a"
-    },
-    {
-      "step": 4,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/silky-lemon-garlic-hummus/step-04.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 242024,
-      "sha256": "800a1c38d8c4b527b17a82facce372ccfc75e8169f58f713f7c0b82c88e74b73"
-    },
     {
       "step": 5,
       "status": "candidate_needs_actual_visual_review",
@@ -50,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/silky-lemon-garlic-hummus/step-05.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 186508,
-      "sha256": "ad22c33d89c87ef1a9522e1db70d68d6ca63e81be8ab73248236e96b1e4d9b1f"
+      "bytes": 186280,
+      "sha256": "f38ec1b63031ee53880f99e305e3473ec01882535039cb97b33a5649cfb545cd"
     }
   ],
   "referenceDimensions": [
