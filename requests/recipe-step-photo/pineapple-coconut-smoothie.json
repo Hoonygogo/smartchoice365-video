@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requestRevision": 2,
+  "requestRevision": 3,
   "slug": "pineapple-coconut-smoothie",
   "title": "Pineapple Coconut Smoothie",
   "titleKo": "파인애플 코코넛 스무디",
@@ -38,16 +38,8 @@
   ],
   "stages": [
     {
-      "step": 0,
-      "scene": "PREMIUM HERO, gorgeous close 3:2 editorial REAL FOOD photograph. TWO matching 350ml clear tall glasses, BOTH firmly standing on warm pale ivory speckled quartz counter and filled equal levels with luscious light GOLDEN-YELLOW NATURAL pineapple coconut smoothie, bright but still creamy and pastel, subtle tiny pineapple pulp specks and real fine froth bubbles. Exactly ONE thin tasteful plain drinking STRAW inserted into EACH of TWO glasses, exactly 2 straws total. Soft daylight, small condensation droplets, slightly imperfect drink surfaces, ~85% image occupied by refreshing pair. Very subtle warm natural shadow, no kitchen background. NO pineapple rind, lime wedges, large pineapple chunks, topping, shredded coconut, umbrella, mint, cream, ice blocks, syrups, other drinks, lettering, extra straw."
-    },
-    {
-      "step": 2,
-      "scene": "STAGE 2 ONLY. One simple CLEAN REALISTIC OPEN GLASS BLENDER PITCHER, firmly vertically standing with base touching matte ivory quartz. Photo CLOSE TOP-DOWN three-quarter angle, crop all pitcher HANDLES completely OUT OF FRAME so ZERO handles visible. Blender is mostly EMPTY, just ~240ml WHITE RUNNY unsweetened coconut milk plus plain water at bottom, clear see-through sides above. One normal short measuring cup to the left (only one) contains a trace of coconut milk. A normal lid lies nearby. No pineapple, lime, sugar, ice cubes, smoothie, yoghurt, shredded coconut, large amounts white milk, garbled fake measurements, text, extra glasses. Real life natural glass reflections, true contact."
-    },
-    {
-      "step": 4,
-      "scene": "STAGE 4 ONLY. TRUE CLOSE-UP view directly INTO open mouth of a ONE GLASS BLENDER JUG standing upright, rim and top of pitcher dominate ~90% of photo. At bottom is pale creamy yellow already-blended pineapple coconut milk smoothie. In this drink EXACTLY SIX realistically-sized partly submerged clear ICE CUBES and a little clear lime juice have just been added; natural wet surfaces and gravity. ONLY the single open pitcher visible, NO lime halves, lemons, limes, fruit or other objects anywhere outside blender, no countertop liquid puddles, no extra handles or anything floating, no hands, no blender running, no words, no decorative garnishes, no unlisted ingredients. All fluids fully contained within glass pitcher."
+      "step": 3,
+      "scene": "STEP 3 ONLY — a REAL, CONVENTIONAL, FUNCTIONAL COUNTERTOP KITCHEN BLENDER. One tall CLEAR SQUARE-SIDED 1.5 litre GLASS BLENDER PITCHER with naturally angular taper, a single clear sturdy HANDLE attached to the RIGHT side at both ends, and a small pouring SPOUT on the LEFT side; it must resemble a traditional large blender pitcher, NOT a narrow mason jar, smoothie cup, milk jug or glass drinking tumbler. This tall pitcher is firmly connected to its realistically proportioned black powered blender MOTOR BASE resting securely on pale fine-speckled ivory quartz, and has one proper flat securely closed black fitted BLENDER LID. A little more than one-third full, below halfway, with SMOOTH PALE GOLDEN YELLOW freshly blended 300g pineapple + 200ml unsweetened coconut milk + 40ml cold water. Some fine froth and genuine tiny pineapple pulp but NO ICE yet, NO lime yet, no pineapple cubes, other fruit or toppings. Photo medium close-up at realistic THREE-QUARTER ANGLE, showing full base, lid, single right-side handle and left-side spout. Correct structural proportions, physical attachments, normal controls without text, no extra handles, no cloned parts, nothing floating, no hands, no words, no collage, no staged kitchen backdrop."
     }
   ]
 }
