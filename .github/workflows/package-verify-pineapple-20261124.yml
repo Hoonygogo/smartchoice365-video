@@ -1,0 +1,40 @@
+name: Package and publicly verify pineapple coconut smoothie photos
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/package-verify-pineapple-20261124.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: package-verify-pineapple-20261124
+  cancel-in-progress: false
+jobs:
+  package-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Validate six approved Cloudflare image originals, create ZIP, verify live KO/EN pages
+        run: |
+          python3 -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+          python3 -m py_compile scripts/package_verify_pineapple_20261124.py
+          python3 scripts/package_verify_pineapple_20261124.py
+      - name: Save QA receipt, original ZIP and contact preview
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/recipe-step-photo/pineapple-coconut-smoothie/pineapple-coconut-smoothie-hero-and-5-steps.zip || true
+          git add artifacts/recipe-step-photo/pineapple-coconut-smoothie/package-manifest.json || true
+          git add artifacts/recipe-step-photo/pineapple-coconut-smoothie/preview-contact-sheet.jpg || true
+          git add artifacts/live-recipe-photo-verification/pineapple-coconut-smoothie-20261124.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Package reviewed pineapple photo originals and public deployment receipt [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
