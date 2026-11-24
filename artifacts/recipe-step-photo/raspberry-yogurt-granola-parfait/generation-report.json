@@ -8,63 +8,15 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-24T11:05:24.009518+00:00",
+  "generatedAtUTC": "2026-11-24T11:07:35.661683+00:00",
   "stages": [
-    {
-      "step": 0,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "hero",
-      "path": "artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/hero.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 202083,
-      "sha256": "38bb49e7d851bc9a5290deeb9318f7a577c693adb2937c1bdcf488a493751c3a"
-    },
-    {
-      "step": 1,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/step-01.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 166048,
-      "sha256": "95cef433a7659a9feecd4ff9c2c803b4a7ab4d5fd81f04e54c64846543c5624b"
-    },
-    {
-      "step": 2,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/step-02.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 239984,
-      "sha256": "2a8907a1c61041cbacc022b4446307e325ec616cd8bd54c19b952c6fe58e362a"
-    },
-    {
-      "step": 3,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/step-03.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 185992,
-      "sha256": "1233c32860980ad19303ec7b1bf0b47d33f800d539ed4b713a5c79af3cc5a2ea"
-    },
     {
       "step": 4,
       "status": "candidate_needs_actual_visual_review",
@@ -74,20 +26,8 @@
       "path": "artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/step-04.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 201751,
-      "sha256": "d0ebf3ccf9cf839660ed5031d0799f393fcb920f6c8112b11c875c4fede95b7f"
-    },
-    {
-      "step": 5,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/step-05.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 235472,
-      "sha256": "9e8c721927e6567c4cbe7883ff679e50f4b40ff275d5b6feb340720fe9b4ff50"
+      "bytes": 189355,
+      "sha256": "2b1c11124e03ec47c0d6974b4fde6d71f2c2d4550cd397fb75b855e0645a5e6b"
     },
     {
       "step": 6,
@@ -98,8 +38,8 @@
       "path": "artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/step-06.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 202783,
-      "sha256": "4cfae0c7e1d753aecb5a62388c202e8d654a5d5f872fa39876a0e3d6ab863434"
+      "bytes": 240836,
+      "sha256": "52ce2f3ff709936631a5b928ec9bfa0345dd60709fcbc3bef4ae5af41e1d70c3"
     }
   ],
   "referenceDimensions": [
