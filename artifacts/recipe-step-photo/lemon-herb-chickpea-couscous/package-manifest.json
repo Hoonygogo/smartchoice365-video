@@ -1,0 +1,52 @@
+{
+  "titleKo": "레몬 허브 병아리콩 쿠스쿠스",
+  "titleEn": "Lemon Herb Chickpea Couscous",
+  "servings": 4,
+  "source": "Official Smart Meals 365 KO/EN 6-step recipe",
+  "stageCount": 6,
+  "images": [
+    {
+      "file": "hero.jpg",
+      "bytes": 217416,
+      "sha256": "2240827044be14d4b5809ab196a0af106f7264a25e23adbeb293eb01a1593df2",
+      "descriptionKo": "대표사진"
+    },
+    {
+      "file": "step-01.jpg",
+      "bytes": 193342,
+      "sha256": "e85d550acc84d637fb608e33ca2942a65b80837815c6555a62d3e7e6a5d1441f",
+      "descriptionKo": "작은 알갱이 건조 즉석 쿠스쿠스 160g 계량"
+    },
+    {
+      "file": "step-02.jpg",
+      "bytes": 230000,
+      "sha256": "01330d76d94a67cb4b833d94f0915ec3a22b9e10f7fca9b7098f888255ebd547",
+      "descriptionKo": "끓는 물 190ml를 넣고 덮어 불리기"
+    },
+    {
+      "file": "step-03.jpg",
+      "bytes": 246069,
+      "sha256": "3898aef6d8c6a01ac97f7adde4c629e58722ef41dc0da6c034b7a939dc7e2df5",
+      "descriptionKo": "포크로 쿠스쿠스 알갱이 풀기"
+    },
+    {
+      "file": "step-04.jpg",
+      "bytes": 288305,
+      "sha256": "855fbba915c2086bd71c6fb573cf9f6cc824dda02684e7fdac866411983564b8",
+      "descriptionKo": "병아리콩·토마토·오이·올리브·파슬리 손질"
+    },
+    {
+      "file": "step-05.jpg",
+      "bytes": 146105,
+      "sha256": "251ecdf78e62ccf4e2dee00c77cc4efb1ac5623900e8c9f1a609a458ede2ae50",
+      "descriptionKo": "레몬즙·올리브유·소금 드레싱 만들기"
+    },
+    {
+      "file": "step-06.jpg",
+      "bytes": 260789,
+      "sha256": "9f9284c435ce8ca333666b22d5730176b3aa44034ce6525b6d2686e49e779d9e",
+      "descriptionKo": "모든 재료를 고루 섞어 완성"
+    }
+  ],
+  "reviewNote": "One standalone photograph per recipe step, no storyboard, 1536x1024 images. Website publication not automatic."
+}
