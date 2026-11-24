@@ -8,14 +8,14 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-24T09:06:16.911976+00:00",
+  "generatedAtUTC": "2026-11-24T09:07:44.819434+00:00",
   "stages": [
     {
       "step": 0,
@@ -26,20 +26,8 @@
       "path": "artifacts/recipe-step-photo/pineapple-coconut-smoothie/hero.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 171147,
-      "sha256": "ea6903e1463db0d774124396029417dd5557bf30ae7c9a86e9890cd087ef4416"
-    },
-    {
-      "step": 1,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/pineapple-coconut-smoothie/step-01.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 256596,
-      "sha256": "51a6c8f7b1855cf4f8ffc8d449202977f4a58a037864cf0c11a27c074a651e03"
+      "bytes": 167031,
+      "sha256": "ee3f413de3a06d3cf3268fb89fafc7b39f0926f687a6592620ddc82b4eb37ee8"
     },
     {
       "step": 2,
@@ -50,20 +38,8 @@
       "path": "artifacts/recipe-step-photo/pineapple-coconut-smoothie/step-02.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 119815,
-      "sha256": "811042126259701bc1e32d93585e46b6759be6c241763dcf32ad249e5a423fbc"
-    },
-    {
-      "step": 3,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/pineapple-coconut-smoothie/step-03.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 138304,
-      "sha256": "e3b2af7f9667a3705ec44c23ee8031220a6456e6f4137a574df3ad2e774e390e"
+      "bytes": 177189,
+      "sha256": "343247fb2c39e1272224fcd5acb6b071f0afb7efc09203457cb0c4067dbd9700"
     },
     {
       "step": 4,
@@ -74,20 +50,8 @@
       "path": "artifacts/recipe-step-photo/pineapple-coconut-smoothie/step-04.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 179963,
-      "sha256": "5cf82fa9350993345dcda45efa42ba2f1daaac0fc1a34f4a5e0c617ea635ce62"
-    },
-    {
-      "step": 5,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "final",
-      "path": "artifacts/recipe-step-photo/pineapple-coconut-smoothie/step-05.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 155457,
-      "sha256": "37e5605145aece7bae9c72cf3b78fc88ea501cc4ec517075ca930dfd1321a226"
+      "bytes": 154703,
+      "sha256": "1561afd847b26b88d776e68d3428df010e8245bc03d1d98f6c1f5f9a3803ce4c"
     }
   ],
   "referenceDimensions": [
