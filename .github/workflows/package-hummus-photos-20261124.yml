@@ -36,3 +36,4 @@ jobs:
             git pull --rebase origin main
             git push origin HEAD:main
           fi
+# Refresh checked set after matching step 3 and step 4 processor
