@@ -8,14 +8,14 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 6,
+  "requestRevision": 7,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-24T12:25:29.898067+00:00",
+  "generatedAtUTC": "2026-11-24T12:26:18.448915+00:00",
   "stages": [
     {
       "step": 3,
@@ -26,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/lemon-herb-chickpea-couscous/step-03.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 251200,
-      "sha256": "54daa0ab47b3ed63ee8be5596b5d2af63e7e57f93512d1ae2b92ec74713d6c0c"
+      "bytes": 204558,
+      "sha256": "f2c83c5d0f07a314da74d33847dcda2ff1a027a127f7e43a5450039259f4614b"
     }
   ],
   "referenceDimensions": [
