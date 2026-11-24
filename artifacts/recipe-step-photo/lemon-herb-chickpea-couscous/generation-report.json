@@ -8,14 +8,14 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 1,
+  "requestRevision": 2,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-24T12:03:22.632744+00:00",
+  "generatedAtUTC": "2026-11-24T12:05:15.597228+00:00",
   "stages": [
     {
       "step": 0,
@@ -26,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/lemon-herb-chickpea-couscous/hero.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 249514,
-      "sha256": "1687a3944772536249a95e0af1a2b82f383ef2b61a3c1f07080da418e56bf9b4"
+      "bytes": 217416,
+      "sha256": "2240827044be14d4b5809ab196a0af106f7264a25e23adbeb293eb01a1593df2"
     },
     {
       "step": 1,
@@ -38,8 +38,8 @@
       "path": "artifacts/recipe-step-photo/lemon-herb-chickpea-couscous/step-01.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 218820,
-      "sha256": "96ff7a44b365c8a62cb91ee62ed491046b4ea40e62f40ce73c02a95bba9243e7"
+      "bytes": 193342,
+      "sha256": "e85d550acc84d637fb608e33ca2942a65b80837815c6555a62d3e7e6a5d1441f"
     },
     {
       "step": 2,
@@ -50,8 +50,8 @@
       "path": "artifacts/recipe-step-photo/lemon-herb-chickpea-couscous/step-02.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 180513,
-      "sha256": "342fb914055e1a445053c0ab05cb4ba6b7459df924e6bb8f27e6f82ce34175e5"
+      "bytes": 206415,
+      "sha256": "e0d246b3975ff4af24d0a1d54934e279a70ebb30c9766603befc068cede96fbd"
     },
     {
       "step": 3,
@@ -62,32 +62,8 @@
       "path": "artifacts/recipe-step-photo/lemon-herb-chickpea-couscous/step-03.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 236087,
-      "sha256": "c1ad3bf90c2961e8ae86c11120095efe47814e61ff6dc9730eae16a23f3a8b17"
-    },
-    {
-      "step": 4,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/lemon-herb-chickpea-couscous/step-04.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 288305,
-      "sha256": "855fbba915c2086bd71c6fb573cf9f6cc824dda02684e7fdac866411983564b8"
-    },
-    {
-      "step": 5,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/lemon-herb-chickpea-couscous/step-05.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 146105,
-      "sha256": "251ecdf78e62ccf4e2dee00c77cc4efb1ac5623900e8c9f1a609a458ede2ae50"
+      "bytes": 250512,
+      "sha256": "69e2187dc838a1fff59a8b60985e7798f40b57928a304a316109f51bf210d74f"
     },
     {
       "step": 6,
@@ -98,8 +74,8 @@
       "path": "artifacts/recipe-step-photo/lemon-herb-chickpea-couscous/step-06.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 247071,
-      "sha256": "7a152f87bd805bd8db73b562164cf36195be8716c43f54f4c27c887c081a2161"
+      "bytes": 295150,
+      "sha256": "636bc0291668579cabfd5f132422084c3d12918f894aecf318ff56cf6ad6e4b9"
     }
   ],
   "referenceDimensions": [
