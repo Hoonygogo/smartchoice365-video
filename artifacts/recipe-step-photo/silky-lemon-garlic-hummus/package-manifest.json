@@ -1,0 +1,52 @@
+{
+  "titleKo": "레몬 마늘 크리미 후무스",
+  "titleEn": "Silky Lemon Garlic Hummus",
+  "servings": 4,
+  "source": "Official Smart Meals 365 KO/EN 6-step recipe",
+  "stageCount": 6,
+  "images": [
+    {
+      "file": "hero.jpg",
+      "bytes": 188730,
+      "sha256": "fc0d38c7426247781928b3f58249eccd9405ea2952fbe0458429774594365d00",
+      "descriptionKo": "대표사진"
+    },
+    {
+      "file": "step-01.jpg",
+      "bytes": 214437,
+      "sha256": "1bdf34250b9cbcfa6b49eea468320ddf2ba12547e7091d1184eeefa9a955920a",
+      "descriptionKo": "병아리콩 헹구고 물기 빼기"
+    },
+    {
+      "file": "step-02.jpg",
+      "bytes": 201069,
+      "sha256": "8c2b3ad1390cccb30ae39b7c4fc6b105fbdc0583b0d3bb461e5ca877f2eddcf2",
+      "descriptionKo": "레몬즙 걸러 마늘 잘게 다지기"
+    },
+    {
+      "file": "step-03.jpg",
+      "bytes": 207263,
+      "sha256": "1bfe6291996f61939c8cb4f04cc580ed1f228acb9a3be8bb4d71070e0b10452d",
+      "descriptionKo": "타히니와 레몬만 먼저 갈기"
+    },
+    {
+      "file": "step-04.jpg",
+      "bytes": 242024,
+      "sha256": "800a1c38d8c4b527b17a82facce372ccfc75e8169f58f713f7c0b82c88e74b73",
+      "descriptionKo": "병아리콩·마늘·큐민·소금 갈기"
+    },
+    {
+      "file": "step-05.jpg",
+      "bytes": 211610,
+      "sha256": "b4f425535dc09bdd281e67d1dc736bfb03d96240da7ce5c24a6c4c43560bb469",
+      "descriptionKo": "찬물과 올리브유 넣어 곱게 갈기"
+    },
+    {
+      "file": "step-06.jpg",
+      "bytes": 239922,
+      "sha256": "dac1cbed981da46b44b5ca1918194e4ba148cb9ff9eef731804c905624fea997",
+      "descriptionKo": "완성 후무스를 그릇에 담아 무늬 내기"
+    }
+  ],
+  "reviewNote": "One standalone photograph per recipe step, no storyboard, 1536x1024 images. Website publication not automatic."
+}
