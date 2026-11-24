@@ -8,27 +8,15 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 2,
+  "requestRevision": 3,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-24T11:07:35.661683+00:00",
+  "generatedAtUTC": "2026-11-24T11:08:39.988745+00:00",
   "stages": [
-    {
-      "step": 4,
-      "status": "candidate_needs_actual_visual_review",
-      "reviewed": false,
-      "published": false,
-      "role": "step",
-      "path": "artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/step-04.jpg",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 189355,
-      "sha256": "2b1c11124e03ec47c0d6974b4fde6d71f2c2d4550cd397fb75b855e0645a5e6b"
-    },
     {
       "step": 6,
       "status": "candidate_needs_actual_visual_review",
@@ -38,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/step-06.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 240836,
-      "sha256": "52ce2f3ff709936631a5b928ec9bfa0345dd60709fcbc3bef4ae5af41e1d70c3"
+      "bytes": 214993,
+      "sha256": "54b4eb2089d6009a5ba0cf870b2b208f30988741fd1e9853216022566e615835"
     }
   ],
   "referenceDimensions": [
