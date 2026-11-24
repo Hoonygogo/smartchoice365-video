@@ -8,14 +8,14 @@
   "published": false,
   "paidFallback": false,
   "attemptLimitPerStage": 1,
-  "requestRevision": 5,
+  "requestRevision": 6,
   "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
   "referenceImageConditioningUsed": true,
   "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
   "referenceRole": "countertop_material_only_not_room_layout",
   "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
   "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
-  "generatedAtUTC": "2026-11-24T11:41:44.308434+00:00",
+  "generatedAtUTC": "2026-11-24T11:42:37.168207+00:00",
   "stages": [
     {
       "step": 5,
@@ -26,8 +26,8 @@
       "path": "artifacts/recipe-step-photo/silky-lemon-garlic-hummus/step-05.jpg",
       "width": 1536,
       "height": 1024,
-      "bytes": 232097,
-      "sha256": "f89dc64e01932de6d40c8782d3f089e72cc6a3ba7c20f859c3721f412744fd4f"
+      "bytes": 211610,
+      "sha256": "b4f425535dc09bdd281e67d1dc736bfb03d96240da7ce5c24a6c4c43560bb469"
     }
   ],
   "referenceDimensions": [
