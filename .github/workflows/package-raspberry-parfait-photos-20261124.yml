@@ -1,0 +1,39 @@
+name: Package seven reviewed raspberry granola parfait photos
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/package-raspberry-parfait-photos-20261124.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: package-raspberry-parfait-photos-20261124
+  cancel-in-progress: false
+jobs:
+  package-seven-photos:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout current image originals
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Verify dimensions, full recipe stages and image uniqueness, package ZIP and contact sheet
+        run: |
+          python3 -m pip install --disable-pip-version-check 'Pillow>=10,<13'
+          python3 -m py_compile scripts/package_raspberry_parfait_photos_20261124.py
+          python3 scripts/package_raspberry_parfait_photos_20261124.py
+      - name: Save resulting ZIP and full-image preview
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/raspberry-parfait-hero-and-6-process-photos.zip
+          git add artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/preview-contact-sheet.jpg
+          git add artifacts/recipe-step-photo/raspberry-yogurt-granola-parfait/package-manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Package 7 visually reviewed raspberry parfait photo originals and contact sheet [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
