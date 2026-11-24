@@ -30,12 +30,12 @@ for name in NAMES:
 if len(set(digests))!=len(NAMES):
     raise RuntimeError("Photos not distinct")
 generation=json.loads((DIR/"generation-report.json").read_text(encoding="utf-8"))
-if generation.get("requestRevision") != 2:
-    raise RuntimeError("Latest correction revision 2 missing")
-if sorted(x["step"] for x in generation.get("stages",[])) != [4,6]:
-    raise RuntimeError("Expected replacement pair not reported")
+if generation.get("requestRevision") != 3:
+    raise RuntimeError("Latest correction revision 3 missing")
+if sorted(x["step"] for x in generation.get("stages",[])) != [6]:
+    raise RuntimeError("Expected final stage 6 correction not reported")
 if any(x.get("status")!="candidate_needs_actual_visual_review" for x in generation["stages"]):
-    raise RuntimeError("Failed photo generation for stage 4 or 6")
+    raise RuntimeError("Failed photo generation for stage 6")
 manifest={"title_ko":"라즈베리 요거트 그래놀라 파르페",
           "title_en":"Raspberry Yoghurt Granola Parfait",
           "originalRecipe":"https://smartc365.com/guides/smart-dinner-raspberry-yogurt-granola-parfait-ko",
@@ -43,7 +43,7 @@ manifest={"title_ko":"라즈베리 요거트 그래놀라 파르페",
           "ingredients":["240 g plain Greek yoghurt","130 g crunchy granola","140 g fresh raspberries","15 ml honey","1 g lemon zest"],
           "source":"Cloudflare Workers AI, independently generated and visually reviewed originals",
           "dimensions":[1536,1024],"format":"JPEG",
-          "stageVersion":{"hero":1,"step-01":1,"step-02":1,"step-03":1,"step-04":2,"step-05":1,"step-06":2},
+          "stageVersion":{"hero":1,"step-01":1,"step-02":1,"step-03":1,"step-04":2,"step-05":1,"step-06":3},
           "files":[{"name":name,"sizeBytes":size,"sha256":sha,"labelKo":label}
                    for name,size,sha,label in zip(NAMES,SIZES,digests,["대표사진"]+STEPS_KO[1:])]}
 # 3 columns x 3 rows (7 images) with labels in a compact visual contact sheet.
