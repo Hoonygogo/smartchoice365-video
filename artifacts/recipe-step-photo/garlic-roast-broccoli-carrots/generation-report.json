@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "slug": "garlic-roast-broccoli-carrots",
+  "recipeName": "Garlic Roast Broccoli & Carrots",
+  "source": "Original official Smart Meals bilingual recipe method",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "reviewed": false,
+  "published": false,
+  "paidFallback": false,
+  "attemptLimitPerStage": 1,
+  "requestRevision": 1,
+  "countertopSet": "smart-meals-ivory-quartz-countertop-v2",
+  "referenceImageConditioningUsed": true,
+  "referenceImagePath": "assets/reference/smart-meals-countertop-quartz-v2.jpg",
+  "referenceRole": "countertop_material_only_not_room_layout",
+  "compositionRule": "food_fills_75_to_90_percent_of_frame_with_natural_countertop_contact_shadow",
+  "referenceSha256": "8a30f68180e58f47cd9aacbd6fde20e72a8c01a9ba3273ada3b6c18250473771",
+  "generatedAtUTC": "2026-11-25T02:26:37.471480+00:00",
+  "stages": [
+    {
+      "step": 0,
+      "status": "cloudflare_429_free_quota_or_rate",
+      "reviewed": false,
+      "published": false,
+      "errorDetail": "{\"errors\":[{\"message\":\"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage. (8d969bdd-2f7b-4858-bb47-5193bc268339)\",\"code\":4006}],\"success\":false,\"result\":{},\"messages\":[]}"
+    }
+  ],
+  "referenceDimensions": [
+    480,
+    270
+  ],
+  "status": "no_images_created"
+}
