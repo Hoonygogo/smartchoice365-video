@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "requestRevision": 1,
+  "slug": "garlic-roast-broccoli-carrots",
+  "title": "Garlic Roast Broccoli & Carrots",
+  "titleKo": "마늘 브로콜리 당근 오븐구이",
+  "sourceUrls": {
+    "ko": "https://smartc365.com/guides/smart-dinner-garlic-roast-broccoli-carrots-ko",
+    "en": "https://smartc365.com/guides/smart-dinner-garlic-roast-broccoli-carrots-en"
+  },
+  "ingredients": [
+    "250 g broccoli florets",
+    "180 g carrots",
+    "20 ml olive oil",
+    "8 g finely minced garlic",
+    "15 ml fresh lemon juice",
+    "2 g fine salt",
+    "1 g ground black pepper"
+  ],
+  "ingredientsKo": [
+    "브로콜리 250g",
+    "당근 180g",
+    "올리브유 20ml",
+    "다진 마늘 8g",
+    "레몬즙 15ml",
+    "소금 2g",
+    "후추 1g"
+  ],
+  "fullMethod": [
+    "Preheat fan oven to 200C (220C conventional), line wide tray with parchment.",
+    "Cut broccoli into 3cm florets and carrots into 5mm diagonal slices; dry well.",
+    "Toss vegetables with 15ml oil, 2g salt, 1g pepper, spread single layer cut sides down.",
+    "Roast middle shelf about 18min, turning once, light browned edges.",
+    "Mix 8g minced garlic with remaining 5ml oil, toss with hot vegetables and roast another 4–6min.",
+    "Remove when tender but intact, add 15ml fresh lemon juice and serve."
+  ],
+  "fullMethodKo": [
+    "팬 오븐 200°C(일반 220°C) 예열, 넓은 트레이에 종이호일을 깐다.",
+    "브로콜리 3cm 송이, 당근 5mm 어슷썰기 후 물기를 닦는다.",
+    "올리브유 15ml, 소금 2g, 후추 1g을 섞어 트레이에 한 겹 펼친다.",
+    "중간 단 18분 굽고 중간에 뒤집는다.",
+    "다진 마늘 8g과 남은 올리브유 5ml를 섞어 뜨거운 채소에 묻혀 4~6분 더 굽는다.",
+    "트레이를 꺼내 레몬즙 15ml를 뿌리고 바로 곁들인다."
+  ],
+  "stages": [
+    {
+      "step": 0,
+      "scene": "Single independent 1536x1024 photorealistic natural cooking photo, consistent ivory satin quartz, natural daylight, no collage, text or watermarks. Finished two-serving side dish of oven-roasted small broccoli florets and thin diagonal carrot slices, light natural golden browning, tiny cooked minced garlic flecks and subtle lemon sheen, on simple ivory ceramic serving plate on ivory quartz counter. No other foods, parsley, cheese or lemon wedges. Appetizing closeup, realistic modest quantity."
+    },
+    {
+      "step": 1,
+      "scene": "Single independent 1536x1024 photorealistic natural cooking photo, consistent ivory satin quartz, natural daylight, no collage, text or watermarks. One empty large charcoal black rectangular rimmed oven baking tray lined with beige parchment paper, physically resting on pale ivory quartz, preheating oven softly visible in background. No food or utensils, single photograph."
+    },
+    {
+      "step": 2,
+      "scene": "Single independent 1536x1024 photorealistic natural cooking photo, consistent ivory satin quartz, natural daylight, no collage, text or watermarks. Raw uncooked vegetables only: 250g fresh dark green broccoli cut into small 3cm florets and 180g bright orange carrot cut into thin 5mm oblique diagonal oval slices, separate loose piles on flat wooden cutting board on ivory quartz counter, dry freshly washed surfaces. A single knife lying flat if visible. Absolutely no cooked food, oil, salt, garlic, herbs, cheese or lemon."
+    },
+    {
+      "step": 3,
+      "scene": "Single independent 1536x1024 photorealistic natural cooking photo, consistent ivory satin quartz, natural daylight, no collage, text or watermarks. Same charcoal black rectangular rimmed oven tray with beige parchment, raw 3cm green broccoli florets and 5mm diagonal carrot slices evenly spaced in ONE non-overlapping layer, subtle coating of 15ml olive oil, fine salt and pepper. Cut sides flat down. No roasting marks, garlic, lemon, cheese or herbs. Overhead natural food prep photograph."
+    },
+    {
+      "step": 4,
+      "scene": "Single independent 1536x1024 photorealistic natural cooking photo, consistent ivory satin quartz, natural daylight, no collage, text or watermarks. Same tray and parchment, broccoli florets and thin diagonal carrots after first 18 minutes roast, slightly softened and scattered light brown edges, no black burnt surfaces, no garlic or lemon yet. Tray rests flat on heatproof trivet, single layer visible. No herbs or cheese."
+    },
+    {
+      "step": 5,
+      "scene": "Single independent 1536x1024 photorealistic natural cooking photo, consistent ivory satin quartz, natural daylight, no collage, text or watermarks. Same tray and parchment with moderately roasted broccoli and carrots, finely minced garlic in tiny pale specks (8g) distributed lightly over hot vegetables with remaining 5ml oil immediately before returning to oven. No whole garlic cloves, lemon, herbs, cheese. Closeup, no pouring vessel or floating utensil."
+    },
+    {
+      "step": 6,
+      "scene": "Single independent 1536x1024 photorealistic natural cooking photo, consistent ivory satin quartz, natural daylight, no collage, text or watermarks. Same tray on heatproof trivet after final 4–6 minute roast, tender intact small broccoli florets and thin diagonal carrots with lightly browned edges, tiny cooked minced garlic flecks, fresh lemon juice added as subtle glistening sheen, no pooled oil, no additional garnishes, no cheese, no parsley, no black charring. One coherent finished tray closeup."
+    }
+  ]
+}
