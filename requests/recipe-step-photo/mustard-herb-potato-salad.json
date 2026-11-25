@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "requestRevision": 1,
+  "slug": "mustard-herb-potato-salad",
+  "title": "Mustard Herb Potato Salad",
+  "titleKo": "머스터드 허브 감자 샐러드",
+  "sourceUrls": {
+    "ko": "https://smartc365.com/guides/smart-dinner-mustard-herb-potato-salad-ko",
+    "en": "https://smartc365.com/guides/smart-dinner-mustard-herb-potato-salad-en"
+  },
+  "ingredients": [
+    "500 g waxy potatoes",
+    "35 g mayonnaise",
+    "40 g plain yoghurt",
+    "12 g smooth Dijon mustard",
+    "30 g spring onion",
+    "12 g flat-leaf parsley",
+    "45 g drained diced dill pickles",
+    "12 ml lemon juice",
+    "2 g salt"
+  ],
+  "ingredientsKo": [
+    "감자 500g",
+    "마요네즈 35g",
+    "플레인 요거트 40g",
+    "디종 머스터드 12g",
+    "쪽파 30g",
+    "파슬리 12g",
+    "피클 45g",
+    "레몬즙 12ml",
+    "소금 2g"
+  ],
+  "fullMethod": [
+    "Wash potatoes and dice into 2cm cubes, retain thin clean skins.",
+    "Cover with cold water, simmer 12–18 min until fork tender and intact.",
+    "Drain, steam off for 5 min, spread in shallow dish to cool.",
+    "Whisk mayo, yoghurt, Dijon, lemon juice and salt.",
+    "Finely slice spring onion, chop parsley, dice drained pickles and mix into dressing.",
+    "Fold dressing through cooled potatoes, cover and refrigerate at 5C or below 45 minutes."
+  ],
+  "fullMethodKo": [
+    "감자 씻고 2cm 큐브로 썰기",
+    "찬물에 잠기게 넣고 12~18분 삶기",
+    "체에 받쳐 5분 김을 빼고 얕은 접시에 펼쳐 식히기",
+    "마요네즈, 요거트, 디종, 레몬즙, 소금 섞기",
+    "쪽파, 파슬리, 피클 잘게 썰어 드레싱에 섞기",
+    "식힌 감자와 살살 버무리고 덮어 5°C 이하 45분 냉장"
+  ],
+  "stages": [
+    {
+      "step": 1,
+      "scene": "Single standalone 1536x1024 natural home cooking photograph. Realistic matte textures, imperfect casual arrangement, consistent ivory satin quartz, soft daylight, close crop, no collage, words, watermarks. Raw washed waxy yellow potatoes, thin light tan skins retained, cut into roughly 2 cm cubes with natural irregularities. A modest loose mound on a slightly damp worn wooden board, visible tiny water beads and a few scraps, one chef knife resting flat. Only raw potatoes, no other ingredients, no dressing, no bowl of salad."
+    },
+    {
+      "step": 2,
+      "scene": "Single standalone 1536x1024 natural home cooking photograph. Realistic matte textures, imperfect casual arrangement, consistent ivory satin quartz, soft daylight, close crop, no collage, words, watermarks. A medium stainless steel saucepan firmly on a black cooktop, gently simmering clear water just covering the same 2cm skin-on yellow potato cubes, small natural bubbles, a hand at edge holds one ordinary four-tined fork with tines inserted into one tender intact cube just at the water surface. No dressing or herbs, no mashed potatoes."
+    },
+    {
+      "step": 3,
+      "scene": "Single standalone 1536x1024 natural home cooking photograph. Realistic matte textures, imperfect casual arrangement, consistent ivory satin quartz, soft daylight, close crop, no collage, words, watermarks. Same intact cooked 2cm light yellow skin-on potato cubes draining in a stainless steel colander supported firmly over a bowl or sink, a clean shallow ivory plate alongside with some drained potatoes spread in one layer cooling. Slight moisture, no excessive steam, no dressing or herbs."
+    },
+    {
+      "step": 4,
+      "scene": "Single standalone 1536x1024 natural home cooking photograph. Realistic matte textures, imperfect casual arrangement, consistent ivory satin quartz, soft daylight, close crop, no collage, words, watermarks. A small plain white ceramic mixing bowl on ivory counter, about 100g smooth pale cream-yellow dressing made from mayonnaise, plain yoghurt, smooth Dijon mustard, lemon juice and salt only. One small stainless balloon whisk touching the dressing, subtle whisk swirls. No herbs, pickles, potatoes, pepper or mustard seeds. No extra bowls needed."
+    },
+    {
+      "step": 5,
+      "scene": "Single standalone 1536x1024 natural home cooking photograph. Realistic matte textures, imperfect casual arrangement, consistent ivory satin quartz, soft daylight, close crop, no collage, words, watermarks. Same small white ceramic bowl of pale cream-yellow dressing on ivory counter. Thin spring onion rings, finely chopped flat-leaf parsley and tiny diced drained green dill pickles partly stirred into the dressing using one grounded spoon. Modest proportions; small remaining chopped piles visible on wooden board beside bowl if needed. No potatoes in dressing yet, no pepper, no extra ingredients."
+    },
+    {
+      "step": 6,
+      "scene": "Single standalone 1536x1024 natural home cooking photograph. Realistic matte textures, imperfect casual arrangement, consistent ivory satin quartz, soft daylight, close crop, no collage, words, watermarks. Large clear glass mixing bowl on ivory quartz, cooked cooled intact 2cm yellow waxy potato cubes with thin tan skin, partially coated with creamy pale yellow dressing with chopped parsley, thin spring onion rings and diced dill pickle. One silicone spatula held naturally at edge gently folding, some cubes still barely coated. No mashed potatoes, steam or other garnish. A lid resting on counter ready for refrigeration."
+    }
+  ]
+}
